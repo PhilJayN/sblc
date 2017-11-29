@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photo</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Source+Sans+Pro" rel="stylesheet">
+    </head>
+    <body>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <!--hamburger-->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <!--These menu links get collapsed on mobile:-->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a class="navbar-brand" href="/">Photo Repo</a></li>
+              <!-- <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li> -->
+              <!-- <li><a href="#">About</a></li> -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <% if(!currentUser) { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Sign Up</a></li>
+              <% } else {%>
+                <li><a href="#">Signed in as <strong><%= currentUser.username %></strong></a></li>
+                <li><a href="/logout">Logout</a></li>
+              <% } %>
+            </ul>
+
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+<div class="container">
+  <!-- error and success (both are arrays) are coming from app.js, in app.use
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");-->
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger">
+      <%= error %>
+    </div>
+  <% } %>
+
+  <% if (success && success.length > 0) { %>
+  <div class="alert alert-success">
+    <%= success %>
+  </div>
+  <% } %>
+</div>
+
+<div class="container">

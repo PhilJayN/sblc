@@ -1,0 +1,20 @@
+<% include partials/header %>
+
+<div class="container user-form">
+  <h1>Sign up</h1>
+    <form action="/register" method="POST">
+      <div class="form-group">
+        <input class="form-control" type="text" name="username" placeholder="User Name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" name="password" placeholder="Password">
+      </div>
+      <button class="btn btn-primary">Sign Up</button>
+    </form>
+
+    <p class="move-route">
+      Already have an account? <a href="/login">Login</a>
+    </p>
+
+</div>
+<% include partials/footer %>

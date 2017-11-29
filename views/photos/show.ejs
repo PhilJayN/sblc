@@ -1,0 +1,81 @@
+<% include ../partials/header %>
+<!-- warning! There's already a class container in the header.ejs and footer.ejs-->
+
+<div class="wrap">
+
+  <div class="row">
+    <!-- Side bar left -->
+    <!-- <div class="col-md-3">
+    </div> -->
+
+      <div class="col-md-12">
+        <div class="thumbnail">
+
+        <p>
+          <img class="img-responsive" src="  <%= photo.image %> " alt="" />
+        </p>
+
+        <div class="caption-full">
+          <h3>
+            <%= photo.name %>
+          </h3>
+
+          <p>
+            <%= photo.description %>
+          </p>
+
+        <p>
+          <em>Submitted by <%= photo.author.username %></em>
+        </p>
+        <% if (currentUser && photo.author.id.equals(currentUser._id)) { %>
+          <a class="edit-style" href="/photos/<%= photo._id %>/edit">Edit</a>
+          <form class="delete-form" action="/photos/<%= photo._id %>?_method=DELETE" method="post">
+            <button class="del-style">Delete</button>
+          </form>
+          <% } %>
+        </div>         <!--end of caption-full div-->
+      </div>
+
+          <% photo.comments.forEach(function(comment){ %>
+            <div class="well">
+              <p>
+              <strong><%= comment.author.username %></strong
+            </p>
+            <p>
+               <%= comment.text %>
+            </p>
+
+            <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+
+              <a class="edit-style"
+              href="/photos/<%= photo._id %>/comments/<%= comment._id %>/edit">Edit
+            </a>
+
+            <form class="delete-form" action="/photos/<%= photo.id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                <button class="del-style">Delete</button>
+            </form>
+
+            <% } %>
+
+          </div>
+
+          <% }) %>
+
+
+      <div class="well-accent-bar">
+        <p>Join the conversation!</p>
+
+        <p>
+          <a class="btn btn-info" href="/photos/<%= photo._id %>/comments/new">Add a comment</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+
+
+
+
+<% include ../partials/footer %>
