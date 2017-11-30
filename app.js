@@ -33,8 +33,7 @@ var mongoose = require("mongoose");
 
 
 
-app.set('port', (process.env.PORT || 3000));
-
+app.set('port', (process.env.PORT || 6000));
 
 
 
@@ -78,5 +77,5 @@ app.use(indexRoutes);
 //   console.log('listening on port:', process.env.PORT, process.env.IP);
 // });
 app.listen(app.get('port'), function () {
-  console.log('Node app is running on port', app.get('port'));
+  console.log('Your Node app is running on port', app.get('port'));
 });
