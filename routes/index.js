@@ -8,18 +8,48 @@ var Comment = require("../models/comment");
 // ================
 // MAIN ROUTES
 // ================
+// router.get('/', function (req, res) {
+//   Photo.find({}, function(err, allPhotos){
+//     console.log ('allPhotos', allPhotos);
+//     console.log ('hi there');
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       //correct render:
+//       // res.render('landing.ejs');
+//       //render for testing:
+//       res.render('photos/index.ejs', {photos: allPhotos});
+//     }
+//   });
+// });
+
+
+// router.get('/', function (req, res) {
+//   Photo.find({}, function(err, allPhotos){
+//     console.log ('allPhotos', allPhotos);
+//     console.log ('hi there');
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       //correct render:
+//       // res.render('landing.ejs');
+//       //render for testing:
+//       res.render('photos/index.ejs', {photos: allPhotos});
+//     }
+//   });
+// });
+
+
+
 router.get('/', function (req, res) {
-  Photo.find({}, function(err, allPhotos){
-    if (err) {
-      console.log(err);
-    } else {
-      //correct render:
-      // res.render('landing.ejs');
-      //render for testing:
-      res.render('photos/index.ejs', {photos: allPhotos});
-    }
-  });
+  var comments = [
+    {name: 'Salmon'},
+    {name: 'Bear'}
+
+  ]
+    res.render('photos/index.ejs', {comments: comments});
 });
+
 
 //ROUTES: AUTHENTICATION
 //show the sign up form
