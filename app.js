@@ -38,7 +38,7 @@ app.set('port', (process.env.PORT || 3000));
 
 
 
-var url = process.env.DATABASEURL || "mongodb://localhost/photos_app";
+var url = process.env.DATABASEURL || "mongodb://localhost/sblc_app";
 mongoose.connect(url);
 // mongoose.connect(process.env.DATABASEURL);
 console.log('process env DATABASEURL', process.env.DATABASEURL);
