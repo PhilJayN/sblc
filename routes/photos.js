@@ -43,7 +43,7 @@ router.post('/photos', middleware.isLoggedIn, function (req, res) {
   });
 });
 
-//SHOW Route: Show more info about one photo
+// SHOW Route: Show more info about one photo
 router.get('/photos/:id', function (req, res){
   //name :id with anything you want.
   Photo.findById(req.params.id).populate("comments").exec(function(err, foundPhoto) { //foundPhoto is a object, so you can use dot notation on it.

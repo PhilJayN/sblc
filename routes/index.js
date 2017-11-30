@@ -5,7 +5,9 @@ var User = require("../models/user");
 var Photo = require("../models/photo");
 var Comment = require("../models/comment");
 
-//ROUTES
+// ================
+// MAIN ROUTES
+// ================
 router.get('/', function (req, res) {
   Photo.find({}, function(err, allPhotos){
     if (err) {
@@ -26,7 +28,6 @@ router.get('/register', function (req, res) {
 });
 
 //handlers user sign up:
-
 router.post('/register', function (req, res) {
   var newUser = new User({username: req.body.username});
   User.register(newUser, req.body.password, function(err, user){
