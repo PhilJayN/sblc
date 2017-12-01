@@ -13,35 +13,26 @@
 
 
 
-              <p>Join the conversation!</p>
 
 
-              <div class="well-accent-bar">
-                <p>Join the conversation!</p>
-              </div>
+  <% comments.forEach(function(comment){ %>
+    <div class="well">
+      <p>
+      <strong><%= comment.author.username %></strong>
+    </p>
+    <p>
+       <%= comment.text %>
+    </p>
+  </div>
+  <% }) %>
 
 
-
-              <a href="/register">Go to register page!</a>
-
-
-<div class="">
-
-
-
-
-                        <% comments.forEach(function(comment) { %>
-
-                        <h4><%= comment.text %></h4>
-
-
-
-                         <% }); %>
-
-
+<div class="well-accent-bar">
+<p>Join the conversation!</p>
 
 
 </div>
+
 
 
 
