@@ -24,6 +24,7 @@ var Comment = require("../models/comment");
 // });
 
 
+//allComments is empty for some reason:
 router.get('/', function (req, res) {
   Comment.find({}, function(err, allComments){
     console.log ('allComments', allComments);
@@ -33,13 +34,30 @@ router.get('/', function (req, res) {
       //correct render:
       // res.render('landing.ejs');
       //render for testing:
-      res.render('photos/index.ejs', {comment: allComments});
+      console.log ('allComments', allComments);
+      res.render('photos/index.ejs', {comments: allComments});
     }
   });
 });
 
 
 //
+// router.get('/', function (req, res) {
+//
+//     Photo.find({}, function(err, allPhotos){
+//       console.log ('allPhotos', allPhotos);
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         //correct render:
+//         // res.render('landing.ejs');
+//         //render for testing:
+//         console.log ('allPhotos', allPhotos);
+//         res.render('photos/index.ejs', {photos: allPhotos});
+//       }
+//     });
+// });
+
 // router.get('/', function (req, res) {
 //   var comments = [
 //     {name: 'Salmon'},
