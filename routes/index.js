@@ -24,31 +24,30 @@ var Comment = require("../models/comment");
 // });
 
 
-// router.get('/', function (req, res) {
-//   Photo.find({}, function(err, allPhotos){
-//     console.log ('allPhotos', allPhotos);
-//     console.log ('hi there');
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       //correct render:
-//       // res.render('landing.ejs');
-//       //render for testing:
-//       res.render('photos/index.ejs', {photos: allPhotos});
-//     }
-//   });
-// });
-
-
-
 router.get('/', function (req, res) {
-  var comments = [
-    {name: 'Salmon'},
-    {name: 'Bear'}
-
-  ]
-    res.render('photos/index.ejs', {comments: comments});
+  Comment.find({}, function(err, allComments){
+    console.log ('allComments', allComments);
+    if (err) {
+      console.log(err);
+    } else {
+      //correct render:
+      // res.render('landing.ejs');
+      //render for testing:
+      res.render('photos/index.ejs', {comment: allComments});
+    }
+  });
 });
+
+
+//
+// router.get('/', function (req, res) {
+//   var comments = [
+//     {name: 'Salmon'},
+//     {name: 'Bear'}
+//
+//   ]
+//     res.render('photos/index.ejs', {comments: comments});
+// });
 
 
 //ROUTES: AUTHENTICATION
