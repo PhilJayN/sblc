@@ -8,15 +8,30 @@ var middleware = require("../middleware");
 //ROUTES: COMMENTS
 //NEW
 //show new form to create comments:
-router.get('/photos/:id/comments/new', middleware.isLoggedIn, function(req, res) {
-  Photo.findById(req.params.id, function(err, foundPhoto) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('comments/new.ejs', {photo: foundPhoto});
-    }
-  });
+// router.get('/photos/:id/comments/new', middleware.isLoggedIn, function(req, res) {
+//   Photo.findById(req.params.id, function(err, foundPhoto) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       res.render('comments/new.ejs', {photo: foundPhoto});
+//     }
+//   });
+// });
+
+//show new form to create comments on main page: don't forget to add middleware.isLoggedIn
+router.get('/comments/new', function(req, res) {
+    res.render('comments/new.ejs');
 });
+
+router.post('/', function(req, res) {
+  res.send('there was a post req.');
+  //get form data form input fields:
+  console.log('req.body.comment input', req.body.comment);
+
+
+});
+
+
 
 //CREATE
 router.post('/photos/:id/comments', middleware.isLoggedIn, function(req, res){

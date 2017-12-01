@@ -23,8 +23,6 @@ var Comment = require("../models/comment");
 //   });
 // });
 
-
-//allComments is empty for some reason:
 router.get('/', function (req, res) {
   Comment.find({}, function(err, allComments){
     console.log ('allComments', allComments);
@@ -39,6 +37,23 @@ router.get('/', function (req, res) {
     }
   });
 });
+
+
+router.get('/comments/new', function (req, res) {
+  Comment.find({}, function(err, allComments){
+    console.log ('allComments', allComments);
+    if (err) {
+      console.log(err);
+    } else {
+      //correct render:
+      // res.render('landing.ejs');
+      //render for testing:
+      console.log ('allComments', allComments);
+      res.render('comments/new.ejs');
+    }
+  });
+});
+
 
 
 //
