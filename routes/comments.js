@@ -26,14 +26,9 @@ var middleware = require("../middleware");
 //show new form to create comments on main page: don't forget to add middleware.isLoggedIn
 router.get('/comments/new', function (req, res) {
   Comment.find({}, function(err, allComments){
-    console.log ('allComments', allComments);
     if (err) {
-      console.log(err);
+      console.log('ERROR!!', err);
     } else {
-      //correct render:
-      // res.render('landing.ejs');
-      //render for testing:
-      console.log ('allComments', allComments);
       res.render('comments/new.ejs');
     }
   });
@@ -46,7 +41,7 @@ router.get('/comments/new', function (req, res) {
 //WORK IN PROGRESSS:
 //CREATE Route: add user comment to DB
 //when there's a POST request to /comments... (occurs after clicking submit btn on comments/new page)
-router.post('/comments', function (req, res) {
+router.post('/comments', middleware.isLoggedIn, function (req, res) {
   console.log ('post req occured, here is the req.body:', req.body);
   var comment = req.body.comment;
   var date = new Date();
@@ -56,12 +51,46 @@ router.post('/comments', function (req, res) {
   console.log ('date', humanDate);
   console.log ('time', humanTime);
 
-  // var author = {
-  //   id: req.user._id,
-  //   username: req.user.username
-  // };
-
   ////takes data from variables name and image, and stores into an obj:
+  var newComment = {comment: comment, humanDate: humanDate, humanTime: humanTime};
+  //put obj into the DB:
+  Comment.create(newComment, function(err, newlyCreated) {
+    if(err) {
+      console.log (err);
+    } else {
+          console.log('newlyCreated', newlyCreated);
+          res.redirect('/');
+    }
+  });
+
+
+
+
+
+  // //CREATE Route: add to DB
+  // //when there's a POST request to /photos/addPhoto...
+  // router.post('/photos', middleware.isLoggedIn, function (req, res) {
+  //   //run these codes:
+  //   var name = req.body.name;
+  //   var image = req.body.image;
+  //   var description = req.body.description;
+  //   var author = {
+  //     id: req.user._id,
+  //     username: req.user.username
+  //   };
+  //   //takes data from variables name and image, and stores into an obj:
+  //   var newImage = {name: name, image: image, description: description, author: author};
+  //   Photo.create(newImage, function(err, newlyCreated){
+  //     if (err) {
+  //       console.log(err);
+  //     } else {
+  //       console.log('newlyCreated', newlyCreated);
+  //       res.redirect('/photos');
+  //     }
+  //   });
+  // });
+
+
   // var newImage = {name: name, image: image, description: description, author: author};
   // Photo.create(newImage, function(err, newlyCreated){
   //   if (err) {
@@ -72,6 +101,10 @@ router.post('/comments', function (req, res) {
   //   }
   // });
 
+  // var author = {
+  //   id: req.user._id,
+  //   username: req.user.username
+  // };
 
 });
 

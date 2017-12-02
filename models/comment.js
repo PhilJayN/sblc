@@ -10,6 +10,7 @@ var commentSchema = mongoose.Schema({
       },
       username: String
   },
+  submittedOn: String
 });
 
 module.exports = mongoose.model("Comment", commentSchema);
