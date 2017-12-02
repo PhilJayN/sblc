@@ -44,20 +44,34 @@ router.post('/register', function (req, res) {
   });
 });
 
-
 //ROUTES: LOGIN
 router.get('/login', function(req, res) {
   // res.render('login.ejs', {message: req.flash("error")});
   // res.render('login.ejs', {message: 'you messed up!'});
   res.render('login.ejs' );
-
 });
 
+//handles login logic
 router.post('/login', passport.authenticate("local", {
-  successRedirect: '/',
-  failureRedirect: '/login' //make sure this is /login, and NOT login.ejs. it's a route
+  failureRedirect: '/login', //make sure this is /login ( it's a route), and NOT login.ejs.
+  failureFlash: "Invalid username or password. Please try again."
 }), function(req, res) {
+  req.flash('success', "You are logged in.");
+  res.redirect("/");
 });
+
+
+
+
+//
+// //handles login logic
+// router.post('/login', passport.authenticate("local", {
+//   successRedirect: '/',
+//   failureRedirect: '/login' //make sure this is /login ( it's a route), and NOT login.ejs.
+// }), function(req, res) {
+// });
+//
+//
 
 
 //ROUTES: LOGOUT
