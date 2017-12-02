@@ -10,6 +10,11 @@ var commentSchema = mongoose.Schema({
       },
       username: String
   },
+  // submittedOn:
+  // {
+  //   humanDate: String,
+  //   humanTime: String
+  // }
   submittedOn: String
 });
 

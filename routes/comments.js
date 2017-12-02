@@ -60,7 +60,7 @@ router.get('/comments/new', function (req, res) {
 //when there's a POST request to /comments... (occurs after clicking submit btn on comments/new page)
 router.post('/comments', function (req, res) {
   console.log ('post req occured, here is the req.body:', req.body);
-  var comment = req.body.comment;
+  var comment = req.body.comment.text; //comment looks like: { comment: 'hey' }
   var date = new Date();
   var humanDate = date.toDateString();
   var humanTime = date.toLocaleTimeString('en-US');
@@ -69,7 +69,7 @@ router.post('/comments', function (req, res) {
   console.log ('time', humanTime);
 
   ////takes data from variables name and image, and stores into an obj:
-  var newComment = {submittedOn: humanTime};
+  var newComment = {text: comment, submittedOn: humanTime};
   //put obj into the DB:
   Comment.create(newComment, function(err, newlyCreated) {
     if(err) {
