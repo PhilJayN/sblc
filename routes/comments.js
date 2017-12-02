@@ -4,21 +4,7 @@ var Photo = require("../models/photo");
 var Comment = require("../models/comment");
 var middleware = require("../middleware");
 
-
-//ROUTES: COMMENTS
-//NEW
-//show new form to create comments:
-// router.get('/photos/:id/comments/new', middleware.isLoggedIn, function(req, res) {
-//   Photo.findById(req.params.id, function(err, foundPhoto) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.render('comments/new.ejs', {photo: foundPhoto});
-//     }
-//   });
-// });
-
-//show new form to create comments on main page: don't forget to add middleware.isLoggedIn
+//show new form to create comments on main page:
 router.get('/comments/new', middleware.isLoggedIn, function (req, res) {
   Comment.find({}, function(err, allComments){
     if (err) {
@@ -28,7 +14,6 @@ router.get('/comments/new', middleware.isLoggedIn, function (req, res) {
     }
   });
 });
-
 
 ////works to create a comment in the DB:
 // Comment.create(
@@ -55,7 +40,6 @@ router.get('/comments/new', middleware.isLoggedIn, function (req, res) {
 //   }
 // });
 
-//WORK IN PROGRESSS:
 //CREATE Route: add user comment to DB
 //when there's a POST request to /comments... (occurs after clicking submit btn on comments/new page)
 router.post('/comments', middleware.isLoggedIn, function (req, res) {
@@ -90,75 +74,6 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
   });
 
 
-
-
-  // router.post('/comments', middleware.isLoggedIn, function (req, res) {
-  //   console.log ('post req occured, here is the req.body:', req.body);
-  //   var comment = req.body.comment;
-  //   var date = new Date();
-  //   var humanDate = date.toDateString();
-  //   var humanTime = date.toLocaleTimeString('en-US');
-  //   console.log ('comment', comment);
-  //   console.log ('date', humanDate);
-  //   console.log ('time', humanTime);
-  //
-  //   ////takes data from variables name and image, and stores into an obj:
-  //   var newComment = {comment: comment, humanDate: humanDate, humanTime: humanTime};
-  //   //put obj into the DB:
-  //   Comment.create(newComment, function(err, newlyCreated) {
-  //     if(err) {
-  //       console.log (err);
-  //     } else {
-  //           console.log('newlyCreated', newlyCreated);
-  //           res.redirect('/');
-  //     }
-  //   });
-
-
-
-
-
-
-  // //CREATE Route: add to DB
-  // //when there's a POST request to /photos/addPhoto...
-  // router.post('/photos', middleware.isLoggedIn, function (req, res) {
-  //   //run these codes:
-  //   var name = req.body.name;
-  //   var image = req.body.image;
-  //   var description = req.body.description;
-  //   var author = {
-  //     id: req.user._id,
-  //     username: req.user.username
-  //   };
-  //   //takes data from variables name and image, and stores into an obj:
-  //   var newImage = {name: name, image: image, description: description, author: author};
-  //   Photo.create(newImage, function(err, newlyCreated){
-  //     if (err) {
-  //       console.log(err);
-  //     } else {
-  //       console.log('newlyCreated', newlyCreated);
-  //       res.redirect('/photos');
-  //     }
-  //   });
-  // });
-
-
-  // var newImage = {name: name, image: image, description: description, author: author};
-  // Photo.create(newImage, function(err, newlyCreated){
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     console.log('newlyCreated', newlyCreated);
-  //     res.redirect('/photos');
-  //   }
-  // });
-
-  // var author = {
-  //   id: req.user._id,
-  //   username: req.user.username
-  // };
-
-
 ///is this a dangling bracket???! :
 });
 
@@ -169,7 +84,6 @@ router.post('/', function(req, res) {
   //get form data form input fields:
   console.log('req.body.comment input', req.body.comment);
 });
-
 
 
 //CREATE

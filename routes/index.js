@@ -8,21 +8,6 @@ var Comment = require("../models/comment");
 // ================
 // MAIN ROUTES
 // ================
-// router.get('/', function (req, res) {
-//   Photo.find({}, function(err, allPhotos){
-//     console.log ('allPhotos', allPhotos);
-//     console.log ('hi there');
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       //correct render:
-//       // res.render('landing.ejs');
-//       //render for testing:
-//       res.render('photos/index.ejs', {photos: allPhotos});
-//     }
-//   });
-// });
-
 router.get('/', function (req, res) {
   Comment.find({}, function(err, allComments){
     console.log ('allComments', allComments);
@@ -37,33 +22,6 @@ router.get('/', function (req, res) {
     }
   });
 });
-
-//
-// router.get('/', function (req, res) {
-//
-//     Photo.find({}, function(err, allPhotos){
-//       console.log ('allPhotos', allPhotos);
-//       if (err) {
-//         console.log(err);
-//       } else {
-//         //correct render:
-//         // res.render('landing.ejs');
-//         //render for testing:
-//         console.log ('allPhotos', allPhotos);
-//         res.render('photos/index.ejs', {photos: allPhotos});
-//       }
-//     });
-// });
-
-// router.get('/', function (req, res) {
-//   var comments = [
-//     {name: 'Salmon'},
-//     {name: 'Bear'}
-//
-//   ]
-//     res.render('photos/index.ejs', {comments: comments});
-// });
-
 
 //ROUTES: AUTHENTICATION
 //show the sign up form
