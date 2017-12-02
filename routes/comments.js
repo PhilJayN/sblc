@@ -23,6 +23,8 @@ var middleware = require("../middleware");
 
 
 
+
+
 //show new form to create comments on main page: don't forget to add middleware.isLoggedIn
 router.get('/comments/new', function (req, res) {
   Comment.find({}, function(err, allComments){
@@ -35,6 +37,31 @@ router.get('/comments/new', function (req, res) {
 });
 
 
+////works to create a comment in the DB:
+Comment.create(
+     {
+         text: "Granite Hill",
+         submittedOn: "march 1 1998"
+
+     },
+     function(err, comment){
+      if(err){
+          console.log(err);
+      } else {
+          console.log("NEWLY CREATED comment: ");
+          console.log(comment);
+      }
+    });
+
+////removes comments from db
+// Comment.remove({}, function(err){
+//   if(err){
+//     console.log (err);
+//   } else{
+//     console.log('removed all comments from db!');
+//   }
+// });
+//
 
 
 
