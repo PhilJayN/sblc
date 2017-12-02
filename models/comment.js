@@ -15,7 +15,20 @@ var commentSchema = mongoose.Schema({
   //   humanDate: String,
   //   humanTime: String
   // }
-  submittedOn: String
+  submittedDate: String,
+  submittedTime: String
 });
 
 module.exports = mongoose.model("Comment", commentSchema);
+
+
+//correct obj:
+// commentSchema = {
+// 	text: 'hi',
+// 	username: 'Teddy',
+//   submittedOn:
+//     {
+//       humanDate: 'date',
+//       humanTime: 'time'
+// 	  }
+// }

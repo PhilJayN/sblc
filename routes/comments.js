@@ -64,12 +64,17 @@ router.post('/comments', function (req, res) {
   var date = new Date();
   var humanDate = date.toDateString();
   var humanTime = date.toLocaleTimeString('en-US');
+  // var dateTimeObj = {
+  //   humanDate: date.toDateString(),
+  //   humanTime: date.toLocaleTimeString()
+  // };
+
   console.log ('comment', comment);
-  console.log ('date', humanDate);
-  console.log ('time', humanTime);
+  // console.log ('date', humanDate);
+  // console.log ('time', humanTime);
 
   ////takes data from variables name and image, and stores into an obj:
-  var newComment = {text: comment, submittedOn: humanTime};
+  var newComment = {text: comment, submittedDate: humanDate, submittedTime: humanTime};
   //put obj into the DB:
   Comment.create(newComment, function(err, newlyCreated) {
     if(err) {
