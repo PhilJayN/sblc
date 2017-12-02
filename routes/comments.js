@@ -49,7 +49,13 @@ router.get('/comments/new', function (req, res) {
 router.post('/comments', function (req, res) {
   console.log ('post req occured, here is the req.body:', req.body);
   var comment = req.body.comment;
+  var date = new Date();
+  var humanDate = date.toDateString();
+  var humanTime = date.toLocaleTimeString('en-US');
   console.log ('comment', comment);
+  console.log ('date', humanDate);
+  console.log ('time', humanTime);
+
   // var author = {
   //   id: req.user._id,
   //   username: req.user.username
