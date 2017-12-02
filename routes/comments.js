@@ -58,7 +58,7 @@ router.get('/comments/new', middleware.isLoggedIn, function (req, res) {
 //WORK IN PROGRESSS:
 //CREATE Route: add user comment to DB
 //when there's a POST request to /comments... (occurs after clicking submit btn on comments/new page)
-router.post('/comments', function (req, res) {
+router.post('/comments', middleware.isLoggedIn, function (req, res) {
   console.log ('post req occured, here is the req.body:', req.body);
   var comment = req.body.comment.text; //comment looks like: { comment: 'hey' }
   var date = new Date();
@@ -68,13 +68,17 @@ router.post('/comments', function (req, res) {
   //   humanDate: date.toDateString(),
   //   humanTime: date.toLocaleTimeString()
   // };
+  var author = {
+    id: req.user._id,
+    username: req.user.username
+  };
 
   console.log ('comment', comment);
   // console.log ('date', humanDate);
   // console.log ('time', humanTime);
 
   ////takes data from variables name and image, and stores into an obj:
-  var newComment = {text: comment, submittedDate: humanDate, submittedTime: humanTime};
+  var newComment = {text: comment, submittedDate: humanDate, submittedTime: humanTime, author: author};
   //put obj into the DB:
   Comment.create(newComment, function(err, newlyCreated) {
     if(err) {
@@ -84,6 +88,7 @@ router.post('/comments', function (req, res) {
           res.redirect('/');
     }
   });
+
 
 
 
