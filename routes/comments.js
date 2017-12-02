@@ -18,13 +18,6 @@ var middleware = require("../middleware");
 //   });
 // });
 
-
-
-
-
-
-
-
 //show new form to create comments on main page: don't forget to add middleware.isLoggedIn
 router.get('/comments/new', function (req, res) {
   Comment.find({}, function(err, allComments){
@@ -38,20 +31,20 @@ router.get('/comments/new', function (req, res) {
 
 
 ////works to create a comment in the DB:
-Comment.create(
-     {
-         text: "Granite Hill",
-         submittedOn: "march 1 1998"
-
-     },
-     function(err, comment){
-      if(err){
-          console.log(err);
-      } else {
-          console.log("NEWLY CREATED comment: ");
-          console.log(comment);
-      }
-    });
+// Comment.create(
+//      {
+//          text: "Granite Hill",
+//          submittedOn: "march 1 1998"
+//
+//      },
+//      function(err, comment){
+//       if(err){
+//           console.log(err);
+//       } else {
+//           console.log("NEWLY CREATED comment: ");
+//           console.log(comment);
+//       }
+//     });
 
 ////removes comments from db
 // Comment.remove({}, function(err){
@@ -61,14 +54,11 @@ Comment.create(
 //     console.log('removed all comments from db!');
 //   }
 // });
-//
-
-
 
 //WORK IN PROGRESSS:
 //CREATE Route: add user comment to DB
 //when there's a POST request to /comments... (occurs after clicking submit btn on comments/new page)
-router.post('/comments', middleware.isLoggedIn, function (req, res) {
+router.post('/comments', function (req, res) {
   console.log ('post req occured, here is the req.body:', req.body);
   var comment = req.body.comment;
   var date = new Date();
@@ -79,7 +69,7 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
   console.log ('time', humanTime);
 
   ////takes data from variables name and image, and stores into an obj:
-  var newComment = {comment: comment, humanDate: humanDate, humanTime: humanTime};
+  var newComment = {submittedOn: humanTime};
   //put obj into the DB:
   Comment.create(newComment, function(err, newlyCreated) {
     if(err) {
@@ -89,6 +79,31 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
           res.redirect('/');
     }
   });
+
+
+
+  // router.post('/comments', middleware.isLoggedIn, function (req, res) {
+  //   console.log ('post req occured, here is the req.body:', req.body);
+  //   var comment = req.body.comment;
+  //   var date = new Date();
+  //   var humanDate = date.toDateString();
+  //   var humanTime = date.toLocaleTimeString('en-US');
+  //   console.log ('comment', comment);
+  //   console.log ('date', humanDate);
+  //   console.log ('time', humanTime);
+  //
+  //   ////takes data from variables name and image, and stores into an obj:
+  //   var newComment = {comment: comment, humanDate: humanDate, humanTime: humanTime};
+  //   //put obj into the DB:
+  //   Comment.create(newComment, function(err, newlyCreated) {
+  //     if(err) {
+  //       console.log (err);
+  //     } else {
+  //           console.log('newlyCreated', newlyCreated);
+  //           res.redirect('/');
+  //     }
+  //   });
+
 
 
 
@@ -133,6 +148,8 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
   //   username: req.user.username
   // };
 
+
+///is this a dangling bracket???! :
 });
 
 
