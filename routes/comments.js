@@ -18,17 +18,63 @@ var middleware = require("../middleware");
 //   });
 // });
 
+
+
+
+
+
 //show new form to create comments on main page: don't forget to add middleware.isLoggedIn
-router.get('/comments/new', function(req, res) {
-    res.render('comments/new.ejs');
+router.get('/comments/new', function (req, res) {
+  Comment.find({}, function(err, allComments){
+    console.log ('allComments', allComments);
+    if (err) {
+      console.log(err);
+    } else {
+      //correct render:
+      // res.render('landing.ejs');
+      //render for testing:
+      console.log ('allComments', allComments);
+      res.render('comments/new.ejs');
+    }
+  });
 });
+
+
+
+
+
+//WORK IN PROGRESSS:
+//CREATE Route: add user comment to DB
+//when there's a POST request to /comments... (occurs after clicking submit btn on comments/new page)
+router.post('/comments', function (req, res) {
+  console.log ('post req occured, here is the req.body:', req.body);
+  var comment = req.body.comment;
+  console.log ('comment', comment);
+  // var author = {
+  //   id: req.user._id,
+  //   username: req.user.username
+  // };
+
+  ////takes data from variables name and image, and stores into an obj:
+  // var newImage = {name: name, image: image, description: description, author: author};
+  // Photo.create(newImage, function(err, newlyCreated){
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log('newlyCreated', newlyCreated);
+  //     res.redirect('/photos');
+  //   }
+  // });
+
+
+});
+
+
 
 router.post('/', function(req, res) {
   res.send('there was a post req.');
   //get form data form input fields:
   console.log('req.body.comment input', req.body.comment);
-
-
 });
 
 
