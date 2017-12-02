@@ -19,7 +19,7 @@ var middleware = require("../middleware");
 // });
 
 //show new form to create comments on main page: don't forget to add middleware.isLoggedIn
-router.get('/comments/new', function (req, res) {
+router.get('/comments/new', middleware.isLoggedIn, function (req, res) {
   Comment.find({}, function(err, allComments){
     if (err) {
       console.log('ERROR!!', err);
