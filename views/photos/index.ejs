@@ -27,7 +27,9 @@
 
     <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
 
-        <a class="edit-style" href="/comments/:id/edit">Edit</a>
+        <a class="edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
+
+        <p><%= comment._id %></p>
 
 
         <% } %>
