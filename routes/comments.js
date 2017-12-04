@@ -49,6 +49,18 @@ router.put('/comments/:id', function(req, res) {
   });
 });
 
+//DELETE route for comment
+router.delete('/comments/:id', function (req, res) {
+  Comment.findByIdAndRemove(req.params.id, function (err) {
+    if (err) {
+      res.redirect('back');
+    } else {
+      req.flash("success", "Comment deleted!");
+      res.redirect('/');
+    }
+  });
+});
+
 
 //EDIT
 // router.get('/photos/:id/comments/:comment_id/edit', middleware.checkCommentOwnership, function (req, res) {
