@@ -10,14 +10,14 @@ var Comment = require("../models/comment");
 // ================
 router.get('/', function (req, res) {
   Comment.find({}, function(err, allComments){
-    console.log ('allComments', allComments);
+    // console.log ('allComments', allComments);
     if (err) {
       console.log(err);
     } else {
       //correct render:
       // res.render('landing.ejs');
       //render for testing:
-      console.log ('allComments', allComments);
+      // console.log ('allComments', allComments);
       res.render('photos/index.ejs', {comments: allComments});
     }
   });

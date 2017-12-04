@@ -29,10 +29,23 @@ router.get('/r/:subredditName/:id', function (req, res) {
 //show form to edit a  particular comment that has unique ID
 router.get('/comments/:id/edit', function (req, res) {
   // console.log ('params:', req.params.id);
-
   Comment.findById(req.params.id, function(err, foundComment) {
     res.render('comments/edit.ejs', {comment: foundComment});
     // res.render('comments/edit.ejs', {comment_id: req.params.id, comment: foundComment});
+  });
+});
+
+//update route  for comments
+router.put('/comments/:id', function(req, res) {
+  // res.send('you hit update comment route');
+  Comment.findByIdAndUpdate(req.params.id, req.body.comment, function(err, updatedComment) {
+    console.log('UPDATED COMMENT', updatedComment);
+    if (err) {
+      res.redirect('/back');
+    } else {
+      console.log ('req.body.comment', req.body.comment);
+      res.redirect('/');
+    }
   });
 });
 
