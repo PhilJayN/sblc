@@ -14,10 +14,10 @@
   <% comments.forEach(function(comment){ %>
     <div class="well">
       <p>
-      <strong><%= comment.author.username %></strong>
+        <strong><%= comment.author.username %></strong>
+        <span> | <%= comment.submittedDate %></span>
+        <span> | <%= comment.submittedTime %> </span>
       </p>
-      <p><%= comment.submittedDate %></p>
-      <p><%= comment.submittedTime %></p>
       <p>
          <%= comment.text %>
       </p>

@@ -1,9 +1,4 @@
 <% include ../partials/header %>
-<h1>edit pg!! for comment</h1>
-
-<%= comment.text %>
-
-
 
 <h1>Edit comment</h1>
   <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
@@ -14,7 +9,5 @@
       <button class="btn btn-primary">Submit</button>
     </p>
   </form>
-
-
 
 <% include ../partials/footer %>
