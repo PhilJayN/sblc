@@ -15,6 +15,47 @@ router.get('/comments/new', middleware.isLoggedIn, function (req, res) {
   });
 });
 
+
+
+router.get('/r/:subredditName/:id', function (req, res) {
+  res.send('hiii!');
+  console.log ('id from params', req.params.id);
+  console.log ('subredditName from params', req.params.subredditName);
+});
+
+
+
+
+//show form to edit a  particular comment that has unique ID
+router.get('/comments/:id/edit', function (req, res) {
+  // console.log ('params:', req.params.id);
+
+  Comment.findById(req.params.id, function(err, foundComment) {
+    res.render('comments/edit.ejs', {comment: foundComment});
+    // res.render('comments/edit.ejs', {comment_id: req.params.id, comment: foundComment});
+  });
+});
+
+
+//EDIT
+// router.get('/photos/:id/comments/:comment_id/edit', middleware.checkCommentOwnership, function (req, res) {
+//   Comment.findById(req.params.comment_id, function(err, foundComment) {
+//     res.render('comments/edit.ejs', {photo_id: req.params.id, comment: foundComment});
+//   });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
 ////works to create a comment in the DB:
 // Comment.create(
 //      {
