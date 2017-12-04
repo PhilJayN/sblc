@@ -36,13 +36,15 @@ var mongoose = require("mongoose");
 app.set('port', (process.env.PORT || 6000));
 
 
+// mongodb://<dbuser>:<dbpassword>@ds123976.mlab.com:23976/sblc
+mongoose.connect("mongodb://Philip:Limer23@ds123976.mlab.com:23976/sblc");
 
 // var url = process.env.DATABASEURL || "mongodb://localhost/new_db";
-var url = process.env.DATABASEURL || "mongodb://localhost/sblc_app";
-
-mongoose.connect(url);
+// var url = process.env.DATABASEURL || "mongodb://localhost/sblc_app";
+//
+// mongoose.connect(url);
 // mongoose.connect(process.env.DATABASEURL);
-console.log('process env DATABASEURL', process.env.DATABASEURL);
+// console.log('process env DATABASEURL', process.env.DATABASEURL);
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
