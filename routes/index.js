@@ -39,7 +39,7 @@ router.post('/register', function (req, res) {
     }
     passport.authenticate("local")(req, res, function(){
       req.flash("success", "Successfully created new account. Welcome " + user.username + "!");
-      res.redirect("/secret");
+      res.redirect("/");
     });
   });
 });
