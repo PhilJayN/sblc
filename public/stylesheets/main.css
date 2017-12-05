@@ -11,6 +11,7 @@ body {
 
 .jumbotron  {
   background-color: #FFFFFF;
+  /*padding: 9.5em;*/
 }
 
 .hero-text {
@@ -204,5 +205,9 @@ body {
 img {
   width: 19.5%;
   margin-bottom: .75em;
+}
 
+
+p {
+  font-size: 1.4em;
 }
