@@ -56,7 +56,8 @@ router.post('/login', passport.authenticate("local", {
   failureRedirect: '/login', //make sure this is /login ( it's a route), and NOT login.ejs.
   failureFlash: "Invalid username or password. Please try again."
 }), function(req, res) {
-  req.flash('success', "You are logged in.");
+  // console.log ('req', req.user.username);
+  req.flash('success', "Login successful. Nice to have you here " + req.user.username + "!");
   res.redirect("/");
 });
 
@@ -78,6 +79,7 @@ router.post('/login', passport.authenticate("local", {
 router.get('/logout', function(req, res) {
   req.logout();
   req.flash('success', 'You are logged out.');
+  console.log ('res', res);
   res.redirect('/');
 });
 
