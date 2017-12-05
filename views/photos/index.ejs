@@ -36,8 +36,16 @@
 
   <div class="well-accent-bar">
     <p>Join the conversation!</p>
+
+    <% if(!currentUser) { %>
+      <li><a href="/register">Sign up for an account first.</a></li>
+    <% } else {%>
       <!-- press a btn here to start GET req. to /comments/new -->
-    <a class="btn btn-info" href="/comments/new">Add a comment</a>
+      <li><a href="#">Hi <strong><%= currentUser.username %>!</strong></a></li>
+      <a class="btn btn-info" href="/comments/new">Add a comment</a>
+    <% } %>
   </div>
+
+
 
 <% include ../partials/footer %>
