@@ -15,15 +15,11 @@ router.get('/comments/new', middleware.isLoggedIn, function (req, res) {
   });
 });
 
-
-
 router.get('/r/:subredditName/:id', function (req, res) {
   res.send('hiii!');
   console.log ('id from params', req.params.id);
   console.log ('subredditName from params', req.params.subredditName);
 });
-
-
 
 
 //show form to edit a  particular comment that has unique ID
@@ -61,25 +57,12 @@ router.delete('/comments/:id', function (req, res) {
   });
 });
 
-
 //EDIT
 // router.get('/photos/:id/comments/:comment_id/edit', middleware.checkCommentOwnership, function (req, res) {
 //   Comment.findById(req.params.comment_id, function(err, foundComment) {
 //     res.render('comments/edit.ejs', {photo_id: req.params.id, comment: foundComment});
 //   });
 // });
-
-
-
-
-
-
-
-
-
-
-
-
 
 ////works to create a comment in the DB:
 // Comment.create(
@@ -139,17 +122,20 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
     }
   });
 
-
-///is this a dangling bracket???! :
-});
-
-
+}); //// end post route for /comments
 
 router.post('/', function(req, res) {
   res.send('there was a post req.');
   //get form data form input fields:
   console.log('req.body.comment input', req.body.comment);
 });
+
+
+
+
+
+
+
 
 
 //CREATE
