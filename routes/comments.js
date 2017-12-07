@@ -124,11 +124,11 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
 
 }); //// end post route for /comments
 
-router.post('/', function(req, res) {
-  res.send('there was a post req.');
-  //get form data form input fields:
-  console.log('req.body.comment input', req.body.comment);
-});
+// router.post('/', function(req, res) {
+//   res.send('there was a post req.');
+//   //get form data form input fields:
+//   console.log('req.body.comment input', req.body.comment);
+// });
 
 
 
