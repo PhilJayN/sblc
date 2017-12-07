@@ -211,3 +211,15 @@ img {
 p {
   font-size: 1.4em;
 }
+
+
+.temp-content {
+  /*border: 1px solid red;*/
+  margin-top: 200px;
+  width: 100%;
+}
+
+
+/*.well {
+  border: 1px solid blue;
+}*/
