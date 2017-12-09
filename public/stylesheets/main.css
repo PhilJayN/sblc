@@ -223,3 +223,20 @@ p {
 .room-container {
   border: 1px solid blue;
 }
+
+.container-fluid {
+  border: 1px solid green;
+}
+
+.container {
+  border: 1px solid red;
+}
+
+.row {
+  border: 1px solid red;
+
+}
+
+.col-sm {
+  border: 1px solid green; 
+}
