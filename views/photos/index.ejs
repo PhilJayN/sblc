@@ -14,6 +14,11 @@
     </div> -->
   </div>
 
+
+
+  <% if(currentUser) { %>
+
+
 <div class="room-container container">
   <div class="row">
 
@@ -36,6 +41,9 @@
 <div class="room-general col-md-3">
   <h3>General</h3>
   <p>Talk about anything here!</p>
+
+
+
 
   <% comments.forEach(function(comment){ %>
     <div class="well">
@@ -84,6 +92,36 @@
 
 
 <!-- END of room container -->
+
+
+
+<% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
