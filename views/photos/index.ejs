@@ -41,70 +41,67 @@
   <% if(currentUser) { %>
 
 
-<div class="room-container container-fluid">
+<div class="room-container container">
   <div class="row">
 
-  <div class="room-announcement col-md-3">
+  <div class="room-announcement col">
     <h3>Quick Announcements</h3>
   </div>
 
-  <div class="room-sblc col-md-3">
+  <div class="room-sblc col">
     <h3>Anything SBLC related</h3>
   </div>
 
 
-  <div class="room-urgent col-md-3">
+  <div class="room-urgent col">
     <h3>Have an urgent question or concern? Post here and email notifications will
       be sent out to those who opt-in, who can answer your questions ASAP.</h3>
   </div>
 
 
-
-<div class="room-general col-md-3">
-  <h3>General</h3>
-  <p>Talk about anything here!</p>
-
+  <div class="room-general col">
+    <h3>General</h3>
+    <p>Talk about anything here!</p>
 
 
+    <% comments.forEach(function(comment){ %>
+      <div class="well">
+        <p>
+          <strong><%= comment.author.username %></strong>
+          <span> | <%= comment.submittedDate %></span>
+          <span> | <%= comment.submittedTime %> </span>
+        </p>
+        <p>
+           <%= comment.text %>
+        </p>
 
-  <% comments.forEach(function(comment){ %>
-    <div class="well">
-      <p>
-        <strong><%= comment.author.username %></strong>
-        <span> | <%= comment.submittedDate %></span>
-        <span> | <%= comment.submittedTime %> </span>
-      </p>
-      <p>
-         <%= comment.text %>
-      </p>
+      <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+          <a class="edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
+          <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+            <button class="del-style">Delete</button>
+          </form>
+          <% } %>
+      </div>
+      <% }) %>
 
-    <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
-        <a class="edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
-        <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-          <button class="del-style">Delete</button>
-        </form>
-        <% } %>
+    <div class="well-accent-bar">
+
+      <% if(!currentUser) { %>
+        <p>Join the conversation! Sign up for an account in seconds.</p>
+        <a class="btn btn-info" href="/register">Sign up</a>
+      <% } else {%>
+        <!-- press a btn here to start GET req. to /comments/new -->
+        <a href="#">Hi <strong><%= currentUser.username %>!</strong></a>
+        <a class="btn btn-info" href="/comments/new">Add a comment</a>
+      <% } %>
     </div>
-    <% }) %>
 
-  <div class="well-accent-bar">
-
-    <% if(!currentUser) { %>
-      <p>Join the conversation! Sign up for an account in seconds.</p>
-      <a class="btn btn-info" href="/register">Sign up</a>
-    <% } else {%>
-      <!-- press a btn here to start GET req. to /comments/new -->
-      <a href="#">Hi <strong><%= currentUser.username %>!</strong></a>
-      <a class="btn btn-info" href="/comments/new">Add a comment</a>
-    <% } %>
-  </div>
-
-</div>   <!-- END of room general -->
+  </div>   <!-- END of room general -->
 
 
 
 
-</div>
+  </div> <!-- END of row -->
 
 </div> <!-- END of room container -->
 
