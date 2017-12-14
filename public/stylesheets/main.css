@@ -203,7 +203,8 @@ body {
 
 
 img {
-  width: 19.5%;
+  /* width: 19.5%; */
+  width: 4%;
   margin-bottom: .75em;
 }
 
