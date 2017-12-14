@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>SBLC APP</title>
+        <title>SBLC APP Local</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,68 +15,32 @@
     </head>
     <body>
 
-
-
-
-
-      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <nav class="navbar navbar-expand-md">
         <!-- Brand -->
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">SBLC</a>
 
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
 
+
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" class="navbar-brand" href="/">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
+
+            <% if(!currentUser) { %>
+              <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+              <li class="nav-item"><a class="nav-link" href="/register">Sign Up</a></li>
+            <% } else {%>
+              <li class="nav-item"><a class="nav-link" href="#">Signed in as <strong><%= currentUser.username %></strong></a></li>
+              <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+            <% } %>
           </ul>
         </div>
-      </nav>
-
-
-
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <!--hamburger-->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-
-          <!--These menu links get collapsed on mobile:-->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a class="navbar-brand" href="/">Home</a></li>
-              <!-- <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li> -->
-              <!-- <li><a href="#">About</a></li> -->
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <% if(!currentUser) { %>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Sign Up</a></li>
-              <% } else {%>
-                <li><a href="#">Signed in as <strong><%= currentUser.username %></strong></a></li>
-                <li><a href="/logout">Logout</a></li>
-              <% } %>
-            </ul>
-
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
       </nav>
 
 <div class="container">
