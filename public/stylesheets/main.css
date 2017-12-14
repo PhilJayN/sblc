@@ -25,18 +25,22 @@ body {
 
 .navbar {
    background-color: #B2DFDB;
-   background-color: white;
-
    border-radius: 0;
    color: red;
+   border: 1px solid red;
 }
 
 .nav {
   color: rgb(68, 68, 68);
 }
 
+
 .navbar-nav {
   color: rgb(68, 68, 68);
+}
+
+.navbar-light {
+  border: 1px solid black;
 }
 
 .btn-info {
