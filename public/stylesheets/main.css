@@ -23,24 +23,8 @@ body {
   margin-bottom: 1em;
 }
 
-.navbar {
-   background-color: #B2DFDB;
-   border-radius: 0;
-   color: red;
-   border: 1px solid red;
-}
-
-.nav {
-  color: rgb(68, 68, 68);
-}
-
-
-.navbar-nav {
-  color: rgb(68, 68, 68);
-}
-
 .navbar-light {
-  border: 1px solid black;
+  border: 1px solid #e7e7e7;
 }
 
 .btn-info {
@@ -245,3 +229,31 @@ p {
 .col-sm {
   border: 1px solid green;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .navbar {
+   background-color: #B2DFDB;
+   border-radius: 0;
+   color: blue;
+   border: 4px solid pink;
+} */
+
+/* .nav {
+  color: rgb(68, 68, 68);
+}
+ */
+
+/* .navbar-nav {
+  color: rgb(68, 68, 68);
+} */
