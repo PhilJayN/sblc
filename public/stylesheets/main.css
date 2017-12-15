@@ -213,22 +213,21 @@ p {
   border: 1px solid blue;
 }
 
-.container-fluid {
+/* .container-fluid {
   border: 1px solid green;
-}
+} */
 
 .container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
-.row {
+/* .row {
   border: 1px solid red;
+} */
 
-}
-
-.col-sm {
+/* .col-sm {
   border: 1px solid green;
-}
+} */
 
 
 
