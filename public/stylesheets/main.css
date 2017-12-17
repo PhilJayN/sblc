@@ -231,9 +231,21 @@ p {
 
 
 
+.teddy-temp {
+  border: 1px solid blue;
+}
 
 
 
+@media screen and (max-width: 699px) and (min-width: 520px) {
+    ul li a {
+        padding-left: 30px;
+        background: url(email-icon.png) left center no-repeat;
+    }
+    h1 {
+      color: red;
+    }
+}
 
 
 
