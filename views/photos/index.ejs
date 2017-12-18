@@ -5,7 +5,6 @@
   <div class="jumbotron">
     <h1 class="hero-text">SBLC</h1>
     <h5 class="hero-desc">
-      Welcome!
     </h5>
     <div class="main-image">
       <img src="https://i.imgur.com/FbIu9FK.jpg" alt="flower-pic-placeholder">
@@ -31,15 +30,11 @@
   <div class="room-sblc col-md-6 col-lg-4">
     <!-- each room consist of divs: room-header, and room-content -->
     <div class="room-sblc-header well">
-      <h2>SBLC Related</h2>
+      <h2>SBLC Room</h2>
     </div>
+
     <div class="room-sblc-content ">
       <!-- data from DB will populate here-->
-
-
-
-
-
 
       <% comments.forEach(function(comment){ %>
         <div class="well">
@@ -73,70 +68,32 @@
         <% } %>
       </div>
 
+    </div> <!-- END of room-content-->
+  </div> <!-- END of room-*-->
 
 
-
-
+  <div class="room-urgent col-md-6 col-lg-4">
+    <div class="room-urgent-header well">
+      <h2>Urgent Room</h2>
+      <h5>Have an urgent question or concern? Post here and email notifications will
+        be sent out to those who opt-in, who can answer your questions ASAP.</h5>
+    </div>
+    <div class="room-urgent-content">
+      <!-- data from DB will populate here-->
     </div>
   </div>
 
 
-  <div class="room-urgent col-md-6 col-lg-4">
-    <h5>Have an urgent question or concern? Post here and email notifications will
-      be sent out to those who opt-in, who can answer your questions ASAP.</h5>
-  </div>
-
-  <div class="room-box">
-    <div class="room-header">
-      <div class="room-content">
-
-
 
     <div class="room-general col-md-6 col-lg-4">
-      <h5>General</h5>
-      <p>Talk about anything here!</p>
-
-
-      <% comments.forEach(function(comment){ %>
-        <div class="well">
-          <p>
-            <strong><%= comment.author.username %></strong>
-            <span> | <%= comment.submittedDate %></span>
-            <span> | <%= comment.submittedTime %> </span>
-          </p>
-          <p>
-             <%= comment.text %>
-          </p>
-
-        <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
-            <a class="edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
-            <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-              <button class="del-style">Delete</button>
-            </form>
-            <% } %>
-        </div>
-        <% }) %>
-
-      <div class="well-accent-bar">
-
-        <% if(!currentUser) { %>
-          <p>Join the conversation! Sign up for an account in seconds.</p>
-          <a class="btn btn-info" href="/register">Sign up</a>
-        <% } else {%>
-          <!-- press a btn here to start GET req. to /comments/new -->
-          <a href="#">Hi <strong><%= currentUser.username %>!</strong></a>
-          <a class="btn btn-info" href="/comments/new">Add a comment</a>
-        <% } %>
+      <div class="room-general-header well">
+        <h2>General Room</h2>
+        <p>Talk about anything here!</p>
       </div>
-
+      <div class="room-general-content">
+        <!-- data from DB will populate here-->
+      </div>
     </div>   <!-- END of room general -->
-  </div>  <!-- END of room content -->
-
-  </div>  <!-- END of room header -->
-
-
-  </div> <!-- END of room box -->
-
 
 
 

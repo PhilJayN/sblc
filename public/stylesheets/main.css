@@ -81,6 +81,11 @@ body {
   border-bottom: 1px solid #d6d6d6;
 }
 
+ .room-sblc, .room-urgent, .room-general {
+   /* border: 1px solid red; */
+   margin-bottom: 22px;
+ }
+
 .thumbnail img {
   width: 100%;
   border-radius: 3px;
@@ -241,10 +246,6 @@ p {
 
 
 
-.teddy-temp {
-  border: 1px solid blue;
-}
-
 
 /*
 @media screen and (max-width: 699px) and (min-width: 520px) {
@@ -288,11 +289,6 @@ p {
 /* Extra large devices (large desktops, 1200px and up) */
  @media (min-width: 1200px) {  }
 
-
-
-.room-general {
-  border: 1px solid blue;
-}
 
 
 /* .col-md-6 {
