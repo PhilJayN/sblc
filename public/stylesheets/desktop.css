@@ -1,3 +1,11 @@
-.add-comment-btn {
-  display: inline;
+@media (min-width: 1200px) {
+
+  .jumbotron  {
+    margin-bottom: 2rem;
+  }
+
+  .add-comment-btn {
+    display: inline;
+  }
+
 }
