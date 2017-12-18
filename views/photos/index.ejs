@@ -20,6 +20,7 @@
   <% if(currentUser) { %>
 
 
+<!-- basics is container, which has a row, where each row has columns -->
 <div class="room-container container">
   <div class="row">
 
@@ -28,7 +29,55 @@
   </div> -->
 
   <div class="room-sblc col-md-6 col-lg-4">
-    <h5>Anything SBLC related</h5>
+    <!-- each room consist of divs: room-header, and room-content -->
+    <div class="room-sblc-header">
+      <h5>SBLC Related</h5>
+    </div>
+    <div class="room-sblc-content ">
+      <!-- data from DB will populate here-->
+
+
+
+
+
+
+      <% comments.forEach(function(comment){ %>
+        <div class="well">
+          <p>
+            <strong><%= comment.author.username %></strong>
+            <span> | <%= comment.submittedDate %></span>
+            <span> | <%= comment.submittedTime %> </span>
+          </p>
+          <p>
+             <%= comment.text %>
+          </p>
+
+        <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+            <a class="edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
+            <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+              <button class="del-style">Delete</button>
+            </form>
+            <% } %>
+        </div>
+        <% }) %>
+
+      <div class="well-accent-bar">
+
+        <% if(!currentUser) { %>
+          <p>Join the conversation! Sign up for an account in seconds.</p>
+          <a class="btn btn-info" href="/register">Sign up</a>
+        <% } else {%>
+          <!-- press a btn here to start GET req. to /comments/new -->
+          <a href="#">Hi <strong><%= currentUser.username %>!</strong></a>
+          <a class="btn btn-info" href="/comments/new">Add a comment</a>
+        <% } %>
+      </div>
+
+
+
+
+
+    </div>
   </div>
 
 
@@ -37,51 +86,61 @@
       be sent out to those who opt-in, who can answer your questions ASAP.</h5>
   </div>
 
+  <div class="room-box">
+    <div class="room-header">
+      <div class="room-content">
 
-  <div class="room-general col-md-6 col-lg-4">
-    <h5>General</h5>
-    <p>Talk about anything here!</p>
 
 
-    <% comments.forEach(function(comment){ %>
-      <div class="well">
-        <p>
-          <strong><%= comment.author.username %></strong>
-          <span> | <%= comment.submittedDate %></span>
-          <span> | <%= comment.submittedTime %> </span>
-        </p>
-        <p>
-           <%= comment.text %>
-        </p>
+    <div class="room-general col-md-6 col-lg-4">
+      <h5>General</h5>
+      <p>Talk about anything here!</p>
 
-      <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
-          <a class="edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
-          <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-            <button class="del-style">Delete</button>
-          </form>
-          <% } %>
+
+      <% comments.forEach(function(comment){ %>
+        <div class="well">
+          <p>
+            <strong><%= comment.author.username %></strong>
+            <span> | <%= comment.submittedDate %></span>
+            <span> | <%= comment.submittedTime %> </span>
+          </p>
+          <p>
+             <%= comment.text %>
+          </p>
+
+        <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+            <a class="edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
+            <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+              <button class="del-style">Delete</button>
+            </form>
+            <% } %>
+        </div>
+        <% }) %>
+
+      <div class="well-accent-bar">
+
+        <% if(!currentUser) { %>
+          <p>Join the conversation! Sign up for an account in seconds.</p>
+          <a class="btn btn-info" href="/register">Sign up</a>
+        <% } else {%>
+          <!-- press a btn here to start GET req. to /comments/new -->
+          <a href="#">Hi <strong><%= currentUser.username %>!</strong></a>
+          <a class="btn btn-info" href="/comments/new">Add a comment</a>
+        <% } %>
       </div>
-      <% }) %>
 
-    <div class="well-accent-bar">
+    </div>   <!-- END of room general -->
+  </div>  <!-- END of room content -->
 
-      <% if(!currentUser) { %>
-        <p>Join the conversation! Sign up for an account in seconds.</p>
-        <a class="btn btn-info" href="/register">Sign up</a>
-      <% } else {%>
-        <!-- press a btn here to start GET req. to /comments/new -->
-        <a href="#">Hi <strong><%= currentUser.username %>!</strong></a>
-        <a class="btn btn-info" href="/comments/new">Add a comment</a>
-      <% } %>
-    </div>
+  </div>  <!-- END of room header -->
 
-  </div>   <!-- END of room general -->
+
+  </div> <!-- END of room box -->
 
 
 
 
   </div> <!-- END of row -->
-
 </div> <!-- END of room container -->
 
 
