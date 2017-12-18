@@ -30,8 +30,8 @@
 
   <div class="room-sblc col-md-6 col-lg-4">
     <!-- each room consist of divs: room-header, and room-content -->
-    <div class="room-sblc-header">
-      <h5>SBLC Related</h5>
+    <div class="room-sblc-header well">
+      <h2>SBLC Related</h2>
     </div>
     <div class="room-sblc-content ">
       <!-- data from DB will populate here-->
@@ -69,7 +69,7 @@
         <% } else {%>
           <!-- press a btn here to start GET req. to /comments/new -->
           <a href="#">Hi <strong><%= currentUser.username %>!</strong></a>
-          <a class="btn btn-info" href="/comments/new">Add a comment</a>
+          <a class="btn btn-info add-comment-btn" href="/comments/new">Add a comment</a>
         <% } %>
       </div>
 
