@@ -1,4 +1,13 @@
+/* Large devices (desktops, 992px and up) */
+ @media (min-width: 992px) {  }
+
+
+/* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+
+  body {
+    background-color: pink;
+  }
 
   .jumbotron  {
     margin-bottom: 2rem;
@@ -8,17 +17,13 @@
     display: inline;
   }
 
-  body {
-    background-color: green;
+  .container {
+    border: 1px solid red;
+  }
+
+  .row {
+    border: 1px solid green;
   }
 
 
 }
-
-
-
-/* Large devices (desktops, 992px and up) */
- @media (min-width: 992px) {  }
-
-/* Extra large devices (large desktops, 1200px and up) */
- @media (min-width: 1200px) {  }

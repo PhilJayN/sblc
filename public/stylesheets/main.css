@@ -230,7 +230,7 @@ p {
   border: 1px solid green;
 } */
 
-.container {
+.container-fluid {
   /* border: 1px dashed red; */
   padding-left: 0;
   padding-right: 0;
@@ -270,13 +270,12 @@ p {
 
 
  /* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
 
   body {
-    /* background-color: pink; */
   }
 
-}
+} */
 
 
 
