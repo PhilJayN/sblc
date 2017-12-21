@@ -225,7 +225,7 @@ p {
 
 .temp-content {
   /*border: 1px solid red;*/
-  margin-top: 600px;
+  margin-top: 800px;
   width: 100%;
 }
 
@@ -243,6 +243,15 @@ p {
   padding-left: 0;
   padding-right: 0;
 }
+
+/* .developer-message {
+  margin-top: 99px;
+  border: 1px solid blue;
+} */
+
+/* .container {
+  border: 1px solid red;
+} */
 
 /* .row {
   border: 1px solid red;
