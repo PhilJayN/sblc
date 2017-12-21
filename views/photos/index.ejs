@@ -14,9 +14,7 @@
 
 
 
-  <% if(currentUser) { %>
-
-
+<% if(currentUser) { %>
 <!-- basics is container, which has a row, where each row has columns -->
 <div class="room-container container-fluid">
   <div class="row">
@@ -97,41 +95,11 @@
 
   </div> <!-- END of row -->
 </div> <!-- END of room container -->
-
-
-
-
-
-
 <!-- END of room container -->
 
-
-
+<% } else { %>
+  <h2>Please login first to view messages.</h2>
 <% } %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
