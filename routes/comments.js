@@ -118,6 +118,7 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
       console.log (err);
     } else {
           console.log('newlyCreated', newlyCreated);
+          req.flash("success", "New comment added!");
           res.redirect('/');
     }
   });
