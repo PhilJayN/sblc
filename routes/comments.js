@@ -57,38 +57,6 @@ router.delete('/comments/:id', function (req, res) {
   });
 });
 
-//EDIT
-// router.get('/photos/:id/comments/:comment_id/edit', middleware.checkCommentOwnership, function (req, res) {
-//   Comment.findById(req.params.comment_id, function(err, foundComment) {
-//     res.render('comments/edit.ejs', {photo_id: req.params.id, comment: foundComment});
-//   });
-// });
-
-////works to create a comment in the DB:
-// Comment.create(
-//      {
-//          text: "Granite Hill",
-//          submittedOn: "march 1 1998"
-//
-//      },
-//      function(err, comment){
-//       if(err){
-//           console.log(err);
-//       } else {
-//           console.log("NEWLY CREATED comment: ");
-//           console.log(comment);
-//       }
-//     });
-
-////removes comments from db
-// Comment.remove({}, function(err){
-//   if(err){
-//     console.log (err);
-//   } else{
-//     console.log('removed all comments from db!');
-//   }
-// });
-
 //CREATE Route: add user comment to DB
 //when there's a POST request to /comments... (occurs after clicking submit btn on comments/new page)
 router.post('/comments', middleware.isLoggedIn, function (req, res) {
@@ -97,18 +65,11 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
   var date = new Date();
   var humanDate = date.toDateString();
   var humanTime = date.toLocaleTimeString('en-US');
-  // var dateTimeObj = {
-  //   humanDate: date.toDateString(),
-  //   humanTime: date.toLocaleTimeString()
-  // };
+
   var author = {
     id: req.user._id,
     username: req.user.username
   };
-
-  console.log ('comment', comment);
-  // console.log ('date', humanDate);
-  // console.log ('time', humanTime);
 
   ////takes data from variables name and image, and stores into an obj:
   var newComment = {text: comment, submittedDate: humanDate, submittedTime: humanTime, author: author};
@@ -124,20 +85,6 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
   });
 
 }); //// end post route for /comments
-
-// router.post('/', function(req, res) {
-//   res.send('there was a post req.');
-//   //get form data form input fields:
-//   console.log('req.body.comment input', req.body.comment);
-// });
-
-
-
-
-
-
-
-
 
 //CREATE
 router.post('/photos/:id/comments', middleware.isLoggedIn, function(req, res){
@@ -200,3 +147,56 @@ router.delete('/photos/:id/comments/:comment_id', middleware.checkCommentOwnersh
 });
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////SEEDS: works to create a comment in the DB:
+// Comment.create(
+//      {
+//          text: "Granite Hill",
+//          submittedOn: "march 1 1998"
+//
+//      },
+//      function(err, comment){
+//       if(err){
+//           console.log(err);
+//       } else {
+//           console.log("NEWLY CREATED comment: ");
+//           console.log(comment);
+//       }
+//     });
+
+////removes comments from db
+// Comment.remove({}, function(err){
+//   if(err){
+//     console.log (err);
+//   } else{
+//     console.log('removed all comments from db!');
+//   }
+// });
