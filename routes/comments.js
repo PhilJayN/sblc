@@ -33,6 +33,7 @@ router.put('/comments/:id', function(req, res) {
       res.redirect('/back');
     } else {
       console.log ('req.body.comment', req.body.comment);
+      req.flash("success", "Comment edited!");
       res.redirect('/');
     }
   });
