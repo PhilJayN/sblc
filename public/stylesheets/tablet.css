@@ -5,6 +5,14 @@
      /* background-color: red; */
    }
 
+   .jumbotron  {
+     display: inherit;
+     /* background-color: pink;
+     border: 1px solid red; */
+     margin-bottom: .5rem;
+   }
+
+
    .user-form {
      width: 70%;
    }

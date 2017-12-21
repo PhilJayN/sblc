@@ -10,6 +10,7 @@ body {
 }
 
 .jumbotron  {
+  display: none;
   background-color: #FFFFFF;
   margin-bottom: .5rem;
 }

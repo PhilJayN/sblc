@@ -6,9 +6,10 @@
 @media (min-width: 1200px) {
 
 
-  .jumbotron  {
+  /* .jumbotron  {
+    background-color: #FFFFFF;
     margin-bottom: 2rem;
-  }
+  } */
 
   .add-comment-btn {
     display: inline;
@@ -34,4 +35,9 @@
   } */
 
 
+}
+
+
+.jumbotron  {
+  margin-bottom: .5rem;
 }
