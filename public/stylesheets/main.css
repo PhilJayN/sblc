@@ -67,6 +67,10 @@ input {
 
 }
 
+.form-control {
+  border: 1px solid red; 
+}
+
 .form-control:focus {
   border-color: #7DD87E;
 }
@@ -260,6 +264,8 @@ p {
 /* .col-sm {
   border: 1px solid green;
 } */
+
+
 
 
 
