@@ -58,7 +58,7 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
   var comment = req.body.comment.text; //comment looks like: { comment: 'hey' }
   var date = new Date();
   var humanDate = date.toDateString();
-  var humanTime = date.toLocaleTimeString('en-US');
+  var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
   var author = {
     id: req.user._id,
     username: req.user.username
