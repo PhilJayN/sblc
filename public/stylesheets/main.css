@@ -241,17 +241,11 @@ p {
   width: 100%;
 }
 
-
 /* .room-container {
   border: 1px solid blue;
 } */
 
-/* .container-fluid {
-  border: 1px solid green;
-} */
-
 .container-fluid {
-  /* border: 1px dashed red; */
   padding-left: 0;
   padding-right: 0;
 }
@@ -276,6 +270,13 @@ p {
 
 
 
+
+
+/*Modify Bootstrap Original CSS*/
+
+.alert {
+  margin-bottom: .25rem;
+}
 
 
 /*
