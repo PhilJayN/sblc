@@ -60,8 +60,8 @@
           <a class="btn btn-info" href="/register">Sign up</a>
         <% } else {%>
           <!-- press a btn here to start GET req. to /comments/new -->
-          <a href="#">Hi <strong><%= currentUser.username %>!</strong></a>
-          <a class="btn btn-info add-comment-btn" href="/comments/new">Add a comment</a>
+          <span>Hi <strong><%= currentUser.username %>!</strong></span>
+          <a class="btn btn-primary add-comment-btn" href="/comments/new">Add a comment</a>
         <% } %>
       </div>
 

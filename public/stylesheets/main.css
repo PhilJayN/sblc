@@ -126,7 +126,8 @@ input {
 .del-style {
    border: none;
    background: none;
-   color: #C9302C;
+   /* color: #C9302C; */
+   color: #E57373;
    display: inline;
 }
 
@@ -279,23 +280,13 @@ p {
 }
 
 .edit-style {
-  color: #EC971F;
+  /* color: #EC971F; */
+  color: #FFE0B2;
+;
+
+
 }
 
-
-/*
-.del-style {
-    border: none;
-    background: none;
-    color: #C9302C;
-    display: inline;
-}
-
-.edit-style {
-    text-decoration: none;
-    color: #EC971F;
-    display: inline;
-} */
 
 /*
 @media screen and (max-width: 699px) and (min-width: 520px) {
