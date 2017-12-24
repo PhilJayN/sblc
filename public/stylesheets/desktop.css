@@ -11,6 +11,11 @@
     margin-bottom: 2rem;
   } */
 
+  .fa-book {
+    font-size: 1.75em;
+  }
+
+
   .user-form {
     width: 30%;
   }
