@@ -112,11 +112,12 @@ input {
   display: inline;
 }
 
-.edit-style {
-  text-decoration: none;
+/* .edit-style {
+  border: none;
+  background: none;
   color: #EC971F;
   display: inline;
-}
+} */
 
 .edit-style:hover {
   color: #EC971F;
@@ -127,7 +128,6 @@ input {
    background: none;
    color: #C9302C;
    display: inline;
-
 }
 
 .del-style:hover {
@@ -278,6 +278,24 @@ p {
   margin-bottom: .25rem;
 }
 
+.edit-style {
+  color: #EC971F;
+}
+
+
+/*
+.del-style {
+    border: none;
+    background: none;
+    color: #C9302C;
+    display: inline;
+}
+
+.edit-style {
+    text-decoration: none;
+    color: #EC971F;
+    display: inline;
+} */
 
 /*
 @media screen and (max-width: 699px) and (min-width: 520px) {

@@ -44,7 +44,8 @@
           </p>
 
         <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
-            <a class="edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
+            <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
+            <!-- <button type="button" class="btn btn-warning edit-style">Warning</button> -->
             <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
               <button class="del-style">Delete</button>
             </form>
