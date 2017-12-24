@@ -9,6 +9,11 @@ body {
   color: #576578;
 }
 
+.fa-book {
+  /* color: #64B5F6; */
+  color: #2196F3;
+}
+
 .jumbotron  {
   display: none;
   background-color: #FFFFFF;
