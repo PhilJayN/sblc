@@ -247,6 +247,10 @@ p {
   width: 100%;
 }
 
+.temp-content h2 {
+  color: #4DB6AC;
+}
+
 /* .room-container {
   border: 1px solid blue;
 } */
