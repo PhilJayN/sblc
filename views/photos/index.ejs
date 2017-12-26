@@ -15,6 +15,11 @@
 
 
 <% if(currentUser) { %>
+  <div class="test">
+    <p>    <%= currentUser %></p>
+    <p>    <%= currentUser.username %></p>
+    <p>    <%= currentUser.isAdmin %></p>
+  </div>
 <!-- basics is container, which has a row, where each row has columns -->
 <div class="room-container container-fluid">
   <div class="row">
@@ -43,7 +48,7 @@
              <%= comment.text %>
           </p>
 
-        <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+        <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
             <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
             <!-- <button type="button" class="btn btn-warning edit-style">Warning</button> -->
             <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
