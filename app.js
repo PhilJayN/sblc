@@ -24,6 +24,8 @@ function isLoggedIn(req, res, next) {
 var photoRoutes = require("./routes/photos");
 var commentRoutes = require("./routes/comments");
 var indexRoutes = require("./routes/index");
+var resourcesRoutes = require("./routes/resources");
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
@@ -91,6 +93,7 @@ app.use(function(req, res, next) {
 app.use(photoRoutes);
 app.use(commentRoutes);
 app.use(indexRoutes);
+app.use(resourcesRoutes);
 
 
 // app.listen(process.env.PORT, process.env.IP, function () {

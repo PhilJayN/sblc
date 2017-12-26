@@ -86,12 +86,11 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/demo', function (req, res) {
-  res.render('demo.ejs');
+  res.send('hello world asdf');
 });
 
-router.get('*', function (req, res) {
-  // res.redirect('/404');
-  res.render('pagenotfound.ejs');
-});
+// router.get('*', function (req, res) {
+//   res.render('pagenotfound.ejs');
+// });
 
 module.exports = router;
