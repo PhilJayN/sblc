@@ -88,8 +88,8 @@ input {
 .well {
   padding: 0.5em;
   background-color: #FFFFFF;
-  /* margin-bottom: 3px; */
   border-bottom: 1px solid #e9e7e7;
+  /* border: 1px solid red;  */
 }
 
 .well-accent-bar {
