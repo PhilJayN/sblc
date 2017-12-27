@@ -2,8 +2,13 @@
 Each individual show.ejs pg should focus on one cat.  -->
 
 <% include ../partials/header %>
-<div class="well">
-  <h1>Resources</h1>
+
+<% if(currentUser) { %>
+
+<div class="resources-container">
+  <div class="well">
+    <h1>Resources</h1>
+  </div>
 </div>
 
 <div class="resources-container">
@@ -13,7 +18,20 @@ Each individual show.ejs pg should focus on one cat.  -->
   <div class="well">
     <p>Checklist</p>
     <ul>
-      <li>sadkfjl</li>
+      <li>There are two links:
+        <ul>
+          <li><a href="https://www.rhelevate.com/">https://www.rhelevate.com/</a></li>
+          <li><a href="https://www.readinghorizons.com/reading-workshop/app">https://www.readinghorizons.com/reading-workshop/app</a></li>
+          <li>The former allows you to walk in the student's shoes, to use the software the student uses, to learn from their perspective.  </li>
+          <li>The latter is for getting your certificate to be a tutor.</li>
+        </ul>
+      </li>
+      <li>Login to the <a href="https://www.readinghorizons.com/reading-workshop/app">workshop</a> to get a copy of the syllabus.
+         It will help you during the the certification assessment. </li>
+      <li>Your choice: Complete the workshop in one sitting, or split it out.</li>
+      <li>Take the assessment</li>
+      <li>Print or save a copy of your certificate.</li>
+      <li>Done. Congratulations!</li>
     </ul>
   </div>
 
@@ -26,11 +44,20 @@ Each individual show.ejs pg should focus on one cat.  -->
   <div class="well">
     <p>Checklist</p>
     <ul>
-      <li>sadkfjl</li>
+      <li>Item one</li>
     </ul>
   </div>
 
 </div>
+
+
+<% } else { %>
+    <div class="well">
+    <h3>Please <span> <a href="/login">login</a></span> or <span> <a href="/register">
+      sign up</a></span> to view.</h3>
+    </div>
+<% } %>
+
 
 
 

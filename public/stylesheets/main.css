@@ -260,6 +260,11 @@ p {
   padding-right: 0;
 }
 
+
+.resources-container {
+  margin-bottom: 22px;
+}
+
 /* .developer-message {
   margin-top: 99px;
   border: 1px solid blue;
