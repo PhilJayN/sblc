@@ -1,0 +1,16 @@
+<% include ../partials/header %>
+
+<div class="container">
+  <h3>Add new thread</h3>
+  <form action="/threads" method="POST">
+    <div class="form-group">
+      <input autofocus type="text" name="thread[text]" class="form-control" placeholder="Subject">
+      <textarea name="comment[text]"  class="form-control comment-text-input" placeholder="Write message here..."></textarea>
+    </div>
+    <p>
+      <button class="btn btn-primary">Submit</button>
+    </p>
+  </form>
+</div>
+
+<% include ../partials/footer %>
