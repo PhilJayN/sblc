@@ -68,6 +68,61 @@
   </div> <!-- END of room-*-->
 
 
+
+
+
+<!--Start of threads section-->
+  <div class="room-sblc col-md-6 col-lg-4">
+    <!-- each room consist of divs: room-header, and room-content -->
+    <div class="room-sblc-header border-line-break well">
+      <h2>Threads</h2>
+    </div>
+
+    <div class="room-sblc-content ">
+      <!-- data from DB will populate here-->
+
+      <% comments.forEach(function(comment){ %>
+        <div class="well">
+          <p>
+            <strong><%= comment.author.username %></strong>
+            <span> | <%= comment.submittedDate %></span>
+            <span> | <%= comment.submittedTime %> </span>
+          </p>
+          <p>
+             <%= comment.text %>
+          </p>
+
+        <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+            <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
+            <!-- <button type="button" class="btn btn-warning edit-style">Warning</button> -->
+            <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+              <button class="del-style">Delete</button>
+            </form>
+            <% } %>
+        </div>
+        <% }) %>
+
+      <div class="well">
+
+        <% if(!currentUser) { %>
+          <p>Join the conversation! Sign up for an account in seconds.</p>
+          <a class="btn btn-info" href="/register">Sign up</a>
+        <% } else {%>
+          <!-- press a btn here to start GET req. to /comments/new -->
+          <span>Hi <strong><%= currentUser.username %>!</strong></span>
+          <a class="btn btn-primary add-comment-btn" href="/comments/new">Add a comment</a>
+        <% } %>
+      </div>
+
+    </div> <!-- END of room-content-->
+  </div> <!-- END of room-*-->
+  <!--End of threads section-->
+
+
+
+
+
+
   <div class="room-urgent col-md-6 col-lg-4">
     <div class="room-urgent-header border-line-break well">
       <h2>Urgent</h2>
