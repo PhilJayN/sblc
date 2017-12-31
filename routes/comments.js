@@ -109,6 +109,20 @@ router.post('/photos/:id/comments', middleware.isLoggedIn, function(req, res){
 });
 
 
+// Comment.create(
+//      {
+//          text: "Comment creation test db",
+//          submittedOn: "march 1 2050"
+//
+//      },
+//      function(err, comment){
+//       if(err){
+//           console.log(err);
+//       } else {
+//           console.log("NEWLY CREATED comment: ");
+//           console.log(comment);
+//       }
+//     });
 
 
 router.get('/r/:subredditName/:id', function (req, res) {
