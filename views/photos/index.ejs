@@ -83,46 +83,26 @@
 
 
       <% threads.forEach(function(thread){ %>
-        <span><%= thread.subject %></span>
-        <span><%= thread.text %></span>
-        <span><%= thread.author.username %></span>
-        <span><%= thread.submittedDate %></span>
-        <span><%= thread.submittedTime %></span>
-      <% }) %>
-
-
-      <% comments.forEach(function(comment){ %>
         <div class="well">
           <p>
-            <strong><%= comment.author.username %></strong>
-            <span> | <%= comment.submittedDate %></span>
-            <span> | <%= comment.submittedTime %> </span>
+            <strong><%= thread.author.username %></strong>
+            <span> | <%= thread.submittedDate %></span>
+            <span> | <%= thread.submittedTime %> </span>
           </p>
           <p>
-             <%= comment.text %>
+            <span><%= thread.subject %></span>
+          </p>
+          <p>
+            <%= thread.text %>
           </p>
 
-        <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-            <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
-            <!-- <button type="button" class="btn btn-warning edit-style">Warning</button> -->
-            <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-              <button class="del-style">Delete</button>
-            </form>
-            <% } %>
-        </div>
-        <% }) %>
 
-      <div class="well">
-
-        <% if(!currentUser) { %>
-          <p>Join the conversation! Sign up for an account in seconds.</p>
-          <a class="btn btn-info" href="/register">Sign up</a>
-        <% } else {%>
-          <!-- press a btn here to start GET req. to /comments/new -->
-          <span>Hi <strong><%= currentUser.username %>!</strong></span>
-          <a class="btn btn-primary add-comment-btn" href="/comments/new">Add a comment</a>
-        <% } %>
       </div>
+      <% }) %>
+      <!--end of well-->
+
+
+
 
     </div> <!-- END of room-content-->
   </div> <!-- END of room-*-->
