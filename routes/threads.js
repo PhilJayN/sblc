@@ -21,6 +21,9 @@ router.get('/threads/new', function (req, res) {
 //CREATE Route: add thread to DB
 router.post('/threads', function (req, res) {
   console.log ('post req occured, here is the req.body:', req.body);
+  console.log ('subject:', req.body.thread.subject);
+  console.log ('text:', req.body.thread.text);
+
   // var thread = req.body.thread.text; //thread looks like: { thread: 'hey' }
   // var subject = req.body.
   // var date = new Date();
