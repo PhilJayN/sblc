@@ -81,6 +81,16 @@
     <div class="room-sblc-content ">
       <!-- data from DB will populate here-->
 
+
+      <% threads.forEach(function(thread){ %>
+        <span><%= thread.subject %></span>
+        <span><%= thread.text %></span>
+        <span><%= thread.author.username %></span>
+        <span><%= thread.submittedDate %></span>
+        <span><%= thread.submittedTime %></span>
+      <% }) %>
+
+
       <% comments.forEach(function(comment){ %>
         <div class="well">
           <p>

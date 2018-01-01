@@ -4,6 +4,7 @@ var passport = require("passport");
 var User = require("../models/user");
 var Photo = require("../models/photo");
 var Comment = require("../models/comment");
+var Thread = require("../models/thread");
 
 // ================
 // MAIN ROUTES
@@ -13,14 +14,30 @@ router.get('/', function (req, res) {
     // console.log ('allComments', allComments);
     if (err) {
       console.log(err);
-    } else {
-      //correct render:
-      // res.render('landing.ejs');
-      //render for testing:
-      // console.log ('allComments', allComments);
-      res.render('photos/index.ejs', {comments: allComments});
     }
+
+    Thread.find({}, function(err, allThreads){
+
+      if (err) {
+        console.log(err);
+      }
+
+      else {
+        //correct render:
+        // res.render('landing.ejs');
+        //render for testing:
+        // console.log ('allComments', allComments);
+        res.render('photos/index.ejs', {comments: allComments, threads: allThreads});
+      }
+
+
+    });
+
+
   });
+
+
+
 });
 
 //ROUTES: AUTHENTICATION
