@@ -24,20 +24,19 @@ router.post('/threads', function (req, res) {
   console.log ('subject:', req.body.thread.subject);
   console.log ('text:', req.body.thread.text);
 
-  // var thread = req.body.thread.text; //thread looks like: { thread: 'hey' }
-  // var subject = req.body.
-  // var date = new Date();
-  // var humanDate = date.toDateString();
-  // var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
-  // var author = {
-  //   id: req.user._id,
-  //   username: req.user.username
-  // };
-  //
+  var threadSubject = req.body.thread.subject; //thread looks like: { thread: 'hey' }
+  var threadText = req.body.thread.text;
+  var date = new Date();
+  var humanDate = date.toDateString();
+  var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
+  var author = {
+    id: req.user._id,
+    username: req.user.username
+  };
   // ////takes data from variables name and image, and stores into an obj
-  // var newComment = {text: thread, submittedDate: humanDate, submittedTime: humanTime, author: author};
+  var newThread = {threadSubject: threadSubject, threadText: threadText, submittedDate: humanDate, submittedTime: humanTime, author: author};
   // //save obj into the DB:
-  // Comment.create(newComment, function(err, newlyCreated) {
+  // Comment.create(newThread, function(err, newlyCreated) {
   //   if(err) {
   //     console.log (err);
   //   } else {
