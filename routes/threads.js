@@ -36,6 +36,7 @@ router.post('/threads', function (req, res) {
   // ////takes data from variables name and image, and stores into an obj
   var newThread = {threadSubject: threadSubject, threadText: threadText, submittedDate: humanDate, submittedTime: humanTime, author: author};
   // //save obj into the DB:
+  // console.log ('new thread obj var: ', newThread);
   Thread.create(newThread, function(err, newlyCreated) {
     if(err) {
       console.log (err);

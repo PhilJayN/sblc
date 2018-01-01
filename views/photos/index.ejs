@@ -30,6 +30,7 @@
 
     <div class="room-sblc-content ">
       <!-- data from DB will populate here-->
+      <%=comments %>
 
       <% comments.forEach(function(comment){ %>
         <div class="well">
@@ -72,18 +73,22 @@
 
 
 <!--Start of threads section-->
-  <div class="room-sblc col-md-6 col-lg-4">
-    <!-- each room consist of divs: room-header, and room-content -->
-    <div class="room-sblc-header border-line-break well">
-      <h2>Threads</h2>
-    </div>
-
-    <div class="room-sblc-content ">
-      <!-- data from DB will populate here-->
+<div class="room-sblc col-md-6 col-lg-4">
+  <!-- each room consist of divs: room-header, and room-content -->
+  <div class="room-sblc-header border-line-break well">
+    <h2>Threads</h2>
+  </div>
 
 
-      <% threads.forEach(function(thread){ %>
-        <div class="well">
+
+  <div class="room-sblc-content ">
+    <!-- data from DB will populate here-->
+
+    <%=threads %>
+
+    <!--start of well-->
+    <% threads.forEach(function(thread){ %>
+      <div class="well">
           <p>
             <strong><%= thread.author.username %></strong>
             <span> | <%= thread.submittedDate %></span>
@@ -91,22 +96,22 @@
           </p>
           <p>
             <span><%= thread.subject %></span>
+
           </p>
           <p>
             <%= thread.text %>
           </p>
 
-
       </div>
-      <% }) %>
-      <!--end of well-->
+    <% }) %>
+    <!--end of well-->
 
 
 
 
-    </div> <!-- END of room-content-->
-  </div> <!-- END of room-*-->
-  <!--End of threads section-->
+  </div> <!-- END of room-content-->
+</div> <!-- END of room-*-->
+<!--End of threads section-->
 
 
 
