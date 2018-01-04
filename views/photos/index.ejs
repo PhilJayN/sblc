@@ -84,22 +84,13 @@
   <div class="room-sblc-content ">
     <!-- data from DB will populate here-->
 
-    <%=threads %>
-
     <!--start of well-->
     <% threads.forEach(function(thread){ %>
-      <div class="well">
-          <p>
-            <strong><%= thread.author.username %></strong>
-            <span> | <%= thread.submittedDate %></span>
-            <span> | <%= thread.submittedTime %> </span>
-          </p>
-          <p>
-            <span><%= thread.subject %></span>
-
-          </p>
-          <p>
-            <%= thread.text %>
+      <div class="well thread-content">
+        <strong><p class="thread-subject"><%= thread.subject %><p></strong>
+          <p class="thread-text"><span><%= thread.text %></span></p>
+          <p class="thread-tagline">
+            Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></span>
           </p>
 
       </div>
