@@ -1,8 +1,8 @@
 var mongoose = require("mongoose");
 
 var threadSchema = mongoose.Schema({
-  threadSubject: String,
-  threadText: String,
+  subject: String,
+  text: String,
   // text: String,
   isCollapsed: {type: Boolean, default: false},
   author:

@@ -24,8 +24,8 @@ router.post('/threads', function (req, res) {
   console.log ('subject:', req.body.thread.subject);
   console.log ('text:', req.body.thread.text);
 
-  var threadSubject = req.body.thread.subject; //thread looks like: { thread: 'hey' }
-  var threadText = req.body.thread.text;
+  var subject = req.body.thread.subject; //thread looks like: { thread: 'hey' }
+  var text = req.body.thread.text;
   var date = new Date();
   var humanDate = date.toDateString();
   var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
@@ -35,7 +35,7 @@ router.post('/threads', function (req, res) {
   };
   var teddy = 'hi teddy';
   // ////takes data from variables name and image, and stores into an obj
-  var newThread = { threadSubject: threadSubject, threadText: threadText, submittedDate: humanDate, submittedTime: humanTime, author: author};
+  var newThread = { subject: subject, text: text, submittedDate: humanDate, submittedTime: humanTime, author: author};
   // //save obj into the DB:
   // console.log ('new thread obj var: ', newThread);
   console.log ('newThread var:', newThread);
