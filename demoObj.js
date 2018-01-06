@@ -1,3 +1,66 @@
+
+
+//EXAMPLE from google groups
+ // https://groups.google.com/forum/#!topic/mongodb-user/PzXD-yiJG1I
+{
+  comments: [
+    { user: 'gates', text: 'first post'
+      replies: [
+        { user: 'jim', text: 'I was too slow' }
+      ]
+    },
+    { user: 'jim', text: 'second post' }
+  ]
+}
+
+
+// my commment DB from mlabs:
+{
+    "_id": {
+        "$oid": "5a446c16260d3c0014e771a5"
+    },
+    "text": "Hi! How's it going?",
+    "submittedDate": "Wed Dec 27 2017",
+    "submittedTime": "7:59 PM",
+    "author": {
+        "id": {
+            "$oid": "5a446c09260d3c0014e771a4"
+        },
+        "username": "Jennifer"
+    },
+    "__v": 0
+}
+
+
+
+
+// var mongoose = require("mongoose");
+//
+// var threadSchema = mongoose.Schema({
+//   subject: String,
+//   text: String,
+//   // text: String,
+//   isCollapsed: {type: Boolean, default: false},
+//   author:
+//   {
+//       id: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "User"
+//       },
+//       username: String
+//   },
+//   submittedDate: String,
+//   submittedTime: String,
+//   replies: [
+//
+//   ]
+// });
+//
+// module.exports = mongoose.model("Thread", threadSchema);
+
+
+
+
 {
   "_id": ObjectId("5a22360f457b205e7c16ee16"),
   "text": "heeeyjalkdfj there",
