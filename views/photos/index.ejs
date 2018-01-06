@@ -30,7 +30,8 @@
 
     <div class="room-sblc-content ">
       <!-- data from DB will populate here-->
-      <%=comments %>
+      <p>from DB TEST</p>
+      <%= comments %>
 
       <% comments.forEach(function(comment){ %>
         <div class="well">
@@ -86,18 +87,58 @@
 
 
 
+  <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Btn with data-target ex</button>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        ONE hidden stufff!!
+      </div>
+    </div>
+
+
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+    Another btn col/exp</button>
+    <div class="collapse" id="collapseExample2">
+      <div class="card card-body">
+        TWO hidden stufff!!
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+    Third btn col/exp</button>
+    <div class="collapse" id="collapseExample3">
+      <div class="card card-body">
+        THREE hidden stufff!!
+      </div>
+    </div>
+
+  </p>
+
+
+
+
   <div class="room-sblc-content ">
     <!-- data from DB will populate here-->
 
     <!--start of well-->
     <% threads.forEach(function(thread){ %>
       <div class="well thread-content">
-        <strong><p class="thread-subject"><%= thread.subject %><span class="collapse-expand float-right">-</span>
-<p></strong>
-          <p class="thread-text"><span><%= thread.text %></span></p>
-          <p class="thread-tagline">
-            Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></span>
-          </p>
+        <%= thread._id %>
+
+
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">
+          <strong><p class="thread-subject"><%= thread.subject %><span class="collapse-expand float-right">-</span>
+          </button>
+        <p></strong>
+
+          <div class="collapse" id="#<%= thread._id %>">
+            <p class="thread-text"><span><%= thread.text %></span></p>
+            <p class="thread-tagline">
+              Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></span>
+            </p>
+
+          </div>
       </div>
     <% }) %>
     <!--end of well-->
