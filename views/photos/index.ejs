@@ -132,12 +132,11 @@
           </button>
         <p></strong>
 
-          <div class="collapse" id="#<%= thread._id %>">
+          <div class="collapse" id="<%= thread._id %>">
             <p class="thread-text"><span><%= thread.text %></span></p>
             <p class="thread-tagline">
               Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></span>
             </p>
-
           </div>
       </div>
     <% }) %>
