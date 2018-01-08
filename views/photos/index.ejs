@@ -31,9 +31,6 @@
 
     <div class="room-sblc-content ">
       <!-- data from DB will populate here-->
-      <p>from DB TEST</p>
-      <%= comments %>
-
       <% comments.forEach(function(comment){ %>
         <div class="well">
           <p>
@@ -78,8 +75,6 @@
 
 
 
-
-
 <div class="room-sblc col-md-6 col-lg-4">
   <!-- each room consist of divs: room-header, and room-content -->
   <div class="room-sblc-header border-line-break well">
@@ -88,7 +83,7 @@
 
 
 
-  <p>
+  <!-- <p>
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Btn with data-target ex</button>
     <div class="collapse" id="collapseExample">
@@ -114,7 +109,7 @@
       </div>
     </div>
 
-  </p>
+  </p> -->
 
 
 
@@ -125,9 +120,6 @@
     <!--start of well-->
     <% threads.forEach(function(thread){ %>
       <div class="well thread-content">
-        <%= thread._id %>
-
-
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">
           <strong><p class="thread-subject"><%= thread.subject %><span class="collapse-expand float-right">-</span>
           </button>
