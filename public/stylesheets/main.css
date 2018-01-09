@@ -57,6 +57,11 @@ body {
   background-color: #42A5F5;
 }
 
+.btn-collapse-expand {
+  display: inline;
+  padding: .75px;
+}
+
 .add-comment-btn {
   display: block;
   margin: .5em .5em .5em 0;

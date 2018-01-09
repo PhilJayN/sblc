@@ -120,10 +120,10 @@
     <!--start of well-->
     <% threads.forEach(function(thread){ %>
       <div class="well thread-content">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">
-          <strong><p class="thread-subject"><%= thread.subject %><span class="collapse-expand float-right">-</span>
-          </button>
-        <p></strong>
+        <button class="btn btn-collapse-expand float-right" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">
++-
+        </button>
+        <p><strong><%= thread.subject %></strong></p>
 
           <div class="collapse" id="<%= thread._id %>">
             <p class="thread-text"><span><%= thread.text %></span></p>
