@@ -82,41 +82,35 @@
   </div>
 
 
-
-  <!-- <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Btn with data-target ex</button>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-        ONE hidden stufff!!
+  <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+  </p>
+  <div class="row">
+    <div class="col">
+      <div class="collapse multi-collapse" id="multiCollapseExample1">
+        <div class="card card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
       </div>
     </div>
-
-
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-    Another btn col/exp</button>
-    <div class="collapse" id="collapseExample2">
-      <div class="card card-body">
-        TWO hidden stufff!!
+    <div class="col">
+      <div class="collapse multi-collapse" id="multiCollapseExample2">
+        <div class="card card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
       </div>
     </div>
-
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
-    Third btn col/exp</button>
-    <div class="collapse" id="collapseExample3">
-      <div class="card card-body">
-        THREE hidden stufff!!
-      </div>
-    </div>
-
-  </p> -->
-
+  </div>
 
 
 
   <div class="room-sblc-content ">
-    <!-- data from DB will populate here-->
 
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="finish up">Toggle ALL</button>
+
+    <!-- data from DB will populate here-->
     <!--start of well-->
     <% threads.forEach(function(thread){ %>
       <div class="well thread-content">
@@ -125,7 +119,7 @@
         </button>
         <p><strong><%= thread.subject %></strong></p>
 
-          <div class="collapse" id="<%= thread._id %>">
+          <div class="collapse multi-collapse" id="<%= thread._id %>">
             <p class="thread-text"><span><%= thread.text %></span></p>
             <p class="thread-tagline">
               Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></span>
@@ -192,48 +186,6 @@
       sign up</a></span> to view and post messages.</h3>
     </div>
 <% } %>
-
-
-
-
-
-
-
-
-<p>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Btn with data-target ex</button>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      ONE hidden stufff!!
-    </div>
-  </div>
-
-
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-  Another btn col/exp</button>
-  <div class="collapse" id="collapseExample2">
-    <div class="card card-body">
-      TWO hidden stufff!!
-    </div>
-  </div>
-
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
-  Third btn col/exp</button>
-  <div class="collapse" id="collapseExample3">
-    <div class="card card-body">
-      THREE hidden stufff!!
-    </div>
-  </div>
-
-</p>
-
-
-
-
-
-
-
 
 
 <!-- <p>
