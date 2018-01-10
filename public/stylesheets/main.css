@@ -291,6 +291,15 @@ p {
 
 
 
+.expand-collapse-btn[aria-expanded="false"]:before{
+  content:"Expand All";
+}
+
+.expand-collapse-btn[aria-expanded="true"]:before{
+  content:"Collapse All";
+}
+
+
 
 
 /*Modify Bootstrap Original CSS*/

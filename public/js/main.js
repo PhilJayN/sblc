@@ -8,8 +8,14 @@ var listController = (function() {
 var UIController = (function() {
 
   var DOMstrings = {
-    tempText: '.tempText'
+    toggleBtn: '.toggle-btn'
   };
+
+  return {
+    getDOMstrings: function() {
+      return DOMstrings;
+    }
+  }
 
 })();
 
@@ -18,7 +24,7 @@ var controller = (function(listCtrl, UICtrl) {
 
   var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
-
+    // document.querySelector(DOM.toggleBtn).addEventListener('click', )
   };
 
   var ctrlAddItem = function(event) {
