@@ -68,47 +68,28 @@
   </div> <!-- END of room-*-->
 
 
-
-
-
 <!--Start of threads section-->
-
-
-
 <div class="room-sblc col-md-6 col-lg-4">
   <!-- each room consist of divs: room-header, and room-content -->
   <div class="room-sblc-header border-line-break well">
     <h2>Threads</h2>
   </div>
-
-
-  <div class="room-sblc-content ">
-
+  <!-- data from DB will populate starting here-->
+  <div class="room-sblc-content">
     <!-- control element -->
     <button class="btn btn-primary expand-collapse-btn" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button>
-
-    <!-- data from DB will populate here-->
     <!--start of well-->
     <% threads.forEach(function(thread){ %>
       <div class="well thread-content">
-        <button class="btn btn-collapse-expand float-right" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">
-+-
-        </button>
+        <button class="btn btn-collapse-expand float-right" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button>
         <p><strong><%= thread.subject %></strong></p>
-
-          <div class="collapse multi-collapse" id="<%= thread._id %>">
-            <p class="thread-text"><span><%= thread.text %></span></p>
-            <p class="thread-tagline">
-              Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></span>
-            </p>
-          </div>
+        <div class="collapse multi-collapse" id="<%= thread._id %>">
+          <p class="thread-text"><%= thread.text %></p>
+          <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></p>
+        </div>
       </div>
-    <% }) %>
+    <% }) %>    <!--end of forEach-->
     <!--end of well-->
-
-
-
-
   </div> <!-- END of room-content-->
 </div> <!-- END of room-*-->
 <!--End of threads section-->
