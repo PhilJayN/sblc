@@ -58,7 +58,7 @@ body {
 }
 
 .btn-collapse-expand {
-  display: inline;
+  /* display: inline; */
   padding: .75px;
 }
 
@@ -291,11 +291,11 @@ p {
 
 
 
-.expand-collapse-btn[aria-expanded="false"]:before{
+.btn-main-controller[aria-expanded="false"]:before{
   content:"Expand All";
 }
 
-.expand-collapse-btn[aria-expanded="true"]:before{
+.btn-main-controller[aria-expanded="true"]:before{
   content:"Collapse All";
 }
 
