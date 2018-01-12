@@ -10,8 +10,45 @@ var Thread = require("../models/thread");
 // MAIN ROUTES
 // ================
 router.get('/', function (req, res) {
+  if (req.query.search) {
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+
+    Comment.find({text: regex}, function(err, allComments){
+      // console.log ('allComments', allComments);
+      console.log ('req.body stuff:', req.body);
+      console.log ('req stuff:', req.query);
+      console.log ('req stuff:', req.query.search);
+
+      if (err) {
+        console.log(err);
+      }
+
+      Thread.find({}, function(err, allThreads){
+
+        if (err) {
+          console.log(err);
+        }
+
+        else {
+          //correct render:
+          // res.render('landing.ejs');
+          //render for testing:
+          // console.log ('allComments', allComments);
+          res.render('photos/index.ejs', {comments: allComments, threads: allThreads});
+        }
+      });
+    });
+
+  }
+
+else {
+
   Comment.find({}, function(err, allComments){
     // console.log ('allComments', allComments);
+    console.log ('req.body stuff:', req.body);
+    console.log ('req stuff:', req.query);
+    console.log ('req stuff:', req.query.search);
+
     if (err) {
       console.log(err);
     }
@@ -29,13 +66,10 @@ router.get('/', function (req, res) {
         // console.log ('allComments', allComments);
         res.render('photos/index.ejs', {comments: allComments, threads: allThreads});
       }
-
-
     });
-
-
   });
 
+}
 
 
 });
@@ -110,4 +144,11 @@ router.get('/demo', function (req, res) {
 //   res.render('pagenotfound.ejs');
 // });
 
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
+
 module.exports = router;
+
+// console.log ('test');
