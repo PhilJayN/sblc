@@ -15,9 +15,14 @@
           <input type="text" name="search" placeholder="Search query..." class="form-control">
           <input type="submit" value="Search" class="btn btn-default">
         </div>
-
       </form>
     </p>
+
+    <% if(noMatch !== null) { %>
+
+      <%= noMatch %>
+
+    <% } %>
   </div>
 
 <!-- end of index.ejs jumbotron (intro jumbotron)-->

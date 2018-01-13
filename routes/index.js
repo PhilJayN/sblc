@@ -6,48 +6,56 @@ var Photo = require("../models/photo");
 var Comment = require("../models/comment");
 var Thread = require("../models/thread");
 
+// console.log('first phase expect req.query.search to be undefined:',req.query.search );
 // ================
 // MAIN ROUTES
 // ================
 router.get('/', function (req, res) {
+  var noMatch = null;
+
+  console.log('expect req.query.search be:', req.query.search );
   if (req.query.search) {
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-
     Comment.find({text: regex}, function(err, allComments){
       // console.log ('allComments', allComments);
-      console.log ('req.body stuff:', req.body);
-      console.log ('req stuff:', req.query);
-      console.log ('req stuff:', req.query.search);
-
+      // console.log ('req.body stuff:', req.body);
+      // console.log ('req stuff:', req.query);
+      // console.log ('req stuff:', req.query.search);
       if (err) {
         console.log(err);
       }
-
       Thread.find({}, function(err, allThreads){
-
         if (err) {
           console.log(err);
         }
-
         else {
-          //correct render:
-          // res.render('landing.ejs');
-          //render for testing:
-          // console.log ('allComments', allComments);
-          res.render('photos/index.ejs', {comments: allComments, threads: allThreads});
+          if (allComments.length < 1) {
+            noMatch = "No results found!";
+          }
+          // var noMatch;
+          // console.log ('lenght allComments', allComments.length);
+          // if (allComments.length < 1) {
+          //   req.flash('error', 'Empty field!!');
+          // }
+          res.render('photos/index.ejs', {comments: allComments, threads: allThreads, noMatch: noMatch});
         }
       });
     });
-
   }
 
+  // if (req.query.search.length < 1) {
+  //   console.log ('long!!');
+  // }
+
+
+//run if req.query.search doesn't exist. i.e render the page as normal
 else {
 
   Comment.find({}, function(err, allComments){
     // console.log ('allComments', allComments);
-    console.log ('req.body stuff:', req.body);
-    console.log ('req stuff:', req.query);
-    console.log ('req stuff:', req.query.search);
+    // console.log ('req.body stuff:', req.body);
+    // console.log ('req stuff:', req.query);
+    // console.log ('req stuff:', req.query.search);
 
     if (err) {
       console.log(err);
@@ -64,10 +72,12 @@ else {
         // res.render('landing.ejs');
         //render for testing:
         // console.log ('allComments', allComments);
-        res.render('photos/index.ejs', {comments: allComments, threads: allThreads});
+        res.render('photos/index.ejs', {comments: allComments, threads: allThreads, noMatch: noMatch});
       }
     });
   });
+
+
 
 }
 
