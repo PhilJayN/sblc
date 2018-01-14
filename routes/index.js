@@ -6,7 +6,6 @@ var Photo = require("../models/photo");
 var Comment = require("../models/comment");
 var Thread = require("../models/thread");
 
-// console.log('first phase expect req.query.search to be undefined:',req.query.search );
 // ================
 // MAIN ROUTES
 // ================
@@ -17,10 +16,6 @@ router.get('/', function (req, res) {
   if (req.query.search) {
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     Comment.find({text: regex}, function(err, allComments){
-      // console.log ('allComments', allComments);
-      // console.log ('req.body stuff:', req.body);
-      // console.log ('req stuff:', req.query);
-      // console.log ('req stuff:', req.query.search);
       if (err) {
         console.log(err);
       }
@@ -43,11 +38,6 @@ router.get('/', function (req, res) {
     });
   }
 
-  // if (req.query.search.length < 1) {
-  //   console.log ('long!!');
-  // }
-
-
 //run if req.query.search doesn't exist. i.e render the page as normal
 else {
 
@@ -68,19 +58,13 @@ else {
       }
 
       else {
-        //correct render:
-        // res.render('landing.ejs');
-        //render for testing:
-        // console.log ('allComments', allComments);
+
         res.render('photos/index.ejs', {comments: allComments, threads: allThreads, noMatch: noMatch});
       }
     });
   });
 
-
-
 }
-
 
 });
 
@@ -107,8 +91,6 @@ router.post('/register', function (req, res) {
 
 //ROUTES: LOGIN
 router.get('/login', function(req, res) {
-  // res.render('login.ejs', {message: req.flash("error")});
-  // res.render('login.ejs', {message: 'you messed up!'});
   res.render('login.ejs' );
 });
 
@@ -122,25 +104,8 @@ router.post('/login', passport.authenticate("local", {
   res.redirect("/");
 });
 
-
-
-
-//
-// //handles login logic
-// router.post('/login', passport.authenticate("local", {
-//   successRedirect: '/',
-//   failureRedirect: '/login' //make sure this is /login ( it's a route), and NOT login.ejs.
-// }), function(req, res) {
-// });
-//
-//
-
-
 //ROUTES: LOGOUT
 router.get('/logout', function(req, res) {
-  // console.log ('starting logout route....')
-  // console.log ('BACKKKKK', req.user);
-  // var lastUser
   req.logout();
   req.flash('success', 'You are logged out.');
   res.redirect('/');
@@ -150,15 +115,8 @@ router.get('/demo', function (req, res) {
   res.send('hello world asdf');
 });
 
-// router.get('*', function (req, res) {
-//   res.render('pagenotfound.ejs');
-// });
-
-
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
 
 module.exports = router;
-
-// console.log ('test');
