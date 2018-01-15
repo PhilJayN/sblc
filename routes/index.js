@@ -5,68 +5,115 @@ var User = require("../models/user");
 var Photo = require("../models/photo");
 var Comment = require("../models/comment");
 var Thread = require("../models/thread");
+var async = require('async');
 
 // ================
 // MAIN ROUTES
 // ================
-router.get('/', function (req, res) {
-  var noMatch = null;
 
-  console.log('expect req.query.search be:', req.query.search );
-  if (req.query.search) {
-    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    Comment.find({text: regex}, function(err, allComments){
-      if (err) {
-        console.log(err);
-      }
+
+
+router.get('/', function (req, res) {
+
+  console.log ('asyhnc!!');
+  console.log ('-------------');
+
+
+//run if req.query.search doesn't exist. i.e render the page as normal
+
+async.parallel([
+    function(callback) {
+      Comment.find({}, function(err, allComments){
+        if (err) {
+          console.log(err);
+        }
+        // console.log('allComments', allComments);
+        callback(null, allComments);
+
+      });
+       console.log ('first!');
+    },
+    function(callback) {
       Thread.find({}, function(err, allThreads){
         if (err) {
           console.log(err);
         }
-        else {
-          if (allComments.length < 1) {
-            noMatch = "No results found!";
-          }
-          // var noMatch;
-          // console.log ('lenght allComments', allComments.length);
-          // if (allComments.length < 1) {
-          //   req.flash('error', 'Empty field!!');
-          // }
-          res.render('photos/index.ejs', {comments: allComments, threads: allThreads, noMatch: noMatch});
-        }
+        callback(null, allThreads);
+        // console.log('allThreads', allThreads);
       });
-    });
+      console.log ('twoo!!');
+    }
+], function(err, results) {
+  // res.render( 'photos/index.ejs', { myResults: results } );
+  if (err) {
+    res.send('ERROR!');
+
+  } else {
+    console.log ('results', results);
+
+    res.send('hi');
   }
 
-//run if req.query.search doesn't exist. i.e render the page as normal
-else {
+      // res.render( 'photos/index.ejs' );
+      // res.render( 'photos/index.ejs', { comments: allComments, threads: allThreads } );
+//       console.log ('final fxn!');
+//       console.log ('results:', results);
+// console.log ('errr', err);
+// console.log ('results', results);
+      // res.send('heeey!');
+        // res.render( 'photos/index.ejs', { comments: allComments, threads: allThreads } );
+});
+});
 
-  Comment.find({}, function(err, allComments){
-    // console.log ('allComments', allComments);
-    // console.log ('req.body stuff:', req.body);
-    // console.log ('req stuff:', req.query);
-    // console.log ('req stuff:', req.query.search);
 
-    if (err) {
-      console.log(err);
-    }
 
-    Thread.find({}, function(err, allThreads){
+router.get('/cat', function (req, res) {
 
-      if (err) {
-        console.log(err);
-      }
+res.send('cttttt');
+});
 
-      else {
 
-        res.render('photos/index.ejs', {comments: allComments, threads: allThreads, noMatch: noMatch});
-      }
-    });
+
+router.get('/pup', function (req, res) {
+
+  async.parallel([
+      function(callback){
+          setTimeout(function(){
+              callback(null, 'one');
+          }, 200);
+      },
+      function(callback){
+          setTimeout(function(){
+              callback(null, 'two');
+          }, 100);
+      },
+  ],
+  // optional callback
+  function(err, results){
+      // the results array will equal ['one','two'] even though
+      console.log ('results', results);
+      // the second function had a shorter timeout.
   });
 
-}
 
 });
+
+
+
+
+
+
+
+
+
+
+// async.parallel([
+//     function(callback) { ... },
+//     function(callback) { ... }
+// ], function(err, results) {
+//     // optional callback
+// });
+
 
 //ROUTES: AUTHENTICATION
 //show the sign up form
