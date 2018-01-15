@@ -50,8 +50,10 @@ async.parallel([
 
   } else {
     console.log ('results', results);
+    // res.send('hi');
+    res.render('demo.ejs', {dbResults: results});
+    // res.render( 'photos/index.ejs', { dbResults: results} );
 
-    res.send('hi');
   }
 
       // res.render( 'photos/index.ejs' );

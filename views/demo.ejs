@@ -1,0 +1,23 @@
+
+<h1>Both results:</h1>
+<%= dbResults %>
+
+<h1>first Array</h1>
+<%= dbResults[0] %>
+
+
+<h1>2nd Array</h1>
+<%= dbResults[1] %>
+
+<h2>for each</h2>
+<% dbResults[1].forEach(function(thread){ %>
+  <div class="well">
+    <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button>
+    <p><strong><%= dbResults[1].subject %></strong></p>
+    <!-- div below needs to be collapsible-->
+    <div class="collapse multi-collapse" id="<%= thread._id %>">
+      <p class="thread-text"><%= thread.text %></p>
+      <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></p>
+    </div>
+  </div>
+<% }) %>    <!--end of forEach-->
