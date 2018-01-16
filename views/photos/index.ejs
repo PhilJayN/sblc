@@ -39,7 +39,7 @@
 
     <div class="room-sblc-content ">
       <!-- data from DB will populate here-->
-      <% comments.forEach(function(comment){ %>
+      <% dbResults[0].forEach(function(comment){ %>
         <div class="well">
           <p>
             <strong><%= comment.author.username %></strong>
@@ -87,7 +87,7 @@
     <!-- control element -->
     <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button>
     <!--start of well-->
-    <% threads.forEach(function(thread){ %>
+    <% dbResults[1].forEach(function(thread){ %>
       <div class="well">
         <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button>
         <p><strong><%= thread.subject %></strong></p>

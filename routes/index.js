@@ -51,11 +51,9 @@ async.parallel([
   } else {
     console.log ('results', results);
     // res.send('hi');
-    res.render('demo.ejs', {dbResults: results});
-    // res.render( 'photos/index.ejs', { dbResults: results} );
-
+    // res.render('demo.ejs', {dbResults: results});
+    res.render( 'photos/index.ejs', { dbResults: results} );
   }
-
       // res.render( 'photos/index.ejs' );
       // res.render( 'photos/index.ejs', { comments: allComments, threads: allThreads } );
 //       console.log ('final fxn!');
