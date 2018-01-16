@@ -10,24 +10,16 @@ var async = require('async');
 // ================
 // MAIN ROUTES
 // ================
-
-
-
 router.get('/', function (req, res) {
-
   console.log ('asyhnc!!');
   console.log ('-------------');
-
-
 //run if req.query.search doesn't exist. i.e render the page as normal
-
 async.parallel([
     function(callback) {
       Comment.find({}, function(err, allComments){
         if (err) {
           console.log(err);
         }
-        // console.log('allComments', allComments);
         callback(null, allComments);
 
       });
@@ -39,43 +31,27 @@ async.parallel([
           console.log(err);
         }
         callback(null, allThreads);
-        // console.log('allThreads', allThreads);
       });
       console.log ('twoo!!');
     }
 ], function(err, results) {
-  // res.render( 'photos/index.ejs', { myResults: results } );
   if (err) {
     res.send('ERROR!');
 
   } else {
     console.log ('results', results);
-    // res.send('hi');
     // res.render('demo.ejs', {dbResults: results});
     res.render( 'photos/index.ejs', { dbResults: results} );
   }
-      // res.render( 'photos/index.ejs' );
       // res.render( 'photos/index.ejs', { comments: allComments, threads: allThreads } );
-//       console.log ('final fxn!');
-//       console.log ('results:', results);
-// console.log ('errr', err);
-// console.log ('results', results);
-      // res.send('heeey!');
-        // res.render( 'photos/index.ejs', { comments: allComments, threads: allThreads } );
+    });
 });
-});
-
-
 
 router.get('/cat', function (req, res) {
-
 res.send('cttttt');
 });
 
-
-
 router.get('/pup', function (req, res) {
-
   async.parallel([
       function(callback){
           setTimeout(function(){
@@ -95,25 +71,7 @@ router.get('/pup', function (req, res) {
       // the second function had a shorter timeout.
   });
 
-
 });
-
-
-
-
-
-
-
-
-
-
-// async.parallel([
-//     function(callback) { ... },
-//     function(callback) { ... }
-// ], function(err, results) {
-//     // optional callback
-// });
-
 
 //ROUTES: AUTHENTICATION
 //show the sign up form
