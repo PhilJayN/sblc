@@ -11,12 +11,25 @@ var async = require('async');
 // MAIN ROUTES
 // ================
 router.get('/', function (req, res) {
-  console.log ('asyhnc!!');
-  console.log ('-------------');
+  console.log ('async!!');
+  // var brackett = {};
+  var findValue;
+  // var testFind = {"author.username" : "Mike"};
+  // var brackText = {text: regex};
+//mongo shell:
+// db.comments.find({"author.username" : "Rachel"})
+
+if (req.query.search) {
+  const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+  findvalue = {text: regex};
+} else {
+  findValue = {};
+}
+
 //run if req.query.search doesn't exist. i.e render the page as normal
 async.parallel([
     function(callback) {
-      Comment.find({}, function(err, allComments){
+      Comment.find(findValue, function(err, allComments){
         if (err) {
           console.log(err);
         }
@@ -26,7 +39,7 @@ async.parallel([
        console.log ('first!');
     },
     function(callback) {
-      Thread.find({}, function(err, allThreads){
+      Thread.find(findValue, function(err, allThreads){
         if (err) {
           console.log(err);
         }
@@ -45,6 +58,7 @@ async.parallel([
       // res.render( 'photos/index.ejs', { comments: allComments, threads: allThreads } );
     });
 });
+
 
 router.get('/pup', function (req, res) {
   async.parallel([
