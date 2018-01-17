@@ -36,8 +36,7 @@ async.parallel([
     }
 ], function(err, results) {
   if (err) {
-    res.send('ERROR!');
-
+    console.log (err);
   } else {
     console.log ('results', results);
     // res.render('demo.ejs', {dbResults: results});
@@ -45,10 +44,6 @@ async.parallel([
   }
       // res.render( 'photos/index.ejs', { comments: allComments, threads: allThreads } );
     });
-});
-
-router.get('/cat', function (req, res) {
-res.send('cttttt');
 });
 
 router.get('/pup', function (req, res) {
