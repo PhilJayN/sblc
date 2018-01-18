@@ -11,19 +11,26 @@ var async = require('async');
 // MAIN ROUTES
 // ================
 router.get('/', function (req, res) {
-  console.log ('async!!');
+  // console.log ('async!!');
   // var brackett = {};
   var findValue;
+  var regex;
   // var testFind = {"author.username" : "Mike"};
   // var brackText = {text: regex};
 //mongo shell:
 // db.comments.find({"author.username" : "Rachel"})
 
 if (req.query.search) {
-  const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-  findvalue = {text: regex};
+  console.log ('req query search activated!!');
+  console.log('expect req.query.search:', req.query.search );
+  regex = new RegExp(escapeRegex(req.query.search), 'gi');
+  console.log ('regex final result:', regex);
+  // findvalue = {text: regex};
+  findvalue = 'hey';
+  console.log ('findValue final:', findValue);
 } else {
   findValue = {};
+  console.log ('findValue of:', findValue,  'was used');
 }
 
 //run if req.query.search doesn't exist. i.e render the page as normal
@@ -36,7 +43,7 @@ async.parallel([
         callback(null, allComments);
 
       });
-       console.log ('first!');
+       // console.log ('first!');
     },
     function(callback) {
       Thread.find(findValue, function(err, allThreads){
@@ -45,7 +52,7 @@ async.parallel([
         }
         callback(null, allThreads);
       });
-      console.log ('twoo!!');
+      // console.log ('twoo!!');
     }
 ], function(err, results) {
   if (err) {
