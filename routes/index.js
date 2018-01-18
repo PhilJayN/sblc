@@ -23,13 +23,13 @@ router.get('/', function (req, res) {
 //check first to see if req.query.search exists
 if (req.query.search) {
   // console.log ('req query search activated!!');
+  // findValue = 'default value';
+  // console.log ('findValue TEST:', findValue);
   console.log('expect req.query.search:', req.query.search );
   regex = new RegExp(escapeRegex(req.query.search), 'gi');
   console.log ('regex final result:', regex);
-  // findvalue = {text: regex};
-  // var testValue = regex;
   console.log ('findValue type', typeof findValue);
-  var finalRegex = {text: regex};
+  findValue = {text: regex};
   console.log ('findValue final:', findValue);
 } else {
   findValue = {};
@@ -39,7 +39,7 @@ if (req.query.search) {
 //run if req.query.search doesn't exist. i.e render the page as normal
 async.parallel([
     function(callback) {
-      Comment.find(finalRegex, function(err, allComments){
+      Comment.find(findValue, function(err, allComments){
         if (err) {
           console.log(err);
         }
