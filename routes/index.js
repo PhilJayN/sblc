@@ -20,13 +20,16 @@ router.get('/', function (req, res) {
 //mongo shell:
 // db.comments.find({"author.username" : "Rachel"})
 
+//check first to see if req.query.search exists
 if (req.query.search) {
-  console.log ('req query search activated!!');
+  // console.log ('req query search activated!!');
   console.log('expect req.query.search:', req.query.search );
   regex = new RegExp(escapeRegex(req.query.search), 'gi');
   console.log ('regex final result:', regex);
   // findvalue = {text: regex};
-  findvalue = 'hey';
+  // var testValue = regex;
+  console.log ('findValue type', typeof findValue);
+  var finalRegex = {text: regex};
   console.log ('findValue final:', findValue);
 } else {
   findValue = {};
@@ -36,7 +39,7 @@ if (req.query.search) {
 //run if req.query.search doesn't exist. i.e render the page as normal
 async.parallel([
     function(callback) {
-      Comment.find(findValue, function(err, allComments){
+      Comment.find(finalRegex, function(err, allComments){
         if (err) {
           console.log(err);
         }
@@ -136,6 +139,7 @@ router.get('/demo', function (req, res) {
   res.send('hello world asdf');
 });
 
+//for fuzzy searching, where 'text' parameter will accept a req.query.search string
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
