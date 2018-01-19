@@ -11,22 +11,17 @@ var async = require('async');
 // MAIN ROUTES
 // ================
 router.get('/', function (req, res) {
-  // console.log ('async!!');
-  // var brackett = {};
   var findValue;
-  var regex;
-  // var testFind = {"author.username" : "Mike"};
-  // var brackText = {text: regex};
-//mongo shell:
-// db.comments.find({"author.username" : "Rachel"})
+  //mongo shell:
+  // db.comments.find({"author.username" : "Rachel"})
 
 //check first to see if req.query.search exists
 if (req.query.search) {
   // console.log ('req query search activated!!');
   // findValue = 'default value';
-  // console.log ('findValue TEST:', findValue);
+  // console.log ('findValue TEST:', findValue) ;
   console.log('expect req.query.search:', req.query.search );
-  regex = new RegExp(escapeRegex(req.query.search), 'gi');
+  const regex = new RegExp(escapeRegex(req.query.search), 'gi');
   console.log ('regex final result:', regex);
   console.log ('findValue type', typeof findValue);
   findValue = {text: regex};
@@ -35,7 +30,6 @@ if (req.query.search) {
   findValue = {};
   console.log ('findValue of:', findValue,  'was used');
 }
-
 //run if req.query.search doesn't exist. i.e render the page as normal
 async.parallel([
     function(callback) {
