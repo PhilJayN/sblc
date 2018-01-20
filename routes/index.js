@@ -12,57 +12,50 @@ var async = require('async');
 // ================
 router.get('/', function (req, res) {
   var findValue;
-  //mongo shell:
-  // db.comments.find({"author.username" : "Rachel"})
-
 //check first to see if req.query.search exists
-if (req.query.search) {
-  // console.log ('req query search activated!!');
-  // findValue = 'default value';
-  // console.log ('findValue TEST:', findValue) ;
-  console.log('expect req.query.search:', req.query.search );
-  const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-  console.log ('regex final result:', regex);
-  console.log ('findValue type', typeof findValue);
-  findValue = {text: regex};
-  console.log ('findValue final:', findValue);
-} else {
-  findValue = {};
-  console.log ('findValue of:', findValue,  'was used');
-}
-//run if req.query.search doesn't exist. i.e render the page as normal
-async.parallel([
-    function(callback) {
-      Comment.find(findValue, function(err, allComments){
-        if (err) {
-          console.log(err);
-        }
-        callback(null, allComments);
-
-      });
-       // console.log ('first!');
-    },
-    function(callback) {
-      Thread.find(findValue, function(err, allThreads){
-        if (err) {
-          console.log(err);
-        }
-        callback(null, allThreads);
-      });
-      // console.log ('twoo!!');
-    }
-], function(err, results) {
-  if (err) {
-    console.log (err);
+  if (req.query.search) {
+    // console.log ('req query search activated!!');
+    // findValue = 'default value';
+    // console.log ('findValue TEST:', findValue) ;
+    console.log('expect req.query.search:', req.query.search );
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    console.log ('regex final result:', regex);
+    console.log ('findValue type', typeof findValue);
+    findValue = {text: regex};
+    console.log ('findValue final:', findValue);
+    //run if req.query.search doesn't exist. i.e render the page as normal
   } else {
-    console.log ('results', results);
-    // res.render('demo.ejs', {dbResults: results});
-    res.render( 'photos/index.ejs', { dbResults: results} );
+    findValue = {};
+    console.log ('findValue of:', findValue,  'was used');
   }
-      // res.render( 'photos/index.ejs', { comments: allComments, threads: allThreads } );
-    });
-});
+  async.parallel([
+      function(callback) {
+        Comment.find(findValue, function(err, allComments){
+          if (err) {
+            console.log(err);
+          }
+          callback(null, allComments);
 
+        });
+      },
+      function(callback) {
+        Thread.find(findValue, function(err, allThreads){
+          if (err) {
+            console.log(err);
+          }
+          callback(null, allThreads);
+        });
+      }
+  ], function(err, results) {
+    if (err) {
+      console.log (err);
+    } else {
+      console.log ('results', results);
+      // res.render('demo.ejs', {dbResults: results});
+      res.render( 'photos/index.ejs', { dbResults: results} );
+    }
+      });
+  });
 
 router.get('/pup', function (req, res) {
   async.parallel([
@@ -83,7 +76,6 @@ router.get('/pup', function (req, res) {
       console.log ('results', results);
       // the second function had a shorter timeout.
   });
-
 });
 
 //ROUTES: AUTHENTICATION
