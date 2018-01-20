@@ -12,8 +12,11 @@ var async = require('async');
 // ================
 router.get('/', function (req, res) {
   var findValue;
+  var resultsLen;
+  var userMsg = null;
 //check first to see if req.query.search exists
   if (req.query.search) {
+    console.log ('req.query.search LEN:', req.query.search.length);
     // console.log ('req query search activated!!');
     // findValue = 'default value';
     // console.log ('findValue TEST:', findValue) ;
@@ -23,9 +26,11 @@ router.get('/', function (req, res) {
     console.log ('findValue type', typeof findValue);
     findValue = {text: regex};
     console.log ('findValue final:', findValue);
+    userMsg = 'Found results!';
     //run if req.query.search doesn't exist. i.e render the page as normal
   } else {
     findValue = {};
+    userMsg = 'Default value!';
     console.log ('findValue of:', findValue,  'was used');
   }
   async.parallel([
@@ -50,9 +55,9 @@ router.get('/', function (req, res) {
     if (err) {
       console.log (err);
     } else {
-      console.log ('results', results);
+      // console.log ('results', results);
       // res.render('demo.ejs', {dbResults: results});
-      res.render( 'photos/index.ejs', { dbResults: results} );
+      res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg} );
     }
       });
   });
