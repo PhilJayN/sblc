@@ -1,34 +1,59 @@
+[
+  [{
+    _id: 5 a603a487ebd2d6e00e107f3,
+    text: 'cats are cute\r\n',
+    submittedDate: 'Wed Jan 17 2018',
+    submittedTime: '10:10 PM',
+    __v: 0,
+    author: [Object]
+  }],
+  [{
+    _id: 5 a5abb8ae2675b18f4a3b7e3,
+    subject: 'puppies',
+    text: 'are cute!!',
+    submittedDate: 'Sat Jan 13 2018',
+    submittedTime: '6:08 PM',
+    __v: 0,
+    author: [Object],
+    isCollapsed: false
+  }]
+]
 
 
 //EXAMPLE from google groups
- // https://groups.google.com/forum/#!topic/mongodb-user/PzXD-yiJG1I
+// https://groups.google.com/forum/#!topic/mongodb-user/PzXD-yiJG1I
 {
-  comments: [
-    { user: 'gates', text: 'first post'
-      replies: [
-        { user: 'jim', text: 'I was too slow' }
-      ]
+  comments: [{
+      user: 'gates',
+      text: 'first post'
+      replies: [{
+        user: 'jim',
+        text: 'I was too slow'
+      }]
     },
-    { user: 'jim', text: 'second post' }
+    {
+      user: 'jim',
+      text: 'second post'
+    }
   ]
 }
 
 
 // my commment DB from mlabs:
 {
-    "_id": {
-        "$oid": "5a446c16260d3c0014e771a5"
+  "_id": {
+    "$oid": "5a446c16260d3c0014e771a5"
+  },
+  "text": "Hi! How's it going?",
+  "submittedDate": "Wed Dec 27 2017",
+  "submittedTime": "7:59 PM",
+  "author": {
+    "id": {
+      "$oid": "5a446c09260d3c0014e771a4"
     },
-    "text": "Hi! How's it going?",
-    "submittedDate": "Wed Dec 27 2017",
-    "submittedTime": "7:59 PM",
-    "author": {
-        "id": {
-            "$oid": "5a446c09260d3c0014e771a4"
-        },
-        "username": "Jennifer"
-    },
-    "__v": 0
+    "username": "Jennifer"
+  },
+  "__v": 0
 }
 
 

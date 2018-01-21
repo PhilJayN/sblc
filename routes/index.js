@@ -12,7 +12,6 @@ var async = require('async');
 // ================
 router.get('/', function (req, res) {
   var findValue;
-  var resultsLen;
   var userMsg = null;
 //check first to see if req.query.search exists
   if (req.query.search) {
@@ -53,12 +52,15 @@ router.get('/', function (req, res) {
           callback(null, allThreads);
         });
       }
-  ], function(err, results) {
+  ], function(err, results) { //results is an array, so possible to access using index #
+    var resultsLen;
     if (err) {
       console.log (err);
     } else {
-      console.log ('results', results);
-      // res.render('demo.ejs', {dbResults: results});
+      console.log ('results Len:', results.length, 'results type:', typeof results);
+      console.log ('results obj:', results);
+      console.log ('results arr:', results[1]);
+
       res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg} );
     }
       });
