@@ -16,17 +16,17 @@ router.get('/', function (req, res) {
   var userMsg = null;
 //check first to see if req.query.search exists
   if (req.query.search) {
+    console.log ('req query search:', req.query.search );
     console.log ('req.query.search LEN:', req.query.search.length);
-    // console.log ('req query search activated!!');
     // findValue = 'default value';
     // console.log ('findValue TEST:', findValue) ;
-    console.log('expect req.query.search:', req.query.search );
+    // console.log('expect req.query.search:', req.query.search );
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     console.log ('regex final result:', regex);
     console.log ('findValue type', typeof findValue);
     findValue = {text: regex};
     console.log ('findValue final:', findValue);
-    userMsg = 'Found results!';
+    userMsg = 'There was a search query.';
     //run if req.query.search doesn't exist. i.e render the page as normal
   } else {
     findValue = {};
@@ -39,6 +39,7 @@ router.get('/', function (req, res) {
           if (err) {
             console.log(err);
           }
+          console.log('allComments results found:', allComments.length);
           callback(null, allComments);
 
         });
@@ -48,6 +49,7 @@ router.get('/', function (req, res) {
           if (err) {
             console.log(err);
           }
+          console.log('allThreads results found:', allThreads.length);
           callback(null, allThreads);
         });
       }
@@ -55,7 +57,7 @@ router.get('/', function (req, res) {
     if (err) {
       console.log (err);
     } else {
-      // console.log ('results', results);
+      console.log ('results', results);
       // res.render('demo.ejs', {dbResults: results});
       res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg} );
     }
