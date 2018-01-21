@@ -13,6 +13,7 @@ var async = require('async');
 router.get('/', function (req, res) {
   var findValue;
   var userMsg = null;
+  var resultsCount = 0;
 //check first to see if req.query.search exists
   if (req.query.search) {
     console.log ('req query search:', req.query.search );
@@ -34,13 +35,15 @@ router.get('/', function (req, res) {
   }
   async.parallel([
       function(callback) {
+        //.find will return [] if no match
         Comment.find(findValue, function(err, allComments){
           if (err) {
             console.log(err);
           }
-          console.log('allComments results found:', allComments.length);
+          console.log('allComments results Len:', allComments.length);
+          resultsCount += allComments.length;
+          console.log('allComments results:', allComments);
           callback(null, allComments);
-
         });
       },
       function(callback) {
@@ -48,7 +51,8 @@ router.get('/', function (req, res) {
           if (err) {
             console.log(err);
           }
-          console.log('allThreads results found:', allThreads.length);
+          console.log('allThreads results Len:', allThreads.length);
+          resultsCount += allThreads.length;
           callback(null, allThreads);
         });
       }
@@ -60,8 +64,8 @@ router.get('/', function (req, res) {
       console.log ('results Len:', results.length, 'results type:', typeof results);
       console.log ('results obj:', results);
       console.log ('results arr:', results[1]);
-
-      res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg} );
+      console.log ('TOTAL RESULTS LEN:', resultsCount);
+      res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg, resultsCount: resultsCount} );
     }
       });
   });
