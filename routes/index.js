@@ -20,19 +20,14 @@ router.get('/', function (req, res) {
     searchReq = true;
     console.log ('req query search:', req.query.search );
     console.log ('req.query.search LEN:', req.query.search.length);
-    // findValue = 'default value';
-    // console.log ('findValue TEST:', findValue) ;
-    // console.log('expect req.query.search:', req.query.search );
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     console.log ('regex final result:', regex);
     console.log ('findValue type', typeof findValue);
     findValue = {text: regex};
     console.log ('findValue final:', findValue);
-    userMsg = 'There was a search query.';
     //run if req.query.search doesn't exist. i.e render the page as normal
   } else {
     findValue = {};
-    userMsg = 'Default value!';
     console.log ('findValue of:', findValue,  'was used');
   }
   async.parallel([
