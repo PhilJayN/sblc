@@ -23,7 +23,8 @@ router.get('/', function (req, res) {
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     console.log ('regex final result:', regex);
     console.log ('findValue type', typeof findValue);
-    findValue = {text: regex};
+    // findValue = {text: regex};
+    findValue = {$or : [{subject: regex}, {text: regex}]};
     console.log ('findValue final:', findValue);
     //run if req.query.search doesn't exist. i.e render the page as normal
   } else {
@@ -45,7 +46,7 @@ router.get('/', function (req, res) {
       },
       function(callback) {
         // Thread.find(findValue, function(err, allThreads){
-        Thread.find({$or : [{subject: 'Jim'}, {text: 'Jim'}]}, function(err, allThreads){
+        Thread.find(findValue, function(err, allThreads){
           if (err) {
             console.log(err);
           }
