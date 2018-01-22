@@ -14,8 +14,10 @@ router.get('/', function (req, res) {
   var findValue;
   var userMsg = null;
   var resultsCount = 0;
+  var searchReq = false;
 //check first to see if req.query.search exists
   if (req.query.search) {
+    searchReq = true;
     console.log ('req query search:', req.query.search );
     console.log ('req.query.search LEN:', req.query.search.length);
     // findValue = 'default value';
@@ -65,7 +67,7 @@ router.get('/', function (req, res) {
       console.log ('results obj:', results);
       console.log ('results arr:', results[1]);
       console.log ('TOTAL RESULTS LEN:', resultsCount);
-      res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg, resultsCount: resultsCount} );
+      res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg, resultsCount: resultsCount, searchReq: searchReq} );
     }
       });
   });
