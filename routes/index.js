@@ -44,11 +44,13 @@ router.get('/', function (req, res) {
         });
       },
       function(callback) {
-        Thread.find(findValue, function(err, allThreads){
+        // Thread.find(findValue, function(err, allThreads){
+        Thread.find({$or : [{subject: 'Jim'}, {text: 'Jim'}]}, function(err, allThreads){
           if (err) {
             console.log(err);
           }
-          console.log('allThreads results Len:', allThreads.length);
+          // console.log('allThreads results Len:', allThreads.length);
+          console.log('allThreads RESULTS:', allThreads);
           resultsCount += allThreads.length;
           callback(null, allThreads);
         });
