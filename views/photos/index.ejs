@@ -20,7 +20,7 @@
 
     <% if (searchReq === true) { %>
         <p>Found <%= resultsCount %> results</p>
-        <a href="/">Cancel search and go to home page</a>
+        <a href="/" class="">Cancel search and go to home page</a>
     <% } %>
 
   </div>
@@ -72,7 +72,7 @@
         <% } else {%>
           <!-- press a btn here to start GET req. to /comments/new -->
           <span>Hi <strong><%= currentUser.username %>!</strong></span>
-          <a class="btn btn-primary add-comment-btn" href="/comments/new">Add a comment</a>
+          <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a>
         <% } %>
       </div>
 
@@ -103,6 +103,11 @@
       </div>
     <% }) %>    <!--end of forEach-->
     <!--end of well-->
+
+    <div class="well">
+        <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Topic</a>
+    </div>
+
   </div> <!-- END of room-content-->
 </div> <!-- END of room-*-->
 <!--End of threads section-->
