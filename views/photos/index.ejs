@@ -18,21 +18,15 @@
       </form>
     </p>
 
-    <% if (userMsg !== null) { %>
-      <%= userMsg %>
-    <% } %>
-
-
     <% if (searchReq === true) { %>
         <p>Found <%= resultsCount %> results</p>
-        <% } %>
+        <a href="/">Cancel search and go to home page</a>
+    <% } %>
 
   </div>
-
 <!-- end of index.ejs jumbotron (intro jumbotron)-->
 
 <% if(currentUser) { %>
-
 <!-- basics is container, which has a row, where each row has columns -->
 <div class="room-container container-fluid">
   <div class="row">
@@ -180,9 +174,6 @@
     more hidden stufff!!
   </div>
 </div> -->
-
-
-
 
 
 
