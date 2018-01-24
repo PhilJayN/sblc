@@ -48,13 +48,38 @@ $(document).ready(function(){
 	// 	.collapse('show');
   //   });
 
-console.log ('hi!!');
+console.log ('hi!sdafasdf!');
 
     $('.btn-main-controller').click(function() {
       console.log (' you clicked!!');
       $('.multi-collapse').collapse('hide');
-
-
     });
+
+
+//     var email = document.getElementById("mail");
+//     email.addEventListener("input", function (event) {
+//   if (email.validity.typeMismatch) {
+//     email.setCustomValidity("I expect an e-mail, darling!");
+//   } else {
+//     email.setCustomValidity("");
+//   }
+// });
+
+  var subject = document.getElementById('subject');
+  var submitThreadBtn = document.getElementById('submit-thread');
+  console.log (  subject.validity.valueMissing);
+
+  submitThreadBtn.addEventListener('click', function(event) {
+    if (subject.validity.valueMissing) {
+      subject.setCustomValidity('Please write a subject.');
+    }
+  });
+
+
+  // subject.addEventListener('input', function (event) {
+  //   if (subject.validity.valueMissing) {
+      // subject.setCustomValidity('Please write a subject.');
+  //   }
+  // });
 
 });
