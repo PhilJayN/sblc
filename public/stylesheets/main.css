@@ -71,6 +71,15 @@ input {
   border: 1px solid red;
 }
 
+.thread-subject:valid {
+  border: 1px solid blue;
+}
+
+.thread-subject:invalid {
+  border: 1px solid red; 
+}
+
+
 .comment-text-input {
   width: 100%;
   height: 250px;
