@@ -1,3 +1,6 @@
+$(document).ready(function(){
+
+
 console.log('hi this is the SBLC app!');
 var listController = (function() {
   //calculation and data structure goes here.
@@ -8,7 +11,8 @@ var UIController = (function() {
 
   var DOMstrings = {
     toggleBtn: '.toggle-btn',
-    submitBtn: '.submit-btn'
+    submitBtn: '.submit-btn',
+    textBody: '.text-body'
   };
 
   return {
@@ -24,12 +28,39 @@ var controller = (function(listCtrl, UICtrl) {
 
   var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
+    console.log (DOM.submitBtn);
+    console.log (typeof DOM.submitBtn);
+
+    // document.addEventListener('click', function(event){
+    //
+    // });
+
+
+    document.querySelector('submit-btn').addEventListener('click', displayTest);
+// debugger;
+
     // document.querySelector(DOM.toggleBtn).addEventListener('click', )
+    // document.querySelector('.submit-btn').addEventListener('click', validateInput);
+    // document.querySelector(DOM.submitBtn).addEventListener('click', validateInput);
+    // document.querySelector(DOM.container).addEventListener('click', ctrlAddItem);
+
   };
 
   var ctrlAddItem = function(event) {
     console.log ('a click event caused ctrlAddItem to be called!');
   }
+
+  var displayTest = function(event) {
+    console.log ('yes!! clicked!');
+  };
+
+  var validateInput = function() {
+    console.log ('validateInput running...');
+    var subject = document.getElementById('subject');
+      if (subject.validity.valueMissing) {
+        subject.setCustomValidity('Please write a something in the field.');
+      }
+  };
 
   return {
     init: function() {
@@ -47,19 +78,18 @@ controller.init();
       $('.multi-collapse').collapse('hide');
     });
 
-  var subject = document.getElementById('subject');
   var submitThreadBtn = document.getElementById('submit-thread');
-  document.querySelector('.submit-btn').addEventListener('click', validateInput);
 
-  submitThreadBtn.addEventListener('click', function(event) {
-    if (subject.validity.valueMissing) {
-      subject.setCustomValidity('Please write a something in the field.');
-    }
-  });
+  // submitThreadBtn.addEventListener('click', function(event) {
+  //   if (subject.validity.valueMissing) {
+  //     subject.setCustomValidity('Please write a something in the field.');
+  //   }
+  // });
 
-  function validateInput() {
-    console.log ('you clicked!!');
-  }
 
-  // $(document).ready(function(){
-// });
+});
+
+
+// function validateInput() {
+//   console.log ('you clicked!!');
+// }
