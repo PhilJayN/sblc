@@ -4,7 +4,7 @@
   <h3>Add new thread</h3>
   <form action="/threads" method="POST">
     <div class="form-group">
-      <input autofocus type="text" name="thread[subject]" class="form-control thread-subject" placeholder="Subject" required>
+      <input autofocus type="text" name="thread[subject]" class="form-control thread-subject" placeholder="Subject" minlength="1" maxlength="160" required>
       <textarea name="thread[text]"  class="form-control comment-text-input" placeholder="Write message here..."></textarea>
     </div>
     <p>
