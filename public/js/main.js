@@ -1,5 +1,4 @@
 console.log('hi this is the SBLC app!');
-
 var listController = (function() {
   //calculation and data structure goes here.
 })();
@@ -8,7 +7,8 @@ var listController = (function() {
 var UIController = (function() {
 
   var DOMstrings = {
-    toggleBtn: '.toggle-btn'
+    toggleBtn: '.toggle-btn',
+    submitBtn: '.submit-btn'
   };
 
   return {
@@ -17,7 +17,7 @@ var UIController = (function() {
     }
   }
 
-})();
+})(); //end of UIController
 
 // GLOBAL APP CONTROLLER: main job is to call other methods
 var controller = (function(listCtrl, UICtrl) {
@@ -31,21 +31,16 @@ var controller = (function(listCtrl, UICtrl) {
     console.log ('a click event caused ctrlAddItem to be called!');
   }
 
+  return {
+    init: function() {
+      setupEventListeners();
+    }
+  }
+
 })(listController, UIController);
 
 controller.init();
 
-
-$(document).ready(function(){
-
-  //  $('.collapseAll').click(function(){
-  //      $('.panel-collapse.in')
-	// 	.collapse('hide');
-  //   });
-  //   $('.expandAll').click(function(){
-	// $('.panel-collapse:not(".in")')
-	// 	.collapse('show');
-  //   });
 
     $('.btn-main-controller').click(function() {
       console.log (' you clicked!!');
@@ -54,10 +49,7 @@ $(document).ready(function(){
 
   var subject = document.getElementById('subject');
   var submitThreadBtn = document.getElementById('submit-thread');
-  // var textBody = document.querySelector('.submit-btn');
   document.querySelector('.submit-btn').addEventListener('click', validateInput);
-
-  // document.querySelector(DOM.assortedBtn).addEventListener('click', ctrlAddItem);
 
   submitThreadBtn.addEventListener('click', function(event) {
     if (subject.validity.valueMissing) {
@@ -69,4 +61,5 @@ $(document).ready(function(){
     console.log ('you clicked!!');
   }
 
-});
+  // $(document).ready(function(){
+// });
