@@ -65,16 +65,25 @@ console.log ('hi!sdafasdf!');
 //   }
 // });
 
+
   var subject = document.getElementById('subject');
   var submitThreadBtn = document.getElementById('submit-thread');
-  console.log (  subject.validity.valueMissing);
+  // var textBody = document.querySelector('.submit-btn');
+  document.querySelector('.submit-btn').addEventListener('click', validateInput);
+
+  // document.querySelector(DOM.assortedBtn).addEventListener('click', ctrlAddItem);
+
 
   submitThreadBtn.addEventListener('click', function(event) {
     if (subject.validity.valueMissing) {
-      subject.setCustomValidity('Please write a subject.');
+      subject.setCustomValidity('Please write a something in the field.');
     }
   });
 
+  function validateInput() {
+    console.log ('you clicked!!');
+    
+  }
 
   // subject.addEventListener('input', function (event) {
   //   if (subject.validity.valueMissing) {
