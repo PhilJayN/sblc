@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-
-console.log('hi this is the SBLC app!');
+console.log('hi this is the SBLC');
 var listController = (function() {
   //calculation and data structure goes here.
 })();
