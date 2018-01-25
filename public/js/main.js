@@ -1,6 +1,21 @@
-$(document).ready(function(){
+// var submitThreadBtn = document.getElementById('submit-thread');
+// submitThreadBtn.addEventListener('click', function(event) {
+//   console.log ('clicked submitThreadBtn');
+// });
 
-console.log('hi this is the SBLC');
+var demo = document.getElementById('demo');
+demo.addEventListener('click', function(event) {
+  console.log ('clicked demo');
+});
+
+
+
+//works:
+    // var x = document.getElementById("demo");
+    // x.style.color = "orange";
+
+console.log('SBLC asdf asdf');
+
 var listController = (function() {
   //calculation and data structure goes here.
 })();
@@ -29,13 +44,17 @@ var controller = (function(listCtrl, UICtrl) {
     var DOM = UICtrl.getDOMstrings();
     console.log (DOM.submitBtn);
     console.log (typeof DOM.submitBtn);
+    // document.querySelector(DOM.submitBtn).addEventListener('click', displayTest);
+
+
+
 
     // document.addEventListener('click', function(event){
     //
     // });
 
 
-    document.querySelector('submit-btn').addEventListener('click', displayTest);
+    // document.querySelector('.submit-btn').addEventListener('click', displayTest);
 // debugger;
 
     // document.querySelector(DOM.toggleBtn).addEventListener('click', )
@@ -77,7 +96,7 @@ controller.init();
       $('.multi-collapse').collapse('hide');
     });
 
-  var submitThreadBtn = document.getElementById('submit-thread');
+  // var submitThreadBtn = document.getElementById('submit-thread');
 
   // submitThreadBtn.addEventListener('click', function(event) {
   //   if (subject.validity.valueMissing) {
@@ -86,7 +105,8 @@ controller.init();
   // });
 
 
-});
+//   $(document).ready(function(){
+// });
 
 
 // function validateInput() {
