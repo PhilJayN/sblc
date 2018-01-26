@@ -3,7 +3,7 @@
 //   console.log ('clicked submitThreadBtn');
 // });
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
 console.log('SBLsadjf;kl hey');
 
@@ -15,10 +15,12 @@ console.log('SBLsadjf;kl hey');
 // console.log ('myEl', myEl);
 
 
-document.querySelector('demoId').addEventListener('click', function(event) {
-console.log ('you clicked myEl');
+var demoClassTest = document.querySelector('.demo-class');
+document.querySelector('.demo-class').addEventListener('click', function(event) {
+console.log ('you clicked demo-class');
 });
-console.log ('myEl', myEl);
+console.log ('demoClassTest', demoClassTest);
+
 
 // document.querySelector('.demo-btn').
 
@@ -138,10 +140,18 @@ controller.init();
   // });
 
 
-}); //end of document ready fxn
+// }); //end of document ready fxn
 
 
 
 // function validateInput() {
 //   console.log ('you clicked!!');
 // }
+
+
+
+
+// document.querySelector('demoId').addEventListener('click', function(event) {
+// console.log ('you clicked myEl');
+// });
+// console.log ('myEl', myEl);
