@@ -6,13 +6,31 @@
 $(document).ready(function(){
 
 console.log('SBLsadjf;kl hey');
-console.log('SBLsadjf;kl hey');
+
+//doesn't work:
+// var myEl = document.querySelector('.demo-btn');
+// myEl.addEventListener('click', function(event) {
+// console.log ('you clicked myEl');
+// });
+// console.log ('myEl', myEl);
+
+
+document.querySelector('demoId').addEventListener('click', function(event) {
+console.log ('you clicked myEl');
+});
+console.log ('myEl', myEl);
+
+// document.querySelector('.demo-btn').
+
+
+
+
 
 //works:
-var demo = document.getElementById('demo');
-demo.addEventListener('click', function(event) {
-  console.log ('clicked demo');
-});
+// var demo = document.getElementById('demo-btn');
+// demo.addEventListener('click', function(event) {
+//   console.log ('clicked demo btn');
+// });
 
 
 //works:
@@ -30,7 +48,8 @@ var UIController = (function() {
   var DOMstrings = {
     toggleBtn: '.toggle-btn',
     submitBtn: '.submit-btn',
-    textBody: '.text-body'
+    textBody: '.text-body',
+    demoBtn: '.demo-btn'
   };
 
   return {
@@ -48,7 +67,17 @@ var controller = (function(listCtrl, UICtrl) {
     var DOM = UICtrl.getDOMstrings();
     console.log (DOM.submitBtn);
     console.log (typeof DOM.submitBtn);
-    // document.querySelector(DOM.submitBtn).addEventListener('click', displayTest);
+    console.log ('demo btn str:', typeof DOM.demoBtn, DOM.demoBtn);
+
+    // var demo = document.getElementsByClassName(DOM.demoBtn);
+    // demo.addEventListener('click', function(event) {
+    //   console.log ('clicked demo btn');
+    // });
+
+
+    // var myEl = document.querySelector(DOM.demoBtn);
+    // console.log ('myEl', myEl);
+//     document.querySelector(DOM.demoBtn).addEventListener('click', displayTest);
 
 
 
