@@ -5,28 +5,11 @@
 
 // $(document).ready(function(){
 
-console.log('SBLsadjf;kl hey');
-
-//doesn't work:
-// var myEl = document.querySelector('.demo-btn');
-// myEl.addEventListener('click', function(event) {
-// console.log ('you clicked myEl');
+//works:
+// var demoClassTest = document.querySelector('.demo-class');
+// document.querySelector('.demo-class').addEventListener('click', function(event) {
+// console.log ('you clicked demo-class');
 // });
-// console.log ('myEl', myEl);
-
-
-var demoClassTest = document.querySelector('.demo-class');
-document.querySelector('.demo-class').addEventListener('click', function(event) {
-console.log ('you clicked demo-class');
-});
-console.log ('demoClassTest', demoClassTest);
-
-
-// document.querySelector('.demo-btn').
-
-
-
-
 
 //works:
 // var demo = document.getElementById('demo-btn');
@@ -51,7 +34,8 @@ var UIController = (function() {
     toggleBtn: '.toggle-btn',
     submitBtn: '.submit-btn',
     textBody: '.text-body',
-    demoBtn: '.demo-btn'
+    demoBtn: '.demo-btn',
+    demoClass: '.demo-class'
   };
 
   return {
@@ -67,35 +51,16 @@ var controller = (function(listCtrl, UICtrl) {
 
   var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
+    console.log ('demo-class', DOM.demoClass);
     console.log (DOM.submitBtn);
     console.log (typeof DOM.submitBtn);
     console.log ('demo btn str:', typeof DOM.demoBtn, DOM.demoBtn);
 
-    // var demo = document.getElementsByClassName(DOM.demoBtn);
-    // demo.addEventListener('click', function(event) {
-    //   console.log ('clicked demo btn');
-    // });
-
-
-    // var myEl = document.querySelector(DOM.demoBtn);
-    // console.log ('myEl', myEl);
-//     document.querySelector(DOM.demoBtn).addEventListener('click', displayTest);
-
-
-
-
-    // document.addEventListener('click', function(event){
-    //
-    // });
-
+    document.querySelector(DOM.demoClass).addEventListener('click', function(event) {
+      console.log('clicked!!!!!');
+    });
 
     // document.querySelector('.submit-btn').addEventListener('click', displayTest);
-// debugger;
-
-    // document.querySelector(DOM.toggleBtn).addEventListener('click', )
-    // document.querySelector('.submit-btn').addEventListener('click', validateInput);
-    // document.querySelector(DOM.submitBtn).addEventListener('click', validateInput);
-    // document.querySelector(DOM.container).addEventListener('click', ctrlAddItem);
 
   };
 
