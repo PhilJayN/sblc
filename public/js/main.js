@@ -3,18 +3,22 @@
 //   console.log ('clicked submitThreadBtn');
 // });
 
+$(document).ready(function(){
+
+console.log('SBLsadjf;kl hey');
+console.log('SBLsadjf;kl hey');
+
+//works:
 var demo = document.getElementById('demo');
 demo.addEventListener('click', function(event) {
   console.log ('clicked demo');
 });
 
 
-
 //works:
     // var x = document.getElementById("demo");
     // x.style.color = "orange";
 
-console.log('SBLC asdf asdf');
 
 var listController = (function() {
   //calculation and data structure goes here.
@@ -105,8 +109,8 @@ controller.init();
   // });
 
 
-//   $(document).ready(function(){
-// });
+}); //end of document ready fxn
+
 
 
 // function validateInput() {
