@@ -56,9 +56,12 @@ var controller = (function(listCtrl, UICtrl) {
     console.log (typeof DOM.submitBtn);
     console.log ('demo btn str:', typeof DOM.demoBtn, DOM.demoBtn);
 
-    document.querySelector(DOM.demoClass).addEventListener('click', function(event) {
-      console.log('clicked!!!!!');
-    });
+    console.log ('asdfkjl;', document.querySelector(DOM.demoClass) );
+    if ( document.querySelector(DOM.demoClass) ) {
+      document.querySelector(DOM.demoClass).addEventListener('click', function(event) {
+        console.log('clicked!!!!!');
+      });
+    }
 
     // document.querySelector('.submit-btn').addEventListener('click', displayTest);
 
