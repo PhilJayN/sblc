@@ -33,6 +33,7 @@ var UIController = (function() {
   var DOMstrings = {
     toggleBtn: '.toggle-btn',
     submitBtn: '.submit-btn',
+    subject: '.subject',
     textBody: '.text-body',
     demoBtn: '.demo-btn',
     demoClass: '.demo-class'
@@ -63,6 +64,11 @@ var controller = (function(listCtrl, UICtrl) {
       });
     }
 
+    var submitBtn = document.querySelector(DOM.submitBtn);
+    if (submitBtn) {
+      submitBtn.addEventListener('click', validateInput);
+    }
+
     // document.querySelector('.submit-btn').addEventListener('click', displayTest);
 
   };
@@ -77,11 +83,20 @@ var controller = (function(listCtrl, UICtrl) {
 
   var validateInput = function() {
     console.log ('validateInput running...');
-    var subject = document.getElementById('subject');
-      if (subject.validity.valueMissing) {
+    var subject = document.querySelector(DOM.subject);
+    var textBody = document.querySelector(DOM.textBody);
+      if (subject.validity.valueMissing || textBody.validity.valueMissing) {
         subject.setCustomValidity('Please write a something in the field.');
       }
   };
+
+  // var validateInput = function() {
+  //   console.log ('validateInput running...');
+  //   var subject = document.getElementById('subject');
+  //     if (subject.validity.valueMissing) {
+  //       subject.setCustomValidity('Please write a something in the field.');
+  //     }
+  // };
 
   return {
     init: function() {
