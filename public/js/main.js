@@ -1,7 +1,3 @@
-// var submitThreadBtn = document.getElementById('submit-thread');
-// submitThreadBtn.addEventListener('click', function(event) {
-//   console.log ('clicked submitThreadBtn');
-// });
 
 // $(document).ready(function(){
 
@@ -17,11 +13,9 @@
 //   console.log ('clicked demo btn');
 // });
 
-
 //works:
     // var x = document.getElementById("demo");
     // x.style.color = "orange";
-
 
 var listController = (function() {
   //calculation and data structure goes here.
@@ -68,8 +62,6 @@ var controller = (function(listCtrl, UICtrl) {
     if (submitBtn) {
       submitBtn.addEventListener('click', validateInput);
     }
-
-    // document.querySelector('.submit-btn').addEventListener('click', displayTest);
 
   };
 
@@ -124,13 +116,6 @@ controller.init();
 
 
 // }); //end of document ready fxn
-
-
-
-// function validateInput() {
-//   console.log ('you clicked!!');
-// }
-
 
 
 
