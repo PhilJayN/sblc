@@ -44,6 +44,18 @@ router.put('/comments/:id', function(req, res) {
 //DELETE route for comment
 router.delete('/comments/:id', function (req, res) {
 
+  console.log ('delete route start!!');
+
+  var ctrlDelItem = function(event) {
+    //1. asks user to Confirm
+    var userAns = prompt('Please type in yes, then press DELETE.');
+    if (userAns.toLowerCase() === 'yes') {
+      console.log ('asdfjkl;');
+    }
+  };
+
+  ctrlDelItem();
+
   Comment.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
       res.redirect('back');
