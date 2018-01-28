@@ -3,6 +3,8 @@ var router = express.Router({mergeParams: true});
 var Photo = require("../models/photo");
 var Comment = require("../models/comment");
 var middleware = require("../middleware");
+// var mainJS = require("../public/js/main.js");
+
 
 //show new form to CREATE comments on main page:
 router.get('/comments/new', middleware.isLoggedIn, function (req, res) {
@@ -41,6 +43,7 @@ router.put('/comments/:id', function(req, res) {
 
 //DELETE route for comment
 router.delete('/comments/:id', function (req, res) {
+
   Comment.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
       res.redirect('back');

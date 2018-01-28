@@ -1,4 +1,5 @@
 
+
 // $(document).ready(function(){
 
 //works:
@@ -19,6 +20,7 @@
 
 var listController = (function() {
   //calculation and data structure goes here.
+  console.log ('LISTcONTROLLER!!');
 })();
 
 // code for displaying or updating UI here:
@@ -47,12 +49,12 @@ var controller = (function(listCtrl, UICtrl) {
 
   var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
-    console.log ('demo-class', DOM.demoClass);
-    console.log (DOM.submitBtn);
-    console.log (typeof DOM.submitBtn);
-    console.log ('demo btn str:', typeof DOM.demoBtn, DOM.demoBtn);
-
-    console.log ('asdfkjl;', document.querySelector(DOM.demoClass) );
+    // console.log ('demo-class', DOM.demoClass);
+    // console.log (DOM.submitBtn);
+    // console.log (typeof DOM.submitBtn);
+    // console.log ('demo btn str:', typeof DOM.demoBtn, DOM.demoBtn);
+    //
+    // console.log ('asdfkjl;', document.querySelector(DOM.demoClass) );
     if ( document.querySelector(DOM.demoClass) ) {
       document.querySelector(DOM.demoClass).addEventListener('click', function(event) {
         console.log('clicked!!!!!');
