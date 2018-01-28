@@ -30,7 +30,8 @@ var UIController = (function() {
     subject: '.subject',
     textBody: '.text-body',
     demoBtn: '.demo-btn',
-    demoClass: '.demo-class'
+    demoClass: '.demo-class',
+    delBtn: '.del-btn'
   };
 
   return {
@@ -63,6 +64,11 @@ var controller = (function(listCtrl, UICtrl) {
       submitBtn.addEventListener('click', validateInput);
     }
 
+    var delBtn = document.querySelector(DOM.delBtn);
+    if (delBtn) {
+      delBtn.addEventListener('click', validateInput);
+    }
+
   };
 
   var ctrlAddItem = function(event) {
@@ -80,6 +86,16 @@ var controller = (function(listCtrl, UICtrl) {
       if (subject.validity.valueMissing || textBody.validity.valueMissing) {
         subject.setCustomValidity('Please write a something in the field.');
       }
+  };
+
+  var ctrlDelItem = function(event) {
+    console.log ('DELETE!');
+    //1. asks user to Confirm
+
+
+    //2. use confirmation str, then delete.
+
+
   };
 
   // var validateInput = function() {
