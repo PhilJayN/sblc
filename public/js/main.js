@@ -91,9 +91,12 @@ var controller = (function(listCtrl, UICtrl) {
   var ctrlDelItem = function(event) {
     console.log ('DELETE!');
     //1. asks user to Confirm
-
-
     //2. use confirmation str, then delete.
+    var userAns = prompt('Please type in yes, then press DELETE.');
+    if (userAns.toLowerCase() === 'yes') {
+      console.log ('asdfjkl;');
+    }
+
 
 
   };
