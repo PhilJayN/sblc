@@ -13,6 +13,13 @@ var threadSchema = mongoose.Schema({
       },
       username: String
   },
+  comments:
+  [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ]
   submittedDate: String,
   submittedTime: String
 });
