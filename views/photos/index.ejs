@@ -103,6 +103,7 @@
           <p class="thread-text"><%= thread.text %></p>
           <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></p>
         </div>
+        <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a>
       </div>
     <% }) %>    <!--end of forEach-->
     <!--end of well-->
