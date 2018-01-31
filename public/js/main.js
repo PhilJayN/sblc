@@ -33,7 +33,8 @@ var UIController = (function() {
     textBody: '.text-body',
     demoBtn: '.demo-btn',
     demoClass: '.demo-class',
-    delBtn: '.del-btn'
+    delBtn: '.del-btn',
+    replyBtn: '.reply-btn'
   };
 
   return {
@@ -70,6 +71,14 @@ var controller = (function(listCtrl, UICtrl) {
     if (delBtn) {
       delBtn.addEventListener('click', validateInput);
     }
+
+    var replyBtn = document.querySelector(DOM.replyBtn);
+    if (replyBtn) {
+      replyBtn.addEventListener('click', function() {
+        console.log ('asdjfl;k43iou5!');
+      } );
+    }
+
 
   };
 
