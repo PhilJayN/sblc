@@ -43,20 +43,18 @@ var UIController = (function() {
     },
 
     createReplyBox: function() {
-        console.log ('createReplyBox method running!');
-        //create and return the element:
-          var input = document.createElement('input');
-          input.type = 'text';
-          input.name = 'pet[]';
-          return input;
+      console.log ('createReplyBox method running!');
+      //create and return the element:
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'myName';
 
-        console.log ('input created:', createReplyBox());
+      console.log ('input created:', input);
+      //target, then append created element to the chosen element:
+      var parent = document.querySelector(DOMstrings.replyBtn).parentElement;
 
-        //target, then append created element to the chosen element:
-        var parent = replyBtn.parentElement;
-        console.log ('parent', parent);
-
-        parent.appendChild(createReplyBox());
+      console.log ('parent', parent);
+      parent.appendChild(input);
     }
   }
 
