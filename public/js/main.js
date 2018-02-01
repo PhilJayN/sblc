@@ -42,6 +42,21 @@ var UIController = (function() {
       return DOMstrings;
     },
 
+    //e: event, el: element
+    checkElementClicked: function(e) {
+      var elClicked, parentEl;
+      elClicked = e.target;
+      console.log ('element clicked is', elementclicked);
+      parentEl = elClicked.parentNode;
+      console.log ('parent el: ', parentEl);
+      if (elClicked.className === DOMstrings.replyBtn) {
+        console.log ('element clicked is a reply btn!');
+      }
+
+
+
+    },
+
     createReplyBox: function() {
       console.log ('createReplyBox method running!');
       //create and return the element:
@@ -91,6 +106,8 @@ var controller = (function(listCtrl, UICtrl) {
     if (replyBtn) {
       replyBtn.addEventListener('click', UICtrl.createReplyBox);
     }
+
+
 
 
 
