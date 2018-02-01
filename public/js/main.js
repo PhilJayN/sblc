@@ -40,6 +40,23 @@ var UIController = (function() {
   return {
     getDOMstrings: function() {
       return DOMstrings;
+    },
+
+    createReplyBox: function() {
+        console.log ('createReplyBox method running!');
+        //create and return the element:
+          var input = document.createElement('input');
+          input.type = 'text';
+          input.name = 'pet[]';
+          return input;
+
+        console.log ('input created:', createReplyBox());
+
+        //target, then append created element to the chosen element:
+        var parent = replyBtn.parentElement;
+        console.log ('parent', parent);
+
+        parent.appendChild(createReplyBox());
     }
   }
 
@@ -74,32 +91,14 @@ var controller = (function(listCtrl, UICtrl) {
 
     var replyBtn = document.querySelector(DOM.replyBtn);
     if (replyBtn) {
-      replyBtn.addEventListener('click', function() {
-        console.log ('asdjfl;k43iou5!');
-
-        //create and return the element:
-        function createReplyBox() {
-          var input = document.createElement('input');
-          input.type = 'text';
-          input.name = 'pet[]';
-          return input;
-        }
-
-        console.log ('input created:', createReplyBox());
-
-        //target, then append created element to the chosen element:
-        var parent = replyBtn.parentElement;
-        console.log ('parent', parent);
-
-        parent.appendChild(createReplyBox());
-
-
-
-
-
-
-      } );
+      replyBtn.addEventListener('click', UICtrl.createReplyBox);
     }
+
+
+
+    // document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+
+
 
 
   };
