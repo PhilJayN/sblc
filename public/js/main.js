@@ -55,7 +55,7 @@ var UIController = (function() {
       console.log ('checkElementClicked running...');
       var elClicked, parentEl;
       elClicked = e.target;
-      console.log ('element clicked is', elementclicked);
+      console.log ('element clicked is', elClicked);
       parentEl = elClicked.parentNode;
       console.log ('parent el: ', parentEl);
       if (elClicked.className === DOMstrings.replyBtn) {
