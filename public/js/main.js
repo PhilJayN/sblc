@@ -1,4 +1,11 @@
 
+// $(document).ready(function(){
+//
+//   document.querySelector(".room-sblc").addEventListener('click', function() {
+//     console.log ('room sblc container!!');
+//   });
+// });
+
 
 // $(document).ready(function(){
 
@@ -34,7 +41,8 @@ var UIController = (function() {
     demoBtn: '.demo-btn',
     demoClass: '.demo-class',
     delBtn: '.del-btn',
-    replyBtn: '.reply-btn'
+    replyBtn: '.reply-btn',
+    threadsBox: '.threads-box'
   };
 
   return {
@@ -44,6 +52,7 @@ var UIController = (function() {
 
     //e: event, el: element
     checkElementClicked: function(e) {
+      console.log ('checkElementClicked running...');
       var elClicked, parentEl;
       elClicked = e.target;
       console.log ('element clicked is', elementclicked);
@@ -80,6 +89,14 @@ var controller = (function(listCtrl, UICtrl) {
 
   var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
+    //remember that you'll get error: Uncaught TypeError: Cannot read property 'addEventListener' of null if there's no logged in user, since ejs
+    //renders only certain parts of page if there's a user
+    document.querySelector(DOM.threadsBox).addEventListener('click', UICtrl.checkElementClicked);
+
+
+
+
+
     // console.log ('demo-class', DOM.demoClass);
     // console.log (DOM.submitBtn);
     // console.log (typeof DOM.submitBtn);
