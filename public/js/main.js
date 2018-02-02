@@ -45,6 +45,17 @@ var UIController = (function() {
     threadsBox: '.threads-box'
   };
 
+  var createReplyBox = function() {
+    console.log ('createReplyBox method running!');
+    //create and return the element:
+    var input = document.createElement('input');
+    input.type = 'text';
+    input.name = 'myName';
+
+    console.log ('input created:', input);
+
+  };
+
   return {
     getDOMstrings: function() {
       return DOMstrings;
@@ -53,6 +64,8 @@ var UIController = (function() {
     //e: event, el: element
     checkElementClicked: function(e) {
       console.log ('checkElementClicked running...');
+      createReplyBox();
+
       var elClicked, parentEl;
       elClicked = e.target;
       console.log ('element clicked is', elClicked);
@@ -61,26 +74,42 @@ var UIController = (function() {
       console.log (elClicked.className, DOMstrings.replyBtn);
       if (elClicked.className === 'reply-btn') {
         console.log ('element clicked is a reply btn!');
+        //only create a reply box if parent does not already have reply text box
+        // parentEl.contains();
+        createReplyBox();
+        console.log ('created reply box:', createReplyBox());
+
+
+
+
+        // var replyBtn = document.querySelector(DOM.replyBtn);
+        // if (replyBtn) {
+        //   replyBtn.addEventListener('click', UICtrl.createReplyBox);
+        // }
+
+
       }
 
 
 
     },
 
-    createReplyBox: function() {
-      console.log ('createReplyBox method running!');
-      //create and return the element:
-      var input = document.createElement('input');
-      input.type = 'text';
-      input.name = 'myName';
+    // createReplyBox: function() {
+    //   console.log ('createReplyBox method running!');
+    //   //create and return the element:
+    //   var input = document.createElement('input');
+    //   input.type = 'text';
+    //   input.name = 'myName';
+    //
+    //   console.log ('input created:', input);
+    //   //target, then append created element to the chosen element:
+    //   var parent = document.querySelector(DOMstrings.replyBtn).parentElement;
+    //
+    //   console.log ('parent', parent);
+    //   parent.appendChild(input);
+    // }
 
-      console.log ('input created:', input);
-      //target, then append created element to the chosen element:
-      var parent = document.querySelector(DOMstrings.replyBtn).parentElement;
 
-      console.log ('parent', parent);
-      parent.appendChild(input);
-    }
   }
 
 })(); //end of UIController
@@ -120,10 +149,6 @@ var controller = (function(listCtrl, UICtrl) {
       delBtn.addEventListener('click', validateInput);
     }
 
-    var replyBtn = document.querySelector(DOM.replyBtn);
-    if (replyBtn) {
-      replyBtn.addEventListener('click', UICtrl.createReplyBox);
-    }
 
 
 
