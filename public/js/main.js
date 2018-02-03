@@ -53,6 +53,7 @@ var UIController = (function() {
     input.name = 'myName';
 
     console.log ('input created:', input);
+    return input;
 
   };
 
@@ -76,8 +77,14 @@ var UIController = (function() {
         console.log ('element clicked is a reply btn!');
         //only create a reply box if parent does not already have reply text box
         // parentEl.contains();
-        createReplyBox();
-        console.log ('created reply box:', createReplyBox());
+        // console.log ('created reply box:', createReplyBox());
+
+        //target, then append created element to the chosen element:
+        // var parent = document.querySelector(DOMstrings.replyBtn).parentElement;
+        console.log ('parent', parentEl);
+        console.log ('createReplyBox results:', createReplyBox() );
+        parentEl.appendChild(createReplyBox());
+
 
 
 
