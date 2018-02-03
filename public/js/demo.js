@@ -1,11 +1,14 @@
 console.log('demo JavaScript file');
 
 var elDemo = document.querySelector('.demo-class');
+var demoId = document.getElementById('demo-id');
+
+console.log ('elDemo using querySelector:', elDemo);
+console.log ('demoId using getElementById:', demoId);
 
 if (elDemo) {
   console.log ('el demo exists!');
 }
-console.log('elDemo', elDemo);
 
 if ( document.querySelector('.demo-class') ) {
   document.querySelector('.demo-class').addEventListener('click', function(event) {
