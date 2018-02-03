@@ -1,5 +1,11 @@
 var express = require("express");
 var app = express();
+
+const session = require('express-session');
+// const MongoStore = require('connect-mongo')(session);
+
+
+
 var bodyParser = require("body-parser");
 var User = require("./models/user");
 var Photo = require("./models/photo");
@@ -66,7 +72,7 @@ console.log ('second PROCESS env', process.env.DATABASEURL);
 
 
 //PASSPORT CONFIGURATION
-app.use(require("express-session")({
+app.use(session({
   secret: "This is the super duper secrete hashing powder",
   resave: false,
   saveUninitialized: false
