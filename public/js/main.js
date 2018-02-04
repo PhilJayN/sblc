@@ -30,15 +30,13 @@ var UIController = (function() {
 
   var createReplyBox = function() {
     console.log ('createReplyBox method running!');
-    //create and return the element:
+    //create and return the element to be re-used:
     var input = document.createElement('input');
     input.type = 'text';
     input.name = 'myName';
     input.className = 'reply-text-box';
-
-    console.log ('input created:', input);
+    // console.log ('input created:', input);
     return input;
-
   };
 
   return {
@@ -49,8 +47,6 @@ var UIController = (function() {
     //e: event, el: element
     checkElementClicked: function(e) {
       console.log ('checkElementClicked running...');
-      createReplyBox();
-
       var elClicked, parentEl;
       elClicked = e.target;
       console.log ('element clicked is', elClicked);
@@ -59,45 +55,21 @@ var UIController = (function() {
       console.log (elClicked.className, DOMstrings.replyBtn);
       if (elClicked.className === 'reply-btn') {
         console.log ('element clicked is a reply btn!');
-        // console.log ('created reply box:', createReplyBox());
-
-        //target, then append created element to the chosen element:
-        // var parent = document.querySelector(DOMstrings.replyBtn).parentElement;
-        console.log ('parent', parentEl);
         console.log ('createReplyBox results:', createReplyBox() );
-
-        // console.log ('demo', parentEl.contains(createReplyBox()));
-
       // var replyBtnTest = document.querySelector('.reply-btn');
       // var notExist = document.querySelector('.test-ted');
       // console.log('parent el contains:', parentEl.contains(replyBtnTest) );
       // console.log('parent el contains:', parentEl.contains(notExist) );
-
       var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
       console.log('parent el contains:', parentEl.contains(replyTextBox) );
-
-
-      //only create a reply box if parent does not already have reply text box
-      if (parentEl.contains(replyTextBox) === false) {
-        console.log ('appending to parent!!');
-        // createReplyBox();
-        parentEl.appendChild(createReplyBox());
+        //only create a reply box if parent does not already have reply text box
+        if (parentEl.contains(replyTextBox) === false) {
+          console.log ('appending to parent!!');
+          //target, then append created element to the chosen element:
+          parentEl.appendChild(createReplyBox());
+        }
       }
-
-      }
-
-
-
     },
-
-    //   console.log ('input created:', input);
-    //   //target, then append created element to the chosen element:
-    //   var parent = document.querySelector(DOMstrings.replyBtn).parentElement;
-    //
-    //   console.log ('parent', parent);
-    //   parent.appendChild(input);
-    // }
-
   }   //end of UIController return
 
 
