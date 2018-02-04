@@ -2,7 +2,7 @@ var express = require("express");
 var app = express();
 
 const session = require('express-session');
-// const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo')(session);
 
 
 
@@ -75,7 +75,8 @@ console.log ('second PROCESS env', process.env.DATABASEURL);
 app.use(session({
   secret: "This is the super duper secrete hashing powder",
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
 //setup PASSPORT
