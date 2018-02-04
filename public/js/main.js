@@ -43,7 +43,6 @@ var UIController = (function() {
     getDOMstrings: function() {
       return DOMstrings;
     },
-
     //e: event, el: element
     checkElementClicked: function(e) {
       console.log ('checkElementClicked running...');
@@ -70,9 +69,7 @@ var UIController = (function() {
         }
       }
     },
-  }   //end of UIController return
-
-
+  }   //end of UIController return statement
 })(); //end of UIController
 
 // GLOBAL APP CONTROLLER: main job is to call other methods
@@ -80,20 +77,10 @@ var controller = (function(listCtrl, UICtrl) {
 
   var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
-    //remember that you'll get error: Uncaught TypeError: Cannot read property 'addEventListener' of null if there's no logged in user, since ejs
+    //remember that you'll get error: Uncaught TypeError: Cannot read property 'addEventListener'
+    //of null if there's no logged in user, since ejs
     //renders only certain parts of page if there's a user
     document.querySelector(DOM.threadsBox).addEventListener('click', UICtrl.checkElementClicked);
-
-
-
-
-
-    // console.log ('demo-class', DOM.demoClass);
-    // console.log (DOM.submitBtn);
-    // console.log (typeof DOM.submitBtn);
-    // console.log ('demo btn str:', typeof DOM.demoBtn, DOM.demoBtn);
-    //
-    // console.log ('asdfkjl;', document.querySelector(DOM.demoClass) );
     if ( document.querySelector(DOM.demoClass) ) {
       document.querySelector(DOM.demoClass).addEventListener('click', function(event) {
         console.log('clicked!!!!!');
@@ -109,17 +96,6 @@ var controller = (function(listCtrl, UICtrl) {
     if (delBtn) {
       delBtn.addEventListener('click', validateInput);
     }
-
-
-
-
-
-
-    // document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
-
-
-
-
   };
 
   var ctrlAddItem = function(event) {
@@ -138,15 +114,6 @@ var controller = (function(listCtrl, UICtrl) {
         subject.setCustomValidity('Please write a something in the field.');
       }
   };
-
-  // var validateInput = function() {
-  //   console.log ('validateInput running...');
-  //   var subject = document.getElementById('subject');
-  //     if (subject.validity.valueMissing) {
-  //       subject.setCustomValidity('Please write a something in the field.');
-  //     }
-  // };
-
   return {
     init: function() {
       setupEventListeners();
@@ -156,7 +123,6 @@ var controller = (function(listCtrl, UICtrl) {
 })(listController, UIController);
 
 controller.init();
-
 
     $('.btn-main-controller').click(function() {
       console.log (' you clicked!!');
@@ -173,8 +139,6 @@ controller.init();
 
 
 // }); //end of document ready fxn
-
-
 
 // document.querySelector('demoId').addEventListener('click', function(event) {
 // console.log ('you clicked myEl');
