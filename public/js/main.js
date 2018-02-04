@@ -31,12 +31,17 @@ var UIController = (function() {
   var createReplyBox = function() {
     console.log ('createReplyBox method running!');
     //create and return the element to be re-used:
+    var divParent = document.createElement('div');
+    divParent.className = 'replyBoxParent';
     var input = document.createElement('input');
+    // var input = document.createElement('input');
+    // var results;
     input.type = 'text';
     input.name = 'myName';
     input.className = 'reply-text-box';
+    divParent.appendChild(input);
     // console.log ('input created:', input);
-    return input;
+    return divParent;
   };
 
   return {
@@ -54,7 +59,7 @@ var UIController = (function() {
       console.log (elClicked.className, DOMstrings.replyBtn);
       if (elClicked.className === 'reply-btn') {
         console.log ('element clicked is a reply btn!');
-        console.log ('createReplyBox results:', createReplyBox() );
+        console.log ('createReplyBox results:', typeof createReplyBox() );
       // var replyBtnTest = document.querySelector('.reply-btn');
       // var notExist = document.querySelector('.test-ted');
       // console.log('parent el contains:', parentEl.contains(replyBtnTest) );
