@@ -41,6 +41,7 @@ var UIController = (function() {
     demoBtn: '.demo-btn',
     demoClass: '.demo-class',
     delBtn: '.del-btn',
+    replyTextBox: '.reply-text-box',
     replyBtn: '.reply-btn',
     threadsBox: '.threads-box'
   };
@@ -51,6 +52,7 @@ var UIController = (function() {
     var input = document.createElement('input');
     input.type = 'text';
     input.name = 'myName';
+    input.className = 'reply-text-box';
 
     console.log ('input created:', input);
     return input;
@@ -86,12 +88,27 @@ var UIController = (function() {
         // console.log ('demo', parentEl.contains(createReplyBox()));
 
 
+// var replyBtnTest = document.querySelector('.reply-btn');
+// var notExist = document.querySelector('.test-ted');
+// console.log('parent el contains:', parentEl.contains(replyBtnTest) );
+// console.log('parent el contains:', parentEl.contains(notExist) );
 
-        if (parentEl.contains(createReplyBox())) {
-          console.log ('parent has the element!');
-          // createReplyBox();
-          parentEl.appendChild(createReplyBox());
-        }
+var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
+console.log('parent el contains:', parentEl.contains(replyTextBox) );
+
+
+if (parentEl.contains(replyTextBox) === false) {
+  console.log ('appending to parent!!');
+  // createReplyBox();
+  parentEl.appendChild(createReplyBox());
+}
+
+
+        // if (parentEl.contains(createReplyBox())) {
+        //   console.log ('parent has the element!');
+        //   // createReplyBox();
+        //   parentEl.appendChild(createReplyBox());
+        // }
         // parentEl.contains();
 
 
