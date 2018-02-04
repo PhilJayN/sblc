@@ -77,7 +77,6 @@ var UIController = (function() {
       console.log (elClicked.className, DOMstrings.replyBtn);
       if (elClicked.className === 'reply-btn') {
         console.log ('element clicked is a reply btn!');
-        //only create a reply box if parent does not already have reply text box
         // console.log ('created reply box:', createReplyBox());
 
         //target, then append created element to the chosen element:
@@ -87,39 +86,21 @@ var UIController = (function() {
 
         // console.log ('demo', parentEl.contains(createReplyBox()));
 
+      // var replyBtnTest = document.querySelector('.reply-btn');
+      // var notExist = document.querySelector('.test-ted');
+      // console.log('parent el contains:', parentEl.contains(replyBtnTest) );
+      // console.log('parent el contains:', parentEl.contains(notExist) );
 
-// var replyBtnTest = document.querySelector('.reply-btn');
-// var notExist = document.querySelector('.test-ted');
-// console.log('parent el contains:', parentEl.contains(replyBtnTest) );
-// console.log('parent el contains:', parentEl.contains(notExist) );
-
-var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
-console.log('parent el contains:', parentEl.contains(replyTextBox) );
-
-
-if (parentEl.contains(replyTextBox) === false) {
-  console.log ('appending to parent!!');
-  // createReplyBox();
-  parentEl.appendChild(createReplyBox());
-}
+      var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
+      console.log('parent el contains:', parentEl.contains(replyTextBox) );
 
 
-        // if (parentEl.contains(createReplyBox())) {
-        //   console.log ('parent has the element!');
-        //   // createReplyBox();
-        //   parentEl.appendChild(createReplyBox());
-        // }
-        // parentEl.contains();
-
-
-
-
-
-        // var replyBtn = document.querySelector(DOM.replyBtn);
-        // if (replyBtn) {
-        //   replyBtn.addEventListener('click', UICtrl.createReplyBox);
-        // }
-
+      //only create a reply box if parent does not already have reply text box
+      if (parentEl.contains(replyTextBox) === false) {
+        console.log ('appending to parent!!');
+        // createReplyBox();
+        parentEl.appendChild(createReplyBox());
+      }
 
       }
 
@@ -127,13 +108,6 @@ if (parentEl.contains(replyTextBox) === false) {
 
     },
 
-    // createReplyBox: function() {
-    //   console.log ('createReplyBox method running!');
-    //   //create and return the element:
-    //   var input = document.createElement('input');
-    //   input.type = 'text';
-    //   input.name = 'myName';
-    //
     //   console.log ('input created:', input);
     //   //target, then append created element to the chosen element:
     //   var parent = document.querySelector(DOMstrings.replyBtn).parentElement;
@@ -142,8 +116,8 @@ if (parentEl.contains(replyTextBox) === false) {
     //   parent.appendChild(input);
     // }
 
+  }   //end of UIController return
 
-  }
 
 })(); //end of UIController
 
