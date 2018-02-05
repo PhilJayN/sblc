@@ -1,13 +1,12 @@
-console.log('demo JavaScript file');
 
 var elDemo = document.querySelector('.demo-class');
 var demoId = document.getElementById('demo-id');
 
-console.log ('elDemo using querySelector:', elDemo);
-console.log ('demoId using getElementById:', demoId);
+// console.log ('elDemo using querySelector:', elDemo);
+// console.log ('demoId using getElementById:', demoId);
 
 if (elDemo) {
-  console.log ('el demo exists!');
+  // console.log ('el demo exists!');
 }
 
 if ( document.querySelector('.demo-class') ) {

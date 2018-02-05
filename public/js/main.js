@@ -9,7 +9,7 @@
 
 var listController = (function() {
   //calculation and data structure goes here.
-  console.log ('LISTcONTROLLER!!');
+  // console.log ('LISTcONTROLLER!!');
 })();
 
 // code for displaying or updating UI here:
@@ -29,7 +29,7 @@ var UIController = (function() {
   };
 
   var createReplyBox = function() {
-    console.log ('createReplyBox method running!');
+    // console.log ('createReplyBox method running!');
     //create and return the element to be re-used:
     var divParent = document.createElement('div');
     divParent.className = 'replyBoxParent';
@@ -53,19 +53,19 @@ var UIController = (function() {
       console.log ('checkElementClicked running...');
       var elClicked, parentEl;
       elClicked = e.target;
-      console.log ('element clicked is', elClicked);
+      // console.log ('element clicked is', elClicked);
       parentEl = elClicked.parentNode;
       console.log ('parent el: ', parentEl);
       console.log (elClicked.className, DOMstrings.replyBtn);
       if (elClicked.className === 'reply-btn') {
-        console.log ('element clicked is a reply btn!');
+        // console.log ('element clicked is a reply btn!');
         console.log ('createReplyBox results:', typeof createReplyBox() );
       // var replyBtnTest = document.querySelector('.reply-btn');
       // var notExist = document.querySelector('.test-ted');
       // console.log('parent el contains:', parentEl.contains(replyBtnTest) );
       // console.log('parent el contains:', parentEl.contains(notExist) );
       var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
-      console.log('parent el contains:', parentEl.contains(replyTextBox) );
+      console.log('parentEl has textbox:', parentEl.contains(replyTextBox), 'texbox el is:' );
         //only create a reply box if parent does not already have reply text box
         if (parentEl.contains(replyTextBox) === false) {
           console.log ('appending to parent!!');
