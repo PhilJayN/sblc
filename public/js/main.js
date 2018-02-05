@@ -30,20 +30,39 @@ var UIController = (function() {
   };
 
   var createReplyBox = function() {
-    // console.log ('createReplyBox method running!');
-    //create and return the element to be re-used:
     var divParent = document.createElement('div');
     divParent.className = 'replyBoxParent';
-    var input = document.createElement('input');
-    // var input = document.createElement('input');
-    // var results;
-    input.type = 'text';
-    input.name = 'myName';
-    input.className = 'reply-text-box';
-    divParent.appendChild(input);
+    var form = document.createElement('form');
+    form.action = '/threads/<%= thread._id %>?_method=PUT';
+    form.method = 'POST';
+    divParent.appendChild(form);
+
+    var div = document.createElement('div');
+    div.className = 'form-group';
+    divParent.appendChild(div);
+
+    var textArea = document.createElement('textarea');
+    div.appendChild(textArea);
+
+    var button = document.createElement('button');
+    form.appendChild(button);
+
+
+
+
+
     // console.log ('input created:', input);
     return divParent;
   };
+
+
+      //
+      // <form action="/threads/<%= thread._id %>?_method=PUT" method="POST">
+      //   <div class="form-group">
+      //     <textarea autofocus name="comment[text]" class="form-control comment-text-input" value="<%= comment.text %>" required><%= comment.text %></textarea>
+      //   </div>
+      //     <button class="btn btn-primary">Submit</button>
+      // </form>
 
   return {
     getDOMstrings: function() {
