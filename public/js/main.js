@@ -24,6 +24,7 @@ var UIController = (function() {
     demoClass: '.demo-class',
     delBtn: '.del-btn',
     replyTextBox: '.reply-text-box',
+    replyBoxParent: '.reply-box-parent',
     replyBtn: '.reply-btn',
     threadsBox: '.threads-box'
   };
@@ -50,24 +51,25 @@ var UIController = (function() {
     },
     //e: event, el: element
     checkElementClicked: function(e) {
-      console.log ('checkElementClicked running...');
+      // console.log ('checkElementClicked running...');
       var elClicked, parentEl;
       elClicked = e.target;
       // console.log ('element clicked is', elClicked);
       parentEl = elClicked.parentNode;
-      console.log ('parent el: ', parentEl);
-      console.log (elClicked.className, DOMstrings.replyBtn);
+      console.log ('parent el for clicked el: ', parentEl);
       if (elClicked.className === 'reply-btn') {
         // console.log ('element clicked is a reply btn!');
-        console.log ('createReplyBox results:', typeof createReplyBox() );
+        // console.log ('createReplyBox results:', typeof createReplyBox() );
       // var replyBtnTest = document.querySelector('.reply-btn');
       // var notExist = document.querySelector('.test-ted');
       // console.log('parent el contains:', parentEl.contains(replyBtnTest) );
       // console.log('parent el contains:', parentEl.contains(notExist) );
       var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
-      console.log('parentEl has textbox:', parentEl.contains(replyTextBox), 'texbox el is:' );
+      var replyBoxParent = document.querySelector(DOMstrings.replyTextBox);
+
+      console.log('parentEl has replyTextBox:', parentEl.contains(replyTextBox), 'replyTextBox el is:' );
         //only create a reply box if parent does not already have reply text box
-        if (parentEl.contains(replyTextBox) === false) {
+        if (parentEl.contains(replyBoxParent) === false) {
           console.log ('appending to parent!!');
           //target, then append created element to the chosen element:
           parentEl.appendChild(createReplyBox());
