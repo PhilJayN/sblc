@@ -4,8 +4,6 @@ var app = express();
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-
-
 var bodyParser = require("body-parser");
 var User = require("./models/user");
 var Photo = require("./models/photo");
@@ -41,35 +39,20 @@ var mongoose = require("mongoose");
 // mongoose.connect("mongodb://localhost/photos_app");
 app.set('port', (process.env.PORT || 6000));
 
-
-
-
 var url = process.env.DATABASEURL || "mongodb://localhost/sblc_app";
 mongoose.connect(url);
 // mongoose.connect(process.env.DATABASEURL);
 // console.log ('first PROCESS env', process.env);
 console.log ('second PROCESS env', process.env.DATABASEURL);
 
-// console.log('process env sadfjasdfkl;', process.env.DATABASEURL);
-
-
-
-
 // mongodb://<dbuser>:<dbpassword>@ds123976.mlab.com:23976/sblc
 // mongoose.connect("mongodb://Philip:Limer23@ds123976.mlab.com:23976/sblc");
 // console.log ('process env', process.env.DATABASEURL);
 // mongoose.connect("mongodb://localhost/sblc_app");
 
-
-// mongoose.connect(process.env.DATABASEURL);
-
 // var url = process.env.DATABASEURL || "mongodb://localhost/sblc_app";
-//
-// mongoose.connect(url);
 // mongoose.connect(process.env.DATABASEURL);
 // console.log('process env DATABASEURL', process.env.DATABASEURL);
-
-
 
 //PASSPORT CONFIGURATION
 app.use(session({
@@ -103,7 +86,6 @@ app.use(commentRoutes);
 app.use(indexRoutes);
 app.use(resourcesRoutes);
 app.use(threadRoutes);
-
 
 // app.listen(process.env.PORT, process.env.IP, function () {
 //   console.log('listening on port:', process.env.PORT, process.env.IP);
