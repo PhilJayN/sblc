@@ -1,4 +1,3 @@
-
 // $(document).ready(function(){
 //
 //   document.querySelector(".room-sblc").addEventListener('click', function() {
@@ -46,17 +45,8 @@ var UIController = (function() {
 
     var button = document.createElement('button');
     form.appendChild(button);
-
-
-
-
-
-    // console.log ('input created:', input);
     return divParent;
   };
-
-
-      //
       // <form action="/threads/<%= thread._id %>?_method=PUT" method="POST">
       //   <div class="form-group">
       //     <textarea autofocus name="comment[text]" class="form-control comment-text-input" value="<%= comment.text %>" required><%= comment.text %></textarea>
@@ -80,12 +70,9 @@ var UIController = (function() {
         // console.log ('element clicked is a reply btn!');
         // console.log ('createReplyBox results:', typeof createReplyBox() );
       // var replyBtnTest = document.querySelector('.reply-btn');
-      // var notExist = document.querySelector('.test-ted');
       // console.log('parent el contains:', parentEl.contains(replyBtnTest) );
-      // console.log('parent el contains:', parentEl.contains(notExist) );
       var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
       var replyBoxParent = document.querySelector(DOMstrings.replyTextBox);
-
       console.log('parentEl has replyTextBox:', parentEl.contains(replyTextBox), 'replyTextBox el is:' );
         //only create a reply box if parent does not already have reply text box
         if (parentEl.contains(replyBoxParent) === false) {
@@ -104,8 +91,7 @@ var controller = (function(listCtrl, UICtrl) {
   var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
     //remember that you'll get error: Uncaught TypeError: Cannot read property 'addEventListener'
-    //of null if there's no logged in user, since ejs
-    //renders only certain parts of page if there's a user
+    //of null if there's no logged in user, since ejs renders only certain parts of page if there's a user
     document.querySelector(DOM.threadsBox).addEventListener('click', UICtrl.checkElementClicked);
     if ( document.querySelector(DOM.demoClass) ) {
       document.querySelector(DOM.demoClass).addEventListener('click', function(event) {
@@ -155,18 +141,4 @@ controller.init();
       $('.multi-collapse').collapse('hide');
     });
 
-  // var submitThreadBtn = document.getElementById('submit-thread');
-
-  // submitThreadBtn.addEventListener('click', function(event) {
-  //   if (subject.validity.valueMissing) {
-  //     subject.setCustomValidity('Please write a something in the field.');
-  //   }
-  // });
-
-
 // }); //end of document ready fxn
-
-// document.querySelector('demoId').addEventListener('click', function(event) {
-// console.log ('you clicked myEl');
-// });
-// console.log ('myEl', myEl);
