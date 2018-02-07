@@ -30,7 +30,7 @@ var UIController = (function() {
 
   var createReplyBox = function() {
     var divParent = document.createElement('div');
-    divParent.className = 'replyBoxParent';
+    divParent.className = 'reply-box-parent';
     var form = document.createElement('form');
     form.action = '/threads/<%= thread._id %>?_method=PUT';
     form.method = 'POST';
@@ -38,10 +38,12 @@ var UIController = (function() {
 
     var div = document.createElement('div');
     div.className = 'form-group';
-    divParent.appendChild(div);
+    form.appendChild(div);
 
     var textArea = document.createElement('textarea');
     div.appendChild(textArea);
+    div.className = 'form-control';
+    div.className = 'comment-text-input';
 
     var button = document.createElement('button');
     form.appendChild(button);
