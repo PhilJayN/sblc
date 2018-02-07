@@ -64,8 +64,6 @@ router.post('/threads', function (req, res) {
 
 
 
-
-
 // router.get('/threads', function(req, res) {
 //   res.send('threads route!');
 // });
@@ -90,5 +88,7 @@ router.post('/threads', function (req, res) {
 //           console.log(comment);
 //       }
 //     });
+
+
 
 module.exports = router;

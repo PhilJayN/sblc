@@ -9,6 +9,7 @@ var User = require("./models/user");
 var Photo = require("./models/photo");
 var Comment = require('./models/comment');
 var Thread = require('./models/thread');
+var Reply = require('./models/reply');
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
@@ -31,6 +32,8 @@ var commentRoutes = require("./routes/comments");
 var indexRoutes = require("./routes/index");
 var resourcesRoutes = require("./routes/resources");
 var threadRoutes = require("./routes/threads");
+var replyRoutes = require("./routes/replies");
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
@@ -86,6 +89,8 @@ app.use(commentRoutes);
 app.use(indexRoutes);
 app.use(resourcesRoutes);
 app.use(threadRoutes);
+app.use(replyRoutes);
+
 
 // app.listen(process.env.PORT, process.env.IP, function () {
 //   console.log('listening on port:', process.env.PORT, process.env.IP);
