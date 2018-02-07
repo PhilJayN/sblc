@@ -32,7 +32,8 @@ var UIController = (function() {
     var divParent = document.createElement('div');
     divParent.className = 'reply-box-parent';
     var form = document.createElement('form');
-    form.action = '/threads/<%= thread._id %>?_method=PUT';
+    // form.action = '/threads/<%= thread._id %>?_method=PUT';
+    form.action = '/threads/reply';
     form.method = 'POST';
     divParent.appendChild(form);
 
@@ -83,7 +84,7 @@ var UIController = (function() {
         if (parentEl.contains(replyBoxParent) === false) {
           console.log ('appending to parent!!');
           //target, then append created element to the chosen element:
-          parentEl.appendChild(createReplyBox());
+          parentEl.appendChild(createReplyBox()); //DOM is now updated to have results of createReplyBox method call
         }
       }
     },

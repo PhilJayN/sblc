@@ -100,12 +100,12 @@
         <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button>
         <p><strong><%= thread.subject %></strong></p>
         <!-- div below needs to be collapsible-->
-        <div class="collapse multi-collapse show" id="<%= thread._id %>">
+        <div class="collapse multi-collapse show">
           <p class="thread-text"><%= thread.text %></p>
           <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></p>
         </div>
         <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
-        <span class="reply-btn">Reply</span>
+        <span class="reply-btn" id="<%= thread._id %>">Reply</span>
         <!-- reply text box will be generated here on click-->
       </div>
     <% }) %>    <!--end of forEach-->
