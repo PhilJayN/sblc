@@ -42,10 +42,13 @@ var UIController = (function() {
 
     var textArea = document.createElement('textarea');
     div.appendChild(textArea);
-    div.className = 'form-control';
-    div.className = 'comment-text-input';
+    textArea.className = 'form-control';
+    textArea.className = 'comment-text-input';
+    textArea.name = 'reply[text]';
 
     var button = document.createElement('button');
+    button.className = 'btn';
+    button.innerText = 'Submit!';
     form.appendChild(button);
     return divParent;
   };
