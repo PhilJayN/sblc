@@ -46,7 +46,16 @@ var UIController = (function() {
     textArea.className = 'form-control';
     textArea.className = 'comment-text-input';
     var id = divParent.getAttribute('id');
-    textArea.name = id;
+    // textArea.name = id;
+    textArea.name = 'shahah';
+
+
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'inputName';
+    input.value = 'asdjlfk;iou435';
+    form.appendChild(input);
+
 
     // textArea.name = 'reply[text]';
     div.appendChild(textArea);

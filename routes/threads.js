@@ -3,6 +3,7 @@ var router = express.Router({mergeParams: true});
 var Thread = require("../models/thread");
 var middleware = require("../middleware");
 
+
 //show new form to CREATE threads
 router.get('/threads/new', function (req, res) {
   Thread.find({}, function(err, allThreads){
@@ -31,8 +32,6 @@ router.get('/threads/:id/reply', function (req, res) {
 //post req. occurs when submit btn on form is clicked
 router.post('/threads/reply', function (req, res) {
   console.log ('post req occured due to reply btn submit', req.body);
-  // var dataAtr = document.querySelector('.reply-box-parent');
-  // console.log(dataAtr);
   //use body-parser to get data from 'name' attribute in form
   // var reply = req.body.reply.text;
   // var id = req.body
