@@ -52,8 +52,8 @@ var UIController = (function() {
 
     var input = document.createElement('input');
     input.type = 'hidden';
-    input.name = 'inputName';
-    input.value = 'asdjlfk;iou435';
+    input.name = 'threadId';
+    input.value = id;
     form.appendChild(input);
 
 

@@ -34,8 +34,9 @@ router.post('/threads/reply', function (req, res) {
   console.log ('post req occured due to reply btn submit', req.body);
   //use body-parser to get data from 'name' attribute in form
   // var reply = req.body.reply.text;
-  // var id = req.body
-  // console.log ('reply', reply);
+  // var reply = req.body.reply.text;
+  var id = req.body.threadId;
+  console.log ('id:!!!', id);
   //keep track of author
   // var author = {
   //   id: req.user._id,
@@ -45,11 +46,12 @@ router.post('/threads/reply', function (req, res) {
 
 
   //find a thread in DB by its ID. get ID from parent node
-  // Thread.findById(req.params.id, function(err, foundThread) {
-  //   res.redirect('/');
-  // });
+  Thread.findById(id, function(err, foundThread) {
+    console.log ('foundThread from db', foundThread);
 
     res.redirect('/');
+  });
+
 
 });
 
