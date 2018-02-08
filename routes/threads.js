@@ -30,33 +30,33 @@ router.get('/threads/:id/reply', function (req, res) {
 
 
 //CREATE DELETE ANYTIME
-router.post('/photos/:id/comments', middleware.isLoggedIn, function(req, res){
-  Photo.findById(req.params.id, function(err, photo) {
-    if(err) {
-      console.log(err);
-    } else {
-      console.log('req.body.comment input', req.body.comment);
-      Comment.create(req.body.comment, function(err, comment) {
-        if(err) {
-          req.flash("error", "Oops! Something went wrong.");
-          console.log(err);
-        } else {
-          console.log('comment prior:', comment); //shows comment before anything added
-          //add username and id to comment
-          comment.author.id = req.user._id;
-          comment.author.username = req.user.username;
-          comment.save();
-          console.log('resulting comment', comment);
-
-          photo.comments.push(comment);
-          photo.save();
-          req.flash("success", "Successfully added new comment.");
-          res.redirect("/photos/" + photo._id);
-        }
-      });
-    }
-  });
-});
+// router.post('/photos/:id/comments', middleware.isLoggedIn, function(req, res){
+//   Photo.findById(req.params.id, function(err, photo) {
+//     if(err) {
+//       console.log(err);
+//     } else {
+//       console.log('req.body.comment input', req.body.comment);
+//       Comment.create(req.body.comment, function(err, comment) {
+//         if(err) {
+//           req.flash("error", "Oops! Something went wrong.");
+//           console.log(err);
+//         } else {
+//           console.log('comment prior:', comment); //shows comment before anything added
+//           //add username and id to comment
+//           comment.author.id = req.user._id;
+//           comment.author.username = req.user.username;
+//           comment.save();
+//           console.log('resulting comment', comment);
+//
+//           photo.comments.push(comment);
+//           photo.save();
+//           req.flash("success", "Successfully added new comment.");
+//           res.redirect("/photos/" + photo._id);
+//         }
+//       });
+//     }
+//   });
+// });
 
 
 //CREATE, add data to threads replies in DB
@@ -66,6 +66,7 @@ router.post('/threads/reply', function (req, res) {
   console.log('req.user', req.user);
   //use body-parser to get data from 'name' attribute in form
   var reply = req.body.reply;
+  //id has its roots in main.js, where .getAttribute helps us get the id of thread from HTML attribute.
   var id = req.body.threadId;
   console.log ('id:!!!', id);
 
@@ -75,24 +76,30 @@ router.post('/threads/reply', function (req, res) {
       console.log (err);
     } else {
       console.log ('foundThread from db', foundThread);
-      Reply.create(req.body.reply, function(err, reply) {
-        if(err) {
-          console.log(err);
-        } else {
-          console.log('reply from user', reply);
-          reply.author.id = req.user._id;
-          reply.author.username = req.user.username;
-          reply.save();
-          console.log('resulting reply', reply);
-
-
-
-        }
-
-      });
-
+      
+      // Reply.create(req.body.reply, function(err, reply) {
+      //   if(err) {
+      //     console.log(err);
+      //   } else {
+      //     console.log('reply from user', reply);
+      //
+      //     // reply.author.id = req.user._id;
+      //     // reply.author.username = req.user.username;
+      //     // reply.save();
+      //     // console.log('resulting reply', reply);
+      //
+      //
+      //     //now for data association between thread and reply:
+      //     // foundThread.replies.push(reply);
+      //     // foundThread.save();
+      //     // req.flash("success", "Successfully added new reply.");
+      //
+      //   }
+      //
+      // });
 
       res.redirect('/');
+
     }
   });
 
