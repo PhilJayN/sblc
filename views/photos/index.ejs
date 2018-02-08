@@ -105,7 +105,8 @@
           <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></p>
         </div>
         <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
-        <div class="reply-box-parent" id="<%= thread._id %>">
+        <div class="reply-box-parent" id="<%= thread._id %>" name="stuff[<%=thread._id %>]"=>
+          <!-- textArea.name = 'reply[text]'; -->
           <span class="reply-btn">Reply</span>
         </div>
         <!-- reply text box will be generated here on click-->

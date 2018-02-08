@@ -33,7 +33,6 @@ router.post('/threads/reply', function (req, res) {
   console.log ('post req occured due to reply btn submit', req.body);
   // var dataAtr = document.querySelector('.reply-box-parent');
   // console.log(dataAtr);
-  console.log('req.params', req.params);
   //use body-parser to get data from 'name' attribute in form
   // var reply = req.body.reply.text;
   // var id = req.body
