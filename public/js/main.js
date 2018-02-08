@@ -24,6 +24,7 @@ var UIController = (function() {
     delBtn: '.del-btn',
     replyTextBox: '.reply-text-box',
     replyBoxParent: '.reply-box-parent',
+    replyForm: '.reply-form',
     replyBtn: '.reply-btn',
     threadsBox: '.threads-box'
   };
@@ -34,6 +35,7 @@ var UIController = (function() {
     // form.action = '/threads/<%= thread._id %>?_method=PUT';
     form.action = '/threads/reply';
     form.method = 'POST';
+    form.className = 'reply-form';
     divParent.appendChild(form);
 
     var div = document.createElement('div');
@@ -50,7 +52,7 @@ var UIController = (function() {
     button.className = 'btn';
     button.innerText = 'Submit!';
     div.appendChild(button);
-    return divParent;
+    return form;
   };
       // <form action="/threads/<%= thread._id %>?_method=PUT" method="POST">
       //   <div class="form-group">
@@ -70,7 +72,7 @@ var UIController = (function() {
       elClicked = e.target;
       // console.log ('element clicked is', elClicked);
       parentEl = elClicked.parentNode;
-      console.log ('parent el for clicked el: ', parentEl);
+      console.log ('el clicked:', elClicked, 'parent el for clicked el: ', parentEl);
       if (elClicked.className === 'reply-btn') {
         // console.log ('element clicked is a reply btn!');
         // console.log ('createReplyBox results:', typeof createReplyBox() );
@@ -78,9 +80,10 @@ var UIController = (function() {
       // console.log('parent el contains:', parentEl.contains(replyBtnTest) );
       var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
       var replyBoxParent = document.querySelector(DOMstrings.replyTextBox);
+      var replyForm = document.querySelector(DOMstrings.replyForm);
       console.log('parentEl has replyTextBox:', parentEl.contains(replyTextBox), 'replyTextBox el is:' );
         //only create a reply box if parent does not already have reply text box
-        if (parentEl.contains(replyBoxParent) === false) {
+        if (parentEl.contains(replyForm) === false) {
           console.log ('appending to parent!!');
           //target, then append created element to the chosen element:
           parentEl.appendChild(createReplyBox()); //DOM is now updated to have results of createReplyBox method call
