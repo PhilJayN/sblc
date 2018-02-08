@@ -29,8 +29,7 @@ var UIController = (function() {
   };
 
   var createReplyBox = function() {
-    var divParent = document.createElement('div');
-    divParent.className = 'reply-box-parent';
+    var divParent = document.querySelector(DOMstrings.replyBoxParent);
     var form = document.createElement('form');
     // form.action = '/threads/<%= thread._id %>?_method=PUT';
     form.action = '/threads/reply';

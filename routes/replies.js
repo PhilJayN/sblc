@@ -2,6 +2,8 @@ var express = require("express");
 var router = express.Router({mergeParams: true});
 var Reply = require("../models/reply");
 var middleware = require("../middleware");
+var Thread = require("../models/thread");
+
 
 //works to seed in DB:
 // Reply.create(
@@ -21,31 +23,8 @@ var middleware = require("../middleware");
 
 //CREATE
 router.post('/threads/reply', function(req, res){
-  Thread.findById(req.params.id, function(err, photo) {
-    if(err) {
-      console.log(err);
-    } else {
-      console.log('req.body.comment input', req.body.comment);
-      Reply.create(req.body.comment, function(err, comment) {
-        if(err) {
-          req.flash("error", "Oops! Something went wrong.");
-          console.log(err);
-        } else {
-          console.log('comment prior:', comment); //shows comment before anything added
-          //add username and id to comment
-          comment.author.id = req.user._id;
-          comment.author.username = req.user.username;
-          comment.save();
-          console.log('resulting comment', comment);
+  console.log('rep params: ', req.params);
 
-          photo.comments.push(comment);
-          photo.save();
-          req.flash("success", "Successfully added new comment.");
-          res.redirect("/photos/" + photo._id);
-        }
-      });
-    }
-  });
 });
 
 
