@@ -2,6 +2,8 @@ var express = require("express");
 var router = express.Router({mergeParams: true});
 var Thread = require("../models/thread");
 var middleware = require("../middleware");
+var Reply = require("../models/reply");
+
 
 
 //show new form to CREATE threads
@@ -27,35 +29,82 @@ router.get('/threads/:id/reply', function (req, res) {
 
 
 
+//CREATE DELETE ANYTIME
+router.post('/photos/:id/comments', middleware.isLoggedIn, function(req, res){
+  Photo.findById(req.params.id, function(err, photo) {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log('req.body.comment input', req.body.comment);
+      Comment.create(req.body.comment, function(err, comment) {
+        if(err) {
+          req.flash("error", "Oops! Something went wrong.");
+          console.log(err);
+        } else {
+          console.log('comment prior:', comment); //shows comment before anything added
+          //add username and id to comment
+          comment.author.id = req.user._id;
+          comment.author.username = req.user.username;
+          comment.save();
+          console.log('resulting comment', comment);
+
+          photo.comments.push(comment);
+          photo.save();
+          req.flash("success", "Successfully added new comment.");
+          res.redirect("/photos/" + photo._id);
+        }
+      });
+    }
+  });
+});
+
 
 //CREATE, add data to threads replies in DB
 //post req. occurs when submit btn on form is clicked
 router.post('/threads/reply', function (req, res) {
   console.log ('post req occured due to reply btn submit', req.body);
+  console.log('req.user', req.user);
   //use body-parser to get data from 'name' attribute in form
-  // var reply = req.body.reply.text;
-  // var reply = req.body.reply.text;
+  var reply = req.body.reply;
   var id = req.body.threadId;
   console.log ('id:!!!', id);
-  //keep track of author
-  // var author = {
-  //   id: req.user._id,
-  //   username: req.user.username
-  // };
 
-
-
-  //find a thread in DB by its ID. get ID from parent node
+  //find a thread in DB by its ID. get ID from hidden input field in HTML
   Thread.findById(id, function(err, foundThread) {
-    console.log ('foundThread from db', foundThread);
+    if(err) {
+      console.log (err);
+    } else {
+      console.log ('foundThread from db', foundThread);
+      Reply.create(req.body.reply, function(err, reply) {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log('reply from user', reply);
+          reply.author.id = req.user._id;
+          reply.author.username = req.user.username;
+          reply.save();
+          console.log('resulting reply', reply);
 
-    res.redirect('/');
+
+
+        }
+
+      });
+
+
+      res.redirect('/');
+    }
   });
-
 
 });
 
 
+
+//keep track of author
+// var author = {
+//   id: req.user._id,
+//   username: req.user.username
+// };
 
 
 //CREATE Route: add thread to DB
