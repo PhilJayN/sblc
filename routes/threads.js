@@ -24,6 +24,25 @@ router.get('/threads/:id/reply', function (req, res) {
 });
 
 
+
+
+
+//CREATE, add data to threads replies in DB
+//post req. occurs when submit btn on form is clicked
+router.post('/threads/reply', function (req, res) {
+  console.log ('post req occured due to reply btn submit JA;SKLDFSDFJ;LKSFD');
+  console.log ('post req occured due to reply btn submit', req.query);
+
+  //find a thread in DB by its ID. get ID from parent node
+  // Thread.findById(req.params.id, function(err, foundThread) {
+  //   res.redirect('/');
+  // });
+  res.send('ehy!!!');
+});
+
+
+
+
 //CREATE Route: add thread to DB
 router.post('/threads', function (req, res) {
   console.log ('post req occured, here is the req.body:', req.body);
