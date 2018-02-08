@@ -38,9 +38,9 @@ router.get('/', function (req, res) {
           if (err) {
             console.log(err);
           }
-          console.log('allComments results Len:', allComments.length);
+          // console.log('allComments results Len:', allComments.length);
           resultsCount += allComments.length;
-          console.log('allComments results:', allComments);
+          // console.log('allComments results:', allComments);
           callback(null, allComments);
         });
       },
@@ -51,7 +51,7 @@ router.get('/', function (req, res) {
             console.log(err);
           }
           // console.log('allThreads results Len:', allThreads.length);
-          console.log('allThreads RESULTS:', allThreads);
+          // console.log('allThreads RESULTS:', allThreads);
           resultsCount += allThreads.length;
           callback(null, allThreads);
         });
@@ -61,10 +61,10 @@ router.get('/', function (req, res) {
     if (err) {
       console.log (err);
     } else {
-      console.log ('results Len:', results.length, 'results type:', typeof results);
-      console.log ('results obj:', results);
-      console.log ('results arr:', results[1]);
-      console.log ('TOTAL RESULTS LEN:', resultsCount);
+      // console.log ('results Len:', results.length, 'results type:', typeof results);
+      // console.log ('results obj:', results);
+      // console.log ('results arr:', results[1]);
+      // console.log ('TOTAL RESULTS LEN:', resultsCount);
       res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg, resultsCount: resultsCount, searchReq: searchReq} );
     }
       });

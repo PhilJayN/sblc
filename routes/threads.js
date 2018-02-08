@@ -30,14 +30,29 @@ router.get('/threads/:id/reply', function (req, res) {
 //CREATE, add data to threads replies in DB
 //post req. occurs when submit btn on form is clicked
 router.post('/threads/reply', function (req, res) {
-  console.log ('post req occured due to reply btn submit JA;SKLDFSDFJ;LKSFD');
-  console.log ('post req occured due to reply btn submit', req.query);
+  console.log ('post req occured due to reply btn submit', req.body);
+  // var dataAtr = document.querySelector('.reply-box-parent');
+  // console.log(dataAtr);
+  console.log('req.params', req.params);
+  //use body-parser to get data from 'name' attribute in form
+  // var reply = req.body.reply.text;
+  // var id = req.body
+  // console.log ('reply', reply);
+  //keep track of author
+  // var author = {
+  //   id: req.user._id,
+  //   username: req.user.username
+  // };
+
+
 
   //find a thread in DB by its ID. get ID from parent node
   // Thread.findById(req.params.id, function(err, foundThread) {
   //   res.redirect('/');
   // });
-  res.send('ehy!!!');
+
+    res.redirect('/');
+
 });
 
 
