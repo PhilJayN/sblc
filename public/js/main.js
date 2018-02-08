@@ -41,15 +41,15 @@ var UIController = (function() {
     form.appendChild(div);
 
     var textArea = document.createElement('textarea');
-    div.appendChild(textArea);
     textArea.className = 'form-control';
     textArea.className = 'comment-text-input';
     textArea.name = 'reply[text]';
+    div.appendChild(textArea);
 
     var button = document.createElement('button');
     button.className = 'btn';
     button.innerText = 'Submit!';
-    form.appendChild(button);
+    div.appendChild(button);
     return divParent;
   };
       // <form action="/threads/<%= thread._id %>?_method=PUT" method="POST">
