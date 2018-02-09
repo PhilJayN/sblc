@@ -65,19 +65,34 @@ router.post('/threads/reply', function (req, res) {
   // console.log ('post req occured due to reply btn submit', req.body);
   // console.log('req.user', req.user);
   //use body-parser to get data from 'name' attribute in form
-  var reply = req.body.reply;
+  // var reply = req.body.reply;
   //id has its roots in main.js, where .getAttribute helps us get the id of thread from HTML attribute.
-  var id = req.body.threadId;
-  console.log ('id:', id, 'reply', reply);
+  // var id = req.body.threadId;
+  console.log ('id:', req.body.threadId, 'reply', req.body.reply);
 
 
   //find a thread in DB by its ID. get ID from hidden input field in HTML
-  Thread.findById(id, function(err, foundThread) {
+  Thread.findById(req.body.threadId, function(err, foundThread) {
     if(err) {
       console.log (err);
     } else {
-      // console.log ('foundThread from db', foundThread);
+      console.log ('foundThread from db', foundThread);
+      console.log('-------------------------');
 
+      // Reply.create(req.body.reply, function(err, reply) {
+      //   if(err) {
+      //     console.log(err);
+      //   } else {
+      //     console.log(reply);
+      //   }
+      //
+      // });
+
+
+      //Data association: must add user reply to to Mongo collection, as well as associate
+      //data via reference to the foundThread
+
+      //Add user reply to to Mongo collection
       // Reply.create(req.body.reply, function(err, reply) {
       //   if(err) {
       //     console.log(err);
@@ -90,7 +105,7 @@ router.post('/threads/reply', function (req, res) {
       //     // console.log('resulting reply', reply);
       //
       //
-      //     //now for data association between thread and reply:
+      // //now for data association between thread and reply via reference to the foundThread
       //     // foundThread.replies.push(reply);
       //     // foundThread.save();
       //     // req.flash("success", "Successfully added new reply.");
@@ -167,9 +182,9 @@ router.post('/threads', function (req, res) {
 //works to create seeds in DB:
 // Thread.create(
 //      {
-//       subject: 'My subject',
-//       text: "my text",
-//       submittedOn: "march 1 3000"
+//       subject: 'My teddy',
+//       text: "my teddy txt",
+//       submittedOn: "march 456 3000"
 //      },
 //      function(err, comment){
 //       if(err){
@@ -180,6 +195,20 @@ router.post('/threads', function (req, res) {
 //       }
 //     });
 
+//works to create seeds in DB:
+    // Reply.create(
+    //      {
+    //       text: "my reply sadjfk;lsaj;kldfdfjsakl;",
+    //       submittedDate: "march 4444 9000"
+    //      },
+    //      function(err, reply){
+    //       if(err){
+    //           console.log(err);
+    //       } else {
+    //           console.log("NEWLY CREATED reply: ");
+    //           console.log(reply);
+    //       }
+    //     });
 
 
 module.exports = router;
