@@ -4,8 +4,6 @@ var Thread = require("../models/thread");
 var middleware = require("../middleware");
 var Reply = require("../models/reply");
 
-
-
 //show new form to CREATE threads
 router.get('/threads/new', function (req, res) {
   Thread.find({}, function(err, allThreads){
@@ -17,7 +15,6 @@ router.get('/threads/new', function (req, res) {
   });
 });
 
-
 //show form to REPLY to a  particular thread that has unique ID
 router.get('/threads/:id/reply', function (req, res) {
   // console.log ('params:', req.params.id);
@@ -25,39 +22,6 @@ router.get('/threads/:id/reply', function (req, res) {
     res.render('threads/reply.ejs', {thread: foundThread});
   });
 });
-
-
-
-
-//CREATE DELETE ANYTIME
-// router.post('/photos/:id/comments', middleware.isLoggedIn, function(req, res){
-//   Photo.findById(req.params.id, function(err, photo) {
-//     if(err) {
-//       console.log(err);
-//     } else {
-//       console.log('req.body.comment input', req.body.comment);
-//       Comment.create(req.body.comment, function(err, comment) {
-//         if(err) {
-//           req.flash("error", "Oops! Something went wrong.");
-//           console.log(err);
-//         } else {
-//           console.log('comment prior:', comment); //shows comment before anything added
-//           //add username and id to comment
-//           comment.author.id = req.user._id;
-//           comment.author.username = req.user.username;
-//           comment.save();
-//           console.log('resulting comment', comment);
-//
-//           photo.comments.push(comment);
-//           photo.save();
-//           req.flash("success", "Successfully added new comment.");
-//           res.redirect("/photos/" + photo._id);
-//         }
-//       });
-//     }
-//   });
-// });
-
 
 //CREATE, add data to threads replies in DB
 //post req. occurs when submit btn on form is clicked
@@ -77,62 +41,25 @@ router.post('/threads/reply', function (req, res) {
       console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
       console.log('-------------------------');
 
-
       Reply.create({ text: req.body.reply }, function(err, reply) {
         if(err) {
           console.log(err);
         } else {
           console.log('reply create', reply);
+          reply.author.id = req.user._id;
+          reply.author.username = req.user.username;
+          reply.save();
+          console.log('new created reply in db:', reply);
+
+          console.log ('foundThread in db:', foundThread);
+
+          //data association:
+          foundThread.replies.push(reply);
+          foundThread.save();
+          // req.flash("success", "Successfully added a reply.");
+          // res.redirect('/');
         }
       });
-
-      // Reply.create({ text: req.body.reply }, function(err, reply) {
-      //   if(err) {
-      //     console.log(err);
-      //   }
-      //
-      //
-      //     // Tank.create({ size: 'small' }, function (err, small) {
-      //     //   if (err) return handleError(err);
-      //     //   // saved!
-      //     // })
-      //
-      //     //
-      //     // console.log('comment prior:', comment); //shows comment before anything added
-      //     // //add username and id to comment
-      //     // reply.author.id = req.user._id;
-      //     // reply.author.username = req.user.username;
-      //     // reply.save();
-      //     // console.log('resulting comment', comment);
-      //     //
-      //     // foundThread.comments.push(comment);
-      //     // foundThread.save();
-      //     // // req.flash("success", "Successfully added new comment.");
-      //     // // res.redirect("/photos/" + photo._id);
-      //
-      // });
-
-
-
-      // Commesdafnt.create(req.body.comment, function(err, comment) {
-      //   if(err) {
-      //     req.flash("error", "Oops! Something went wrong.");
-      //     console.log(err);
-      //   } else {
-      //     console.log('comment prior:', comment); //shows comment before anything added
-      //     //add username and id to comment
-      //     comment.author.id = req.user._id;
-      //     comment.author.username = req.user.username;
-      //     comment.save();
-      //     console.log('resulting comment', comment);
-      //
-      //     photo.comments.push(comment);
-      //     photo.save();
-      //     req.flash("success", "Successfully added new comment.");
-      //     res.redirect("/photos/" + photo._id);
-      //   }
-      // });
-
 
       //works to seed in route:
       // Reply.create(
@@ -181,8 +108,6 @@ router.post('/threads/reply', function (req, res) {
 
 });
 
-
-
 //keep track of author
 // var author = {
 //   id: req.user._id,
@@ -224,19 +149,6 @@ router.post('/threads', function (req, res) {
   });
 
 }); //// end post route for /comments
-
-
-
-
-
-
-// router.get('/threads', function(req, res) {
-//   res.send('threads route!');
-// });
-//
-// router.get('/threads/new', function(req, res) {
-//     res.render('threads/new.ejs');
-// });
 
 
 //works to create seeds in DB:
