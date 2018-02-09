@@ -29,8 +29,11 @@ var UIController = (function() {
     threadsBox: '.threads-box'
   };
 
-  var createReplyBox = function() {
-    var divParent = document.querySelector(DOMstrings.replyBoxParent);
+  var createReplyBox = function(parent) {
+    console.log ('createReplyBox running, the parent param:', parent);
+    // var divParent = document.querySelector(DOMstrings.replyBoxParent);
+    var divParent = parent;
+
     var form = document.createElement('form');
     // form.action = '/threads/<%= thread._id %>?_method=PUT';
     form.action = '/threads/reply';
@@ -100,7 +103,7 @@ var UIController = (function() {
         if (parentEl.contains(replyForm) === false) {
           console.log ('appending to parent!!');
           //target, then append created element to the chosen element:
-          parentEl.appendChild(createReplyBox()); //DOM is now updated to have results of createReplyBox method call
+          parentEl.appendChild(createReplyBox(parentEl)); //DOM is now updated to have results of createReplyBox method call
         }
       }
     },
