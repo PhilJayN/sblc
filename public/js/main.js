@@ -45,16 +45,17 @@ var UIController = (function() {
     var textArea = document.createElement('textarea');
     textArea.className = 'form-control';
     textArea.className = 'comment-text-input';
-    var id = divParent.getAttribute('id');
     // textArea.name = id;
     textArea.name = 'reply';
 
 
     var input = document.createElement('input');
+    // var id = divParent.getAttribute('id');
+
     input.type = 'hidden';
     input.name = 'threadId';
-    input.value = id;
-    form.appendChild(input);
+    // input.value = id;
+    div.appendChild(input);
 
 
     // textArea.name = 'reply[text]';
@@ -70,7 +71,8 @@ var UIController = (function() {
       //   <div class="form-group">
       //     <textarea autofocus name="comment[text]" class="form-control comment-text-input" value="<%= comment.text %>" required><%= comment.text %></textarea>
       //   </div>
-      //     <button class="btn btn-primary">Submit</button>
+      //   <input type="hidden" name="threadId">
+      //   <button class="btn btn-primary">Submit</button>
       // </form>
 
   return {

@@ -62,21 +62,22 @@ router.get('/threads/:id/reply', function (req, res) {
 //CREATE, add data to threads replies in DB
 //post req. occurs when submit btn on form is clicked
 router.post('/threads/reply', function (req, res) {
-  console.log ('post req occured due to reply btn submit', req.body);
-  console.log('req.user', req.user);
+  // console.log ('post req occured due to reply btn submit', req.body);
+  // console.log('req.user', req.user);
   //use body-parser to get data from 'name' attribute in form
   var reply = req.body.reply;
   //id has its roots in main.js, where .getAttribute helps us get the id of thread from HTML attribute.
   var id = req.body.threadId;
-  console.log ('id:!!!', id);
+  console.log ('id:', id, 'reply', reply);
+
 
   //find a thread in DB by its ID. get ID from hidden input field in HTML
   Thread.findById(id, function(err, foundThread) {
     if(err) {
       console.log (err);
     } else {
-      console.log ('foundThread from db', foundThread);
-      
+      // console.log ('foundThread from db', foundThread);
+
       // Reply.create(req.body.reply, function(err, reply) {
       //   if(err) {
       //     console.log(err);
