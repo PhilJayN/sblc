@@ -68,26 +68,86 @@ router.post('/threads/reply', function (req, res) {
   // var reply = req.body.reply;
   //id has its roots in main.js, where .getAttribute helps us get the id of thread from HTML attribute.
   // var id = req.body.threadId;
-  console.log ('id:', req.body.threadId, 'reply', req.body.reply);
-
-
   //find a thread in DB by its ID. get ID from hidden input field in HTML
   Thread.findById(req.body.threadId, function(err, foundThread) {
     if(err) {
       console.log (err);
     } else {
       console.log ('foundThread from db', foundThread);
+      console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
       console.log('-------------------------');
 
-      // Reply.create(req.body.reply, function(err, reply) {
+
+      Reply.create({ text: req.body.reply }, function(err, reply) {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log('reply create', reply);
+        }
+      });
+
+      // Reply.create({ text: req.body.reply }, function(err, reply) {
       //   if(err) {
       //     console.log(err);
-      //   } else {
-      //     console.log(reply);
       //   }
+      //
+      //
+      //     // Tank.create({ size: 'small' }, function (err, small) {
+      //     //   if (err) return handleError(err);
+      //     //   // saved!
+      //     // })
+      //
+      //     //
+      //     // console.log('comment prior:', comment); //shows comment before anything added
+      //     // //add username and id to comment
+      //     // reply.author.id = req.user._id;
+      //     // reply.author.username = req.user.username;
+      //     // reply.save();
+      //     // console.log('resulting comment', comment);
+      //     //
+      //     // foundThread.comments.push(comment);
+      //     // foundThread.save();
+      //     // // req.flash("success", "Successfully added new comment.");
+      //     // // res.redirect("/photos/" + photo._id);
       //
       // });
 
+
+
+      // Commesdafnt.create(req.body.comment, function(err, comment) {
+      //   if(err) {
+      //     req.flash("error", "Oops! Something went wrong.");
+      //     console.log(err);
+      //   } else {
+      //     console.log('comment prior:', comment); //shows comment before anything added
+      //     //add username and id to comment
+      //     comment.author.id = req.user._id;
+      //     comment.author.username = req.user.username;
+      //     comment.save();
+      //     console.log('resulting comment', comment);
+      //
+      //     photo.comments.push(comment);
+      //     photo.save();
+      //     req.flash("success", "Successfully added new comment.");
+      //     res.redirect("/photos/" + photo._id);
+      //   }
+      // });
+
+
+      //works to seed in route:
+      // Reply.create(
+      //      {
+      //       text: "frog",
+      //       submittedDate: "march 4444 9000"
+      //      },
+      //      function(err, reply){
+      //       if(err){
+      //           console.log(err);
+      //       } else {
+      //           console.log("NEWLY CREATED reply: ");
+      //           console.log(reply);
+      //       }
+      //     });
 
       //Data association: must add user reply to to Mongo collection, as well as associate
       //data via reference to the foundThread
