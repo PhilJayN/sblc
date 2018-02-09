@@ -50,12 +50,12 @@ var UIController = (function() {
 
 
     var input = document.createElement('input');
-    // var id = divParent.getAttribute('id');
-
+    div.appendChild(input);
+    console.log('input el created:', input.parentNode.parentNode.parentNode);
+    var parentId = input.parentNode.parentNode.parentNode.getAttribute('id');
     input.type = 'hidden';
     input.name = 'threadId';
-    // input.value = id;
-    div.appendChild(input);
+    input.value = parentId;
 
 
     // textArea.name = 'reply[text]';
