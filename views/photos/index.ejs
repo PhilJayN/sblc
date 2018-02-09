@@ -99,13 +99,6 @@
     <!--start of well-->
     <% dbResults[1].forEach(function(thread){ %>
 
-      <h1>sadj;kfl</h1>
-      <% thread.replies.forEach(function(reply) { %>
-
-
-        <%= reply.text %>
-        <% } )%>
-
 
       <div class="well">
         <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button>
@@ -122,6 +115,15 @@
           <span class="reply-btn">Reply</span>
         </div>
         <!-- reply text box will be generated here on click-->
+
+
+        <div class="well">
+          <% thread.replies.forEach(function(reply) { %>
+            <p><%= reply %></p>
+            <% } )%>
+        </div>
+
+        
       </div>
     <% }) %>    <!--end of forEach-->
     <!--end of well-->
