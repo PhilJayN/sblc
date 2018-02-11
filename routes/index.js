@@ -29,7 +29,7 @@ router.get('/', function (req, res) {
     //run if req.query.search doesn't exist. i.e render the page as normal
   } else {
     findValue = {};
-    console.log ('findValue of:', findValue,  'was used');
+    // console.log ('findValue of:', findValue,  'was used');
   }
   async.parallel([
       function(callback) {
@@ -46,7 +46,7 @@ router.get('/', function (req, res) {
       },
       function(callback) {
         // Thread.find(findValue, function(err, allThreads){
-        Thread.find(findValue, function(err, allThreads){
+        Thread.find(findValue).populate('replies').exec(function(err, allThreads){
           if (err) {
             console.log(err);
           }
@@ -69,6 +69,26 @@ router.get('/', function (req, res) {
     }
       });
   });
+
+
+
+  router.get('/demo', function (req, res) {
+    console.log('demo route!!!');
+    // res.send('hello world asdf');
+    // res.render('photos/index.ejs');
+
+    Thread.findById("5a7d1e09ccd40e48184ef264").populate("replies").exec(function(err, foundThread) { //foundPhoto is a object, so you can use dot notation on it.
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('foundThread', foundThread);
+  // res.send('hiiiiiii');
+      res.render('demo.ejs', {thread: foundThread});
+      }
+    });
+  });
+
+
 
 router.get('/pup', function (req, res) {
   async.parallel([
@@ -134,9 +154,14 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-router.get('/demo', function (req, res) {
-  res.send('hello world asdf');
-});
+
+
+
+
+
+// router.get('/demo', function (req, res) {
+// });
+
 
 //for fuzzy searching, where 'text' parameter will accept a req.query.search string
 function escapeRegex(text) {
