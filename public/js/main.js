@@ -31,11 +31,9 @@ var UIController = (function() {
 
   var createReplyBox = function(parent) {
     console.log ('createReplyBox running, the parent param:', parent);
-    // var divParent = document.querySelector(DOMstrings.replyBoxParent);
     var divParent = parent;
 
     var form = document.createElement('form');
-    // form.action = '/threads/<%= thread._id %>?_method=PUT';
     form.action = '/threads/reply';
     form.method = 'POST';
     form.className = 'reply-form';
@@ -46,22 +44,20 @@ var UIController = (function() {
     form.appendChild(div);
 
     var textArea = document.createElement('textarea');
+    textArea.autofocus = true;
+    textArea.required = true;
     textArea.className = 'form-control';
     textArea.className = 'comment-text-input';
-    // textArea.name = id;
     textArea.name = 'reply';
-
 
     var input = document.createElement('input');
     div.appendChild(input);
-    console.log('input el created:', input.parentNode.parentNode.parentNode);
+    // console.log('input el created:', input.parentNode.parentNode.parentNode);
     var parentId = input.parentNode.parentNode.parentNode.getAttribute('id');
     input.type = 'hidden';
     input.name = 'threadId';
     input.value = parentId;
 
-
-    // textArea.name = 'reply[text]';
     div.appendChild(textArea);
 
     var button = document.createElement('button');
