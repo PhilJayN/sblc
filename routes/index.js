@@ -45,7 +45,8 @@ router.get('/', function (req, res) {
         });
       },
       function(callback) {
-        // Thread.find(findValue, function(err, allThreads){
+        //in DB, replies is an array with ids. make sure to populate the the replies at this point,
+        // or else final results will contain object ids in the replies array.
         Thread.find(findValue).populate('replies').exec(function(err, allThreads){
           if (err) {
             console.log(err);
