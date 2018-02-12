@@ -15,7 +15,9 @@ router.get('/', function (req, res) {
   var userMsg = null;
   var resultsCount = 0;
   var searchReq = false;
-//check first to see if req.query.search exists
+//check first to see if req.query.search exists (user actually writes something in search field)
+//the purpose is to help assign a value to findValue. search query exist means findValue is the entered val.
+//otherwise findValue set to {}, the default, which searches db for all
   if (req.query.search) {
     searchReq = true;
     console.log ('req query search:', req.query.search );
@@ -29,6 +31,7 @@ router.get('/', function (req, res) {
     //run if req.query.search doesn't exist. i.e render the page as normal
   } else {
     findValue = {};
+    console.log('NO SEARCH QUERY, OR IT IS EMPTY, defaulting to {} findValue');
     // console.log ('findValue of:', findValue,  'was used');
   }
   async.parallel([
@@ -52,7 +55,7 @@ router.get('/', function (req, res) {
             console.log(err);
           }
           // console.log('allThreads results Len:', allThreads.length);
-          // console.log('allThreads RESULTS:', allThreads);
+          console.log('allThreads RESULTS:', allThreads);
           resultsCount += allThreads.length;
           callback(null, allThreads);
         });
