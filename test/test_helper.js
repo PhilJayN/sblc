@@ -5,7 +5,8 @@ mongoose.Promise = global.Promise;
 
 //to be sure test start only if successful connection to mongo.
 before((done) => {
-  mongoose.connect('mongodb://localhost/users_test');
+  mongoose.connect('mongodb://localhost/users_test'); //DO NOT CHANGE THIS to another db name! IF YOU DO users.drop
+  //will work an drop all users due to beforeEach hook below. (mongoose.connection.collections.users.drop(()
   mongoose.connection
       .once('open', () => { done(); })
       .on('error', (error) => {
