@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+//fix for DeprecationWarning: Mongoose: mpromise (mongoose's default promise library)
+mongoose.Promise = global.Promise;
+
 mongoose.connect('mongodb://localhost/users_test');
 mongoose.connection
     .once('open', () => console.log('Good to go!'))
