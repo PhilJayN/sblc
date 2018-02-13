@@ -3,12 +3,15 @@ const mongoose = require('mongoose');
 //fix for DeprecationWarning: Mongoose: mpromise (mongoose's default promise library)
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/users_test');
-mongoose.connection
-    .once('open', () => console.log('Good to go!'))
-    .on('error', (error) => {
-      console.warn('Warning', error);
-    });
+//to be sure test start only if successful connection to mongo.
+before((done) => {
+  mongoose.connect('mongodb://localhost/users_test');
+  mongoose.connection
+      .once('open', () => { done(); })
+      .on('error', (error) => {
+        console.warn('Warning', error);
+      });
+});
 
 
 //hook (ex: beforeEach): a function that will be exec before any tests get executed inside our test suite
