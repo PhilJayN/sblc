@@ -17,8 +17,16 @@ before((done) => {
 
 //hook (ex: beforeEach): a function that will be exec before any tests get executed inside our test suite
 beforeEach((done) => { //"done" is provided by mocha
-  mongoose.connection.collections.users.drop(() => {
-    //ready to run next test, right after db collection has been dropped
-    done();
+  //ES6 syntax:
+  const { users, comments } = mongoose.connection.collections;
+  users.drop(() => {
+    comments.drop() => {
+      //ready to run next test, right after db collection has been dropped
+      done();
+    }
   });
 });
+
+
+//callback of DOOM due to Mongo not supporting dropping collections all at the
+//same time. Alternative is to just use a loop to iterate one collection at a time.
