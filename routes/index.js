@@ -90,16 +90,121 @@ router.get('/', function (req, res) {
     // res.send('hello world asdf');
     // res.render('photos/index.ejs');
 
-    Thread.findById("5a7d1e09ccd40e48184ef264").populate("replies").exec(function(err, foundThread) { //foundPhoto is a object, so you can use dot notation on it.
-      if (err) {
+
+    // Reply.create({
+    //   text: "Kobo!"
+    // }, function(err, reply){
+    //   Thread.findOne({subject: "TeddyFu"}, function(err, foundThread) {
+    //   if(err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log('found thread!', foundThread);
+    //    foundThread.replies.push(reply);
+    //    console.log('result', foundThread);
+    //    foundThread.save(function(err, data) {
+    //      if(err) {
+    //        console.log(err);
+    //      } else {
+    //        console.log('after pushing result in db:', data);
+    //      }
+    //    });
+    //
+    //   }
+    // })
+    // });
+
+    // Thread.create({
+    //     subject: "new jsadfkljlk!!",
+    // });
+
+
+
+
+    // // Thread.find(findValue, function(err, allThreads){
+    // Thread.findOne({subject: 'yum'})
+    // // Thread.find()
+    //   .populate({
+    //     path: 'replies',
+    //     model: 'Reply',
+    //   }).exec(function(err, allThreads){
+    //     if (err) {
+    //       console.log(err);
+    //     }
+    //     // console.log('allThreads results Len:', allThreads.length);
+    //     // console.log('allThreads .find RESULTS:', allThreads);
+    //     console.log('RESULT w/ find', allThreads);
+    //     // console.log('RESULT w/ findOne', allThreads);
+    //
+    //
+    //     // console.log('array:', allThreads[0]);
+    //   });
+
+    ///////////////////DEMO .findOne()
+    // console.log('----------------------------------------------------');
+    //   Thread.findOne({subject: "yum"}, function(err, foundThread) {
+    //   if(err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log('.findOne() w/o populating replies', foundThread);
+    //   }
+    // });
+    // console.log('----------------------------------------------------');
+    //
+    // console.log('----------------------------------------------------');
+    //   Thread.findOne({subject: "yum"}).populate('replies').exec(function(err, foundThread) {
+    //   if(err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log('.findOne()  WITH populating replies', foundThread);
+    //   }
+    // });
+    // console.log('----------------------------------------------------');
+
+
+    console.log('----------------------------------------------------');
+      Thread.find({}, function(err, foundThread) {
+      if(err) {
         console.log(err);
       } else {
-        console.log('foundThread', foundThread);
-  // res.send('hiiiiiii');
-      res.render('demo.ejs', {thread: foundThread});
+        console.log('.find NO populating replies', foundThread);
+            // console.log('dot notation sblc', foundThread[0].subject.replies[1]);
+                console.log('dot notation sblc', foundThread[0].replies[0]);
+
       }
     });
+    console.log('----------------------------------------------------');
+
+//works to populate in console, if using index notation to access
+  //   Thread.find({}).populate('replies').exec(function(err, foundThread) {
+  //   if(err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log('.find WITH populating replies', foundThread);
+  //     // console.log('dot notation sblc', foundThread[0].subject[0].replies);
+  //     console.log('dot notation sblc', foundThread[0].replies[1].text);
+  //
+  //
+  //   }
+  // });
+  // console.log('----------------------------------------------------');
+
+
+
+
+
+    //
+    // User.findOne({email: "ted@gmail.com"}).populate('posts').exec(function(err, foundUser) {
+    // if(err) {
+    //   console.log(err);
+    // } else {
+    //   console.log('found user! with populating POSTS', foundUser);
+    // }
+    // });
+    // console.log('----------------------------------------------------');
+
+
   });
+
 
 
 
