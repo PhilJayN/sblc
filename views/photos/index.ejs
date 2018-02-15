@@ -111,15 +111,15 @@
         </div>
         <!-- reply text box will be generated here on click-->
 
-        <div class="well">
-          <% thread.replies.forEach(function(reply) { %>
-            <div class="well">
-            <p><%= reply.author.username %></p>
-            <p><%= reply.text %></p>
-          </div>
-            <% } )%>
-        </div>
 
+        <div class="well">
+              <% thread.replies.forEach(function(reply) { %>
+                <div class="well">
+                <p><%= reply.author.username %></p>
+                <p><%= reply.text %></p>
+              </div>
+                <% } )%>
+            </div>
 
       </div>
     <% }) %>    <!--end of forEach-->

@@ -50,15 +50,24 @@ router.get('/', function (req, res) {
       function(callback) {
         //in DB, replies is an array with ids. make sure to populate the the replies at this point,
         // or else final results will contain object ids in the replies array.
-        Thread.find(findValue).populate('replies').exec(function(err, allThreads){
-          if (err) {
-            console.log(err);
-          }
-          // console.log('allThreads results Len:', allThreads.length);
-          console.log('allThreads RESULTS:', allThreads);
-          resultsCount += allThreads.length;
-          callback(null, allThreads);
-        });
+
+        // Thread.find(findValue, function(err, allThreads){
+        Thread.find(findValue)
+          .populate({
+            path: 'replies',
+            model: 'Reply',
+          }).exec(function(err, allThreads){
+            if (err) {
+              console.log(err);
+            }
+            // console.log('allThreads results Len:', allThreads.length);
+            // console.log('allThreads .find RESULTS:', allThreads);
+            console.log('result', allThreads);
+
+            // console.log('array:', allThreads[0]);
+            resultsCount += allThreads.length;
+            callback(null, allThreads);
+          });
       }
   ], function(err, results) { //results is an array, so possible to access using index #
     var resultsLen;
