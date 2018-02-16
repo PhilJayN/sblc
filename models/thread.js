@@ -13,13 +13,7 @@ var threadSchema = mongoose.Schema({
       },
       username: String
   },
-  replies:
-  [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Reply"  //points to the model definition of Reply, in models/reply.js
-    }
-  ],
+  replies:[replySchema],
   submittedDate: String,
   submittedTime: String
 });

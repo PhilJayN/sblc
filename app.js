@@ -42,7 +42,7 @@ var mongoose = require("mongoose");
 // mongoose.connect("mongodb://localhost/photos_app");
 app.set('port', (process.env.PORT || 6000));
 
-var url = process.env.DATABASEURL || "mongodb://localhost/sblc_app";
+var url = process.env.DATABASEURL || "mongodb://localhost/sblc_test";
 mongoose.connect(url);
 // mongoose.connect(process.env.DATABASEURL);
 // console.log ('first PROCESS env', process.env);
