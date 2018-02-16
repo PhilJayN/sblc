@@ -14,5 +14,5 @@ var replySchema = mongoose.Schema({
   submittedTime: String
 });
 
-
-module.exports = mongoose.model("Reply", replySchema);
+module.exports = replySchema;
+// module.exports = mongoose.model("Reply", replySchema);

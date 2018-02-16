@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var replySchema = require("./reply");
 
 var threadSchema = mongoose.Schema({
   subject: String,
@@ -13,7 +14,7 @@ var threadSchema = mongoose.Schema({
       },
       username: String
   },
-  replies:[replySchema],
+  replies: [replySchema],
   submittedDate: String,
   submittedTime: String
 });
