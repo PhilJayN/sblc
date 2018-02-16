@@ -42,22 +42,30 @@ router.post('/threads/reply', function (req, res) {
       // console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
       console.log('-------------------------');
       //Add user reply to to Mongo collection
-      Reply.create({ text: req.body.reply }, function(err, reply) {
-        if(err) {
-          console.log(err);
-        } else {
-          console.log('reply create', reply);
-          reply.author.id = req.user._id;
-          reply.author.username = req.user.username;
-          reply.save();
-          console.log('new created reply in db:', reply);
-          console.log ('foundThread in db:', foundThread);
-          // //now for data association between thread and reply via reference to the foundThread
-          foundThread.replies.push(reply);
-          foundThread.save();
-          // req.flash("success", "Successfully added a reply.");
-        }
-      });
+
+      var reply = {
+        text: req.body.reply
+      };
+      foundThread.replies.push(reply);
+      foundThread.save();
+      console.log('saved!');
+
+      // Reply.create({ text: req.body.reply }, function(err, reply) {
+      //   if(err) {
+      //     console.log(err);
+      //   } else {
+      //     console.log('reply create', reply);
+      //     reply.author.id = req.user._id;
+      //     reply.author.username = req.user.username;
+      //     reply.save();
+      //     console.log('new created reply in db:', reply);
+      //     console.log ('foundThread in db:', foundThread);
+      //     // //now for data association between thread and reply via reference to the foundThread
+      //     foundThread.replies.push(reply);
+      //     foundThread.save();
+      //     // req.flash("success", "Successfully added a reply.");
+      //   }
+      // });
 
       // });
       res.redirect('/');
