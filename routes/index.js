@@ -5,7 +5,7 @@ var User = require("../models/user");
 var Photo = require("../models/photo");
 var Comment = require("../models/comment");
 var Thread = require("../models/thread");
-var Reply = require("../models/reply");
+var replySchema = require("../models/reply");
 var async = require('async');
 
 // ================
@@ -53,11 +53,7 @@ router.get('/', function (req, res) {
         // or else final results will contain object ids in the replies array.
 
         // Thread.find(findValue, function(err, allThreads){
-        Thread.find(findValue)
-          .populate({
-            path: 'replies',
-            model: 'Reply',
-          }).exec(function(err, allThreads){
+        Thread.find(findValue, function(err, allThreads){
             if (err) {
               console.log(err);
             }

@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router({mergeParams: true});
 var Thread = require("../models/thread");
 var middleware = require("../middleware");
-var Reply = require("../models/reply");
+var replySchema = require("../models/reply");
 
 //show new form to CREATE threads
 router.get('/threads/new', function (req, res) {
@@ -39,7 +39,7 @@ router.post('/threads/reply', function (req, res) {
       console.log (err);
     } else {
       console.log ('foundThread from db', foundThread);
-      console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
+      // console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
       console.log('-------------------------');
       //Add user reply to to Mongo collection
       Reply.create({ text: req.body.reply }, function(err, reply) {
@@ -111,6 +111,9 @@ module.exports = router;
 
 
 
+// Thread.replies.push({
+//   text: 'this is a pushed!!'
+// });
 
 //works to create seeds in DB:
 // Thread.create(
