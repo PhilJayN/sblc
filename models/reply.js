@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var replySchema = mongoose.Schema({
+var replySchema = new mongoose.Schema({
   text: String,
   author:
   {
@@ -14,5 +14,6 @@ var replySchema = mongoose.Schema({
   submittedTime: String
 });
 
+//no need to write mongoose.model, because the replySchema will be embedded, NOT referenced
+// in threads model.
 module.exports = replySchema;
-// module.exports = mongoose.model("Reply", replySchema);

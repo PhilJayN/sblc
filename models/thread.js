@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var replySchema = require("./reply");
 
-var threadSchema = mongoose.Schema({
+var threadSchema = new mongoose.Schema({
   subject: String,
   text: String,
   // text: String,
