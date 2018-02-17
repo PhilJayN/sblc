@@ -26,8 +26,7 @@ router.get('/', function (req, res) {
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     console.log ('regex final result:', regex);
     console.log ('findValue type', typeof findValue);
-    // findValue = {text: regex};
-    findValue = {$or : [{subject: regex}, {text: regex}]};
+    findValue = {$or : [{subject: regex}, {text: regex}, {replies: {$elemMatch: {text: regex}}}]};
     console.log ('findValue final:', findValue);
     //run if req.query.search doesn't exist. i.e render the page as normal
   } else {
