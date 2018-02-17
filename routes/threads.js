@@ -17,7 +17,6 @@ router.get('/threads/new', function (req, res) {
 
 //show form to REPLY to a  particular thread that has unique ID
 router.get('/threads/:id/reply', function (req, res) {
-  // console.log ('params:', req.params.id);
   Thread.findById(req.params.id, function(err, foundThread) {
     res.render('threads/reply.ejs', {thread: foundThread});
   });
@@ -26,10 +25,7 @@ router.get('/threads/:id/reply', function (req, res) {
 //CREATE, add data to threads replies in DB
 //post req. occurs when submit btn on form is clicked
 router.post('/threads/reply', function (req, res) {
-  // console.log ('post req occured due to reply btn submit', req.body);
-
   //use body-parser to get data from 'name' attribute in form
-  // var reply = req.body.reply;
   //id has its roots in main.js, where .getAttribute helps us get the id of thread from HTML attribute.
   // var id = req.body.threadId;
 
@@ -54,34 +50,13 @@ router.post('/threads/reply', function (req, res) {
         submittedDate: humanDate,
         submittedTime: humanTime
       };
-
       foundThread.replies.push(reply);
       foundThread.save();
-
-      // Reply.create({ text: req.body.reply }, function(err, reply) {
-      //   if(err) {
-      //     console.log(err);
-      //   } else {
-      //     console.log('reply create', reply);
-      //     reply.author.id = req.user._id;
-      //     reply.author.username = req.user.username;
-      //     reply.save();
-      //     console.log('new created reply in db:', reply);
-      //     console.log ('foundThread in db:', foundThread);
-      //     // //now for data association between thread and reply via reference to the foundThread
-      //     foundThread.replies.push(reply);
-      //     foundThread.save();
-      //     // req.flash("success", "Successfully added a reply.");
-      //   }
-      // });
-
       // });
       res.redirect('/');
     }
   });
-
 });
-
 
 //CREATE Route: add thread to DB
 router.post('/threads', function (req, res) {
@@ -99,10 +74,9 @@ router.post('/threads', function (req, res) {
     username: req.user.username
   };
   var teddy = 'hi teddy';
-  // ////takes data from variables name and image, and stores into an obj
+  //takes data from variables name and image, and stores into an obj
   var newThread = { subject: subject, text: text, submittedDate: humanDate, submittedTime: humanTime, author: author};
-  // //save obj into the DB:
-  // console.log ('new thread obj var: ', newThread);
+  //save obj into the DB:
   console.log ('newThread var:', newThread);
   Thread.create(newThread, function(err, newlyCreated) {
     if(err) {
@@ -110,15 +84,17 @@ router.post('/threads', function (req, res) {
     } else {
           console.log('newlyCreated thread:', newlyCreated);
           console.log('newlyCreated thread subject:', newlyCreated.submittedDate);
-
           // req.flash("success", "New thread added!");
           res.redirect('/');
     }
   });
-
 }); //// end post route for /comments
-
 module.exports = router;
+
+
+
+
+
 
 
 
