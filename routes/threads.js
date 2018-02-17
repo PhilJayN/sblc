@@ -41,14 +41,21 @@ router.post('/threads/reply', function (req, res) {
       console.log ('foundThread from db', foundThread);
       // console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
       console.log('-------------------------');
-      //Add user reply to to Mongo collection
-
+      var humanDate = date.toDateString();
+      var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
+      //Add user reply to DB
       var reply = {
-        text: req.body.reply
+        text: req.body.reply,
+        author: {
+          id: req.user._id,
+          username: req.user.username
+        },
+        submittedDate: humanDate,
+        submittedTime: humanTime
       };
+
       foundThread.replies.push(reply);
       foundThread.save();
-      console.log('saved!');
 
       // Reply.create({ text: req.body.reply }, function(err, reply) {
       //   if(err) {
@@ -74,11 +81,6 @@ router.post('/threads/reply', function (req, res) {
 
 });
 
-//keep track of author
-// var author = {
-//   id: req.user._id,
-//   username: req.user.username
-// };
 
 //CREATE Route: add thread to DB
 router.post('/threads', function (req, res) {
