@@ -41,6 +41,7 @@ router.post('/threads/reply', function (req, res) {
       console.log ('foundThread from db', foundThread);
       // console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
       console.log('-------------------------');
+      var date = new Date();
       var humanDate = date.toDateString();
       var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
       //Add user reply to DB
