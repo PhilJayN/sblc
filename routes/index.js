@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router({mergeParams: true});
 var passport = require("passport");
 var User = require("../models/user");
-var Photo = require("../models/photo");
 var Comment = require("../models/comment");
 var Thread = require("../models/thread");
 var replySchema = require("../models/reply");
@@ -80,7 +79,6 @@ router.get('/', function (req, res) {
   });
 
     // res.send('hello world asdf');
-    // res.render('photos/index.ejs');
 
 router.get('/pup', function (req, res) {
   async.parallel([
