@@ -6,7 +6,6 @@ const MongoStore = require('connect-mongo')(session);
 
 var bodyParser = require("body-parser");
 var User = require("./models/user");
-var Photo = require("./models/photo");
 var Comment = require('./models/comment');
 var Thread = require('./models/thread');
 var Reply = require('./models/reply');
@@ -27,7 +26,6 @@ function isLoggedIn(req, res, next) {
 }
 
 //require routes:
-var photoRoutes = require("./routes/photos");
 var commentRoutes = require("./routes/comments");
 var indexRoutes = require("./routes/index");
 var resourcesRoutes = require("./routes/resources");
@@ -84,7 +82,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(photoRoutes);
 app.use(commentRoutes);
 app.use(indexRoutes);
 app.use(resourcesRoutes);
