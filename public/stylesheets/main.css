@@ -333,8 +333,12 @@ p {
   border: 2px dashed blue;
 }
 
-.well {
-  border: 1px solid red;
+/* .well {
+  border: 1px solid blue;
+} */
+
+.thread-box {
+  border: 1px solid orange;
 }
 
 

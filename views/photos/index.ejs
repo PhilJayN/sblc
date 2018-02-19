@@ -96,8 +96,8 @@
     <!--start of well-->
     <% dbResults[1].forEach(function(thread){ %>
 
-      <div class="well">
-        <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button>
+      <div class="well thread-box">
+        <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
         <p><strong><%= thread.subject %></strong></p>
         <!-- div below needs to be collapsible-->
         <div class="collapsible-box collapse multi-collapse" id="<%= thread._id %>">
@@ -106,7 +106,6 @@
 
           <p class="thread-text"><%= thread.text %></p>
           <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></p>
-        </div>
         <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
         <div class="reply-box-parent" id="<%= thread._id %>">
           <!-- name="stuff[<%=thread._id %>]" -->
@@ -125,7 +124,8 @@
                 <% } )%>
         </div>
 
-        </div> <!--end of collapsible-box-->
+      </div>
+      </div> <!--end of thread-box-->
 
       </div>
     <% }) %>    <!--end of forEach-->
