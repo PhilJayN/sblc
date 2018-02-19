@@ -325,6 +325,18 @@ p {
 
 }
 
+/* .collapse {
+  border: 1px solid blue;
+} */
+
+.collapsible-box {
+  border: 2px dashed blue;
+}
+
+.well {
+  border: 1px solid red;
+}
+
 
 /*
 @media screen and (max-width: 699px) and (min-width: 520px) {

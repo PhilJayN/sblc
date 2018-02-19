@@ -91,7 +91,8 @@
   <!-- data from DB will populate starting here-->
   <div class="room-sblc-content">
     <!-- control element -->
-    <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button>
+    <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse"
+      data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button>
     <!--start of well-->
     <% dbResults[1].forEach(function(thread){ %>
 
@@ -99,7 +100,10 @@
         <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button>
         <p><strong><%= thread.subject %></strong></p>
         <!-- div below needs to be collapsible-->
-        <div class="collapse multi-collapse show">
+        <div class="collapsible-box collapse multi-collapse" id="<%= thread._id %>">
+        <!-- <div class="collapse multi-collapse show"> -->
+          <!-- <div class="collapse multi-collapse show"> -->
+
           <p class="thread-text"><%= thread.text %></p>
           <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %> by <%= thread.author.username %></p>
         </div>
@@ -119,7 +123,9 @@
                 <p><%= reply.text %></p>
               </div>
                 <% } )%>
-            </div>
+        </div>
+
+        </div> <!--end of collapsible-box-->
 
       </div>
     <% }) %>    <!--end of forEach-->
