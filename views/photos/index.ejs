@@ -82,8 +82,9 @@
 
     </div> <!-- END of room-content-->
   </div> <!-- END of room-*-->
+
 <!--Start of threads section-->
-<div class="room-sblc col-md-6 col-lg-4 threads-box">
+<div class="grandparent room-sblc col-md-6 col-lg-4 threads-box">
   <!-- each room consist of divs: room-header, and room-content -->
   <div class="room-sblc-header border-line-break well">
     <h2>Threads</h2>
@@ -91,8 +92,13 @@
   <!-- data from DB will populate starting here-->
   <div class="room-sblc-content">
     <!-- control element -->
-    <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse"
-      data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button>
+    <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse"
+      data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
+      <!--think of below element as the controller btn for expanding/collapsing all-->
+      <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
+          <span class="icon-class"></span>
+          <p>Grandparent</p>
+      </div>
     <!--start of well-->
     <% dbResults[1].forEach(function(thread){ %>
 
