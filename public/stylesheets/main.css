@@ -407,3 +407,16 @@ p {
 .icon-class:before {
 	content: 'v';
 }
+
+
+#grandparent {
+  border: 1px solid blue;
+}
+
+.parent1Content {
+  border: 1px solid red;
+}
+
+.grandparentContent {
+  border: 1px solid red;
+}
