@@ -398,3 +398,12 @@ p {
 /* .navbar-nav {
   color: rgb(68, 68, 68);
 } */
+
+
+
+.collapsed .icon-class:before {
+    content: '>';
+}
+.icon-class:before {
+	content: 'v';
+}

@@ -162,4 +162,10 @@ controller.init();
       $('.multi-collapse').collapse('hide');
     });
 
+
+
+    $('[data-toggle="collapse"]').on('click', function() {
+  $(this).toggleClass('collapsed');
+});
+
 // }); //end of document ready fxn
