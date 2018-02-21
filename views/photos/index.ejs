@@ -106,8 +106,9 @@
                 <div class="collapse well thread-box" id="grandparentContent" aria-expanded="true">
                   <% dbResults[1].forEach(function(thread){ %>
                     <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
-                    <!-- div below needs to be collapsible-->
-                    <div class="collapsible-box multi-collapse" id="<%= thread._id %>">
+                    <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
+                    <div class="collapsed collapsible-box multi-collapse" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
+                      <span class="icon-class"></span>
                       <p>
                         <strong><%= thread.subject %></strong>
                       </p>
@@ -121,13 +122,14 @@
                         <%= thread.author.username %>
                       </p>
                       <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
-                      <div class="reply-box-parent" id="<%= thread._id %>">
+                      <!-- <div class="reply-box-parent" id="<%= thread._id %>">
                         <span class="reply-btn">Reply</span>
-                      </div>
+                      </div> -->
                       <!-- reply text box will be generated here on click-->
+                    </div>
 
                       <!-- start of child well-->
-                      <div class="well">
+                      <div class="well collapse">
                         <% thread.replies.forEach(function(reply) { %>
                           <div class="well">
                             <p>
@@ -138,8 +140,7 @@
                             </p>
                           </div>
                           <% } )%>
-                          </div>
-                        </div>
+                      </div>
                       <!--end of thread-box-->
                       <% }) %>
                     </div>
