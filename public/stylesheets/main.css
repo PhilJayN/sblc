@@ -409,7 +409,7 @@ p {
 }
 
 
-#grandparent {
+.grandparent {
   border: 1px solid blue;
 }
 
