@@ -9,9 +9,7 @@
     <div class="main-image">
       <img src="https://i.imgur.com/FbIu9FK.jpg" alt="flower-pic-placeholder">
     </div>
-    <!-- <div class="main-btn">
-      <a class="btn btn-info test-btn" href="/photos/new">Placeholder Btn</a>
-    </div> -->
+    <!-- <div class="main-btn"> <a class="btn btn-info test-btn" href="/photos/new">Placeholder Btn</a> </div> -->
     <p>
       <form action="/" method="GET" class="form-inline">
         <div class="form-group">
@@ -23,7 +21,8 @@
 
     <% if (searchReq === true) { %>
       <p>Found
-        <%= resultsCount %> results</p>
+        <%= resultsCount %>
+        results</p>
       <a href="/" class="">Cancel search and go to home page</a>
     <% } %>
 
@@ -36,9 +35,7 @@
     <div class="room-container container-fluid">
       <div class="row">
 
-        <!-- <div class="room-announcement col-md-6 col-lg-4">
-    <h3>Quick Announcements</h3>
-  </div> -->
+        <!-- <div class="room-announcement col-md-6 col-lg-4"> <h3>Quick Announcements</h3> </div> -->
 
         <div class="room-sblc col-md-6 col-lg-4">
           <!-- each room consist of divs: room-header, and room-content -->
@@ -52,8 +49,13 @@
               <div class="well">
                 <p>
                   <strong><%= comment.author.username %></strong>
-                  <span> | <%= comment.submittedDate %></span>
-                  <span> | <%= comment.submittedTime %> </span>
+                  <span>
+                    |
+                    <%= comment.submittedDate %></span>
+                  <span>
+                    |
+                    <%= comment.submittedTime %>
+                  </span>
                 </p>
                 <p>
                   <%= comment.text %>
@@ -65,7 +67,7 @@
                   <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
                     <button class="del-style del-btn">Delete</button>
                   </form>
-                  <% } %>
+                <% } %>
               </div>
               <% }) %>
 
@@ -74,263 +76,232 @@
                   <% if(!currentUser) { %>
                     <p>Join the conversation! Sign up for an account in seconds.</p>
                     <a class="btn btn-info" href="/register">Sign up</a>
-                    <% } else {%>
-                      <!-- press a btn here to start GET req. to /comments/new -->
-                      <span>Hi <strong><%= currentUser.username %>!</strong></span>
-                      <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a>
-                      <% } %>
+                  <% } else {%>
+                    <!-- press a btn here to start GET req. to /comments/new -->
+                    <span>Hi
+                      <strong><%= currentUser.username %>!</strong>
+                    </span>
+                    <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a>
+                  <% } %>
                 </div>
 
-          </div>
-          <!-- END of room-content-->
-        </div>
-        <!-- END of room-*-->
-
-        <!--Start of threads section-->
-        <div class="grandparent room-sblc col-md-6 col-lg-4 threads-box" id="grandparent">
-          <!-- each room consist of divs: room-header, and room-content -->
-          <div class="room-sblc-header border-line-break well">
-            <h2>Threads</h2>
-          </div>
-          <!-- data from DB will populate starting here-->
-          <div class="room-sblc-content">
-            <!-- control element -->
-            <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse"
-      data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
-            <!--think of below element as the controller btn for expanding/collapsing all-->
-            <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
-              <span class="icon-class"></span>
-              <p>Grandparent</p>
+              </div>
+              <!-- END of room-content-->
             </div>
-            <!--start of parent thread well-->
+            <!-- END of room-*-->
 
-            <!-- Magic Box: all content that you want to be part of expanding/collapsing goes inside the div below-->
-            <div class="well thread-box collapse" id="grandparentContent" aria-expanded="true">
-              <% dbResults[1].forEach(function(thread){ %>
-                <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
-                <!-- div below needs to be collapsible-->
-                <div class="collapsible-box multi-collapse" id="<%= thread._id %>">
-                  <p><strong><%= thread.subject %></strong></p>
-                  <p class="thread-text">
-                    <%= thread.text %>
-                  </p>
-                  <p class="thread-tagline">Submitted
-                    <%= thread.submittedDate%>
-                      <%= thread.submittedTime %> by
+            <!--Start of threads section-->
+            <div id="grandparent" class="list-group-item room-sblc col-md-6 col-lg-4 threads-box">
+              <!-- each room consist of divs: room-header, and room-content -->
+              <!-- <div class="room-sblc-header border-line-break well">
+                <h2>Threads</h2>
+              </div> -->
+                <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
+                <!--Start of controller btn for expanding/collapsing all threads-->
+                <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
+                  <span class="icon-class"></span>
+                  <p>Grandparent</p>
+                </div>
+                <!--start of parent thread well-->
+                <div class="collapse well thread-box" id="grandparentContent" aria-expanded="true">
+                  <% dbResults[1].forEach(function(thread){ %>
+                    <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
+                    <!-- div below needs to be collapsible-->
+                    <div class="collapsible-box multi-collapse" id="<%= thread._id %>">
+                      <p>
+                        <strong><%= thread.subject %></strong>
+                      </p>
+                      <p class="thread-text">
+                        <%= thread.text %>
+                      </p>
+                      <p class="thread-tagline">Submitted
+                        <%= thread.submittedDate%>
+                        <%= thread.submittedTime %>
+                        by
                         <%= thread.author.username %>
-                  </p>
-                  <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
-                  <div class="reply-box-parent" id="<%= thread._id %>">
-                    <span class="reply-btn">Reply</span>
-                  </div>
-                  <!-- reply text box will be generated here on click-->
-
-                  <!-- start of child well-->
-                  <div class="well">
-                    <% thread.replies.forEach(function(reply) { %>
-                      <div class="well">
-                        <p>
-                          <%= reply.author.username %>
-                        </p>
-                        <p>
-                          <%= reply.text %>
-                        </p>
+                      </p>
+                      <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
+                      <div class="reply-box-parent" id="<%= thread._id %>">
+                        <span class="reply-btn">Reply</span>
                       </div>
-                      <% } )%>
+                      <!-- reply text box will be generated here on click-->
+
+                      <!-- start of child well-->
+                      <div class="well">
+                        <% thread.replies.forEach(function(reply) { %>
+                          <div class="well">
+                            <p>
+                              <%= reply.author.username %>
+                            </p>
+                            <p>
+                              <%= reply.text %>
+                            </p>
+                          </div>
+                          <% } )%>
+                          </div>
+                        </div>
+                      <!--end of thread-box-->
+                      <% }) %>
+                    </div>
+                        <!--end of forEach-->
+                        <!-- <div class="well">
+                          <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
+                        </div> -->
+                    </div>
+                    <!-- END of room-* (grandparent)-->
+                    <!--End of threads section-->
+
+                    <div class="room-urgent col-md-6 col-lg-4">
+                      <div class="room-urgent-header border-line-break well">
+                        <h2>Urgent</h2>
+                        <h5>Post here with urgent questions or concerns. Email notifications will be sent out to those who opt-in, who can answer your questions.</h5>
+
+                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                        <span>Under Construction</span>
+
+                      </div>
+                      <div class="room-urgent-content">
+                        <!-- data from DB will populate here-->
+
+                      </div>
+                    </div>
+
+                    <div class="room-general col-md-6 col-lg-4">
+                      <div class="room-general-header border-line-break well">
+                        <h2>General</h2>
+                        <h5>Talk about anything here!</h5>
+
+                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                        <span>Under Construction</span>
+
+                      </div>
+                      <div class="room-general-content">
+                        <!-- data from DB will populate here-->
+                      </div>
+                    </div>
+                    <!-- END of room general -->
+
                   </div>
                 </div>
-            </div>
-            <!--end of thread-box-->
-            <!-- end of all content Magic Box-->
-            <% }) %>
-              <!--end of forEach-->
-              <!--end of well-->
+                <!-- END of row -->
+              </div>
+              <!-- END of room container -->
+              <!-- END of room container -->
+
+            <% } else { %>
+              <div class="well">
+                <h3>Please
+                  <span>
+                    <a href="/login">login</a>
+                  </span>
+                  or
+                  <span>
+                    <a href="/register">
+                      sign up</a>
+                  </span>
+                  to view and post messages.</h3>
+              </div>
+            <% } %>
+            <!-- END of check for currentUser-->
+
+            <!-- <p> <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Btn with data-target ex</button> <button class="btn btn-primary" type="button"
+            data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"> Another btn col/exp</button> </p> <div class="collapse" id="collapseExample"> <div class="card card-body"> more hidden stufff!! </div>
+            </div> <div class="collapse" id="collapseExample2"> <div class="card card-body"> more hidden stufff!! </div> </div> -->
+
+            <div class="temp-content container">
+              <strong>
+                <p>All content below this section is temporary and will be deleted and updated as the project progress.</p>
+              </strong>
 
               <div class="well">
-                <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
+                <h2>A message from the developer</h2>
+                <p>Hello everyone!</p>
+                <p>I set out on this project with a few objectives in mind. The goals are listed below, although not in any particular order or priority.
+                </p>
+
+                <p>The first goal is to make a messaging platform to keep communication in one place, where we can all remain in contact with each other, share ideas, or ask questions, without having to dance and tangle with Twitter, Facebook, etc. I realize that
+                  not everyone has or wants to use the aforementioned services.
+                </p>
+                <p>The second goal is to reduce complexity and introduce simplicity. I love emails, but I feel that it does present some complexity, especially when more than 3 people send messages to each other.</p>
+
+                <p>The third goal is to create something useful for the users, tailored to their needs. Creating this application from scratch gives me a chance to produce and customize for
+                  <em>you</em>.</p>
+                <p>Finally, I am always looking for feedback and suggestions! I'd love to hear what you have to say. However, I won't be able to implement certain feature request due to time constraint. I will work on this application, piece by piece, much like a
+                  brick layer lays brick. Ultimately, what I hope and envision for the end goal of this project is to have something useful that
+                  <strong>we</strong>
+                  created together.</p>
+
+                <p>Regards,</p>
+                <p>Philip Nguyen</p>
               </div>
 
-          </div>
-          <!-- END of room-content-->
-        </div>
-        <!-- END of room-* (grandparent)-->
-        <!--End of threads section-->
-
-        <div class="room-urgent col-md-6 col-lg-4">
-          <div class="room-urgent-header border-line-break well">
-            <h2>Urgent</h2>
-            <h5>Post here with urgent questions or concerns. Email notifications will
-        be sent out to those who opt-in, who can answer your questions.</h5>
-
-            <i class="fa fa-wrench" aria-hidden="true"></i>
-            <span>Under Construction</span>
-
-          </div>
-          <div class="room-urgent-content">
-            <!-- data from DB will populate here-->
-
-          </div>
-        </div>
-
-
-
-        <div class="room-general col-md-6 col-lg-4">
-          <div class="room-general-header border-line-break well">
-            <h2>General</h2>
-            <h5>Talk about anything here!</h5>
-
-            <i class="fa fa-wrench" aria-hidden="true"></i>
-            <span>Under Construction</span>
-
-
-          </div>
-          <div class="room-general-content">
-            <!-- data from DB will populate here-->
-          </div>
-        </div>
-        <!-- END of room general -->
-
-
-      </div>
-    </div>
-    <!-- END of row -->
-    </div>
-    <!-- END of room container -->
-    <!-- END of room container -->
-
-    <% } else { %>
-      <div class="well">
-        <h3>Please <span> <a href="/login">login</a></span> or <span> <a href="/register">
-      sign up</a></span> to view and post messages.</h3>
-      </div>
-      <% } %>
-        <!-- END of check for currentUser-->
-
-
-        <!-- <p>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Btn with data-target ex</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-  Another btn col/exp</button>
-</p>
-
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    more hidden stufff!!
-  </div>
-</div>
-
-<div class="collapse" id="collapseExample2">
-  <div class="card card-body">
-    more hidden stufff!!
-  </div>
-</div> -->
-
-
-
-
-
-        <div class="temp-content container">
-          <strong>
-    <p>All content below this section is temporary and will be deleted and updated as
-      the project progress.</p>
-  </strong>
-
-          <div class="well">
-            <h2>A message from the developer</h2>
-            <p>Hello everyone!</p>
-            <p>I set out on this project with a few objectives in mind. The goals are listed below, although not in any particular order or priority. </p>
-
-            <p>The first goal is to make a messaging platform to keep communication in one place, where we can all remain in contact with each other, share ideas, or ask questions, without having to dance and tangle with Twitter, Facebook, etc. I realize
-              that not everyone has or wants to use the aforementioned services.
-            </p>
-            <p>The second goal is to reduce complexity and introduce simplicity. I love emails, but I feel that it does present some complexity, especially when more than 3 people send messages to each other.</p>
-
-            <p>The third goal is to create something useful for the users, tailored to their needs. Creating this application from scratch gives me a chance to produce and customize for <em>you</em>.</p>
-            <p>Finally, I am always looking for feedback and suggestions! I'd love to hear what you have to say. However, I won't be able to implement certain feature request due to time constraint. I will work on this application, piece by piece, much like
-              a brick layer lays brick. Ultimately, what I hope and envision for the end goal of this project is to have something useful that <strong>we</strong> created together.</p>
-
-            <p>Regards,</p>
-            <p>Philip Nguyen</p>
-          </div>
-
-
-          <div class="well">
-            <h2>Why You Should Use This Application</h2>
-            <p>Are you ever shy about asking a question? Do you think that a question is too "stupid"? Then sign up for an anonymous account in seconds, ask, and get an answer! I believe this to be one of the biggest advantage about having an app like this.
-            </p>
-            <p>
-              For the record, there is no need to be shy about asking questions. Attempt to do some research first. If you can't find the answer, ask. It's how we all learn!
-            </p>
-            <p>Other Benefits:</p>
-            <ul>
-              <!-- <li><a href="https://github.com/PhilJayN/sblc">Open source project.</a>
-        Ability to review and contribute to source code.</li> -->
-              <li>Voice your opinion. Power to shape how the project develop.</li>
-              <li>All your messages in one place.</li>
-              <li>Access using any device with Internet: Android, iPhone, computer, tablet.</li>
-              <li>Help the community grow by providing feedback.</li>
-              <li>Learn by asking and answering questions.</li>
-              <li>Chance to communicate with other awesome, like-minded people.</li>
-            </ul>
-          </div>
-
-          <div class="well">
-            <h2>Development Status</h2>
-            <p> Stages of Development: <strong>Pre-Alpha</strong> > Alpha > Beta > Release Candidate > Release</p>
-            <p> Current Application Progress: 5%</p>
-            <!-- <p>This is an open source project. Look at the <a href="https://github.com/PhilJayN/sblc">code on GitHub</a>.</p> -->
-          </div>
-
-          <div class="well">
-            <h2>Features</h2>
-            <!-- Example row of columns -->
-            <div class="row">
-              <div class="col-md-4">
-                <h4>Work in Progress</h4>
-                <a href="https://trello.com/b/ij4M1LKf/trello-sblc-app-public-board">Trello board for work in progress</a>
-              </div>
-
-              <div class="col-md-4">
-                <h4>Upcoming features (Maybe, no promises)</h4>
-                <!-- <ul>
-             <li>Option to subscribe to Email notifications with new messages</li>
-             <li>Image upload for user avatar picture</li>
-           </ul> -->
-
-              </div>
-              <div class="col-md-4">
-                <h4>Misc</h4>
-
-                <h4>Possible bugs</h4>
+              <div class="well">
+                <h2>Why You Should Use This Application</h2>
+                <p>Are you ever shy about asking a question? Do you think that a question is too "stupid"? Then sign up for an anonymous account in seconds, ask, and get an answer! I believe this to be one of the biggest advantage about having an app like this.
+                </p>
+                <p>
+                  For the record, there is no need to be shy about asking questions. Attempt to do some research first. If you can't find the answer, ask. It's how we all learn!
+                </p>
+                <p>Other Benefits:</p>
                 <ul>
-                  <li>Sometimes adding one comment will create duplicate comment</li>
+                  <!-- <li><a href="https://github.com/PhilJayN/sblc">Open source project.</a> Ability to review and contribute to source code.</li> -->
+                  <li>Voice your opinion. Power to shape how the project develop.</li>
+                  <li>All your messages in one place.</li>
+                  <li>Access using any device with Internet: Android, iPhone, computer, tablet.</li>
+                  <li>Help the community grow by providing feedback.</li>
+                  <li>Learn by asking and answering questions.</li>
+                  <li>Chance to communicate with other awesome, like-minded people.</li>
                 </ul>
-                <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
               </div>
-            </div>
-          </div>
 
+              <div class="well">
+                <h2>Development Status</h2>
+                <p>
+                  Stages of Development:
+                  <strong>Pre-Alpha</strong>
+                  > Alpha > Beta > Release Candidate > Release</p>
+                <p>
+                  Current Application Progress: 5%</p>
+                <!-- <p>This is an open source project. Look at the <a href="https://github.com/PhilJayN/sblc">code on GitHub</a>.</p> -->
+              </div>
 
-          <div class="well">
-            <h2>Database and Server</h2>
-            <p>Please keep in mind that comments that you post might be deleted as I maintain and develop the database. Eventually the data will be permanent.</p>
-            <p>The web site can be slow at certain times due to the server. Future plan is to move to a different sever and change to a shorter web site name.</p>
-          </div>
+              <div class="well">
+                <h2>Features</h2>
+                <!-- Example row of columns -->
+                <div class="row">
+                  <div class="col-md-4">
+                    <h4>Work in Progress</h4>
+                    <a href="https://trello.com/b/ij4M1LKf/trello-sblc-app-public-board">Trello board for work in progress</a>
+                  </div>
 
-          <div class="well">
-            <h2>Feedback and Suggestions</h2>
-            <p>I'm open to all suggestion and feedback! Right now my main struggle is the user interface, mainly on improving the look, feel, and user experience of the app.</p>
-            <p>If you spot a weird typo, or think the color scheme should be changed, or have suggestions about site layout, let me know! </p>
-          </div>
+                  <div class="col-md-4">
+                    <h4>Upcoming features (Maybe, no promises)</h4>
+                    <!-- <ul> <li>Option to subscribe to Email notifications with new messages</li> <li>Image upload for user avatar picture</li> </ul> -->
 
+                  </div>
+                  <div class="col-md-4">
+                    <h4>Misc</h4>
 
+                    <h4>Possible bugs</h4>
+                    <ul>
+                      <li>Sometimes adding one comment will create duplicate comment</li>
+                    </ul>
+                    <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+                  </div>
+                </div>
+              </div>
 
+              <div class="well">
+                <h2>Database and Server</h2>
+                <p>Please keep in mind that comments that you post might be deleted as I maintain and develop the database. Eventually the data will be permanent.</p>
+                <p>The web site can be slow at certain times due to the server. Future plan is to move to a different sever and change to a shorter web site name.</p>
+              </div>
 
+              <div class="well">
+                <h2>Feedback and Suggestions</h2>
+                <p>I'm open to all suggestion and feedback! Right now my main struggle is the user interface, mainly on improving the look, feel, and user experience of the app.</p>
+                <p>If you spot a weird typo, or think the color scheme should be changed, or have suggestions about site layout, let me know!
+                </p>
+              </div>
 
-
-
-
-
-
-          <% include ../partials/footer %>
+              <% include ../partials/footer %>
