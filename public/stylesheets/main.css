@@ -429,7 +429,9 @@ p {
     content: '>';
 }
 .icon-class:before {
-	content: 'v';
+  display: none;
+	/* content: 'v'; */
+  content: "\f067";
 }
 
 /* .thread-text {
