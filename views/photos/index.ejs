@@ -102,15 +102,12 @@
                   <span class="icon-class"> Collapse/Expand</span>
                 </div>
                 <!--start of parent thread well-->
-                <div class="collapse well" id="grandparentContent" aria-expanded="true">
+                <div class="collapse show well" id="grandparentContent" aria-expanded="true">
                   <% dbResults[1].forEach(function(thread){ %>
                     <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
                     <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
                     <div class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
                       <p class="icon-class"> <strong><%= thread.subject %></strong></p>
-                      <p class="thread-text">
-                        <%= thread.text %>
-                      </p>
                       <p class="thread-tagline">Submitted
                         <%= thread.submittedDate%>
                         <%= thread.submittedTime %>
@@ -126,6 +123,9 @@
 
                       <!-- start of child well-->
                       <div class="well collapse <%= thread._id %>">
+                        <p class="thread-text">
+                          <%= thread.text %>
+                        </p>
                         <% thread.replies.forEach(function(reply) { %>
                           <div class="well">
                             <p>
