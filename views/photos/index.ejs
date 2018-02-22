@@ -20,9 +20,8 @@
     </p>
 
     <% if (searchReq === true) { %>
-      <p>Found
-        <%= resultsCount %>
-        results</p>
+      <% var pluralize = (resultsCount > 1) ?  "results" : "result"; %>
+      <p>Found <%= resultsCount %> <%= pluralize %></p>
       <a href="/" class="">Cancel search and go to home page</a>
     <% } %>
 
