@@ -108,6 +108,9 @@
                     <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
                     <div class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
                       <p class="icon-class"> <strong><%= thread.subject %></strong></p>
+                      <p class="thread-text">
+                        <%= thread.text %>
+                      </p>
                       <p class="thread-tagline">Submitted
                         <%= thread.submittedDate%>
                         <%= thread.submittedTime %>
@@ -115,31 +118,28 @@
                         <%= thread.author.username %>
                       </p>
                       <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
-                      <!-- <div class="reply-box-parent" id="<%= thread._id %>">
+                      <div class="reply-box-parent" id="<%= thread._id %>">
                         <span class="reply-btn">Reply</span>
-                      </div> -->
+                      </div>
                       <!-- reply text box will be generated here on click-->
                     </div>
 
-                      <!-- start of child well-->
-                      <div class="well collapse <%= thread._id %>">
-                        <p class="thread-text">
-                          <%= thread.text %>
-                        </p>
-                        <% thread.replies.forEach(function(reply) { %>
-                          <div class="well">
-                            <p>
-                              <%= reply.author.username %>
-                            </p>
-                            <p>
-                              <%= reply.text %>
-                            </p>
-                          </div>
-                          <% } )%>
-                      </div>
-                      <!--end of thread-box-->
-                      <% }) %>
+                    <!-- start of child well-->
+                    <div class="well collapse <%= thread._id %>">
+                      <% thread.replies.forEach(function(reply) { %>
+                        <div class="well">
+                          <p>
+                            <%= reply.author.username %>
+                          </p>
+                          <p>
+                            <%= reply.text %>
+                          </p>
+                        </div>
+                        <% } )%>
                     </div>
+                    <!--end of thread-box-->
+                    <% }) %>
+                </div>
                         <!--end of forEach-->
                         <!-- <div class="well">
                           <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
