@@ -31,7 +31,6 @@ router.get('/', function (req, res) {
   } else {
     findValue = {};
     console.log('NO SEARCH QUERY, OR IT IS EMPTY, defaulting to {} findValue');
-    // console.log ('findValue of:', findValue,  'was used');
   }
   async.parallel([
       function(callback) {
@@ -42,15 +41,12 @@ router.get('/', function (req, res) {
           }
           // console.log('allComments results Len:', allComments.length);
           resultsCount += allComments.length;
-          // console.log('allComments results:', allComments);
           callback(null, allComments);
         });
       },
       function(callback) {
         //in DB, replies is an array with ids. make sure to populate the the replies at this point,
         // or else final results will contain object ids in the replies array.
-
-        // Thread.find(findValue, function(err, allThreads){
         Thread.find(findValue, function(err, allThreads){
             if (err) {
               console.log(err);
@@ -58,7 +54,6 @@ router.get('/', function (req, res) {
             // console.log('allThreads results Len:', allThreads.length);
             // console.log('allThreads .find RESULTS:', allThreads);
             console.log('result', allThreads);
-
             // console.log('array:', allThreads[0]);
             resultsCount += allThreads.length;
             callback(null, allThreads);
@@ -70,36 +65,32 @@ router.get('/', function (req, res) {
       console.log (err);
     } else {
       // console.log ('results Len:', results.length, 'results type:', typeof results);
-      // console.log ('results obj:', results);
-      // console.log ('results arr:', results[1]);
       // console.log ('TOTAL RESULTS LEN:', resultsCount);
       res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg, resultsCount: resultsCount, searchReq: searchReq} );
     }
       });
   });
 
-    // res.send('hello world asdf');
-
-router.get('/pup', function (req, res) {
-  async.parallel([
-      function(callback){
-          setTimeout(function(){
-              callback(null, 'one');
-          }, 200);
-      },
-      function(callback){
-          setTimeout(function(){
-              callback(null, 'two');
-          }, 100);
-      },
-  ],
-  // optional callback
-  function(err, results){
-      // the results array will equal ['one','two'] even though
-      console.log ('results', results);
-      // the second function had a shorter timeout.
-  });
-});
+// router.get('/pup', function (req, res) {
+//   async.parallel([
+//       function(callback){
+//           setTimeout(function(){
+//               callback(null, 'one');
+//           }, 200);
+//       },
+//       function(callback){
+//           setTimeout(function(){
+//               callback(null, 'two');
+//           }, 100);
+//       },
+//   ],
+//   // optional callback
+//   function(err, results){
+//       // the results array will equal ['one','two'] even though
+//       console.log ('results', results);
+//       // the second function had a shorter timeout.
+//   });
+// });
 
 //ROUTES: AUTHENTICATION
 //show the sign up form
@@ -144,9 +135,12 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+//for fuzzy searching, where 'text' parameter will accept a req.query.search string
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
-
-
+module.exports = router;
 
 
 //////////////////////////////////
@@ -255,23 +249,3 @@ router.get('/logout', function(req, res) {
     // }
     // });
     // console.log('----------------------------------------------------');
-
-
-
-
-
-
-
-
-
-
-// router.get('/demo', function (req, res) {
-// });
-
-
-//for fuzzy searching, where 'text' parameter will accept a req.query.search string
-function escapeRegex(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
-
-module.exports = router;
