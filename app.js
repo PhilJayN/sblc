@@ -46,8 +46,6 @@ mongoose.connect(url);
 // console.log ('first PROCESS env', process.env);
 console.log ('second PROCESS env', process.env.DATABASEURL);
 
-// mongodb://<dbuser>:<dbpassword>@ds123976.mlab.com:23976/sblc
-// mongoose.connect("mongodb://Philip:Limer23@ds123976.mlab.com:23976/sblc");
 // console.log ('process env', process.env.DATABASEURL);
 // mongoose.connect("mongodb://localhost/sblc_app");
 
@@ -87,7 +85,6 @@ app.use(indexRoutes);
 app.use(resourcesRoutes);
 app.use(threadRoutes);
 app.use(replyRoutes);
-
 
 // app.listen(process.env.PORT, process.env.IP, function () {
 //   console.log('listening on port:', process.env.PORT, process.env.IP);
