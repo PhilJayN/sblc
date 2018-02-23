@@ -4,7 +4,7 @@ var Thread = require("../models/thread");
 var middleware = require("../middleware");
 var replySchema = require("../models/reply");
 
-//show new form to CREATE threads
+//Show form to CREATE new thread
 router.get('/threads/new', function (req, res) {
   Thread.find({}, function(err, allThreads){
     if (err) {
@@ -15,7 +15,7 @@ router.get('/threads/new', function (req, res) {
   });
 });
 
-//show form to REPLY to a  particular thread that has unique ID
+//show form to REPLY to a particular thread that has unique ID
 router.get('/threads/:id/reply', function (req, res) {
   Thread.findById(req.params.id, function(err, foundThread) {
     res.render('threads/reply.ejs', {thread: foundThread});
