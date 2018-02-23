@@ -4,7 +4,6 @@ var replySchema = require("./reply");
 var threadSchema = new mongoose.Schema({
   subject: String,
   text: String,
-  // text: String,
   isCollapsed: {type: Boolean, default: false},
   author:
   {

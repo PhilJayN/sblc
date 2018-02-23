@@ -10,19 +10,13 @@ var commentSchema = new mongoose.Schema({
       },
       username: String
   },
-  // submittedOn:
-  // {
-  //   humanDate: String,
-  //   humanTime: String
-  // }
   submittedDate: String,
   submittedTime: String
 });
 
 module.exports = mongoose.model("Comment", commentSchema);
 
-
-//correct obj:
+//obj visualization:
 // commentSchema = {
 // 	text: 'hi',
 // 	username: 'Teddy',
