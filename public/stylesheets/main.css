@@ -146,7 +146,7 @@ input {
  }
 
  .icon-class {
-   border: 1px solid red; 
+   border: 1px solid red;
  }
 
 .thumbnail img {
@@ -287,6 +287,10 @@ p {
 
 .temp-content h2 {
   color: #4DB6AC;
+}
+
+.container {
+  border: 1px solid red; 
 }
 
 .container-fluid {
