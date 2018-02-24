@@ -3,6 +3,7 @@ var router = express.Router({mergeParams: true});
 var Thread = require("../models/thread");
 var middleware = require("../middleware");
 var replySchema = require("../models/reply");
+var moment = require('moment');
 
 //Show form to CREATE new thread
 router.get('/threads/new', function (req, res) {
@@ -21,7 +22,7 @@ router.get('/threads/:id', function (req, res) {
     if (err) {
       console.log('ERROR!!', err);
     } else {
-      res.render('threads/thread.ejs', {thread: foundThread});
+      res.render('threads/thread.ejs', {thread: foundThread, moment: moment});
     }
   });
 });

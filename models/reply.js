@@ -10,7 +10,8 @@ var replySchema = new mongoose.Schema({
       },
       username: String
   },
-  submittedDate: String,
+  // submittedDate: String,
+  submittedDate: {type: Date, default: Date.now},
   submittedTime: String
 });
 
