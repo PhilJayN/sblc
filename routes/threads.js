@@ -15,6 +15,18 @@ router.get('/threads/new', function (req, res) {
   });
 });
 
+//SHOW more info about one thread, with all replies
+router.get('/threads/:id', function (req, res) {
+  Thread.find({}, function(err, allThreads){
+    if (err) {
+      console.log('ERROR!!', err);
+    } else {
+      res.render('threads/thread.ejs');
+    }
+  });
+});
+
+
 //show form to REPLY to a particular thread that has unique ID
 router.get('/threads/:id/reply', function (req, res) {
   Thread.findById(req.params.id, function(err, foundThread) {
