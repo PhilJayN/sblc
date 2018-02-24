@@ -109,7 +109,7 @@
                       <p class="icon-class"><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p>
                       <!-- <p class="icon-class"><strong><%= thread.subject %></strong><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p> -->
                       <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
-                      <a class="thread-subject" href="/register"><%= thread.subject %></a>
+                      <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
 
 
                       <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %>

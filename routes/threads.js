@@ -17,11 +17,11 @@ router.get('/threads/new', function (req, res) {
 
 //SHOW more info about one thread, with all replies
 router.get('/threads/:id', function (req, res) {
-  Thread.find({}, function(err, allThreads){
+  Thread.findById(req.params.id, function(err, foundThread){
     if (err) {
       console.log('ERROR!!', err);
     } else {
-      res.render('threads/thread.ejs');
+      res.render('threads/thread.ejs', {thread: foundThread});
     }
   });
 });
