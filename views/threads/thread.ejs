@@ -37,9 +37,15 @@
         </div>
     </div>
               <!--end of forEach-->
-      <!-- <div class="well">
-        <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
-      </div> -->
+    <div class="reply-box-parent" id="<%= thread._id %>">
+      <form action="/threads/reply" method="POST" class="reply-form">
+        <div class="form-group">
+          <input type="hidden" name="threadId" value="<%= thread._id %>">
+          <textarea autofocus required class="comment-text-input" name="reply"></textarea>
+          <button class="btn btn-primary add-comment-btn">Submit!</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
