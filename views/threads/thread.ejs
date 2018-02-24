@@ -1,48 +1,46 @@
 <% include ../partials/header %>
 <div class="container-fluid">
   <div id="grandparent" class="room-sblc threads-box">
-      <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
-      <!--Start of controller btn for expanding/collapsing all threads-->
-      <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
-        <span class="icon-class"> Collapse/Expand</span>
-      </div>
-      <div class="collapse show well" id="grandparentContent" aria-expanded="true">
-          <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
-          <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
-          <div class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
-            <p class="icon-class"><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p>
-            <!-- <p class="icon-class"><strong><%= thread.subject %></strong><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p> -->
-            <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
-            <h2 class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></h2>
-            <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %>
-              by <%= thread.author.username %></p>
-              <p class="thread-text"><%= thread.text %> </p>
-            <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
-            <div class="reply-box-parent" id="<%= thread._id %>">
-              <span class="reply-btn">Reply</span>
-            </div>
-            <!-- reply text box will be generated here on click-->
+    <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
+    <!--Start of controller btn for expanding/collapsing all threads-->
+    <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
+      <span class="icon-class"> Collapse/Expand</span>
+    </div>
+    <div class="collapse show well" id="grandparentContent" aria-expanded="true">
+        <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
+        <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
+        <div class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
+          <p class="icon-class"><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p>
+          <!-- <p class="icon-class"><strong><%= thread.subject %></strong><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p> -->
+          <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
+          <h2 class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></h2>
+          <p class="thread-tagline">Submitted <%= thread.submittedDate%> <%= thread.submittedTime %>
+            by <%= thread.author.username %></p>
+            <p class="thread-text"><%= thread.text %> </p>
+          <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
+          <div class="reply-box-parent" id="<%= thread._id %>">
+            <span class="reply-btn">Reply</span>
           </div>
+          <!-- reply text box will be generated here on click-->
+        </div>
 
-          <!-- start of child well-->
-          <div class="well collapse <%= thread._id %>">
-            <% thread.replies.forEach(function(reply) { %>
-              <div class="well">
-                <p>
-                  <%= reply.author.username %>
-                </p>
-                <p>
-                  <%= reply.text %>
-                </p>
-              </div>
-              <% } )%>
-          </div>
-      </div>
+        <!-- start of child well-->
+        <div class="well collapse <%= thread._id %>">
+          <% thread.replies.forEach(function(reply) { %>
+            <div class="well">
+              <p><%= reply.author.username %> <%= reply.submittedDate %> <%= reply.submittedTime%></p>
+              <p>
+                <%= reply.text %>
+              </p>
+            </div>
+            <% } )%>
+        </div>
+    </div>
               <!--end of forEach-->
-              <!-- <div class="well">
-                <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
-              </div> -->
-          </div>
+      <!-- <div class="well">
+        <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
+      </div> -->
+  </div>
 </div>
 
         <!-- END of room-* (grandparent)-->
