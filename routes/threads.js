@@ -60,7 +60,7 @@ router.post('/threads/reply', function (req, res) {
           id: req.user._id,
           username: req.user.username
         },
-        submittedDate: humanDate,
+        submittedDate: date,
         submittedTime: humanTime
       };
       foundThread.replies.push(reply);
