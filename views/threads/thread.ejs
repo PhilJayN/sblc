@@ -15,9 +15,11 @@
           <!-- <p class="icon-class"><strong><%= thread.subject %></strong><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p> -->
           <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
           <h2 class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></h2>
-          <h1><%= thread.submittedDate %></h1>
-          <p class="thread-tagline">Submitted by <%= thread.author.username %> </p>
-            <p class="thread-text"><%= thread.text %> </p>
+          <p class="thread-tagline">
+            <a href="#" class="author"><%= thread.author.username %></a>
+            <span><%=  moment(thread.submittedDate).fromNow() %></span>
+          </p>
+          <p class="thread-text"><%= thread.text %> </p>
           <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
 
           <div class="reply-box-parent" id="<%= thread._id %>">
@@ -41,8 +43,11 @@
         <div class="well collapse show <%= thread._id %>">
           <% thread.replies.forEach(function(reply) { %>
             <div class="well">
-              <p><%= reply.author.username %> <%=  moment(reply.submittedDate).fromNow() %></p>
-              <p><%= reply.text %></p>
+              <p class="thread-tagline">
+                <a href="#" class="author"><%= reply.author.username %></a>
+                <span><%=  moment(reply.submittedDate).fromNow() %></span>
+                <p><%= reply.text %></p>
+              </p>
             </div>
             <% } )%>
         </div>

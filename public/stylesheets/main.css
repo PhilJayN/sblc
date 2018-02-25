@@ -242,6 +242,10 @@ input {
 }
 
 
+/* tagline, author, etc... */
+.author {
+  margin-right: 0.5em;
+}
 
 /*
 @media only screen and (min-width: 1025px) {
