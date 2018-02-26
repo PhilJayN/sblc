@@ -16,8 +16,8 @@
           <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
           <h2 class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></h2>
           <p class="thread-tagline">
+            Submitted <span><%=  moment(thread.submittedDate).fromNow() %></span>
             <a href="#" class="author"><%= thread.author.username %></a>
-            <span><%=  moment(thread.submittedDate).fromNow() %></span>
           </p>
           <p class="thread-text"><%= thread.text %> </p>
           <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
@@ -27,7 +27,7 @@
               <div class="form-group">
                 <input type="hidden" name="threadId" value="<%= thread._id %>">
                 <textarea required class="comment-text-input thread-text-input form-control" name="reply"></textarea>
-                <button class="btn btn-primary add-comment-btn">Submit!</button>
+                <button class="btn btn-primary add-comment-btn">Add Comment</button>
               </div>
             </form>
           </div>

@@ -111,9 +111,8 @@
                       <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
                       <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
 
-                      <p class="thread-tagline">Submitted by
+                      <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %></span>
                         <a href="#" class="author"><%= thread.author.username %></a>
-                        <span><%=  moment(thread.submittedDate).fromNow() %></span>
                       </p>
 
                       <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->

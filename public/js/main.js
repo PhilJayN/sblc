@@ -170,9 +170,5 @@ controller.init();
 
 
 
-//     $('[data-toggle="collapse"]').on('click', function() {
-//       console.log('clicked! baby!!!');
-//   $(this).toggleClass('collapsed');
-// });
 
 // }); //end of document ready fxn

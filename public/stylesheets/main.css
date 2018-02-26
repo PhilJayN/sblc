@@ -21,7 +21,6 @@ body {
 
 .collapse-expand {
   float: right;
-  border: 1px solid red; 
 }
 
 .collapsed .icon-class:before {
@@ -34,7 +33,7 @@ body {
 }
 
 .icon-class {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 /* HEADINGS, NAVS */
