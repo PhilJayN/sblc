@@ -6,6 +6,7 @@ var Comment = require("../models/comment");
 var Thread = require("../models/thread");
 var replySchema = require("../models/reply");
 var async = require('async');
+var moment = require('moment');
 
 // ================
 // MAIN ROUTES
@@ -66,7 +67,7 @@ router.get('/', function (req, res) {
     } else {
       // console.log ('results Len:', results.length, 'results type:', typeof results);
       // console.log ('TOTAL RESULTS LEN:', resultsCount);
-      res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg, resultsCount: resultsCount, searchReq: searchReq} );
+      res.render( 'photos/index.ejs', { dbResults: results, userMsg: userMsg, resultsCount: resultsCount, searchReq: searchReq, moment: moment} );
     }
       });
   });

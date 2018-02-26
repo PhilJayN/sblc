@@ -185,11 +185,11 @@ input {
  }
 
  .parent1Content {
-   border: 1px solid red;
+   /* border: 1px solid red; */
  }
 
  .grandparentContent {
-   border: 1px solid red;
+   /* border: 1px solid red; */
  }
 
 .thumbnail img {
@@ -294,7 +294,7 @@ p {
 }
 
 .container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .container-fluid {
