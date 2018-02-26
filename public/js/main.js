@@ -102,6 +102,12 @@ var UIController = (function() {
           parentEl.appendChild(createReplyBox(parentEl)); //DOM is now updated to have results of createReplyBox method call
         }
       }
+
+      if (elClicked.className === 'collapse-expand') {
+        console.log('collapse-expand!!');
+        // elClicked.toggleClass('collapsed');
+         // elClicked.classList.toggle("collapsed");
+      }
     },
   }   //end of UIController return statement
 })(); //end of UIController
@@ -164,8 +170,9 @@ controller.init();
 
 
 
-    $('[data-toggle="collapse"]').on('click', function() {
-  $(this).toggleClass('collapsed');
-});
+//     $('[data-toggle="collapse"]').on('click', function() {
+//       console.log('clicked! baby!!!');
+//   $(this).toggleClass('collapsed');
+// });
 
 // }); //end of document ready fxn

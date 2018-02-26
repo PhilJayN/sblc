@@ -21,6 +21,7 @@ body {
 
 .collapse-expand {
   float: right;
+  border: 1px solid red; 
 }
 
 .collapsed .icon-class:before {

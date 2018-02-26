@@ -106,7 +106,7 @@
                     <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
                     <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
                     <div class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
-                      <p class="icon-class"><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p>
+                      <p class="icon-class"><span class="collapse-expand">V</span></p>
                       <!-- <p class="icon-class"><strong><%= thread.subject %></strong><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p> -->
                       <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
                       <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
