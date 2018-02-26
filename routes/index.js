@@ -11,6 +11,26 @@ var moment = require('moment');
 // ================
 // MAIN ROUTES
 // ================
+
+
+router.get('/demo', function (req, res) {
+  // Thread.find({}).sort({date: -1}).exec(function(err, allThreads){
+    Thread.find({}, function(err, allThreads){
+      if (err) {
+        console.log(err);
+      } else {
+
+        console.log('found thread', allThreads);
+        // res.send('sadj;fk');
+        // res.render('demo.ejs', {thread: allThreads});
+      }
+
+  });
+
+});
+
+
+
 router.get('/', function (req, res) {
   var findValue;
   var userMsg = null;
@@ -48,7 +68,7 @@ router.get('/', function (req, res) {
       function(callback) {
         //in DB, replies is an array with ids. make sure to populate the the replies at this point,
         // or else final results will contain object ids in the replies array.
-        Thread.find(findValue, function(err, allThreads){
+        Thread.find(findValue).sort({date: -1}).exec(function(err, allThreads){
             if (err) {
               console.log(err);
             }
