@@ -15,18 +15,15 @@ var moment = require('moment');
 
 router.get('/demo', function (req, res) {
   // Thread.find({}).sort({date: -1}).exec(function(err, allThreads){
-    Thread.find({}, function(err, allThreads){
+    // Thread.find({}, function(err, allThreads){
+    Thread.find({}).sort({date: -1}).exect(function(err, allThreads){
       if (err) {
         console.log(err);
       } else {
-
         console.log('found thread', allThreads);
-        // res.send('sadj;fk');
-        // res.render('demo.ejs', {thread: allThreads});
+        res.render('demo.ejs', {thread: allThreads});
       }
-
   });
-
 });
 
 

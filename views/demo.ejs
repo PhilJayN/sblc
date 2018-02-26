@@ -1,21 +1,18 @@
 
 <h1>demo</h1>
-<%= thread %>
 
-<!-- <%= thread.subject %>
 
-<%= thread.replies %> -->
+
+all threads <%= thread %>
+
 
 
 <h2>for each</h2>
-<% thread.replies.forEach(function(reply){ %>
+<% thread.forEach(function(thread){ %>
 
-  <ul>
-    <li>    <%= reply %></li>
-  </ul>
 
   <div class="well">
-    <li>    <%= reply.text %></li>
+    <li>    <%= thread %></li>
 
   </div>
 
