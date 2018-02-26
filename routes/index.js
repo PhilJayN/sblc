@@ -16,7 +16,7 @@ var moment = require('moment');
 router.get('/demo', function (req, res) {
   // Thread.find({}).sort({date: -1}).exec(function(err, allThreads){
     // Thread.find({}, function(err, allThreads){
-    Thread.find({}).sort({date: -1}).exect(function(err, allThreads){
+    Thread.find({}).sort({submittedTime: 'descending'}).exec(function(err, allThreads){
       if (err) {
         console.log(err);
       } else {
@@ -24,6 +24,17 @@ router.get('/demo', function (req, res) {
         res.render('demo.ejs', {thread: allThreads});
       }
   });
+
+
+//   User.find({}).sort({username: 'ascending'}).exec(function(err, allUsers){
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log('found!!', allUsers);
+//       res.render('demo.ejs', {thread: allUsers});
+//     }
+// });
+
 });
 
 
@@ -65,7 +76,8 @@ router.get('/', function (req, res) {
       function(callback) {
         //in DB, replies is an array with ids. make sure to populate the the replies at this point,
         // or else final results will contain object ids in the replies array.
-        Thread.find(findValue).sort({date: -1}).exec(function(err, allThreads){
+        Thread.find(findValue).sort({"createdAt": 'ascending'}).exec(function(err, allThreads){
+
             if (err) {
               console.log(err);
             }

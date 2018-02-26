@@ -14,8 +14,13 @@ var threadSchema = new mongoose.Schema({
       username: String
   },
   replies: [replySchema],
-  submittedDate: {type: Date, default: Date.now},
+  submittedDate: {type: Date, default: new Date()},
   submittedTime: String
-});
+},
+
+// { timestamps: { createdAt: 'created_at' } }
+{ timestamps: true }
+
+);
 
 module.exports = mongoose.model("Thread", threadSchema);
