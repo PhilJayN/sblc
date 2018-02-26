@@ -1,7 +1,7 @@
-/*Colors*/
+/*Colors Scheme. Most common*/
 /*Primary: #80CBC4*/
 /*Borders: #7DB0D8*/
-/*Primary btn: */
+/*Primary btn (submit, etc): #64B5F6*/
 
 body {
   background-color: #F4F7F6;
@@ -9,6 +9,7 @@ body {
   color: #576578;
 }
 
+/* ICONS */
 .fa-book {
   /* color: #64B5F6; */
   color: #2196F3;
@@ -19,10 +20,23 @@ body {
 }
 
 .collapse-expand {
-  /* border: 1px solid red; */
   float: right;
 }
 
+.collapsed .icon-class:before {
+    content: '>';
+}
+.icon-class:before {
+  display: none;
+ /* content: 'v'; */
+  content: "\f067";
+}
+
+.icon-class {
+  border: 1px solid red;
+}
+
+/* HEADINGS, NAVS */
 .jumbotron  {
   display: none;
   background-color: #FFFFFF;
@@ -42,6 +56,7 @@ body {
   border: 1px solid #e7e7e7;
 }
 
+/* BUTTONS AND ANCHORS */
 .btn-info {
   padding-left: 2.5em;
   padding-right: 2.5em;
@@ -76,6 +91,44 @@ body {
   margin: .5em .5em .5em 0;
 }
 
+
+.delete-form {
+  display: inline;
+}
+
+.edit-style:hover {
+  color: #EC971F;
+}
+
+.del-style {
+   border: none;
+   background: none;
+   /* color: #C9302C; */
+   color: #E57373;
+   display: inline;
+}
+
+.del-style:hover {
+   text-decoration: underline;
+}
+
+.more-info-style {
+  display: block;
+  padding-bottom: 6px;
+  color: #26A69A;
+}
+
+.move-route {
+  margin-top: 15px;
+}
+
+.more-info-style:hover {
+  color: #00796B;
+  text-decoration: underline;
+}
+
+
+/* CONTENT */
 input {
   border: 1px solid red;
 }
@@ -87,7 +140,6 @@ input {
 .thread-subject:invalid {
   border: 1px solid red;
 }
-
 
 .comment-text-input {
   width: 100%;
@@ -102,15 +154,11 @@ input {
   height: 100px;
 }
 
-
-/* .form-control:focus {
-  border-color: #7DD87E;
-} */
-
 .caption-full {
  padding: 1.5em;
 }
 
+/* CONTAINERS, BOX, DIVS, MARGINS, PADDINGS */
 .well {
   padding: 0.5em;
   background-color: #FFFFFF;
@@ -144,64 +192,9 @@ input {
    border: 1px solid red;
  }
 
- .collapsed .icon-class:before {
-     content: '>';
- }
- .icon-class:before {
-   display: none;
- 	/* content: 'v'; */
-   content: "\f067";
- }
-
- .icon-class {
-   border: 1px solid red;
- }
-
 .thumbnail img {
   width: 100%;
   border-radius: 3px;
-}
-
-.delete-form {
-  display: inline;
-}
-
-/* .edit-style {
-  border: none;
-  background: none;
-  color: #EC971F;
-  display: inline;
-} */
-
-.edit-style:hover {
-  color: #EC971F;
-}
-
-.del-style {
-   border: none;
-   background: none;
-   /* color: #C9302C; */
-   color: #E57373;
-   display: inline;
-}
-
-.del-style:hover {
-   text-decoration: underline;
-}
-
-.more-info-style {
-  display: block;
-  padding-bottom: 6px;
-  color: #26A69A;
-}
-
-.move-route {
-  margin-top: 15px;
-}
-
-.more-info-style:hover {
-  color: #00796B;
-  text-decoration: underline;
 }
 
 .row {
@@ -241,8 +234,7 @@ input {
 	display: none;
 }
 
-
-/* tagline, author, etc... */
+/* TAGLINE, AUTHOR, ETC... */
 .author {
   margin-right: 0.5em;
 }
