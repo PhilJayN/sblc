@@ -106,11 +106,11 @@
                   <% dbResults[1].forEach(function(thread){ %>
                     <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
                     <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
-                    <div class=""  id="<%= thread._id %>">
+                    <div class="well"  id="<%= thread._id %>">
                       <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
                       will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
                       element having a 'collapse' class. You are free to move this controller to other elements.-->
-                      <p class="icon-class" data-toggle="collapse" data-target=".<%= thread._id %>" ><span class="collapse-expand">V</span></p>
+                      <p class="collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>" ><span class="expand"></span></p>
                       <!-- <p class="icon-class"><strong><%= thread.subject %></strong><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p> -->
                       <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
                       <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
@@ -120,6 +120,7 @@
 
                       <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
                       <div class="reply-box-parent" id="<%= thread._id %>">
+                        <p><%= thread.replies.length %> comments</p>
                         <span class="reply-btn">Reply</span>
                       </div>
                       <!-- reply text box will be generated here on click-->

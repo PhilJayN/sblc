@@ -23,14 +23,36 @@ body {
   float: right;
 }
 
+/*
 .collapsed .icon-class:before {
     content: '>';
 }
 .icon-class:before {
   display: none;
- /* content: 'v'; */
   content: "\f067";
+} */
+
+.collapsed .expand:before {
+    content: '>';
 }
+.expand:before {
+  /* content: "\f067"; */
+  content: 'V';
+
+}
+
+
+
+/* .expand .icon-class:before {
+    content: '>';
+}
+.icon-class:before {
+  /* display: none; */
+ /* content: 'v'; */
+  /* content: "\f067"; */
+} */
+
+
 
 .icon-class {
   /* border: 1px solid red; */
