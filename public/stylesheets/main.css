@@ -32,6 +32,10 @@ body {
   content: "\f067";
 } */
 
+.expand {
+  margin-right: 0.25em;
+}
+
 /*select all element with a class of .collapse, whose child has a class of .expand
 this uses a simple .toggle to add/remove element with name of collapsed*/
 .collapsed .expand:before {
@@ -47,6 +51,8 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   content: "\f0d7";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
+  color: #77b9ed;
+
 }
 
 
@@ -58,8 +64,6 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
  /* content: 'v'; */
   /* content: "\f067"; */
 } */
-
-
 
 .icon-class {
   /* border: 1px solid red; */

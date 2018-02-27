@@ -111,7 +111,7 @@
                       will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
                       element having a 'collapse' class. You are free to move this controller to other elements.-->
                       <!-- <p class="collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>" ><span class="expand"><i class="fas fa-plus"></i></span></p> -->
-                      <p class="collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>" ><span class="expand"></span></p>
+                      <p class="collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
                       <!-- <p class="icon-class"><strong><%= thread.subject %></strong><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p> -->
                       <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
                       <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
@@ -120,8 +120,9 @@
                       </p>
 
                       <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
-                      <div class="reply-box-parent" id="<%= thread._id %>">
-                        <p><%= thread.replies.length %> comments</p>
+                      <div class="reply-box-parent collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
+                        <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
+                        <p><span class="expand"></span><%= thread.replies.length %> <%= word %></p>
                         <span class="reply-btn">Reply</span>
                       </div>
                       <!-- reply text box will be generated here on click-->
