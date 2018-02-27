@@ -106,7 +106,10 @@ var UIController = (function() {
 
       if (elClicked.className === 'collapse-expand') {
         console.log('collapse-expand!!');
-        // elClicked.toggleClass('collapsed');
+         elClicked.classList.toggle("collapsed");
+      }
+      if (elClicked.className === 'hide-show') {
+        console.log('hide show!!!!!');
          elClicked.classList.toggle("collapsed");
       }
     },

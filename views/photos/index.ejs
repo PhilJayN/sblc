@@ -98,11 +98,11 @@
                 <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
                 <!--Start of controller btn for expanding/collapsing all threads-->
                 <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
-                  <span class="icon-class"> Collapse/Expand</span>
+                  <span class="hide-show"></span>
                 </div>
 
                 <!--start of parent thread well-->
-                <div class="well" id="grandparentContent" aria-expanded="true">
+                <div class="well collapse show" id="grandparentContent" aria-expanded="true">
                   <% dbResults[1].forEach(function(thread){ %>
                     <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
                     <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->

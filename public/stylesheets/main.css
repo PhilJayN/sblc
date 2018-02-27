@@ -55,6 +55,21 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   color: #77b9ed;
 }
 
+.collapsed .hide-show:before {
+    content: "Hide All";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #80CBC4;
+}
+
+.hide-show:before {
+  content: "Show All";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #77b9ed;
+}
+
+
 
 /* .expand .icon-class:before {
     content: '>';
