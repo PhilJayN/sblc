@@ -62,7 +62,8 @@ var UIController = (function() {
 
     var button = document.createElement('button');
     button.className = 'btn';
-    button.innerText = 'Submit!';
+    button.className = 'btn-secondary';
+    button.innerText = 'Submit';
     div.appendChild(button);
     return form;
   };
@@ -170,8 +171,6 @@ controller.init();
 
 
 
-    window.FontAwesomeConfig = {
-        searchPseudoElements: true
-      }
+
 
 // }); //end of document ready fxn

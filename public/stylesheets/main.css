@@ -2,6 +2,7 @@
 /*Primary: #80CBC4*/
 /*Borders: #7DB0D8*/
 /*Primary btn (submit, etc): #64B5F6*/
+/* Anchor links: #63a2d4*/
 
 body {
   background-color: #F4F7F6;
@@ -52,7 +53,6 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   color: #77b9ed;
-
 }
 
 
@@ -64,10 +64,6 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
  /* content: 'v'; */
   /* content: "\f067"; */
 } */
-
-.icon-class {
-  /* border: 1px solid red; */
-}
 
 /* HEADINGS, NAVS */
 .jumbotron  {
@@ -114,6 +110,14 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   background-color: #42A5F5;
 }
 
+.btn-secondary {
+  color: rgb(68, 68, 68);
+  background-color: #64B5F6;
+  color: white;
+  border: none;
+  border-radius: 2px;
+}
+
 .btn-collapse-expand {
   /* display: inline; */
   padding: .75px;
@@ -123,7 +127,6 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   display: block;
   margin: .5em .5em .5em 0;
 }
-
 
 .delete-form {
   display: inline;
@@ -158,6 +161,10 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 .more-info-style:hover {
   color: #00796B;
   text-decoration: underline;
+}
+
+a {
+  color: #63a2d4;
 }
 
 
