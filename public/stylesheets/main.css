@@ -32,15 +32,21 @@ body {
   content: "\f067";
 } */
 
+/*select all element with a class of .collapse, whose child has a class of .expand
+this uses a simple .toggle to add/remove element with name of collapsed*/
 .collapsed .expand:before {
-    content: '>';
-}
-.expand:before {
   /* content: "\f067"; */
-  content: 'V';
-
+    /* content: '>'; */
+    /* content: "\f067"; */
+    content: "dsf";
 }
 
+.expand:before {
+  content: 'V';
+}
+
+
+/* content: "\f1ea"; */
 
 
 /* .expand .icon-class:before {
