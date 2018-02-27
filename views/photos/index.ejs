@@ -1,5 +1,4 @@
 <% include ../partials/header %>
-  <!-- This is the main page tutors will see -->
   <div class="jumbotron">
     <h1 class="hero-text">SBLC</h1>
     <!-- <button class="btn btn-primary" class="demo-btn" id="demoId">Submit</button> -->
@@ -9,41 +8,32 @@
     <div class="main-image">
       <img src="https://i.imgur.com/FbIu9FK.jpg" alt="flower-pic-placeholder">
     </div>
-    <!-- <div class="main-btn"> <a class="btn btn-info test-btn" href="/photos/new">Placeholder Btn</a> </div> -->
-    <p>
-      <form action="/" method="GET" class="form-inline">
-        <div class="form-group">
-          <input type="text" name="search" placeholder="Search query..." class="form-control">
-          <input type="submit" value="Search" class="btn btn-secondary">
-        </div>
-      </form>
-    </p>
+    <form action="/" method="GET" class="form-inline">
+      <div class="form-group">
+        <input type="text" name="search" placeholder="Search query..." class="form-control">
+        <input type="submit" value="Search" class="btn btn-secondary">
+      </div>
+    </form>
 
     <% if (searchReq === true) { %>
       <% var pluralize = (resultsCount > 1) ?  "results" : "result"; %>
       <p>Found <%= resultsCount %> <%= pluralize %></p>
       <a href="/" class="">Cancel search and go to home page</a>
     <% } %>
-
   </div>
-  <!-- end of index.ejs jumbotron (intro jumbotron)-->
+  <!-- end of jumbotron-->
 
   <!-- Start of if statement to check for currentUser-->
   <% if(currentUser) { %>
     <!-- basics is container, which has a row, where each row has columns -->
     <div class="room-container container-fluid">
       <div class="row">
-
-        <!-- <div class="room-announcement col-md-6 col-lg-4"> <h3>Quick Announcements</h3> </div> -->
-
         <div class="room-sblc col-md-6 col-lg-4">
           <!-- each room consist of divs: room-header, and room-content -->
           <div class="room-sblc-header border-line-break well">
             <h2>SBLC</h2>
           </div>
-
           <div class="room-sblc-content ">
-            <!-- data from DB will populate here-->
             <% dbResults[0].forEach(function(comment){ %>
               <div class="well">
                 <p>
@@ -71,7 +61,6 @@
               <% }) %>
 
                 <div class="well">
-
                   <% if(!currentUser) { %>
                     <p>Join the conversation! Sign up for an account in seconds.</p>
                     <a class="btn btn-info" href="/register">Sign up</a>
@@ -104,22 +93,19 @@
                 <!--start of parent thread well-->
                 <div class="well collapse show" id="grandparentContent" aria-expanded="true">
                   <% dbResults[1].forEach(function(thread){ %>
-                    <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
-                    <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
+                    <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
                     <div class="well"  id="<%= thread._id %>">
                       <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
                       will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
                       element having a 'collapse' class. You are free to move this controller to other elements.-->
-                      <!-- <p class="collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>" ><span class="expand"><i class="fas fa-plus"></i></span></p> -->
                       <p class="collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
-                      <!-- <p class="icon-class"><strong><%= thread.subject %></strong><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p> -->
-                      <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
                       <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
                       <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
                         <a href="#" class="author"><%= thread.author.username %></a>
                       </p>
 
                       <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
+                      
                       <div class="reply-box-parent collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
                         <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
                         <p><span class="expand"></span><%= thread.replies.length %> <%= word %></p>
