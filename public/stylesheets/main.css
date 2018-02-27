@@ -68,7 +68,7 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 /* HEADINGS, NAVS */
 .jumbotron  {
   display: none;
-  background-color: #FFFFFF;
+  background-color: blue;
   margin-bottom: .5rem;
 }
 
@@ -172,6 +172,7 @@ a {
 input {
   border: 1px solid red;
 }
+
 
 .thread-subject:valid {
   border: 1px solid blue;
