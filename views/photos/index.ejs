@@ -98,15 +98,15 @@
                       <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
                       will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
                       element having a 'collapse' class. You are free to move this controller to other elements.-->
-                      <p class="collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
+                      <p class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
                       <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
                       <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
                         <a href="#" class="author"><%= thread.author.username %></a>
                       </p>
 
                       <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
-                      
-                      <div class="reply-box-parent collapsed icon-class" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
+
+                      <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
                         <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
                         <p><span class="expand"></span><%= thread.replies.length %> <%= word %></p>
                         <span class="reply-btn">Reply</span>

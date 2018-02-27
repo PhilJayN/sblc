@@ -69,17 +69,6 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   color: #77b9ed;
 }
 
-
-
-/* .expand .icon-class:before {
-    content: '>';
-}
-.icon-class:before {
-  /* display: none; */
- /* content: 'v'; */
-  /* content: "\f067"; */
-} */
-
 /* HEADINGS, NAVS */
 .jumbotron  {
   display: none;
