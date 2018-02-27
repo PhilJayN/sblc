@@ -13,7 +13,11 @@ var replySchema = new mongoose.Schema({
   // submittedDate: String,
   submittedDate: {type: Date, default: Date.now},
   submittedTime: String
-});
+},
+
+{ timestamps: true }
+
+);
 
 //no need to write mongoose.model, because the replySchema will be embedded, NOT referenced
 // in threads model.
