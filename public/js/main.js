@@ -170,5 +170,8 @@ controller.init();
 
 
 
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
 
 // }); //end of document ready fxn

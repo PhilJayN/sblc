@@ -35,18 +35,19 @@ body {
 /*select all element with a class of .collapse, whose child has a class of .expand
 this uses a simple .toggle to add/remove element with name of collapsed*/
 .collapsed .expand:before {
-  /* content: "\f067"; */
-    /* content: '>'; */
-    /* content: "\f067"; */
-    content: "dsf";
+    content: "\f0da";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #80CBC4;
+    /* color: #7DB0D8; */
 }
 
 .expand:before {
-  content: 'V';
+  /* display: none; */
+  content: "\f0d7";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }
-
-
-/* content: "\f1ea"; */
 
 
 /* .expand .icon-class:before {
