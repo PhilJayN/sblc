@@ -56,18 +56,24 @@ router.get('/threads/:id/edit', function (req, res) {
 //PSEUDO DELETE route. We don't want the original poster to delete the whole thread,
 //especially if that thread has other user's replies. This just updates the thread and username
 //to show [deleted] instead
-router.put('/threads/:id', function(req, res) {
-  var deletedText = {
-    text: '[deleted]',
-  };
+
+// <form class="delete-form" action="/threads/<%= thread._id %>?_method=PUT" method="POST">
+
+router.put('/threads/del/:id', function(req, res) {
+  console.log('pseu del running!');
+  console.log('asdfasdf', req.params.id);
+  // var deletedText = {
+  //   text: '[deleted]',
+  // };
   var deletedAuthor = {
     'author.username': '[deleted]'
   };
-  Thread.findByIdAndUpdate(req.params.id, deletedText, deletedAuthor, function(err, updatedThread) {
+  Thread.findByIdAndUpdate(req.params.id, deletedAuthor, function(err, updatedThread) {
     if (err) {
       res.redirect('/back');
     } else {
-      req.flash("success", "Thread edited!");
+      console.log('updated thread', updatedThread);
+      req.flash("success", "Thread deleted");
       res.redirect('/');
     }
   });
