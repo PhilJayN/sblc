@@ -120,11 +120,7 @@
                           <!-- <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit"><span class="middle-dot"> &#183;</span> Edit<span class="middle-dot"> &#183;</span></a> -->
 
                           <!-- <button type="button" class="btn btn-warning edit-style">Warning</button> -->
-                          <form class="delete-form" action="/threads/<%= thread._id %>?_method=DELETE" method="POST">
-                            <button class="del-style del-btn">Delete</button>
-                          </form>
-
-                          <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Delete</a>
+                          <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal">Delete</a>
                           <!-- basic modal -->
                           <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                             <div class="modal-dialog">
@@ -140,7 +136,10 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
-                                  <button type="button" class="btn btn-danger">Yes. Delete!</button>
+                                  <form class="delete-form" action="/threads/<%= thread._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger">Delete</button>
+                                  </form>
+                                  <!-- <button type="button" class="btn btn-danger">Yes. Delete!</button> -->
                                 </div>
                               </div>
                             </div>
