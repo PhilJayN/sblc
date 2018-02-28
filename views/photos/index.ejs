@@ -109,10 +109,16 @@
                       <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
                         <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
                         <span class="expand"><%= thread.replies.length %> <%= word %></span>
+                        <span class="middle-dot">&#183;</span>
                         <span class="reply-btn">Reply</span>
+                        <span class="middle-dot">&#183;</span>
 
                         <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
                           <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
+                          <span class="middle-dot">&#183;</span>
+
+                          <!-- <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit"><span class="middle-dot"> &#183;</span> Edit<span class="middle-dot"> &#183;</span></a> -->
+
                           <!-- <button type="button" class="btn btn-warning edit-style">Warning</button> -->
                           <form class="delete-form" action="/threads/<%= thread._id %>?_method=DELETE" method="POST">
                             <button class="del-style del-btn">Delete</button>
