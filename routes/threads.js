@@ -65,10 +65,17 @@ router.put('/threads/del/:id', function(req, res) {
   // var deletedText = {
   //   text: '[deleted]',
   // };
-  var deletedAuthor = {
-    'author.username': '[deleted]'
+  // var deletedAuthor = {
+  //   'author.username': '[deleted]'
+  // };
+  var deleted = {
+    text: '[deleted]',
+    author: {
+      id: req.user._id,
+      username: '[deleted]'
+    }
   };
-  Thread.findByIdAndUpdate(req.params.id, deletedAuthor, function(err, updatedThread) {
+  Thread.findByIdAndUpdate(req.params.id, deleted, function(err, updatedThread) {
     if (err) {
       res.redirect('/back');
     } else {
