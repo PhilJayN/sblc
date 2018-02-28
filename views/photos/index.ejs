@@ -162,7 +162,7 @@
                           <p class="thread-text"><%= thread.text %> </p>
                           <% thread.replies.forEach(function(reply) { %>
                             <div class="well-inner">
-                              <a href="#" class="author"><%= thread.author.username %></a>
+                              <a href="#" class="author"><%= reply.author.username %></a>
                               <p>
                                 <%= reply.text %>
                               </p>

@@ -39,19 +39,19 @@ router.get('/threads/:id/edit', function (req, res) {
 });
 
 //UPDATE route  for comments
-// router.put('/threads/:id', function(req, res) {
-//   console.log(req.params.id, req.body.thread);
-//   Thread.findByIdAndUpdate(req.params.id, req.body.thread, function(err, updatedThread) {
-//     // console.log('foundThread', updatedThread);
-//     if (err) {
-//       res.redirect('/back');
-//     } else {
-//       // console.log ('req.body.thread', req.body.thread);
-//       req.flash("success", "Thread edited!");
-//       res.redirect('/');
-//     }
-//   });
-// });
+router.put('/threads/:id', function(req, res) {
+  console.log(req.params.id, req.body.thread);
+  Thread.findByIdAndUpdate(req.params.id, req.body.thread, function(err, updatedThread) {
+    // console.log('foundThread', updatedThread);
+    if (err) {
+      res.redirect('/back');
+    } else {
+      // console.log ('req.body.thread', req.body.thread);
+      req.flash("success", "Thread edited!");
+      res.redirect('/');
+    }
+  });
+});
 
 //PSEUDO DELETE route. We don't want the original poster to delete the whole thread,
 //especially if that thread has other user's replies. This just updates the thread and username
