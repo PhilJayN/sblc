@@ -130,6 +130,24 @@ router.post('/threads', function (req, res) {
     }
   });
 }); //// end post route for /comments
+
+
+
+//DELETE route for thread
+router.delete('/threads/:id', function (req, res) {
+  // console.log ('delete route start!!');
+  Thread.findByIdAndRemove(req.params.id, function (err) {
+    if (err) {
+      res.redirect('back');
+    } else {
+      req.flash("success", "Thread deleted!");
+      res.redirect('/');
+    }
+  });
+});
+
+
+
 module.exports = router;
 
 
