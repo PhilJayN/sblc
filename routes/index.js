@@ -83,7 +83,7 @@ router.get('/', function (req, res) {
             }
             // console.log('allThreads results Len:', allThreads.length);
             // console.log('allThreads .find RESULTS:', allThreads);
-            console.log('result', allThreads);
+            // console.log('result', allThreads);
             // console.log('array:', allThreads[0]);
             resultsCount += allThreads.length;
             callback(null, allThreads);
