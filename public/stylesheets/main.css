@@ -14,6 +14,7 @@ body {
 
 .middle-dot {
   color: #576578;
+  margin: 0 4px;
 }
 
 .fa-book {
@@ -147,9 +148,9 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 .del-style {
    border: none;
    background: none;
-   /* color: #C9302C; */
    color: #E57373;
    display: inline;
+   padding: 0;
 }
 
 .del-style:hover {
