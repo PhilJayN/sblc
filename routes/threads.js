@@ -40,18 +40,15 @@ router.get('/threads/:id/edit', function (req, res) {
 
 //UPDATE route  for comments
 router.put('/threads/:id', function(req, res) {
-  // console.log(req.params.id, req.body.thread);
+  console.log(req.params.id, req.body.thread);
   Thread.findByIdAndUpdate(req.params.id, req.body.thread, function(err, updatedThread) {
     console.log('foundThread', updatedThread);
     if (err) {
       res.redirect('/back');
     } else {
       // console.log ('req.body.thread', req.body.thread);
-      req.flash("success", "thread edited!");
+      req.flash("success", "Thread edited!");
       res.redirect('/');
-      // console.log('fully updated', updatedThread);
-      //
-      // console.log('done@');
     }
   });
 });
