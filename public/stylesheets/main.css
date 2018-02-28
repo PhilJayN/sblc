@@ -209,9 +209,10 @@ input {
   border-bottom: 1px solid #e9e7e7;
 }
 
-/* for consistency, keep inner-well from having borders, or else crazy  */
+/* for consistency, keep inner-well from having borders, or else crazy nested borders*/
 .well-inner {
   border: none;
+  margin-left: .75em;
 }
 
 .well-accent-bar {
@@ -227,6 +228,7 @@ input {
 
  .room-sblc, .room-urgent, .room-general {
    margin-bottom: 22px;
+   padding: 0;
  }
 
  .grandparent {

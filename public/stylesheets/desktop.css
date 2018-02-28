@@ -35,6 +35,12 @@
     border: 1px solid green;
   } */
 
+  .room-sblc, .room-urgent, .room-general {
+    padding-right: 15px;
+    padding-left: 15px;
+
+  }
+
 
 }
 
