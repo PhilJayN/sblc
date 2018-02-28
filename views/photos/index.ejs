@@ -124,10 +124,10 @@
                     </div>
 
                     <!-- start of child well-->
-                    <div class="well collapse <%= thread._id %>">
+                    <div class="well well-inner collapse <%= thread._id %>">
                       <p class="thread-text"><%= thread.text %> </p>
                       <% thread.replies.forEach(function(reply) { %>
-                        <div class="well">
+                        <div class="well-inner">
                           <p>
                             <%= reply.author.username %>
                           </p>
@@ -141,9 +141,7 @@
                     <% }) %>
                 </div>
                         <!--end of forEach-->
-                        <div class="well">
-                          <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
-                        </div>
+                        <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
                     </div>
                     <!-- END of room-* (grandparent)-->
                     <!--End of threads section-->

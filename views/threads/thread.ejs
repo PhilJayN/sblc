@@ -42,7 +42,7 @@
         <!-- start of child well-->
         <div class="well collapse show <%= thread._id %>">
           <% thread.replies.forEach(function(reply) { %>
-            <div class="well">
+            <div class="well well-inner">
               <p class="thread-tagline">
                 <a href="#" class="author"><%= reply.author.username %></a>
                 <span><%=  moment(reply.submittedDate).fromNow() %></span>

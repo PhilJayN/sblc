@@ -209,6 +209,11 @@ input {
   border-bottom: 1px solid #e9e7e7;
 }
 
+/* for consistency, keep inner-well from having borders, or else crazy  */
+.well-inner {
+  border: none;
+}
+
 .well-accent-bar {
   padding: 1.5em;
   background-color: #FFFFFF;
@@ -232,8 +237,8 @@ input {
    /* border: 1px solid red; */
  }
 
- .grandparentContent {
-   /* border: 1px solid red; */
+ #grandparentContent {
+   border: none;
  }
 
 .thumbnail img {
@@ -376,14 +381,6 @@ p {
 
 /* .collapsible-box {
   border: 2px dashed blue;
-} */
-
-/* .well {
-  border: 1px solid blue;
-} */
-
-/* .thread-box {
-  border: 1px solid orange;
 } */
 
 

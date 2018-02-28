@@ -4,15 +4,8 @@
   <h3>Edit thread</h3>
     <form action="/threads/<%= thread._id %>?_method=PUT" method="POST">
       <div class="form-group">
-        <%=thread%>
-
-        <h2>asdjflk;</h2>
-        <%=thread.subject%>
-        <%=thread.text%>
-
         <input autofocus type="text" name="thread[subject]" class="form-control subject"  value="<%=thread.subject %>" minlength="1" maxlength="160" required>
         <textarea name="thread[text]" class="form-control comment-text-input text-body" value="<%=thread.text %>" required><%=thread.text%></textarea>
-
       </div>
       <p>
         <button class="btn btn-primary">Submit</button>
