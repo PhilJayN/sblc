@@ -29,6 +29,15 @@ router.get('/threads/:id', function (req, res) {
   });
 });
 
+//show form to EDIT a  particular thread that has unique ID
+router.get('/threads/:id/edit', function (req, res) {
+  // console.log ('params:', req.params.id);
+  Thread.findById(req.params.id, function(err, foundThread) {
+    res.render('threads/edit.ejs', {comment: foundThread});
+    // res.render('comments/edit.ejs', {comment_id: req.params.id, comment: foundThread});
+  });
+});
+
 
 // sort({"createdAt": 'ascending'}).
 

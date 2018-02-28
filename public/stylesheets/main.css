@@ -72,7 +72,6 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 /* HEADINGS, NAVS */
 .jumbotron  {
   display: none;
-  background-color: blue;
   margin-bottom: .5rem;
 }
 

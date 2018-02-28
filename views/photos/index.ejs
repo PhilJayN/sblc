@@ -87,7 +87,7 @@
                 <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
                 <!--Start of controller btn for expanding/collapsing all threads-->
                 <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
-                  <span class="hide-show"></span>
+                  <!-- <span class="hide-show"></span> -->
                 </div>
 
                 <!--start of parent thread well-->
@@ -112,6 +112,15 @@
                         <span class="reply-btn">Reply</span>
                       </div>
                       <!-- reply text box will be generated here on click-->
+
+                      <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+                        <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
+                        <!-- <button type="button" class="btn btn-warning edit-style">Warning</button> -->
+                        <form class="delete-form" action="/threads/<%= thread._id %>?_method=DELETE" method="POST">
+                          <button class="del-style del-btn">Delete</button>
+                        </form>
+                      <% } %>
+
                     </div>
 
                     <!-- start of child well-->
