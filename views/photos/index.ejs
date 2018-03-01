@@ -112,6 +112,10 @@
                         <span class="middle-dot">&#183;</span>
                         <span class="reply-btn">Reply</span>
                         <span class="middle-dot">&#183;</span>
+                        <form class="delete-form" action="/threads/del/<%= thread._id %>?_method=PUT" method="POST">
+                          <button class="btn btn-danger">Delete new </button>
+                        </form>
+
 
                         <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
                           <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
@@ -136,9 +140,6 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
-                                  <form class="delete-form" action="/threads/del/<%= thread._id %>?_method=PUT" method="POST">
-                                    <button class="btn btn-danger">Delete</button>
-                                  </form>
                                   <!-- <button type="button" class="btn btn-danger">Yes. Delete!</button> -->
                                 </div>
                               </div>
