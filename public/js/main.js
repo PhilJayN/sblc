@@ -173,35 +173,18 @@ controller.init();
     });
 
 
-
-
-    //triggered when modal is about to be shown
+    //triggered right before the modal is shown
     $('#basicModal').on('show.bs.modal', function(e) {
       console.log('occuring just before modal about to be shown!! here!');
-
       //the clicked element already has the threadid when the page is rendered.
       console.log('clicked el:', $(e.relatedTarget));
         //get data-id attribute of the clicked element
         var threadId = $(e.relatedTarget).data('thread-id');
         var formAction = "/threads/del/" + threadId + "?_method=PUT";
-        console.log(typeof threadId, formAction);
-        console.log('thread id', threadId);
-        $("#modal-form-action").attr("action", formAction);
         //after pulling out threadId from clicked element, target the form element, and stick
         //threadId into it's action attribute:
-
-
-
-        //populate the textbox
-        // $(e.currentTarget).find('form[name="bookId"]').val(bookId);
+        $("#modal-form-action").attr("action", formAction);
     });
-
-
-
-    //
-    // <form class="delete-form" action="" method="POST">
-    //   <button class="btn btn-danger">Delete new </button>
-    // </form>
 
 
 // }); //end of document ready fxn
