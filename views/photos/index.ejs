@@ -112,9 +112,8 @@
                         <span class="middle-dot">&#183;</span>
                         <span class="reply-btn">Reply</span>
                         <span class="middle-dot">&#183;</span>
-                        <form class="delete-form" action="/threads/del/<%= thread._id %>?_method=PUT" method="POST">
-                          <button class="btn btn-danger">Delete new </button>
-                        </form>
+                        <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete!!</a>
+
 
 
                         <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
@@ -124,27 +123,6 @@
                           <!-- <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit"><span class="middle-dot"> &#183;</span> Edit<span class="middle-dot"> &#183;</span></a> -->
 
                           <!-- <button type="button" class="btn btn-warning edit-style">Warning</button> -->
-                          <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal">Delete</a>
-                          <!-- basic modal -->
-                          <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="myModalLabel">Please confirm</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <h3>Are you sure you want to permanently delete?</h3>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
-                                  <!-- <button type="button" class="btn btn-danger">Yes. Delete!</button> -->
-                                </div>
-                              </div>
-                            </div>
-                          </div>
 
                         <% } %>
                         <!-- End of verify user for edit, and delete thread-->
@@ -244,6 +222,39 @@
             <!-- <p> <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Btn with data-target ex</button> <button class="btn btn-primary" type="button"
             data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"> Another btn col/exp</button> </p> <div class="collapse" id="collapseExample"> <div class="card card-body"> more hidden stufff!! </div>
             </div> <div class="collapse" id="collapseExample2"> <div class="card card-body"> more hidden stufff!! </div> </div> -->
+
+
+
+
+            <!-- <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal">Delete</a> -->
+            <!-- basic modal -->
+            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Please confirm</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h3>Are you sure you want to permanently delete?</h3>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
+                    <!-- <button type="button" class="btn btn-danger">Yes. Delete!</button> -->
+                    <form id="modal-form-action" class="delete-form" action="" method="POST">
+                      <button class="btn btn-danger">Delete new </button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
 
             <div class="temp-content container">
               <strong>
