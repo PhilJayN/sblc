@@ -1,9 +1,7 @@
 <% include ../partials/header %>
   <div class="jumbotron">
     <h1 class="hero-text">SBLC</h1>
-    <!-- <button class="btn btn-primary" class="demo-btn" id="demoId">Submit</button> -->
     <h3 class="demo-class" id="demo-id"></h3>
-
     <!-- <h3>South Bay Literacy Council</h3> -->
     <div class="main-image">
       <img src="https://i.imgur.com/FbIu9FK.jpg" alt="flower-pic-placeholder">
@@ -21,9 +19,8 @@
       <a href="/" class="">Cancel search and go to home page</a>
     <% } %>
   </div>
-  <!-- end of jumbotron-->
 
-  <!-- Start of if statement to check for currentUser-->
+  <!-- Start of if statement for currentUser check-->
   <% if(currentUser) { %>
     <!-- basics is container, which has a row, where each row has columns -->
     <div class="room-container container-fluid">
@@ -87,7 +84,6 @@
                 <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
                 <!--Start of controller btn for expanding/collapsing all threads-->
                 <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
-                  <!-- <span class="hide-show"></span> -->
                 </div>
 
                 <!--start of parent thread well-->
@@ -104,12 +100,9 @@
                         <a href="#" class="author"><%= thread.author.username %></a>
                       </p>
 
-                      <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
-
                       <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
                         <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
                         <span class="expand"> <%= thread.replies.length %> <%= word %></span>
-                        <span class="middle-dot">&#183;</span>
                         <span class="reply-btn">Reply</span>
                         <span class="middle-dot">&#183;</span>
 
@@ -117,11 +110,6 @@
                           <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
                           <span class="middle-dot">&#183;</span>
                           <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
-
-                          <!-- <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit"><span class="middle-dot"> &#183;</span> Edit<span class="middle-dot"> &#183;</span></a> -->
-
-                          <!-- <button type="button" class="btn btn-warning edit-style">Warning</button> -->
-
                         <% } %>
                         <!-- End of verify user for edit, and delete thread-->
 
@@ -140,11 +128,7 @@
 
                       </div>
                       <!-- reply text box will be generated here on click-->
-
-
-
                     </div>
-
 
                     <!--end of thread-box-->
                     <% }) %>
@@ -166,7 +150,6 @@
                       </div>
                       <div class="room-urgent-content">
                         <!-- data from DB will populate here-->
-
                       </div>
                     </div>
 
@@ -237,7 +220,6 @@
                 </div>
               </div>
             </div>
-
 
             <div class="temp-content container">
               <strong>
