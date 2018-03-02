@@ -90,6 +90,7 @@
                 <div class="well collapse show" id="grandparentContent" aria-expanded="true">
                   <% dbResults[1].forEach(function(thread){ %>
                     <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
+                    <% if(thread.author.username !== '[deleted]') { %>
                     <div class="well"  id="<%= thread._id %>">
                       <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
                       will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
@@ -131,6 +132,8 @@
                     </div>
 
                     <!--end of thread-box-->
+                      <% } %>
+                      <!-- end of check for author name not being '[deleted]' -->
                     <% }) %>
                 </div>
                         <!--end of forEach-->
@@ -200,14 +203,14 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Please confirm</h4>
+                    <h4 class="modal-title" id="myModalLabel">Please confirm deletion</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <h3>Are you sure you want to delete? Your name will not
-                    be affiliated with this thread, but other user's replies will remain.</h3>
+                    <h3>Your name will not be affiliated with this thread, but other
+                      user's replies will remain if they have the original link.</h3>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
