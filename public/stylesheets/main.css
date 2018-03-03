@@ -221,6 +221,10 @@ input {
   margin-left: .75em;
 }
 
+.border-clean {
+  border: none;
+}
+
 .well-accent-bar {
   padding: 1.5em;
   background-color: #FFFFFF;
@@ -247,6 +251,7 @@ input {
 
  #grandparentContent {
    border: none;
+   padding: 1em;
  }
 
 .thumbnail img {

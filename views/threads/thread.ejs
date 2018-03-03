@@ -3,7 +3,7 @@
 <div class="well collapse show" id="grandparentContent" aria-expanded="true">
   <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
   <% if(thread.author.username !== '[deleted]') { %>
-  <div class="well well-inner"  id="<%= thread._id %>">
+  <div class="border-clean"  id="<%= thread._id %>">
     <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
     will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
     element having a 'collapse' class. You are free to move this controller to other elements.-->
@@ -36,9 +36,9 @@
     <!-- End of verify user for edit, and delete thread-->
 
     <!-- start of child well-->
-    <div class="well well-inner collapse show <%= thread._id %>">
+    <div class="border-clean collapse show <%= thread._id %>">
       <% thread.replies.forEach(function(reply) { %>
-        <div class="well-inner">
+        <div>
           <a href="#" class="author"><%= reply.author.username %></a>
           <p>
             <%= reply.text %>
