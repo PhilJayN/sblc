@@ -1,5 +1,6 @@
 <% include ../partials/header %>
 <!--start of parent thread well-->
+<h1>sdaj;klf</h1>
 <div class="well collapse show" id="grandparentContent" aria-expanded="true">
     <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
     <% if(thread.author.username !== '[deleted]') { %>
@@ -13,11 +14,22 @@
         <a href="#" class="author"><%= thread.author.username %></a>
       </p>
 
+      <div class="reply-box-parent" id="<%= thread._id %>">
+  <form action="/threads/reply" method="POST" class="reply-form">
+    <div class="form-group">
+      <input type="hidden" name="threadId" value="<%= thread._id %>">
+      <textarea required class="comment-text-input thread-text-input form-control" name="reply"></textarea>
+      <button class="btn btn-primary add-comment-btn">Add Comment</button>
+    </div>
+  </form>
+</div>
+
+
+
       <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
         <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
         <span class="expand"> <%= thread.replies.length %> <%= word %></span>
-        <!-- <span class="reply-btn">Reply</span> -->
-        <!-- <span class="middle-dot">&#183;</span> -->
+
 
         <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
           <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
@@ -27,7 +39,7 @@
         <!-- End of verify user for edit, and delete thread-->
 
         <!-- start of child well-->
-        <div class="well well-inner collapse <%= thread._id %>">
+        <div class="well well-inner collapse show <%= thread._id %>">
           <p class="thread-text"><%= thread.text %> </p>
           <% thread.replies.forEach(function(reply) { %>
             <div class="well-inner">
@@ -48,8 +60,6 @@
       <!-- end of check for author name not being '[deleted]' -->
 </div>
         <!--end of forEach-->
-        <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
-    </div>
     <!-- END of room-* (grandparent)-->
     <!--End of threads section-->
 <% include ../partials/footer %>
