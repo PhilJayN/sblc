@@ -1,62 +1,55 @@
 <% include ../partials/header %>
-<div class="container-fluid">
-  <div id="grandparent" class="room-sblc threads-box">
-    <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
-    <!--Start of controller btn for expanding/collapsing all threads-->
-    <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
-      <span class="icon-class"> Collapse/Expand</span>
+<!--start of parent thread well-->
+<div class="well collapse show" id="grandparentContent" aria-expanded="true">
+    <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
+    <% if(thread.author.username !== '[deleted]') { %>
+    <div class="well"  id="<%= thread._id %>">
+      <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
+      will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
+      element having a 'collapse' class. You are free to move this controller to other elements.-->
+      <p class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
+      <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
+      <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
+        <a href="#" class="author"><%= thread.author.username %></a>
+      </p>
 
-    </div>
-    <div class="collapse show well" id="grandparentContent" aria-expanded="true">
-        <!-- <button class="btn float-right btn-collapse-expand" type="button" data-toggle="collapse" data-target="#<%= thread._id %>" aria-expanded="false" aria-controls="<%= thread._id %>">+-</button> -->
-        <!-- In data-target=".<%= thread._id %>, the period(.) before the ejs syntax is ABSOLUTELY important because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
-        <div class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
-          <p class="icon-class"><span class="collapse-expand">V</span></p>
-          <!-- <p class="icon-class"><strong><%= thread.subject %></strong><span class="collapse-expand"><i class="fa fa-plus" aria-hidden="true"></i></span></p> -->
-          <!-- <a class="btn btn-info" href="/threads/:id"><%= thread.subject %></a> -->
-          <h2 class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></h2>
-          <p class="thread-tagline">
-            Submitted <span><%=  moment(thread.submittedDate).fromNow() %></span>
-            <a href="#" class="author"><%= thread.author.username %></a>
-          </p>
-          <p class="thread-text"><%= thread.text %> </p>
-          <!-- <a class="edit-style" href="/threads/<%= thread._id %>/reply">Reply</a> -->
+      <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
+        <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
+        <span class="expand"> <%= thread.replies.length %> <%= word %></span>
+        <!-- <span class="reply-btn">Reply</span> -->
+        <!-- <span class="middle-dot">&#183;</span> -->
 
-          <div class="reply-box-parent" id="<%= thread._id %>">
-            <form action="/threads/reply" method="POST" class="reply-form">
-              <div class="form-group">
-                <input type="hidden" name="threadId" value="<%= thread._id %>">
-                <textarea required class="comment-text-input thread-text-input form-control" name="reply"></textarea>
-                <button class="btn btn-primary add-comment-btn">Add Comment</button>
-              </div>
-            </form>
-          </div>
-
-
-          <div class="reply-box-parent" id="<%= thread._id %>">
-            <span class="reply-btn">Reply</span>
-          </div>
-          <!-- reply text box will be generated here on click-->
-        </div>
+        <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+          <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
+          <span class="middle-dot">&#183;</span>
+          <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
+        <% } %>
+        <!-- End of verify user for edit, and delete thread-->
 
         <!-- start of child well-->
-        <div class="well collapse show <%= thread._id %>">
+        <div class="well well-inner collapse <%= thread._id %>">
+          <p class="thread-text"><%= thread.text %> </p>
           <% thread.replies.forEach(function(reply) { %>
-            <div class="well well-inner">
-              <p class="thread-tagline">
-                <a href="#" class="author"><%= reply.author.username %></a>
-                <span><%=  moment(reply.submittedDate).fromNow() %></span>
-                <p><%= reply.text %></p>
+            <div class="well-inner">
+              <a href="#" class="author"><%= reply.author.username %></a>
+              <p>
+                <%= reply.text %>
               </p>
             </div>
-            <% } )%>
+          <% } )%>
         </div>
+
+      </div>
+      <!-- reply text box will be generated here on click-->
     </div>
 
-
-
-  </div>
+    <!--end of thread-box-->
+      <% } %>
+      <!-- end of check for author name not being '[deleted]' -->
 </div>
-
-        <!-- END of room-* (grandparent)-->
+        <!--end of forEach-->
+        <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
+    </div>
+    <!-- END of room-* (grandparent)-->
+    <!--End of threads section-->
 <% include ../partials/footer %>

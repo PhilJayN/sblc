@@ -104,8 +104,8 @@
                       <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
                         <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
                         <span class="expand"> <%= thread.replies.length %> <%= word %></span>
-                        <span class="reply-btn">Reply</span>
-                        <span class="middle-dot">&#183;</span>
+                        <!-- <span class="reply-btn">Reply</span> -->
+                        <!-- <span class="middle-dot">&#183;</span> -->
 
                         <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
                           <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
