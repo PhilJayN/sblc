@@ -1,20 +1,20 @@
 <% include ../partials/header %>
 <!--start of parent thread well-->
-<h1>sdaj;klf</h1>
 <div class="well collapse show" id="grandparentContent" aria-expanded="true">
-    <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
-    <% if(thread.author.username !== '[deleted]') { %>
-    <div class="well"  id="<%= thread._id %>">
-      <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
-      will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
-      element having a 'collapse' class. You are free to move this controller to other elements.-->
-      <p class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
-      <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
-      <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
-        <a href="#" class="author"><%= thread.author.username %></a>
-      </p>
+  <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
+  <% if(thread.author.username !== '[deleted]') { %>
+  <div class="well well-inner"  id="<%= thread._id %>">
+    <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
+    will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
+    element having a 'collapse' class. You are free to move this controller to other elements.-->
+    <p class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
+    <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
+    <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
+      <a href="#" class="author"><%= thread.author.username %></a>
+      <p class="thread-text"><%= thread.text %> </p>
+    </p>
 
-      <div class="reply-box-parent" id="<%= thread._id %>">
+  <div class="reply-box-parent" id="<%= thread._id %>">
   <form action="/threads/reply" method="POST" class="reply-form">
     <div class="form-group">
       <input type="hidden" name="threadId" value="<%= thread._id %>">
@@ -22,42 +22,38 @@
       <button class="btn btn-primary add-comment-btn">Add Comment</button>
     </div>
   </form>
-</div>
+  </div>
 
+  <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
+    <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
+    <span class="expand"> <%= thread.replies.length %> <%= word %></span>
 
+    <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+      <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
+      <span class="middle-dot">&#183;</span>
+      <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
+    <% } %>
+    <!-- End of verify user for edit, and delete thread-->
 
-      <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
-        <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
-        <span class="expand"> <%= thread.replies.length %> <%= word %></span>
-
-
-        <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-          <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
-          <span class="middle-dot">&#183;</span>
-          <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
-        <% } %>
-        <!-- End of verify user for edit, and delete thread-->
-
-        <!-- start of child well-->
-        <div class="well well-inner collapse show <%= thread._id %>">
-          <p class="thread-text"><%= thread.text %> </p>
-          <% thread.replies.forEach(function(reply) { %>
-            <div class="well-inner">
-              <a href="#" class="author"><%= reply.author.username %></a>
-              <p>
-                <%= reply.text %>
-              </p>
-            </div>
-          <% } )%>
+    <!-- start of child well-->
+    <div class="well well-inner collapse show <%= thread._id %>">
+      <% thread.replies.forEach(function(reply) { %>
+        <div class="well-inner">
+          <a href="#" class="author"><%= reply.author.username %></a>
+          <p>
+            <%= reply.text %>
+          </p>
         </div>
-
-      </div>
-      <!-- reply text box will be generated here on click-->
+      <% } )%>
     </div>
 
-    <!--end of thread-box-->
-      <% } %>
-      <!-- end of check for author name not being '[deleted]' -->
+  </div>
+    <!-- reply text box will be generated here on click-->
+  </div>
+
+  <!--end of thread-box-->
+    <% } %>
+    <!-- end of check for author name not being '[deleted]' -->
 </div>
         <!--end of forEach-->
     <!-- END of room-* (grandparent)-->
