@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 <!--start of parent thread well-->
-<div class="well collapse show" id="grandparentContent" aria-expanded="true">
+<div class="container well collapse show" id="grandparentContent" aria-expanded="true">
   <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
   <% if(thread.author.username !== '[deleted]') { %>
   <div class="border-clean"  id="<%= thread._id %>">

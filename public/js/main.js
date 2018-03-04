@@ -123,12 +123,12 @@ var controller = (function(listCtrl, UICtrl) {
     var DOM = UICtrl.getDOMstrings();
     //remember that you'll get error: Uncaught TypeError: Cannot read property 'addEventListener'
     //of null if there's no logged in user, since ejs renders only certain parts of page if there's a user
-    document.querySelector(DOM.threadsBox).addEventListener('click', UICtrl.checkElementClicked);
-    if ( document.querySelector(DOM.demoClass) ) {
-      document.querySelector(DOM.demoClass).addEventListener('click', function(event) {
-        console.log('clicked!!!!!');
-      });
-    }
+    // document.querySelector(DOM.threadsBox).addEventListener('click', UICtrl.checkElementClicked);
+    // if ( document.querySelector(DOM.demoClass) ) {
+    //   document.querySelector(DOM.demoClass).addEventListener('click', function(event) {
+    //     console.log('clicked!!!!!');
+    //   });
+    // }
 
     var submitBtn = document.querySelector(DOM.submitBtn);
     if (submitBtn) {
@@ -175,6 +175,19 @@ controller.init();
 
     //triggered right before the modal is shown
     $('#basicModal').on('show.bs.modal', function(e) {
+      console.log('occuring just before modal about to be shown!! here!');
+      //the clicked element already has the threadid when the page is rendered.
+      console.log('clicked el:', $(e.relatedTarget));
+        //get data-id attribute of the clicked element
+        var threadId = $(e.relatedTarget).data('thread-id');
+        var formAction = "/threads/del/" + threadId + "?_method=PUT";
+        //after pulling out threadId from clicked element, target the form element, and stick
+        //threadId into it's action attribute:
+        $("#modal-form-action").attr("action", formAction);
+    });
+
+    //triggered right before the modal is shown
+    $('#deleteModal').on('show.bs.modal', function(e) {
       console.log('occuring just before modal about to be shown!! here!');
       //the clicked element already has the threadid when the page is rendered.
       console.log('clicked el:', $(e.relatedTarget));

@@ -15,12 +15,17 @@
     font-size: 1.75em;
   }
 
-
   .user-form {
     width: 30%;
   }
 
+  /* .comment-text-input {
+    width: 50%;
+  } */
 
+  .form-group {
+    width: 40%;
+  }
 
 
 /* TEMPORARY CSS*/
