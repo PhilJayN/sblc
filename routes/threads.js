@@ -126,7 +126,7 @@ router.post('/threads/reply', function (req, res) {
       foundThread.replies.push(reply);
       foundThread.save();
       // });
-      res.redirect('/');
+      res.redirect('/threads/' + foundThread._id);
     }
   });
 });
