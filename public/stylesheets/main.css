@@ -41,6 +41,7 @@ body {
 
 .expand {
   margin-right: 0.25em;
+  cursor: pointer;
 }
 
 /*select all element with a class of .collapse, whose child has a class of .expand

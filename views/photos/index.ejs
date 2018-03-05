@@ -33,16 +33,8 @@
           <div class="room-sblc-content ">
             <% dbResults[0].forEach(function(comment){ %>
               <div class="well">
-                <p>
-                  <strong><%= comment.author.username %></strong>
-                  <span>
-                    |
-                    <%= comment.submittedDate %></span>
-                  <span>
-                    |
-                    <%= comment.submittedTime %>
-                  </span>
-                </p>
+                  <p><a href="#" class="author"><%= comment.author.username %></a>
+                    <span><%=  moment(comment.submittedDate).fromNow() %></span></p>
                 <p>
                   <%= comment.text %>
                 </p>
@@ -63,9 +55,6 @@
                     <a class="btn btn-info" href="/register">Sign up</a>
                   <% } else {%>
                     <!-- press a btn here to start GET req. to /comments/new -->
-                    <span>Hi
-                      <strong><%= currentUser.username %>!</strong>
-                    </span>
                     <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a>
                   <% } %>
                 </div>
