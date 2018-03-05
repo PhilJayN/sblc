@@ -13,9 +13,14 @@
       <p class="thread-text"><%= thread.text %> </p>
     </p>
     <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-      <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
-      <span class="middle-dot">&#183;</span>
-      <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
+      <p>
+        <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
+        <span class=""> <%= thread.replies.length %> <%= word %></span>
+        <span class="middle-dot">&#183;</span>
+        <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
+        <span class="middle-dot">&#183;</span>
+        <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
+      </p>
       <% } %>
       <!-- End of verify user for edit, and delete thread-->
 
@@ -30,15 +35,13 @@
   </div>
 
   <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
-    <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
-    <span class="expand"> <%= thread.replies.length %> <%= word %></span>
-
 
     <!-- start of child well-->
     <div class="border-clean collapse show <%= thread._id %>">
       <% thread.replies.forEach(function(reply) { %>
-        <div>
-          <a href="#" class="author"><%= reply.author.username %></a>
+        <div class="well">
+          <p class="thread-tagline"><a href="#" class="author"><%= reply.author.username %></a> <span><%=  moment(reply.submittedDate).fromNow() %></span>
+          </p>
           <p>
             <%= reply.text %>
           </p>
