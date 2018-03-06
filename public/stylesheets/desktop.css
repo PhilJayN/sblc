@@ -19,9 +19,9 @@
     width: 30%;
   }
 
-  /* .comment-text-input {
-    width: 50%;
-  } */
+  .comment-text-input {
+    /* height: 20px; */
+  }
 
   /* form {
     width: 40%;

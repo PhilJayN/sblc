@@ -28,7 +28,7 @@
         <div class="room-sblc col-md-6 col-lg-4">
           <!-- each room consist of divs: room-header, and room-content -->
           <div class="room-sblc-header border-line-break well">
-            <h3>Chat</h3>
+            <h3>Quick Message</h3>
           </div>
           <div class="room-sblc-content ">
             <% dbResults[0].forEach(function(comment){ %>
@@ -39,17 +39,10 @@
                   <%= comment.text %>
                 </p>
 
-
-
-<!-- 123 -->
-
-
                 <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-
                   <a href="#" class="del-style del-btn comment-del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= comment._id %>">Delete</a>
                   <span class="middle-dot">&#183;</span>
                   <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
-
                 <% } %>
               </div>
               <% }) %>
@@ -60,7 +53,17 @@
                     <a class="btn btn-info" href="/register">Sign up</a>
                   <% } else {%>
                     <!-- press a btn here to start GET req. to /comments/new -->
-                    <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a>
+                    <!-- <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a> -->
+                    <form action="/comments" method="POST">
+                      <div class="form-group">
+                        <textarea autofocus name="comment[text]"  class="form-control comment-text-input text-body" placeholder="What's on your mind?" required></textarea>
+                        <!-- <input autofocus type="text" name="comment[text]" class="form-control comment-text-input" placeholder="What's on your mind?" required> -->
+                      </div>
+                      <p>
+                        <button class="btn btn-primary submit-btn">Submit</button>
+                      </p>
+                    </form>
+
                   <% } %>
                 </div>
 
