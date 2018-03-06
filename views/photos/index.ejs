@@ -39,12 +39,17 @@
                   <%= comment.text %>
                 </p>
 
+
+
+<!-- 123 -->
+
+
                 <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-                  <form class="delete-form" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                    <button class="del-style del-btn">Delete</button>
-                  </form>
+
+                  <a href="#" class="del-style del-btn comment-del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= comment._id %>">Delete</a>
                   <span class="middle-dot">&#183;</span>
-                  <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
+                  <a class="del-style edit-style" href="/comment/<%= comment._id %>/edit">Edit</a>
+
                 <% } %>
               </div>
               <% }) %>
