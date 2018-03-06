@@ -180,15 +180,15 @@ controller.init();
       console.log('clicked el:', $(e.relatedTarget));
 
         //get data-id attribute of the clicked element
-        var threadId = $(e.relatedTarget).data('thread-id');
+        var id = $(e.relatedTarget).data('id');
 
         if ( $(e.relatedTarget).hasClass("comment-del-btn") ) {
-          var formAction = "/comments/" + threadId + "?_method=DELETE";
+          var formAction = "/comments/" + id + "?_method=DELETE";
         } else {
-          var formAction = "/threads/del/" + threadId + "?_method=PUT";
+          var formAction = "/threads/del/" + id + "?_method=PUT";
         }
-        //after pulling out threadId from clicked element, target the form element, and stick
-        //threadId into it's action attribute:
+        //after pulling out id from clicked element, target the form element, and stick
+        //id into it's action attribute:
         $("#modal-form-action").attr("action", formAction);
     });
 
@@ -198,10 +198,10 @@ controller.init();
       //the clicked element already has the threadid when the page is rendered.
       console.log('clicked el:', $(e.relatedTarget));
         //get data-id attribute of the clicked element
-        var threadId = $(e.relatedTarget).data('thread-id');
-        var formAction = "/threads/del/" + threadId + "?_method=PUT";
-        //after pulling out threadId from clicked element, target the form element, and stick
-        //threadId into it's action attribute:
+        var id = $(e.relatedTarget).data('thread-id');
+        var formAction = "/threads/del/" + id + "?_method=PUT";
+        //after pulling out id from clicked element, target the form element, and stick
+        //id into it's action attribute:
         $("#modal-form-action").attr("action", formAction);
     });
 

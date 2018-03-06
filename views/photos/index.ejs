@@ -46,7 +46,7 @@
 
                 <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
 
-                  <a href="#" class="del-style del-btn comment-del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= comment._id %>">Delete</a>
+                  <a href="#" class="del-style del-btn comment-del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= comment._id %>">Delete</a>
                   <span class="middle-dot">&#183;</span>
                   <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
 
@@ -102,7 +102,7 @@
                         <!-- <span class="middle-dot">&#183;</span> -->
 
                         <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-                          <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
+                          <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= thread._id %>">Delete</a>
                           <span class="middle-dot">&#183;</span>
                           <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
                         <% } %>
