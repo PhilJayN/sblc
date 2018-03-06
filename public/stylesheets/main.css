@@ -78,17 +78,22 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 
 /* HEADINGS, NAVS */
 .jumbotron  {
-  display: none;
   margin-bottom: .5rem;
+  padding: .15em .5em;
 }
 
 .hero-text {
+  display: none;
   font-family: 'Oswald', sans-serif;
 }
 
 .hero-desc {
   font-family: 'Source Sans Pro', sans-serif;
   margin-bottom: 1em;
+}
+
+.hero-icon {
+  display: none;
 }
 
 .navbar-light {
