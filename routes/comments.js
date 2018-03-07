@@ -79,7 +79,7 @@ router.post('/comments', middleware.isLoggedIn, function (req, res) {
   };
 
   ////takes data from variables name and image, and stores into an obj
-  var newComment = {text: comment, submittedDate: humanDate, submittedTime: humanTime, author: author};
+  var newComment = {text: comment, submittedDate: date, submittedTime: humanTime, author: author};
   //save obj into the DB:
   Comment.create(newComment, function(err, newlyCreated) {
     if(err) {
