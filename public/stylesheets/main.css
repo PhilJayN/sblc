@@ -242,22 +242,26 @@ input {
   border-bottom: 3px solid #d6d6d6;
 }
 
- .room-sblc, .room-urgent, .room-general {
-   margin-bottom: 22px;
-   padding: 0;
- }
+.room-sblc, .room-urgent, .room-general {
+ margin-bottom: 22px;
+ padding: 0;
+}
 
- .grandparent {
-   border: 1px solid pink;
- }
+.grandparent {
+ border: 1px solid pink;
+}
 
- .parent1Content {
-   /* border: 1px solid red; */
- }
+.parent1Content {
+ /* border: 1px solid red; */
+}
 
- #grandparentContent {
-  border: none;
- }
+#grandparentContent {
+border: none;
+}
+
+.box, .reply-box-parent {
+   display: inline;
+}
 
 .thumbnail img {
   width: 100%;

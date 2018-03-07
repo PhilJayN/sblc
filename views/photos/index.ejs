@@ -98,33 +98,38 @@
                         <a href="#" class="author"><%= thread.author.username %></a>
                       </p>
 
+
+
                       <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
                         <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
                         <span class="expand"> <%= thread.replies.length %> <%= word %></span>
                         <!-- <span class="reply-btn">Reply</span> -->
                         <!-- <span class="middle-dot">&#183;</span> -->
+                      </div>
 
-                        <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+                      <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+                        <div class="box">
                           <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= thread._id %>">Delete</a>
                           <span class="middle-dot">&#183;</span>
                           <a class="del-style edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
-                        <% } %>
-                        <!-- End of verify user for edit, and delete thread-->
-
-                        <!-- start of child well-->
-                        <div class="well well-inner collapse <%= thread._id %>">
-                          <p class="thread-text"><%= thread.text %> </p>
-                          <% thread.replies.forEach(function(reply) { %>
-                            <div class="well-inner">
-                              <a href="#" class="author"><%= reply.author.username %></a>
-                              <p>
-                                <%= reply.text %>
-                              </p>
-                            </div>
-                          <% } )%>
-                        </div>
-
                       </div>
+                      <% } %>
+                      <!-- End of verify user for edit, and delete thread-->
+
+                      <!-- start of child well-->
+                      <div class="well well-inner collapse <%= thread._id %>">
+                        <p class="thread-text"><%= thread.text %> </p>
+                        <% thread.replies.forEach(function(reply) { %>
+                          <div class="well-inner">
+                            <a href="#" class="author"><%= reply.author.username %></a>
+                            <p>
+                              <%= reply.text %>
+                            </p>
+                          </div>
+                        <% } )%>
+                      </div>
+
+
                       <!-- reply text box will be generated here on click-->
                     </div>
 
