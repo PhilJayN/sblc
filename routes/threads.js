@@ -46,7 +46,6 @@ router.put('/threads/:id', function(req, res) {
     if (err) {
       res.redirect('/back');
     } else {
-      // console.log ('req.body.thread', req.body.thread);
       req.flash("success", "Thread edited!");
       res.redirect('/');
     }
@@ -56,9 +55,7 @@ router.put('/threads/:id', function(req, res) {
 //PSEUDO DELETE route. We don't want the original poster to delete the whole thread,
 //especially if that thread has other user's replies. This just updates the thread and username
 //to show [deleted] instead
-
 // <form class="delete-form" action="/threads/<%= thread._id %>?_method=PUT" method="POST">
-
 router.put('/threads/del/:id', function(req, res) {
   console.log('pseu del running!');
   console.log('asdfasdf', req.params.id);
@@ -87,7 +84,6 @@ router.put('/threads/del/:id', function(req, res) {
 });
 
 // sort({"createdAt": 'ascending'}).
-
 //show form to REPLY to a particular thread that has unique ID
 router.get('/threads/:id/reply', function (req, res) {
   Thread.findById(req.params.id, function(err, foundThread) {
@@ -136,7 +132,6 @@ router.post('/threads', function (req, res) {
   console.log ('post req occured, here is the req.body:', req.body);
   console.log ('subject:', req.body.thread.subject);
   console.log ('text:', req.body.thread.text);
-
   var subject = req.body.thread.subject; //thread looks like: { thread: 'hey' }
   var text = req.body.thread.text;
   var date = new Date();
@@ -146,7 +141,6 @@ router.post('/threads', function (req, res) {
     id: req.user._id,
     username: req.user.username
   };
-  var teddy = 'hi teddy';
   //takes data from variables name and image, and stores into an obj
   var newThread = { subject: subject, text: text, submittedDate: humanDate, submittedTime: humanTime, author: author};
   //save obj into the DB:
@@ -155,14 +149,13 @@ router.post('/threads', function (req, res) {
     if(err) {
       console.log (err);
     } else {
-          console.log('newlyCreated thread:', newlyCreated);
-          console.log('newlyCreated thread subject:', newlyCreated.submittedDate);
-          // req.flash("success", "New thread added!");
-          res.redirect('/');
+        console.log('newlyCreated thread:', newlyCreated);
+        console.log('newlyCreated thread subject:', newlyCreated.submittedDate);
+        req.flash("success", "New thread added!");
+        res.redirect('/');
     }
   });
 }); //// end post route for /comments
-
 
 
 //DELETE route for thread
@@ -177,8 +170,6 @@ router.post('/threads', function (req, res) {
 //     }
 //   });
 // });
-
-
 
 module.exports = router;
 
