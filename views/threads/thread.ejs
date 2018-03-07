@@ -25,17 +25,17 @@
       <!-- End of verify user for edit, and delete thread-->
 
   <div class="reply-box-parent" id="<%= thread._id %>">
-  <form action="/threads/reply" method="POST" class="reply-form">
-    <div class="form-group">
-      <input type="hidden" name="threadId" value="<%= thread._id %>">
-      <textarea required class="comment-text-input thread-text-input form-control" name="reply"></textarea>
-      <button class="btn btn-primary add-comment-btn">Add Comment</button>
-    </div>
-  </form>
+    <form action="/threads/reply" method="POST" class="reply-form">
+      <div class="form-group">
+        <input type="hidden" name="threadId" value="<%= thread._id %>">
+        <textarea required class="comment-text-input thread-text-input form-control" name="reply"></textarea>
+        <button class="btn btn-primary add-comment-btn">Add Comment</button>
+      </div>
+    </form>
   </div>
 
-  <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
-
+  <!-- Note: elements inside the collapse class and data-toggle="collapse" will be allowed to collapse/expand on click by Bootstrap JavaScript-->
+  <!-- <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>"> -->
     <!-- start of child well-->
     <div class="border-clean collapse show <%= thread._id %>">
       <% thread.replies.forEach(function(reply) { %>
@@ -48,8 +48,7 @@
         </div>
       <% } )%>
     </div>
-
-  </div>
+  <!-- </div> -->
     <!-- reply text box will be generated here on click-->
   </div>
 
