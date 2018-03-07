@@ -6,6 +6,8 @@
     <div class="hero-icon">
       <img src="https://i.imgur.com/FbIu9FK.jpg" alt="flower-pic-placeholder">
     </div>
+    <!-- Start of if statement for currentUser check-->
+    <% if(currentUser) { %>
     <form action="/" method="GET" class="form-inline">
       <div class="form-group">
         <input type="text" name="search" placeholder="Search query..." class="form-control">
@@ -20,8 +22,6 @@
     <% } %>
   </div>
 
-  <!-- Start of if statement for currentUser check-->
-  <% if(currentUser) { %>
     <!-- basics is container, which has a row, where each row has columns -->
     <div class="room-container container-fluid">
       <div class="row">
