@@ -142,7 +142,7 @@ router.post('/threads', function (req, res) {
     username: req.user.username
   };
   //takes data from variables name and image, and stores into an obj
-  var newThread = { subject: subject, text: text, submittedDate: humanDate, submittedTime: humanTime, author: author};
+  var newThread = { subject: subject, text: text, submittedDate: date, submittedTime: humanTime, author: author};
   //save obj into the DB:
   console.log ('newThread var:', newThread);
   Thread.create(newThread, function(err, newlyCreated) {
