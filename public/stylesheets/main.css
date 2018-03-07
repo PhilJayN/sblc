@@ -152,15 +152,16 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 }
 
 .del-style {
-   border: none;
-   background: none;
-   color: #E57373;
-   display: inline;
-   padding: 0;
+  border: none;
+  background: none;
+  color: #E57373;
+  display: inline;
+  padding: 0;
 }
 
 .del-style:hover {
-   text-decoration: underline;
+  text-decoration: underline;
+  color: #be3636;
 }
 
 .more-info-style {
