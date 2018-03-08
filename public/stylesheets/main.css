@@ -99,6 +99,7 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 }
 
 /* BUTTONS AND ANCHORS */
+
 .btn-info {
   padding-left: 2.5em;
   padding-right: 2.5em;
@@ -109,7 +110,7 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 
 .btn-link {
   padding: none;
-  border: 1px solid red; 
+  border: 1px solid red;
 }
 
 .btn-info:hover{
@@ -466,3 +467,20 @@ p {
 /* .navbar-nav {
   color: rgb(68, 68, 68);
 } */
+
+
+.search-bar {
+  /* border: 1px solid red; */
+  /* display: inline !important; */
+  float: left;
+  width: 100%;
+}
+
+.search-btn {
+  position: absolute;
+  /* float: left; */
+}
+
+.input-group {
+    width: 50%;
+}

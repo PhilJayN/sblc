@@ -8,12 +8,27 @@
       </div>
       <!-- Start of if statement for currentUser check-->
       <% if(currentUser) { %>
-      <form action="/" method="GET" class="form-inline">
-        <div class="form-group">
-          <input type="text" name="search" placeholder="Search messages, threads..." class="form-control">
-          <input type="submit" value="Search" class="btn btn-secondary">
+      <!-- <form action="/" method="GET" class="form-inline">
+        <div class="form-group search-bar">
+          <input type="text" name="search" placeholder="Search messages, threads..." class="form-control search-query">
+          <button type="submit" value="Search" class="btn btn-secondary search-btn">sadf</button>
         </div>
-      </form>
+      </form> -->
+
+        <!-- <div class="form-group search-bar">
+          <input type="text" name="search" placeholder="Search messages, threads..." class="form-control search-query">
+          <button type="submit" value="Search" class="btn btn-secondary search-btn">sadf</button>
+        </div> -->
+
+        <form action="/" method="GET" class="input-group">
+          <input type="text" name="search" placeholder="Search messages, threads..." class="form-control">
+          <!-- <div class="input-group-addon" >
+            <input type="submit" value="Search" class="btn btn-secondary search-btn">Search</button>
+          </div> -->
+          <input class="input-group-addon" type="submit" value="Search" >
+            <!-- <input type="submit" value="Search" class="btn btn-secondary search-btn">Search</button> -->
+          </div>
+        </form>
 
       <p><button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#search-tip" aria-expanded="false"
           aria-controls="search-tip">Search Tip</button></p>
