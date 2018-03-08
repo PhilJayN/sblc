@@ -1,7 +1,6 @@
 <% include ../partials/header %>
   <div class="jumbotron">
     <div class="well">
-      <h1 class="hero-text">SBLC</h1>
       <h3 class="demo-class" id="demo-id"></h3>
       <h3>South Bay Literacy Council</h3>
       <div class="hero-icon">
@@ -11,10 +10,16 @@
       <% if(currentUser) { %>
       <form action="/" method="GET" class="form-inline">
         <div class="form-group">
-          <input type="text" name="search" placeholder="Search query..." class="form-control">
+          <input type="text" name="search" placeholder="Search messages, threads..." class="form-control">
           <input type="submit" value="Search" class="btn btn-secondary">
         </div>
       </form>
+
+      <p><button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#search-tip" aria-expanded="false"
+          aria-controls="search-tip">Search Tip</button></p>
+      <div class="collapse" id="search-tip">
+          <p class="tip">Shorter search query yields better results.</p>
+      </div>
 
       <% if (searchReq === true) { %>
         <% var pluralize = (resultsCount > 1) ?  "results" : "result"; %>

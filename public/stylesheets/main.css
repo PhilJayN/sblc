@@ -82,11 +82,6 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   padding: .15em .5em;
 }
 
-.hero-text {
-  display: none;
-  font-family: 'Oswald', sans-serif;
-}
-
 .hero-desc {
   font-family: 'Source Sans Pro', sans-serif;
   margin-bottom: 1em;
@@ -96,6 +91,9 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   display: none;
 }
 
+.tip {
+  font-size: .75em;
+}
 .navbar-light {
   border: 1px solid #e7e7e7;
 }
@@ -107,6 +105,11 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   color: rgb(68, 68, 68);
   background-color: #4DB6AC;
   color: white;
+}
+
+.btn-link {
+  padding: none;
+  border: 1px solid red; 
 }
 
 .btn-info:hover{
