@@ -1,25 +1,27 @@
 <% include ../partials/header %>
   <div class="jumbotron">
-    <h1 class="hero-text">SBLC</h1>
-    <h3 class="demo-class" id="demo-id"></h3>
-    <!-- <h3>South Bay Literacy Council</h3> -->
-    <div class="hero-icon">
-      <img src="https://i.imgur.com/FbIu9FK.jpg" alt="flower-pic-placeholder">
-    </div>
-    <!-- Start of if statement for currentUser check-->
-    <% if(currentUser) { %>
-    <form action="/" method="GET" class="form-inline">
-      <div class="form-group">
-        <input type="text" name="search" placeholder="Search query..." class="form-control">
-        <input type="submit" value="Search" class="btn btn-secondary">
+    <div class="well">
+      <h1 class="hero-text">SBLC</h1>
+      <h3 class="demo-class" id="demo-id"></h3>
+      <h3>South Bay Literacy Council</h3>
+      <div class="hero-icon">
+        <img src="https://i.imgur.com/FbIu9FK.jpg" alt="flower-pic-placeholder">
       </div>
-    </form>
+      <!-- Start of if statement for currentUser check-->
+      <% if(currentUser) { %>
+      <form action="/" method="GET" class="form-inline">
+        <div class="form-group">
+          <input type="text" name="search" placeholder="Search query..." class="form-control">
+          <input type="submit" value="Search" class="btn btn-secondary">
+        </div>
+      </form>
 
-    <% if (searchReq === true) { %>
-      <% var pluralize = (resultsCount > 1) ?  "results" : "result"; %>
-      <p>Found <%= resultsCount %> <%= pluralize %></p>
-      <a href="/" class="">Cancel search and go to home page</a>
-    <% } %>
+      <% if (searchReq === true) { %>
+        <% var pluralize = (resultsCount > 1) ?  "results" : "result"; %>
+        <p>Found <%= resultsCount %> <%= pluralize %></p>
+        <a href="/" class="">Cancel search and go to home page</a>
+      <% } %>
+    </div>
   </div>
 
     <!-- basics is container, which has a row, where each row has columns -->
@@ -181,8 +183,7 @@
               <!-- END of room container -->
 
             <% } else { %>
-              <div class="well">
-                <h3>Please
+                <h4>Welcome! Please
                   <span>
                     <a href="/login">login</a>
                   </span>
@@ -191,8 +192,7 @@
                     <a href="/register">
                       sign up</a>
                   </span>
-                  to view and post messages.</h3>
-              </div>
+                  to view and post messages.</h4>
             <% } %>
             <!-- END of check for currentUser-->
 
