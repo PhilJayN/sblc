@@ -22,6 +22,14 @@ body {
   color: #2196F3;
 }
 
+.fa-search {
+  color: #2196F3;
+}
+
+.fa-info {
+  color: #63a2d4;
+}
+
 .fa-plus {
   color: #7DB0D8;
 }
@@ -189,10 +197,9 @@ a {
 
 
 /* CONTENT */
-input {
-  border: 1px solid red;
+.input-group {
+  margin-bottom: .5em;
 }
-
 
 .thread-subject:valid {
   border: 1px solid blue;

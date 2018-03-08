@@ -14,27 +14,17 @@
           <button type="submit" value="Search" class="btn btn-secondary search-btn">sadf</button>
         </div>
       </form> -->
-
-        <!-- <div class="form-group search-bar">
-          <input type="text" name="search" placeholder="Search messages, threads..." class="form-control search-query">
-          <button type="submit" value="Search" class="btn btn-secondary search-btn">sadf</button>
-        </div> -->
-
         <form action="/" method="GET" class="input-group">
           <input type="text" name="search" placeholder="Search messages, threads..." class="form-control">
-          <!-- <div class="input-group-addon" >
-            <input type="submit" value="Search" class="btn btn-secondary search-btn">Search</button>
-          </div> -->
-          <input class="input-group-addon" type="submit" value="Search" >
-            <!-- <input type="submit" value="Search" class="btn btn-secondary search-btn">Search</button> -->
-          </div>
+          <button class="input-group-addon" type="submit"><i class="fa fa-search"></i></button>
         </form>
+          <!-- <a class="" data-toggle="collapse" href="#search-tip" role="button" aria-expanded="false"
+            aria-controls="search-tip">Tip</a> -->
+            <a class="search-tip" data-toggle="collapse" href="#search-tip" role="button" aria-expanded="false"
+              aria-controls="search-tip"><i class="fas fa-info"></i> Search Tip</a>
 
-      <p><button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#search-tip" aria-expanded="false"
-          aria-controls="search-tip">Search Tip</button></p>
-      <div class="collapse" id="search-tip">
-          <p class="tip">Shorter search query yields better results.</p>
-      </div>
+
+          <div class="collapse" id="search-tip"><p class="tip">Shorter search query yields better results.</p></div>
 
       <% if (searchReq === true) { %>
         <% var pluralize = (resultsCount > 1) ?  "results" : "result"; %>
