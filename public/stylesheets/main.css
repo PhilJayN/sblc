@@ -102,6 +102,7 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 .tip {
   font-size: .75em;
 }
+
 .navbar-light {
   border: 1px solid #e7e7e7;
 }
@@ -475,6 +476,8 @@ p {
   color: rgb(68, 68, 68);
 } */
 
-.search-btn {
-  position: absolute;
+.navbar-brand {
+  border: 1px solid #e7e7e7;
+  vertical-align: text-bottom !important;
+  color: red !important;
 }
