@@ -14,17 +14,15 @@
           <button type="submit" value="Search" class="btn btn-secondary search-btn">sadf</button>
         </div>
       </form> -->
-        <form action="/" method="GET" class="input-group">
+        <form action="/" method="GET" class="input-group search-bar">
           <input type="text" name="search" placeholder="Search messages, threads..." class="form-control">
           <button class="input-group-addon" type="submit"><i class="fa fa-search"></i></button>
         </form>
           <!-- <a class="" data-toggle="collapse" href="#search-tip" role="button" aria-expanded="false"
             aria-controls="search-tip">Tip</a> -->
-            <a class="search-tip" data-toggle="collapse" href="#search-tip" role="button" aria-expanded="false"
-              aria-controls="search-tip"><i class="fas fa-info"></i> Search Tip</a>
-
-
-          <div class="collapse" id="search-tip"><p class="tip">Shorter search query yields better results.</p></div>
+        <a class="search-tip" data-toggle="collapse" href="#search-tip" role="button" aria-expanded="false"
+          aria-controls="search-tip"><i class="fas fa-info"></i> Search Tip</a>
+        <div class="collapse" id="search-tip"><p class="tip">Shorter search query yields better results.</p></div>
 
       <% if (searchReq === true) { %>
         <% var pluralize = (resultsCount > 1) ?  "results" : "result"; %>

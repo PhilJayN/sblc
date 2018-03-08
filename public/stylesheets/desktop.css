@@ -24,6 +24,10 @@
     font-size: 1.75em;
   }
 
+  .search-bar {
+    width: 15%;
+  }
+
   .user-form {
     width: 30%;
   }

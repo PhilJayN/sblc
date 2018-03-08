@@ -475,19 +475,6 @@ p {
   color: rgb(68, 68, 68);
 } */
 
-
-.search-bar {
-  /* border: 1px solid red; */
-  /* display: inline !important; */
-  float: left;
-  width: 100%;
-}
-
 .search-btn {
   position: absolute;
-  /* float: left; */
-}
-
-.input-group {
-    width: 50%;
 }
