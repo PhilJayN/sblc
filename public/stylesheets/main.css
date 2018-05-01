@@ -17,9 +17,21 @@ body {
   margin: 0 4px;
 }
 
+.fas {
+  margin-right: 5px;
+}
+
 .fa-book {
   /* color: #64B5F6; */
   color: #2196F3;
+}
+
+.fa-dove {
+  color: #F783AC;
+}
+
+.fa-globe {
+  color: #15AABF;
 }
 
 .fa-search {
@@ -28,6 +40,10 @@ body {
 
 .fa-info {
   color: #63a2d4;
+}
+
+.fa-people-carry {
+  color: #82C91E;
 }
 
 .fa-plus {
