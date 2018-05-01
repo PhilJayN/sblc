@@ -5,7 +5,7 @@
 /* Anchor links: #63a2d4*/
 
 body {
-  background-color: #66615b;
+  background-color: #f4f3ef;
   font-family: 'Muli', sans-serif;
   color: #576578;
 }
@@ -232,6 +232,7 @@ a {
   padding: 0.5em;
   background-color: #FFFFFF;
   border-bottom: 1px solid #e9e7e7;
+  border-radius: 3px;
 }
 
 /* for consistency, keep inner-well from having borders, or else crazy nested borders*/
@@ -247,12 +248,13 @@ a {
 .well-accent-bar {
   padding: 1.5em;
   background-color: #FFFFFF;
+
   border-radius: 4px;
 }
 
 .border-line-break {
   margin-bottom: 0;
-  border-bottom: 3px solid #d6d6d6;
+  border-bottom: 2px solid #F1EAE0;
 }
 
 .room-sblc, .room-urgent, .room-general {
@@ -361,7 +363,7 @@ p {
 }
 
 .room-container p {
-  font-size: 1.25em;
+  font-size: 1.10em;
   line-height: 1.4285714285714286em;
   margin: 0;
   padding: 0;
