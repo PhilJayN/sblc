@@ -501,3 +501,11 @@ p {
   vertical-align: text-bottom !important;
   color: red !important;
 }
+
+
+.demo-stuff {
+  display: inline;
+}
+.avatar {
+  display: inline;
+}

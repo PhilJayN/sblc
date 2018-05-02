@@ -107,10 +107,17 @@
                       will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
                       element having a 'collapse' class. You are free to move this controller to other elements.-->
                       <p class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
-                      <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
-                      <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
-                        <a href="#" class="author"><%= thread.author.username %></a>
-                      </p>
+
+                      <div class="avatar">
+                          <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt="">
+                      </div>
+
+                      <div class="demo-stuff">
+                        <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
+                        <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
+                          <a href="#" class="author"><%= thread.author.username %></a>
+                        </p>
+                      </div>
 
 
                       <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
