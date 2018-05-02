@@ -143,8 +143,7 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 }
 
 .btn-primary {
-  width: 100%;
-  color: rgb(68, 68, 68);
+  /* width: 100%; */
   background-color: #64B5F6;
   color: white;
   border: none;
@@ -168,8 +167,10 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 }
 
 .add-comment-btn {
-  display: block;
+  /* display: block; */
   margin: .5em .5em .5em 0;
+  /* border: 1px solid red;
+  margin-left: 9px; */
 }
 
 .delete-form {
