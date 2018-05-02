@@ -108,33 +108,46 @@
                       element having a 'collapse' class. You are free to move this controller to other elements.-->
                       <p class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
 
-                      <div class="avatar">
-                          <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt="">
-                      </div>
-
-                      <div class="demo-stuff">
-                        <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
-                        <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
-                          <a href="#" class="author"><%= thread.author.username %></a>
-                        </p>
-                      </div>
 
 
-                      <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
-                        <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
-                        <span class="expand"> <%= thread.replies.length %> <%= word %></span>
-                        <!-- <span class="reply-btn">Reply</span> -->
-                        <!-- <span class="middle-dot">&#183;</span> -->
-                      </div>
 
-                      <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-                        <div class="box">
-                          <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= thread._id %>">Delete</a>
-                          <span class="middle-dot">&#183;</span>
-                          <a class="edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
-                      </div>
-                      <% } %>
-                      <!-- End of verify user for edit, and delete thread-->
+
+
+<div class="thread-group">
+
+    <div class="avatar">
+      avatar
+        <!-- <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt=""> -->
+    </div>
+
+    <div class="msg-body">
+      <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
+      <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
+        <a href="#" class="author"><%= thread.author.username %></a>
+      </p>
+
+    <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
+      <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
+      <span class="expand"> <%= thread.replies.length %> <%= word %></span>
+      <!-- <span class="reply-btn">Reply</span> -->
+      <!-- <span class="middle-dot">&#183;</span> -->
+    </div>
+
+    <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+      <div class="box">
+        <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= thread._id %>">Delete</a>
+        <span class="middle-dot">&#183;</span>
+        <a class="edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
+    </div>
+    <% } %>
+    <!-- End of verify user for edit, and delete thread-->
+  </div>
+
+</div>
+
+
+
+
 
                       <!-- start of child well-->
                       <div class="well well-inner collapse <%= thread._id %>">

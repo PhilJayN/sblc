@@ -502,10 +502,21 @@ p {
   color: red !important;
 }
 
-
-.demo-stuff {
-  display: inline;
-}
 .avatar {
-  display: inline;
+  /* display: inline; */
+  /* border: 1px solid green; */
+  float: left;
+  /* width: 50%; */
+}
+
+.msg-body {
+  /* display: inline; */
+  /* border: 1px solid red; */
+float: left;
+}
+
+.thread-group {
+  overflow: auto;
+  /* border: 1px solid blue; */
+
 }
