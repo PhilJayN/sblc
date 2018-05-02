@@ -42,7 +42,7 @@ body {
   color: #63a2d4;
 }
 
-.fa-people-carry {
+.fa-fighter-jet {
   color: #82C91E;
 }
 
@@ -151,6 +151,7 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
 
 .btn-primary:hover{
   background-color: #42A5F5;
+  cursor: pointer;
 }
 
 .btn-secondary {
