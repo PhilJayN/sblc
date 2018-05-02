@@ -42,9 +42,12 @@
           </div>
           <div class="room-sblc-content ">
             <% dbResults[0].forEach(function(comment){ %>
+
               <div class="well">
-                  <p><a href="#" class="author"><%= comment.author.username %></a>
-                    <span><%=  moment(comment.submittedDate).fromNow() %></span></p>
+                  <p>
+                    <a href="#" class="author"><%= comment.author.username %></a>
+                    <span><%=  moment(comment.submittedDate).fromNow() %></span>
+                  </p>
                 <p>
                   <%= comment.text %>
                 </p>
@@ -55,7 +58,8 @@
                   <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
                 <% } %>
               </div>
-              <% }) %>
+
+            <% }) %>
 
                 <div class="well">
                   <% if(!currentUser) { %>
@@ -77,7 +81,7 @@
                   <% } %>
                 </div>
 
-              </div>
+            </div>
               <!-- END of room-content-->
             </div>
             <!-- END of room-*-->
@@ -109,7 +113,6 @@
                       </p>
 
 
-
                       <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
                         <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
                         <span class="expand"> <%= thread.replies.length %> <%= word %></span>
@@ -138,8 +141,6 @@
                           </div>
                         <% } )%>
                       </div>
-
-
                       <!-- reply text box will be generated here on click-->
                     </div>
 
