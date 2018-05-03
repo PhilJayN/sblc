@@ -121,44 +121,38 @@
 
 
     <%
-    function pastelColors(){
-        var r = (Math.round(Math.random()* 127) + 127).toString(16);
-        var g = (Math.round(Math.random()* 127) + 127).toString(16);
-        var b = (Math.round(Math.random()* 127) + 127).toString(16);
+    var color = (function pastelColors(){
+        var r = (Math.round(Math.random()* 127) + 127);
+        var g = (Math.round(Math.random()* 127) + 127);
+        var b = (Math.round(Math.random()* 127) + 127);
+        console.log ('r', r, 'g', g, 'b', b);
+        console.log ()
 
-        var iconColor = '#' + r + g + b;
+        var background = 'rgb('
+                          + r.toString()
+                          + ', '
+                          + g.toString()
+                          + ', '
+                          + b.toString();
 
-        var iconBackground = 'rgb('
-                              + ( (parseInt(r, 16) + 20).toString() )
+        var icon = 'rgb('
+                              + (r - 40).toString()
                               + ', '
-                              + (parseInt(g, 16) + 20).toString()
+                              + (g - 40).toString()
                               + ', '
-                              + (parseInt(b, 16) + 20).toString() + ')';
+                              + (b - 40).toString()
+                              + ')';
 
         return {
-          iconColor: iconColor,
-          iconBackground: iconBackground,
+          background: background,
+          icon: icon,
         }
-    }
+    })();
     %>
 
 
-
-  <%
-  function hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
-    } : null;
-}
-
-  %>
-
-    <p>hex: <%= pastelColors().iconColor %> </p>
-    <p>converted: <%= pastelColors().iconBackground %> </p>
-
+<%= color.background %>
+<%= color.icon %>
 
 
 
@@ -166,15 +160,7 @@
     <% var randomNum = Math.floor(Math.random() * ( (avatarArr.length - 1) - 0 + 1)) + 0; %>
 
     <div class="demo">
-      <i class="fas circle-icon <%= avatarArr[randomNum] %>" style="color:pastelColors().iconColor;background:<%= pastelColors().iconBackground %>"></i>
-
-      <!-- <i class="fas circle-icon <%= avatarArr[randomNum] %>"></i> -->
-
-      <!-- <i class="fas fa-chess-knight circle-icon"></i> -->
-      <!-- <i class="fas fa-chess-king circle-icon"></i> -->
-      <!-- <i class="fas fa-chess-pawn circle-icon"></i> -->
-      <!-- asdfljk
-      <img class="demo__img" src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt=""> -->
+      <i class="fas circle-icon <%= avatarArr[randomNum] %>" style="color:<%= color.icon %>;background:<%= color.background %>"></i>
     </div>
 
     <div class="thread__body">

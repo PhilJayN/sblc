@@ -538,7 +538,7 @@ p {
 
 }
 
-.fa-chess-king {
+/* .fa-chess-king {
   color: rgb(182, 102, 173);
   line-height: inherit;
 }
@@ -553,17 +553,16 @@ p {
 .fa-quidditch {
   color: rgb(182, 102, 173);
   line-height: inherit;
-  /* border: 1px solid red; */
   color: rgb(221, 221, 221);
-}
+} */
 
 
 .demo__img {
   width: 20%;
 }
 .circle-icon {
-  color: rgb(182, 102, 173);
-  background: rgb(200, 210, 230);
+  /* color: rgb(182, 102, 173);
+  background: rgb(200, 210, 230); */
   width: 40px;
   height: 40px;
   line-height: 40px;
