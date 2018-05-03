@@ -522,12 +522,41 @@ p {
 
 
 
-
-
 .demo {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   float: left;
+  background-color: pink;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+
+  line-height:40px;
+  text-align:center;
+  vertical-align:middle;
+  display:inline-block;
+
 }
+
+.fa-chess-king {
+  color: rgb(182, 102, 173);
+  line-height: inherit;
+}
+
+
+.fa-chess-pawn {
+  color: rgb(182, 102, 173);
+  line-height: inherit;
+}
+
+
+.fa-quidditch {
+  color: rgb(182, 102, 173);
+  line-height: inherit;
+  /* border: 1px solid red; */
+}
+
+
 .demo__img {
   width: 20%;
 }
