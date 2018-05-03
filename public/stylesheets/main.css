@@ -525,7 +525,7 @@ p {
 .demo {
   /* border: 1px solid red; */
   float: left;
-  background-color: pink;
+  /* background-color: pink; */
   margin-right: 10px;
   width: 40px;
   height: 40px;
@@ -559,4 +559,15 @@ p {
 
 .demo__img {
   width: 20%;
+}
+.circle-icon {
+  color: rgb(182, 102, 173);
+  background: #ffc0c0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  /* padding: 30px; */
 }
