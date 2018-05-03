@@ -113,16 +113,16 @@
 
 
 
-<div class="thread-group">
+<div class="thread">
 
-    <div class="avatar">
+    <div class="thread__avatar">
       avatar
         <!-- <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt=""> -->
     </div>
 
-    <div class="msg-body">
-      <a class="thread-subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
-      <p class="thread-tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
+    <div class="thread__body">
+      <a class="thread__subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
+      <p class="thread__tagline">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
         <a href="#" class="author"><%= thread.author.username %></a>
       </p>
 
@@ -144,8 +144,6 @@
   </div>
 
 </div>
-
-
 
 
 

@@ -220,11 +220,11 @@ a {
   margin-bottom: .5em;
 }
 
-.thread-subject:valid {
+.thread__subject:valid {
   border: 1px solid blue;
 }
 
-.thread-subject:invalid {
+.thread__subject:invalid {
   border: 1px solid red;
 }
 
@@ -502,20 +502,20 @@ p {
   color: red !important;
 }
 
-.avatar {
+.thread__avatar {
   /* display: inline; */
   /* border: 1px solid green; */
   float: left;
   /* width: 50%; */
 }
 
-.msg-body {
+.thread__body {
   /* display: inline; */
   /* border: 1px solid red; */
 float: left;
 }
 
-.thread-group {
+.thread {
   overflow: auto;
   /* border: 1px solid blue; */
 
