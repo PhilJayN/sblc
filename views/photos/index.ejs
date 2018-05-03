@@ -109,16 +109,7 @@
                       <p class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
 
 
-
-
-
   <div class="thread">
-
-
-
-
-
-
 
     <%
     var color = (function pastelColors(){
@@ -126,35 +117,25 @@
         var g = (Math.round(Math.random()* 127) + 127);
         var b = (Math.round(Math.random()* 127) + 127);
         console.log ('r', r, 'g', g, 'b', b);
-        console.log ()
-
         var background = 'rgb('
                           + r.toString()
                           + ', '
                           + g.toString()
                           + ', '
                           + b.toString();
-
         var icon = 'rgb('
-                              + (r - 40).toString()
-                              + ', '
-                              + (g - 40).toString()
-                              + ', '
-                              + (b - 40).toString()
-                              + ')';
-
+                          + (r - 40).toString()
+                          + ', '
+                          + (g - 40).toString()
+                          + ', '
+                          + (b - 40).toString()
+                          + ')';
         return {
           background: background,
           icon: icon,
         }
     })();
     %>
-
-
-<%= color.background %>
-<%= color.icon %>
-
-
 
     <% var avatarArr = ['fa-quidditch', 'fa-chess-king', 'fa-chess-knight', 'fa-chess-pawn'] %>
     <% var randomNum = Math.floor(Math.random() * ( (avatarArr.length - 1) - 0 + 1)) + 0; %>
