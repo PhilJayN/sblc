@@ -114,18 +114,10 @@
 
   <div class="thread">
     <% var avatarArr = ['fa-quidditch', 'fa-chess-king', 'fa-chess-knight', 'fa-chess-pawn'] %>
-    <%= avatarArr[1] %>
-
-    <!-- <img class="thread__avatar--img" src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt=""> -->
-
-
-    <!-- <div class="thread__avatar">
-      <img class="thread__avatar--img" src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt="">
-    </div> -->
+    <% var randomNum = Math.floor(Math.random() * ( (avatarArr.length - 1) - 0 + 1)) + 0; %>
 
     <div class="demo">
-
-      <i class="fas circle-icon <%= avatarArr[0] %> "></i>
+      <i class="fas circle-icon <%= avatarArr[randomNum] %> "></i>
       <!-- <i class="fas fa-chess-knight circle-icon"></i> -->
       <!-- <i class="fas fa-chess-king circle-icon"></i> -->
       <!-- <i class="fas fa-chess-pawn circle-icon"></i> -->
