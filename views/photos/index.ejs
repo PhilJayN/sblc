@@ -112,8 +112,9 @@
 
 
 
-
   <div class="thread">
+    <% var avatarArr = ['fa-quidditch', 'fa-chess-king', 'fa-chess-knight', 'fa-chess-pawn'] %>
+    <%= avatarArr[1] %>
 
     <!-- <img class="thread__avatar--img" src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt=""> -->
 
@@ -124,14 +125,13 @@
 
     <div class="demo">
 
-      <!-- <i class="fas fa-quidditch"></i> -->
+      <i class="fas circle-icon <%= avatarArr[0] %> "></i>
       <!-- <i class="fas fa-chess-knight circle-icon"></i> -->
       <!-- <i class="fas fa-chess-king circle-icon"></i> -->
-      <i class="fas fa-chess-pawn circle-icon"></i>
+      <!-- <i class="fas fa-chess-pawn circle-icon"></i> -->
       <!-- asdfljk
       <img class="demo__img" src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt=""> -->
     </div>
-
 
     <div class="thread__body">
       <a class="thread__subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
