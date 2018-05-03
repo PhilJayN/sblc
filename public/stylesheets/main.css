@@ -506,16 +506,23 @@ p {
 }
 
 .thread__avatar--img {
-  width: 20%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   /* display: inline-block; */
+  float: left;
+  width: 10%;
+  margin-right: 10px;
 
 }
 
 .thread__body {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   float: left;
 }
+
+
+
+
+
 
 .demo {
   border: 1px solid red;
