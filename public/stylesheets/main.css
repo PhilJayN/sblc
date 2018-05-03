@@ -111,10 +111,6 @@ this uses a simple .toggle to add/remove element with name of collapsed*/
   margin-bottom: 1em;
 }
 
-.hero-icon {
-  display: none;
-}
-
 .tip {
   font-size: .75em;
 }
@@ -368,12 +364,6 @@ border: none;
   }
 
 }*/
-
-img {
-  width: 4%;
-  margin-bottom: .75em;
-  border-radius: 2px;
-}
 
 p {
   font-size: 1.4em;
