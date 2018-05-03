@@ -113,12 +113,15 @@
 
 
 
-<div class="thread">
-
+  <div class="thread">
     <div class="thread__avatar">
-      avatar
-        <!-- <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt=""> -->
+      <img class="thread__avatar--img" src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt="">
     </div>
+
+    <div class="demo">
+      <img class="demo__img" src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" alt="">
+    </div>
+
 
     <div class="thread__body">
       <a class="thread__subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
@@ -141,9 +144,8 @@
     </div>
     <% } %>
     <!-- End of verify user for edit, and delete thread-->
+    </div>
   </div>
-
-</div>
 
 
 
