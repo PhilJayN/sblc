@@ -6,6 +6,9 @@
 // });
 // $(document).ready(function(){
 
+helpers.sayHi();
+
+
 var listController = (function() {
   //calculation and data structure goes here.
   // console.log ('LISTcONTROLLER!!');
