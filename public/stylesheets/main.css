@@ -562,7 +562,7 @@ p {
 }
 .circle-icon {
   color: rgb(182, 102, 173);
-  background: #ffc0c0;
+  /* background: rgb(181, 212, 152); */
   width: 40px;
   height: 40px;
   line-height: 40px;
