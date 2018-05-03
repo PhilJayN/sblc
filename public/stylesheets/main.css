@@ -554,6 +554,7 @@ p {
   color: rgb(182, 102, 173);
   line-height: inherit;
   /* border: 1px solid red; */
+  color: rgb(221, 221, 221);
 }
 
 
@@ -562,7 +563,7 @@ p {
 }
 .circle-icon {
   color: rgb(182, 102, 173);
-  /* background: rgb(181, 212, 152); */
+  background: rgb(200, 210, 230);
   width: 40px;
   height: 40px;
   line-height: 40px;
