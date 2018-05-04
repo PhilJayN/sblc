@@ -1,36 +1,24 @@
 <% include ../partials/header %>
-  <div class="jumbotron">
-    <div class="well">
-      <h3 class="demo-class" id="demo-id"></h3>
-      <h3>South Bay Literacy Council</h3>
-      <!-- <div class="hero-icon">
-        <img src="https://i.imgur.com/FbIu9FK.jpg" alt="flower-pic-placeholder">
-      </div> -->
-      <!-- Start of if statement for currentUser check-->
-      <% if(currentUser) { %>
-      <!-- <form action="/" method="GET" class="form-inline">
-        <div class="form-group search-bar">
-          <input type="text" name="search" placeholder="Search messages, threads..." class="form-control search-query">
-          <button type="submit" value="Search" class="btn btn-secondary search-btn">sadf</button>
-        </div>
-      </form> -->
-        <form action="/" method="GET" class="input-group search-bar">
-          <input type="text" name="search" placeholder="Search messages, threads..." class="form-control">
-          <button class="input-group-addon" type="submit"><i class="fa fa-search"></i></button>
-        </form>
-          <!-- <a class="" data-toggle="collapse" href="#search-tip" role="button" aria-expanded="false"
-            aria-controls="search-tip">Tip</a> -->
-        <a class="search-tip" data-toggle="collapse" href="#search-tip" role="button" aria-expanded="false"
-          aria-controls="search-tip"><i class="fas fa-info"></i> Search Tip</a>
-        <div class="collapse" id="search-tip"><p class="tip">Shorter search query yields better results.</p></div>
-
-      <% if (searchReq === true) { %>
-        <% var pluralize = (resultsCount > 1) ?  "results" : "result"; %>
-        <p>Found <%= resultsCount %> <%= pluralize %></p>
-        <a href="/" class="">Cancel search and go to home page</a>
-      <% } %>
-    </div>
+<div class="jumbotron">
+  <div class="well">
+    <h3 class="demo-class" id="demo-id"></h3>
+    <h3>South Bay Literacy Council</h3>
+    <!-- Start of if statement for currentUser check-->
+    <% if(currentUser) { %>
+      <form action="/" method="GET" class="input-group search-bar">
+        <input type="text" name="search" placeholder="Search messages, threads..." class="form-control">
+        <button class="input-group-addon" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+      <a class="search-tip" data-toggle="collapse" href="#search-tip" role="button" aria-expanded="false"
+        aria-controls="search-tip"><i class="fas fa-info"></i> Search Tip</a>
+      <div class="collapse" id="search-tip"><p class="tip">Shorter search query yields better results.</p></div>
+    <% if (searchReq === true) { %>
+      <% var pluralize = (resultsCount > 1) ?  "results" : "result"; %>
+      <p>Found <%= resultsCount %> <%= pluralize %></p>
+      <a href="/" class="">Cancel search and go to home page</a>
+    <% } %>
   </div>
+</div>
 
     <!-- basics is container, which has a row, where each row has columns -->
     <div class="room-container container-fluid">
@@ -196,35 +184,6 @@
                     <!-- END of room-* (grandparent)-->
                     <!--End of threads section-->
 
-                    <div class="room-urgent col-md-6 col-lg-4">
-                      <div class="room-urgent-header border-line-break well">
-                        <h2><i class="fas fa-fighter-jet"></i>Urgent</h2>
-                        <h5>Post here with urgent questions or concerns. Email notifications will be sent out to those who opt-in, who can answer your questions.</h5>
-
-                        <i class="fa fa-wrench" aria-hidden="true"></i>
-                        <span>Under Construction</span>
-
-                      </div>
-                      <div class="room-urgent-content">
-                        <!-- data from DB will populate here-->
-                      </div>
-                    </div>
-
-                    <div class="room-general col-md-6 col-lg-4">
-                      <div class="room-general-header border-line-break well">
-                        <h2>General</h2>
-                        <h5>Talk about anything here!</h5>
-
-                        <i class="fa fa-wrench" aria-hidden="true"></i>
-                        <span>Under Construction</span>
-
-                      </div>
-                      <div class="room-general-content">
-                        <!-- data from DB will populate here-->
-                      </div>
-                    </div>
-                    <!-- END of room general -->
-
                   </div>
                 </div>
                 <!-- END of row -->
@@ -274,6 +233,11 @@
                 </div>
               </div>
             </div>
+
+
+
+
+
 
             <div class="temp-content container">
               <strong>

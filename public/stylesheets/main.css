@@ -299,6 +299,7 @@ border: none;
 
 .row {
   margin: 0 auto;
+  border: 1px solid red; 
 }
 
 .column {
