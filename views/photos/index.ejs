@@ -20,25 +20,18 @@
   </div>
 </div>
 
-    <!-- basics is container, which has a row, where each row has columns -->
-    <div class="room-container container-fluid">
+    <div class="room-container container">
       <div class="row">
         <div class="room-sblc col-md-6 col-lg-4">
-          <!-- each room consist of divs: room-header, and room-content -->
           <div class="room-sblc-header border-line-break well">
             <h3><i class="fas fa-dove"></i>Quick Message</h3>
           </div>
           <div class="room-sblc-content ">
             <% dbResults[0].forEach(function(comment){ %>
-
               <div class="well">
-                  <p>
-                    <a href="#" class="author"><%= comment.author.username %></a>
-                    <span><%=  moment(comment.submittedDate).fromNow() %></span>
-                  </p>
-                <p>
-                  <%= comment.text %>
-                </p>
+                <p><a href="#" class="author"><%= comment.author.username %></a>
+                  <span><%=  moment(comment.submittedDate).fromNow() %></span></p>
+                <p><%= comment.text %></p>
 
                 <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
                   <a href="#" class="del-style del-btn comment-del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= comment._id %>">Delete</a>
@@ -46,33 +39,30 @@
                   <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
                 <% } %>
               </div>
-
             <% }) %>
+            <!-- end of dbResults forEach -->
 
-                <div class="well">
-                  <% if(!currentUser) { %>
-                    <p>Join the conversation! Sign up for an account in seconds.</p>
-                    <a class="btn btn-info" href="/register">Sign up</a>
-                  <% } else {%>
-                    <!-- press a btn here to start GET req. to /comments/new -->
-                    <!-- <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a> -->
-                    <form action="/comments" method="POST">
-                      <div class="form-group">
-                        <textarea name="comment[text]"  class="form-control comment-text-input text-body" placeholder="What's on your mind?" required></textarea>
-                        <!-- <input autofocus type="text" name="comment[text]" class="form-control comment-text-input" placeholder="What's on your mind?" required> -->
-                      </div>
-                      <p>
-                        <button class="btn btn-primary submit-btn">Submit</button>
-                      </p>
-                    </form>
-
-                  <% } %>
-                </div>
-
+              <div class="well">
+                <% if(!currentUser) { %>
+                  <p>Join the conversation! Sign up for an account in seconds.</p>
+                  <a class="btn btn-info" href="/register">Sign up</a>
+                <% } else {%>
+                  <!-- press a btn here to start GET req. to /comments/new -->
+                  <!-- <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a> -->
+                  <form action="/comments" method="POST">
+                    <div class="form-group">
+                      <textarea name="comment[text]"  class="form-control comment-text-input text-body" placeholder="What's on your mind?" required></textarea>
+                    </div>
+                    <p>
+                      <button class="btn btn-primary submit-btn">Submit</button>
+                    </p>
+                  </form>
+                <% } %>
+              </div>
             </div>
-              <!-- END of room-content-->
-            </div>
-            <!-- END of room-*-->
+            <!-- END of room-content-->
+        </div>
+        <!-- END of room-sblc-->
 
             <!--Start of threads section-->
             <div id="grandparent" class="list-group-item room-sblc col-md-6 col-lg-4 threads-box">

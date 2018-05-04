@@ -276,6 +276,11 @@ a {
  padding: 0;
 }
 
+.room-sblc {
+  border: 3px solid blue;
+  margin: 4px;
+}
+
 .grandparent {
  border: 1px solid pink;
 }
@@ -299,7 +304,7 @@ border: none;
 
 .row {
   margin: 0 auto;
-  border: 1px solid red; 
+  border: 1px solid red;
 }
 
 .column {
