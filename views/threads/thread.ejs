@@ -34,6 +34,8 @@
     </form>
   </div>
 
+
+
   <!-- Note: elements inside the collapse class and data-toggle="collapse" will be allowed to collapse/expand on click by Bootstrap JavaScript-->
   <!-- <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>"> -->
     <!-- start of child well-->
@@ -46,6 +48,28 @@
             <%= reply.text %>
           </p>
         </div>
+
+
+
+
+        <div class="reply-box-parent" id="<%= thread._id %>">
+          <p> TESTING!
+            <%= reply._id %>
+            -------------------------
+          </p>
+          <form action="/threads/reply" method="POST" class="reply-form">
+            <div class="form-group">
+              <input type="hidden" name="threadId" value="<%= thread._id %>">
+              <textarea required class="comment-text-input thread-text-input form-control" name="reply"></textarea>
+              <button class="btn btn-primary add-comment-btn">Add Comment test</button>
+            </div>
+          </form>
+        </div>
+
+
+
+        
+
       <% } )%>
     </div>
   <!-- </div> -->

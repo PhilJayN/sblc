@@ -13,7 +13,12 @@ var threadSchema = new mongoose.Schema({
       },
       username: String
   },
-  replies: [replySchema],
+
+  // replies: [replySchema],
+  replies: {
+    type: [replySchema]
+  },
+  
   submittedDate: {type: Date, default: Date.now},
   submittedTime: String
 },

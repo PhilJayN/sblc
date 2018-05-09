@@ -10,6 +10,11 @@ var replySchema = new mongoose.Schema({
       },
       username: String
   },
+
+  replies: {
+    type: [replySchema]
+  },
+
   // submittedDate: String,
   submittedDate: {type: Date, default: Date.now},
   submittedTime: String
