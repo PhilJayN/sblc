@@ -54,7 +54,7 @@
             <%= reply._id %>
             -------------------------
           </p>
-          <form action="/threads/<%= thread._id %>/replies/<%= reply._id %>/koala" method="POST" class="reply-form">
+          <form action="/threads/<%= thread._id %>/replies/<%= reply._id %>/replies" method="POST" class="reply-form">
             <div class="form-group">
               <input type="hidden" name="replyId" value="<%= reply._id %>">
               <textarea required class="comment-text-input thread-text-input form-control" name="reply">u r replying to a reply</textarea>

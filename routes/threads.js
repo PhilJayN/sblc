@@ -131,7 +131,8 @@ router.post('/threads/reply', function (req, res) {
 
 
 //replying to a reply route...
-router.post('/threads/:id/replies/:reply_id/koala', function (req, res) {
+router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
+  // res.send('hiiisdfa');
   //find a thread in DB by its ID. get ID from hidden input field in HTML
   // console.log ('threads id:', req.params.id, 'reply id:', req.params.reply_id);
   // get value of input element by giving input el a 'name' and 'value' attribute. on a post req (clicking a btn), use req.body.[attributeName]
@@ -144,42 +145,46 @@ router.post('/threads/:id/replies/:reply_id/koala', function (req, res) {
   //
   // }));
 
-  const threadId = req.params.id;
-  const replyId = req.params.reply_id;
+  // const threadId = req.params.id;
+  // const replyId = req.params.reply_id;
+  // console.log ('threadId', threadId, 'replyId', replyId);
+
+console.log(req.params.id, req.params.reply_id);
 
   Thread.findById(req.params.id).then( (thread) => {
 
-  // just a fxn to help find a comment  
-    const findComment = (id, comments) => {
+  // just a fxn to help find a reply
+    const findReply = (id, replies) => {
       //iterate through array
-        for (var i = 0; i < comments.length; i++) {
-          // for every comment, assign it into a variable
-          const comment = comments[i];
-          // now each comment is one object {
+        for (var i = 0; i < replies.length; i++) {
+          // for every reply, assign it into a variable
+          const reply = replies[i];
+          // now each reply is one object {
             // text: 'mouse!',
             // _id: 5af28dd4c102549122d2b6a9,
           //}
-          if (comment._id == id) {
+          if (reply._id == id) {
             console.log(">>> FOUND <<<<");
-            return comment;
+            return reply;
           }
-          // now invoke the findComment fxn with arguments
-          // comments.comments is just dot notation, trying to access a property of the comment obj.
-          const foundComment = findComment(id, comment.comments);
-          if (foundComment) {
-            return foundComment;
+          // now invoke the findReply fxn with arguments
+          // reply.replies is just dot notation, trying to access a property of the reply obj.
+          const foundReply = findReply(id, reply.replies);
+          if (foundReply) {
+            console.log ('foundReply:', foundReply);
+            return foundReply;
           }
         }
     };
 
-    const comment = findComment(replyId, thread.replies); // post.comments.id(commentId);
-    // const comment = post.comments.id(commentId);
-    console.log('SADFJ;K43U5IO354-----------', comment);
+    const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
+    console.log('SADFJ;K43U5IO354-----------', reply);
 
   });
 
 });
 // end of .post
+
 
 
 
