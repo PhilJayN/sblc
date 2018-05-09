@@ -22,7 +22,7 @@ router.get('/threads/:id', function (req, res) {
     if (err) {
       console.log('ERROR!!', err);
     } else {
-      console.log('foundthread', foundThread);
+      // console.log('foundthread', foundThread);
       // foundThread.sort({replies: {"createdAt": "ascending"}});
       res.render('threads/thread.ejs', {thread: foundThread, moment: moment});
     }
@@ -126,6 +126,48 @@ router.post('/threads/reply', function (req, res) {
     }
   });
 });
+
+
+
+
+//replying to a reply route...
+router.post('/threads/koala', function (req, res) {
+  //find a thread in DB by its ID. get ID from hidden input field in HTML
+
+
+  Thread.findById(req.body.replyId, function(err, foundThread) {
+    if(err) {
+      console.log (err);
+    } else {
+      console.log ('foundThread from db', foundThread);
+      res.send(foundThread);
+      // // console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
+      // console.log('-------------------------');
+      // var date = new Date();
+      // var humanDate = date.toDateString();
+      // var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
+      // //Add user reply to DB
+      // var reply = {
+      //   text: req.body.reply,
+      //   author: {
+      //     id: req.user._id,
+      //     username: req.user.username
+      //   },
+      //   submittedDate: date,
+      //   submittedTime: humanTime
+      // };
+      // foundThread.replies.push(reply);
+      // foundThread.save();
+      // // });
+      // res.redirect('/threads/' + foundThread._id);
+    }
+  });
+
+
+});
+
+
+
 
 //CREATE Route: add thread to DB
 router.post('/threads', function (req, res) {
