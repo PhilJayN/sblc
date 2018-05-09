@@ -131,40 +131,55 @@ router.post('/threads/reply', function (req, res) {
 
 
 //replying to a reply route...
-router.post('/threads/koala', function (req, res) {
+router.post('/threads/:id/replies/:reply_id/koala', function (req, res) {
   //find a thread in DB by its ID. get ID from hidden input field in HTML
+  // console.log ('threads id:', req.params.id, 'reply id:', req.params.reply_id);
+  // get value of input element by giving input el a 'name' and 'value' attribute. on a post req (clicking a btn), use req.body.[attributeName]
+  //to get the value.
+  // console.log ('id w/ body for thread:', req.body.threadId, 'id w/ body for reply:', req.body.replyId);
+  //find the thread first, then find reply inside that comment
 
+  // Thread.findById(req.params.id).then((thread) => {
+  //
+  //
+  // }));
 
-  Thread.findById(req.body.replyId, function(err, foundThread) {
-    if(err) {
-      console.log (err);
-    } else {
-      console.log ('foundThread from db', foundThread);
-      res.send(foundThread);
-      // // console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
-      // console.log('-------------------------');
-      // var date = new Date();
-      // var humanDate = date.toDateString();
-      // var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
-      // //Add user reply to DB
-      // var reply = {
-      //   text: req.body.reply,
-      //   author: {
-      //     id: req.user._id,
-      //     username: req.user.username
-      //   },
-      //   submittedDate: date,
-      //   submittedTime: humanTime
-      // };
-      // foundThread.replies.push(reply);
-      // foundThread.save();
-      // // });
-      // res.redirect('/threads/' + foundThread._id);
-    }
+  const threadId = req.params.id;
+  const replyId = req.params.reply_id;
+
+  Thread.findById(req.params.id).then( (thread) => {
+
+  // just a fxn to help find a comment  
+    const findComment = (id, comments) => {
+      //iterate through array
+        for (var i = 0; i < comments.length; i++) {
+          // for every comment, assign it into a variable
+          const comment = comments[i];
+          // now each comment is one object {
+            // text: 'mouse!',
+            // _id: 5af28dd4c102549122d2b6a9,
+          //}
+          if (comment._id == id) {
+            console.log(">>> FOUND <<<<");
+            return comment;
+          }
+          // now invoke the findComment fxn with arguments
+          // comments.comments is just dot notation, trying to access a property of the comment obj.
+          const foundComment = findComment(id, comment.comments);
+          if (foundComment) {
+            return foundComment;
+          }
+        }
+    };
+
+    const comment = findComment(replyId, thread.replies); // post.comments.id(commentId);
+    // const comment = post.comments.id(commentId);
+    console.log('SADFJ;K43U5IO354-----------', comment);
+
   });
 
-
 });
+// end of .post
 
 
 
