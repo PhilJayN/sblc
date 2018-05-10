@@ -16,6 +16,7 @@ var listController = (function() {
 // code for displaying or updating UI here:
 var UIController = (function() {
 
+  //make sure to add a period(.) for the value
   var DOMstrings = {
     toggleBtn: '.toggle-btn',
     submitBtn: '.submit-btn',
@@ -36,8 +37,16 @@ var UIController = (function() {
     console.log ('createReplyBox running, the parent param:', parent);
     var divParent = parent;
 
+    // data-parent-thread="<%= thread._id %>"
+    // data-parent-reply="<%= reply._id %>"
+
+    var thread = divParent.getAttribute('data-parent-thread');
+    var reply = divParent.getAttribute('data-parent-reply');
+    // console.log('threadasdjk;fl', thread);
+
     var form = document.createElement('form');
-    form.action = '/threads/reply';
+    form.action = '/threads/' + thread + '/replies/' + reply +'/replies';
+    // form.action = '/threads/:id/replies/:reply_id/replies';
     form.method = 'POST';
     form.className = 'reply-form';
     divParent.appendChild(form);

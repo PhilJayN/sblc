@@ -46,14 +46,25 @@
           <p>
             <%= reply.text %>
 
+
+
             <% reply.replies.forEach(function(obj) { %>
-              <div class="well">
+              <div class="well reply-parent"
+                data-parent-thread="<%= thread._id %>"
+                data-parent-reply="<%= reply._id %>"
+              >
                 <p> <%= obj.author.username %> </p>
                 <p> <%= obj.text%> </p>
 
-
                 <span class="reply-btn">Reply</span>
-                <div class="dynamic-reply">
+                <div
+                  class="dynamic-reply"
+                >
+                  <!-- dynamic reply box will be created here on reply btn -->
+                  <!-- will also have a submit btn, which POST to:
+                      '/threads/:id/replies/:reply_id/replies';
+                  -->
+                  <!-- the submit btn during creation will require id data from both thread AND reply -->
                 </div>
 
 
