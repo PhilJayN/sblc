@@ -132,18 +132,10 @@ router.post('/threads/reply', function (req, res) {
 
 //replying to a reply route...
 router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
-  // res.send('hiiisdfa');
-  //find a thread in DB by its ID. get ID from hidden input field in HTML
   // console.log ('threads id:', req.params.id, 'reply id:', req.params.reply_id);
-  // get value of input element by giving input el a 'name' and 'value' attribute. on a post req (clicking a btn), use req.body.[attributeName]
+  // get value of input element by giving input el a 'name' and 'value' attribute. on a post req (clicking a btn),
+  //use req.body.[attributeName]
   //to get the value.
-  // console.log ('id w/ body for thread:', req.body.threadId, 'id w/ body for reply:', req.body.replyId);
-  //find the thread first, then find reply inside that comment
-
-  // Thread.findById(req.params.id).then((thread) => {
-  //
-  //
-  // }));
 
   // const threadId = req.params.id;
   // const replyId = req.params.reply_id;
@@ -152,7 +144,6 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
 console.log(req.params.id, req.params.reply_id);
 
   Thread.findById(req.params.id).then( (thread) => {
-
   // just a fxn to help find a reply
     const findReply = (id, replies) => {
       //iterate through array
@@ -179,20 +170,12 @@ console.log(req.params.id, req.params.reply_id);
       }
     };
 
-    console.log('B4 putting args', req.params.reply_id, thread.replies);
-
+    // console.log('B4 putting args', req.params.reply_id, thread.replies);
     const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
-    console.log('got reply-----------', reply);
-    console.log('req.body.replyId', req.body.reply);
+    // console.log('got reply-----------', reply);
+    // console.log('req.body.replyId', req.body.reply);
 
-    // const replyNew = new Reply({
-    //   content: req.body.reply,
-    //   author: {
-    //     id: req.user._id,
-    //     username: req.user.username
-    //   },
-    // });
-
+    // create new obj, then use .unshift on it.
     const replyNew = {
       text: req.body.reply,
       author: {
@@ -200,7 +183,6 @@ console.log(req.params.id, req.params.reply_id);
         username: req.user.username
       },
     };
-
 
     reply.replies.unshift(replyNew);
     thread.markModified('replies');
@@ -215,9 +197,6 @@ console.log(req.params.id, req.params.reply_id);
   });
 });
 // end of .post
-
-
-
 
 
 //CREATE Route: add thread to DB
