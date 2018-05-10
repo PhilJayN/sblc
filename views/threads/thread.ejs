@@ -45,6 +45,13 @@
           </p>
           <p>
             <%= reply.text %>
+
+            <% reply.replies.forEach(function(obj) { %>
+              <div class="well">
+                <p> <%= obj.author.username %> </p>
+                <p> <%= obj.text%> </p>
+              </div>
+              <% }); %>
           </p>
         </div>
 
