@@ -1,6 +1,39 @@
 var express = require("express");
 var app = express();
 
+app.use((req, res, next) => {
+	// res.locals.myNameIs = "My name is...";
+  // res.locals.sayHi = function() {
+  //   return 2 + 3;
+  // };
+
+  res.locals.randomColor = function pastelColors(){
+      var r = (Math.round(Math.random()* 127) + 127);
+      var g = (Math.round(Math.random()* 127) + 127);
+      var b = (Math.round(Math.random()* 127) + 127);
+      console.log ('r', r, 'g', g, 'b', b);
+      var background = 'rgb('
+                        + r.toString()
+                        + ', '
+                        + g.toString()
+                        + ', '
+                        + b.toString();
+      var icon = 'rgb('
+                        + (r - 40).toString()
+                        + ', '
+                        + (g - 40).toString()
+                        + ', '
+                        + (b - 40).toString()
+                        + ')';
+      return {
+        background: background,
+        icon: icon,
+      }
+  };
+	next()
+});
+
+
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
