@@ -156,6 +156,7 @@ console.log(req.params.id, req.params.reply_id);
   // just a fxn to help find a reply
     const findReply = (id, replies) => {
       //iterate through array
+      if (replies.length > 0) {
         for (var i = 0; i < replies.length; i++) {
           // for every reply, assign it into a variable
           const reply = replies[i];
@@ -175,6 +176,7 @@ console.log(req.params.id, req.params.reply_id);
             return foundReply;
           }
         }
+      }
     };
 
     const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
@@ -190,7 +192,7 @@ console.log(req.params.id, req.params.reply_id);
     // });
 
     const replyNew = {
-      content: req.body.reply,
+      text: req.body.reply,
       author: {
         id: req.user._id,
         username: req.user.username
@@ -205,7 +207,7 @@ console.log(req.params.id, req.params.reply_id);
   }).then((thread) => {
     console.log("Step 3 Save thread ---------------------------");
     console.log(thread);
-    res.redirect('/');
+    res.redirect('/threads/' + thread._id);
   }).catch((err)=> {
     console.log(err);
   });
