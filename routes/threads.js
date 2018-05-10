@@ -179,6 +179,8 @@ console.log(req.params.id, req.params.reply_id);
       }
     };
 
+    console.log('B4 putting args', req.params.reply_id, thread.replies);
+
     const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
     console.log('got reply-----------', reply);
     console.log('req.body.replyId', req.body.reply);
