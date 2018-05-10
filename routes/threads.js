@@ -178,10 +178,37 @@ console.log(req.params.id, req.params.reply_id);
     };
 
     const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
-    console.log('SADFJ;K43U5IO354-----------', reply);
+    console.log('got reply-----------', reply);
+    console.log('req.body.replyId', req.body.reply);
 
+    // const replyNew = new Reply({
+    //   content: req.body.reply,
+    //   author: {
+    //     id: req.user._id,
+    //     username: req.user.username
+    //   },
+    // });
+
+    const replyNew = {
+      content: req.body.reply,
+      author: {
+        id: req.user._id,
+        username: req.user.username
+      },
+    };
+
+
+    reply.replies.unshift(replyNew);
+    thread.markModified('replies');
+    return thread.save();
+    // console.log ('test', replyNew);
+  }).then((thread) => {
+    console.log("Step 3 Save thread ---------------------------");
+    console.log(thread);
+    res.redirect('/');
+  }).catch((err)=> {
+    console.log(err);
   });
-
 });
 // end of .post
 
