@@ -40,12 +40,16 @@
     <!-- start of child well-->
     <div class="border-clean collapse show <%= thread._id %>">
       <% thread.replies.forEach(function(reply) { %>
-        <div class="well replies-wrapper">
+        <div
+          class="well replies-wrapper reply-parent"
+          data-parent="<%= thread._id %>"
+          data-self="<%= reply._id %>"
+        >
           <p class="thread-tagline"><a href="#" class="author"><%= reply.author.username %></a> <span><%=  moment(reply.submittedDate).fromNow() %></span>
           </p>
+          <span class="reply-btn">Reply</span>
           <p>
             <%= reply.text %>
-
 
 
             <% reply.replies.forEach(function(obj) { %>

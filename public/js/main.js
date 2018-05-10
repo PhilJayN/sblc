@@ -40,8 +40,8 @@ var UIController = (function() {
     // data-parent-thread="<%= thread._id %>"
     // data-parent-reply="<%= reply._id %>"
 
-    var thread = divParent.getAttribute('data-parent-thread');
-    var reply = divParent.getAttribute('data-parent-reply');
+    var thread = divParent.getAttribute('data-parent');
+    var reply = divParent.getAttribute('data-self');
     // console.log('threadasdjk;fl', thread);
 
     var form = document.createElement('form');
