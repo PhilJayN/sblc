@@ -247,6 +247,7 @@ a {
   background-color: #FFFFFF;
   border-bottom: 1px solid #e9e7e7;
   border-radius: 3px;
+  border: 1px solid red;
 }
 
 /* for consistency, keep inner-well from having borders, or else crazy nested borders*/
@@ -576,4 +577,9 @@ p {
   text-align: center;
   vertical-align: middle;
   /* padding: 30px; */
+}
+
+
+.replies-wrapper {
+  border: 1px solid blue; 
 }

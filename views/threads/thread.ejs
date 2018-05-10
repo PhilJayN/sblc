@@ -40,7 +40,7 @@
     <!-- start of child well-->
     <div class="border-clean collapse show <%= thread._id %>">
       <% thread.replies.forEach(function(reply) { %>
-        <div class="well">
+        <div class="well replies-wrapper">
           <p class="thread-tagline"><a href="#" class="author"><%= reply.author.username %></a> <span><%=  moment(reply.submittedDate).fromNow() %></span>
           </p>
           <p>
@@ -50,6 +50,13 @@
               <div class="well">
                 <p> <%= obj.author.username %> </p>
                 <p> <%= obj.text%> </p>
+
+
+                <span class="reply-btn">Reply</span>
+                <div class="dynamic-reply">
+                </div>
+
+
               </div>
               <% }); %>
           </p>

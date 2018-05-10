@@ -6,8 +6,7 @@
 // });
 // $(document).ready(function(){
 
-helpers.sayHi();
-
+console.log('hi dsafasdfthere!');
 
 var listController = (function() {
   //calculation and data structure goes here.
@@ -29,7 +28,8 @@ var UIController = (function() {
     replyBoxParent: '.reply-box-parent',
     replyForm: '.reply-form',
     replyBtn: '.reply-btn',
-    threadsBox: '.threads-box'
+    threadsBox: '.threads-box',
+    repliesWrapper: '.replies-wrapper'
   };
 
   var createReplyBox = function(parent) {
@@ -84,14 +84,14 @@ var UIController = (function() {
     },
     //e: event, el: element
     checkElementClicked: function(e) {
-      // console.log ('checkElementClicked running...');
+      console.log ('checkElementClicked running...');
       var elClicked, parentEl;
       elClicked = e.target;
       // console.log ('element clicked is', elClicked);
       parentEl = elClicked.parentNode;
       console.log ('el clicked:', elClicked, 'parent el for clicked el: ', parentEl);
       if (elClicked.className === 'reply-btn') {
-        // console.log ('element clicked is a reply btn!');
+        console.log ('element clicked is a reply btn!');
         // console.log ('createReplyBox results:', typeof createReplyBox() );
       // var replyBtnTest = document.querySelector('.reply-btn');
       // console.log('parent el contains:', parentEl.contains(replyBtnTest) );
@@ -132,6 +132,9 @@ var controller = (function(listCtrl, UICtrl) {
     //     console.log('clicked!!!!!');
     //   });
     // }
+
+
+    document.querySelector(DOM.repliesWrapper).addEventListener('click', UICtrl.checkElementClicked);
 
     var submitBtn = document.querySelector(DOM.submitBtn);
     if (submitBtn) {
