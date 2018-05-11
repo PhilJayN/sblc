@@ -114,7 +114,8 @@ router.post('/threads/reply', function (req, res) {
         text: req.body.reply,
         author: {
           id: req.user._id,
-          username: req.user.username
+          username: req.user.username,
+          avatar: req.user.avatar
         },
         submittedDate: date,
         submittedTime: humanTime
@@ -180,7 +181,8 @@ console.log(req.params.id, req.params.reply_id);
       text: req.body.reply,
       author: {
         id: req.user._id,
-        username: req.user.username
+        username: req.user.username,
+        avatar: req.user.avatar
       },
     };
 
@@ -211,7 +213,8 @@ router.post('/threads', function (req, res) {
   var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
   var author = {
     id: req.user._id,
-    username: req.user.username
+    username: req.user.username,
+    avatar: req.user.avatar
   };
   //takes data from variables name and image, and stores into an obj
   var newThread = { subject: subject, text: text, submittedDate: date, submittedTime: humanTime, author: author};
