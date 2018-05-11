@@ -3,11 +3,11 @@ var app = express();
 
 app.use((req, res, next) => {
 	// res.locals.myNameIs = "My name is...";
-  // res.locals.sayHi = function() {
-  //   return 2 + 3;
-  // };
+  res.locals.sayHi = function() {
+    return 'hi there!';
+  };
 
-  res.locals.randomColor = function pastelColors(){
+  res.locals.color = function(){
       var r = (Math.round(Math.random()* 127) + 127);
       var g = (Math.round(Math.random()* 127) + 127);
       var b = (Math.round(Math.random()* 127) + 127);
@@ -30,6 +30,7 @@ app.use((req, res, next) => {
         icon: icon,
       }
   };
+
 	next()
 });
 

@@ -88,39 +88,13 @@
 
 
   <div class="thread">
-
-    <%
-    var color = (function pastelColors(){
-        var r = (Math.round(Math.random()* 127) + 127);
-        var g = (Math.round(Math.random()* 127) + 127);
-        var b = (Math.round(Math.random()* 127) + 127);
-        console.log ('r', r, 'g', g, 'b', b);
-        var background = 'rgb('
-                          + r.toString()
-                          + ', '
-                          + g.toString()
-                          + ', '
-                          + b.toString();
-        var icon = 'rgb('
-                          + (r - 40).toString()
-                          + ', '
-                          + (g - 40).toString()
-                          + ', '
-                          + (b - 40).toString()
-                          + ')';
-        return {
-          background: background,
-          icon: icon,
-        }
-    })();
-    %>
-
     <% var avatarArr = ['fa-quidditch', 'fa-chess-king', 'fa-chess-knight', 'fa-chess-pawn'] %>
     <% var randomNum = Math.floor(Math.random() * ( (avatarArr.length - 1) - 0 + 1)) + 0; %>
-
-
+    <!-- important to invoke color fxn here, and store return values in variable.
+    if you invoke color() twice in ejs later, you'll get two mismatch colors  -->
+    <% var newColor = color(); %>
     <div class="demo">
-      <i class="fas circle-icon <%= avatarArr[randomNum] %>" style="color:<%= color.icon %>;background:<%= color.background %>"></i>
+      <i class="fas circle-icon <%= avatarArr[randomNum] %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
     </div>
 
     <div class="thread__body">
