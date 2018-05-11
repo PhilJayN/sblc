@@ -21,7 +21,7 @@
         <span class="middle-dot">&#183;</span>
         <a class="edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
       </p>
-      <% } %>
+    <% } %>
       <!-- End of verify user for edit, and delete thread-->
 
   <div class="reply-box-parent" id="<%= thread._id %>">
@@ -45,22 +45,26 @@
           data-parent="<%= thread._id %>"
           data-self="<%= reply._id %>"
         >
-          <p class="thread-tagline"><a href="#" class="author"><%= reply.author.username %></a> <span><%=  moment(reply.submittedDate).fromNow() %></span>
+          <p class="thread-tagline"><a href="#" class="author"><%= reply.author.username %></a>
+            <span><%= moment(reply.submittedDate).fromNow() %></span>
           </p>
-          <span class="reply-btn">Reply</span>
           <p>
             <%= reply.text %>
-
+            <!-- careful of changing parent element of span reply-btn. need to change in main.js too -->
+            <span class="reply-btn">Reply</span>
 
             <% reply.replies.forEach(function(obj) { %>
               <div class="well reply-parent reply-box-inner"
                 data-parent-thread="<%= thread._id %>"
                 data-parent-reply="<%= reply._id %>"
               >
-                <p> <%= obj.author.username %> </p>
+                <p class="thread-tagline"><a href="#" class="author"><%= obj.author.username %></a>
+                  <span><%= moment(reply.submittedDate).fromNow() %></span>
+                </p>
                 <p> <%= obj.text%> </p>
 
-                <span class="reply-btn">Reply</span>
+                <!-- <span class="reply-btn">Reply</span> -->
+
                 <div
                   class="dynamic-reply"
                 >

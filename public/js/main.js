@@ -97,7 +97,8 @@ var UIController = (function() {
       var elClicked, parentEl;
       elClicked = e.target;
       // console.log ('element clicked is', elClicked);
-      parentEl = elClicked.parentNode;
+      // parentEl = elClicked.parentNode;
+      parentEl = elClicked.parentNode.parentNode;
       console.log ('el clicked:', elClicked, 'parent el for clicked el: ', parentEl);
       if (elClicked.className === 'reply-btn') {
         console.log ('element clicked is a reply btn!');
