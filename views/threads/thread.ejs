@@ -40,6 +40,13 @@
     <!-- start of child well-->
     <div class="border-clean collapse show <%= thread._id %>">
     <% thread.replies.forEach(function(reply) { %>
+
+      <% var newColor = color(); %>
+      <div class="demo">
+        <i class="fas circle-icon <%= decideAvatar(thread.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
+      </div>
+
+
       <div
         class="well replies-wrapper reply-parent reply-box-outer"
         data-parent="<%= thread._id %>"

@@ -31,6 +31,16 @@ app.use((req, res, next) => {
       }
   };
 
+
+  res.locals.decideAvatar = function(avatar) {
+      var avatar;
+      if (avatar) {
+        avatar = avatar;
+      } else {
+        avatar = 'fa-chess-pawn';
+      }
+      return avatar;
+  };
 	next()
 });
 

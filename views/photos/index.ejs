@@ -90,12 +90,9 @@
   <div class="thread">
     <!-- important to invoke color fxn here, and store return values in variable.
     if you invoke color() twice in ejs later, you'll get two mismatch colors  -->
-    <a href="#" class="author"><%= thread.author.avatar %></a>
-
-
     <% var newColor = color(); %>
     <div class="demo">
-      <i class="fas circle-icon <%= thread.author.avatar %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
+      <i class="fas circle-icon <%= decideAvatar(thread.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
     </div>
 
     <div class="thread__body">
