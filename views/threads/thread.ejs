@@ -41,7 +41,7 @@
     <div class="border-clean collapse show <%= thread._id %>">
       <% thread.replies.forEach(function(reply) { %>
         <div
-          class="well replies-wrapper reply-parent"
+          class="well replies-wrapper reply-parent reply-box-outer"
           data-parent="<%= thread._id %>"
           data-self="<%= reply._id %>"
         >
@@ -53,7 +53,7 @@
 
 
             <% reply.replies.forEach(function(obj) { %>
-              <div class="well reply-parent"
+              <div class="well reply-parent reply-box-inner"
                 data-parent-thread="<%= thread._id %>"
                 data-parent-reply="<%= reply._id %>"
               >
@@ -70,8 +70,6 @@
                   -->
                   <!-- the submit btn during creation will require id data from both thread AND reply -->
                 </div>
-
-
               </div>
               <% }); %>
           </p>
@@ -79,17 +77,15 @@
 
 
         <div class="reply-box-parent" id="<%= reply._id %>">
-          <p> TESTING!
-            <%= reply._id %>
-            -------------------------
-          </p>
-          <form action="/threads/<%= thread._id %>/replies/<%= reply._id %>/replies" method="POST" class="reply-form">
+
+          <!-- <form action="/threads/<%= thread._id %>/replies/<%= reply._id %>/replies" method="POST" class="reply-form">
             <div class="form-group">
               <input type="hidden" name="replyId" value="<%= reply._id %>">
               <textarea required class="comment-text-input thread-text-input form-control" name="reply">u r replying to a reply</textarea>
               <button class="btn btn-primary add-comment-btn">Add Comment (REPLY TEST)</button>
             </div>
-          </form>
+          </form> -->
+
         </div>
 
       <% } )%>
