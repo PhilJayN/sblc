@@ -6,8 +6,6 @@
 // });
 // $(document).ready(function(){
 
-console.log('hi dsafasdfthere! asdfjkl;');
-
 var listController = (function() {
   //calculation and data structure goes here.
   // console.log ('LISTcONTROLLER!!');
@@ -97,9 +95,8 @@ var UIController = (function() {
       var elClicked, parentEl, appendTarget;
       elClicked = e.target;
       appendTarget = elClicked.nextElementSibling;
-      parentEl = elClicked.parentNode.parentNode;
-      // console.log ('el clicked:', elClicked, 'parent el for clicked el: ', parentEl);
-      console.log ('el clicked:', elClicked, 'clickedEl parent:', parentEl, 'appendTarget', appendTarget);
+      parentEl = elClicked.parentNode;
+      console.log ('elClicked:', elClicked, 'elClicked parent:', parentEl, 'appendTarget', appendTarget);
 
       if (elClicked.className === 'reply-btn') {
         console.log ('element clicked is a reply btn!');

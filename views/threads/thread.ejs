@@ -39,43 +39,39 @@
   <!-- <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>"> -->
     <!-- start of child well-->
     <div class="border-clean collapse show <%= thread._id %>">
-      <% thread.replies.forEach(function(reply) { %>
-        <div
-          class="well replies-wrapper reply-parent reply-box-outer"
-          data-parent="<%= thread._id %>"
-          data-self="<%= reply._id %>"
-        >
-          <p class="thread-tagline"><a href="#" class="author"><%= reply.author.username %></a>
-            <span><%= moment(reply.submittedDate).fromNow() %></span>
-          </p>
-          <p>
-            <%= reply.text %>
+    <% thread.replies.forEach(function(reply) { %>
+      <div
+        class="well replies-wrapper reply-parent reply-box-outer"
+        data-parent="<%= thread._id %>"
+        data-self="<%= reply._id %>"
+      >
+        <p class="thread-tagline"><a href="#" class="author"><%= reply.author.username %></a>
+          <span><%= moment(reply.submittedDate).fromNow() %></span>
+        </p>
 
-            <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
-            <!-- <span class="reply-btn">Reply</span> -->
-            <p class="reply-btn">Reply</p>
+        <p>
+          <%= reply.text %>
+          <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
+          <p class="reply-btn">Reply</p>
+          <div class="dynamic-reply-box"></div>
+          <% reply.replies.forEach(function(obj) { %>
 
-            <div class="dynamic-reply-box"></div>
+            <div class="well reply-parent reply-box-inner"
+              data-parent-thread="<%= thread._id %>"
+              data-parent-reply="<%= reply._id %>"
+            >
+              <p class="thread-tagline"><a href="#" class="author"><%= obj.author.username %></a>
+                <span><%= moment(reply.submittedDate).fromNow() %></span>
+              </p>
+              <p> <%= obj.text%> </p>
+            </div>
+            
+            <% }); %>
+        </p>
 
-            <% reply.replies.forEach(function(obj) { %>
-              <div class="well reply-parent reply-box-inner"
-                data-parent-thread="<%= thread._id %>"
-                data-parent-reply="<%= reply._id %>"
-              >
-                <p class="thread-tagline"><a href="#" class="author"><%= obj.author.username %></a>
-                  <span><%= moment(reply.submittedDate).fromNow() %></span>
-                </p>
-                <p> <%= obj.text%> </p>
-              </div>
-              <% }); %>
-          </p>
-        </div>
-
-        <div class="reply-box-parent" id="<%= reply._id %>">
-
-        </div>
-
-      <% } )%>
+      </div>
+      <div class="reply-box-parent" id="<%= reply._id %>"></div>
+    <% } )%>
     </div>
   <!-- </div> -->
     <!-- reply text box will be generated here on click-->
