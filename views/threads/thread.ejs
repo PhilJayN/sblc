@@ -50,8 +50,20 @@
           </p>
           <p>
             <%= reply.text %>
-            <!-- careful of changing parent element of span reply-btn. need to change in main.js too -->
+
+            <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
             <span class="reply-btn">Reply</span>
+            <!-- <span class="test">Reply</span> -->
+
+            <div class="dynamic-reply-box">
+              asdfjkl
+              <!-- dynamic reply box will be created here on reply btn -->
+              <!-- will also have a submit btn, which POST to:
+                  '/threads/:id/replies/:reply_id/replies';
+              -->
+              <!-- the submit btn during creation will require id data from both thread AND reply -->
+            </div>
+
 
             <% reply.replies.forEach(function(obj) { %>
               <div class="well reply-parent reply-box-inner"
@@ -62,18 +74,7 @@
                   <span><%= moment(reply.submittedDate).fromNow() %></span>
                 </p>
                 <p> <%= obj.text%> </p>
-
                 <!-- <span class="reply-btn">Reply</span> -->
-
-                <div
-                  class="dynamic-reply"
-                >
-                  <!-- dynamic reply box will be created here on reply btn -->
-                  <!-- will also have a submit btn, which POST to:
-                      '/threads/:id/replies/:reply_id/replies';
-                  -->
-                  <!-- the submit btn during creation will require id data from both thread AND reply -->
-                </div>
               </div>
               <% }); %>
           </p>

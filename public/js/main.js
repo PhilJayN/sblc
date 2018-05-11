@@ -6,7 +6,7 @@
 // });
 // $(document).ready(function(){
 
-console.log('hi dsafasdfthere!');
+console.log('hi dsafasdfthere! asdfjkl;');
 
 var listController = (function() {
   //calculation and data structure goes here.
@@ -30,7 +30,8 @@ var UIController = (function() {
     replyForm: '.reply-form',
     replyBtn: '.reply-btn',
     threadsBox: '.threads-box',
-    repliesWrapper: '.replies-wrapper'
+    repliesWrapper: '.replies-wrapper',
+    container: '.container'
   };
 
   var createReplyBox = function(parent) {
@@ -93,27 +94,26 @@ var UIController = (function() {
     },
     //e: event, el: element
     checkElementClicked: function(e) {
-      console.log ('checkElementClicked running...');
-      var elClicked, parentEl;
+      var elClicked, parentEl, appendTarget;
       elClicked = e.target;
-      // console.log ('element clicked is', elClicked);
-      // parentEl = elClicked.parentNode;
+      appendTarget = elClicked.nextElementSibling;
+      // console.log('target clicked', elClicked, 'sibling', appendTarget);
       parentEl = elClicked.parentNode.parentNode;
-      console.log ('el clicked:', elClicked, 'parent el for clicked el: ', parentEl);
+      // console.log ('el clicked:', elClicked, 'parent el for clicked el: ', parentEl);
+      console.log ('el clicked:', elClicked, 'appendTarget', appendTarget);
+
       if (elClicked.className === 'reply-btn') {
         console.log ('element clicked is a reply btn!');
-        // console.log ('createReplyBox results:', typeof createReplyBox() );
-      // var replyBtnTest = document.querySelector('.reply-btn');
-      // console.log('parent el contains:', parentEl.contains(replyBtnTest) );
       var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
       var replyBoxParent = document.querySelector(DOMstrings.replyTextBox);
       var replyForm = document.querySelector(DOMstrings.replyForm);
       console.log('parentEl has replyTextBox:', parentEl.contains(replyTextBox), 'replyTextBox el is:' );
         //only create a reply box if parent does not already have reply text box
-        if (parentEl.contains(replyForm) === false) {
-          console.log ('appending to parent!!');
+        if (dynamicReplyBox.contains(replyForm) === false) {
+
+          console.log ('contains?', dynamicReplyBox.contains(replyForm), 'replyForm:', replyform);
           //target, then append created element to the chosen element:
-          parentEl.appendChild(createReplyBox(parentEl)); //DOM is now updated to have results of createReplyBox method call
+          dynamicReplyBox.appendChild(createReplyBox(dynamicReplyBox)); //DOM is now updated to have results of createReplyBox method call
         }
       }
 
@@ -144,7 +144,7 @@ var controller = (function(listCtrl, UICtrl) {
     // }
 
 
-    document.querySelector(DOM.repliesWrapper).addEventListener('click', UICtrl.checkElementClicked);
+    document.querySelector(DOM.container).addEventListener('click', UICtrl.checkElementClicked);
 
     var submitBtn = document.querySelector(DOM.submitBtn);
     if (submitBtn) {

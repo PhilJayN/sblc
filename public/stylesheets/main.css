@@ -259,7 +259,7 @@ a {
 }
 
 .border-clean {
-  border: none;
+  /* border: none; */
 }
 
 .well-accent-bar {
