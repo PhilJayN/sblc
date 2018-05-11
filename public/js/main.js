@@ -97,24 +97,34 @@ var UIController = (function() {
       var elClicked, parentEl, appendTarget;
       elClicked = e.target;
       appendTarget = elClicked.nextElementSibling;
-      // console.log('target clicked', elClicked, 'sibling', appendTarget);
       parentEl = elClicked.parentNode.parentNode;
       // console.log ('el clicked:', elClicked, 'parent el for clicked el: ', parentEl);
-      console.log ('el clicked:', elClicked, 'appendTarget', appendTarget);
+      console.log ('el clicked:', elClicked, 'clickedEl parent:', parentEl, 'appendTarget', appendTarget);
 
       if (elClicked.className === 'reply-btn') {
         console.log ('element clicked is a reply btn!');
-      var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
-      var replyBoxParent = document.querySelector(DOMstrings.replyTextBox);
-      var replyForm = document.querySelector(DOMstrings.replyForm);
-      console.log('parentEl has replyTextBox:', parentEl.contains(replyTextBox), 'replyTextBox el is:' );
+      // var replyTextBox = document.querySelector(DOMstrings.replyTextBox);
+      // var replyBoxParent = document.querySelector(DOMstrings.replyTextBox);
+      // var replyForm = document.querySelector(DOMstrings.replyForm);
+      // console.log('parentEl has replyTextBox:', parentEl.contains(replyTextBox), 'replyTextBox el is:' );
         //only create a reply box if parent does not already have reply text box
-        if (dynamicReplyBox.contains(replyForm) === false) {
-
-          console.log ('contains?', dynamicReplyBox.contains(replyForm), 'replyForm:', replyform);
+        console.log ('child!!', appendTarget.firstChild)
+        if (appendTarget.firstChild === null) {
+          console.log ('')
+          // console.log ('contains?', appendTarget.contains(replyForm), 'replyForm:', replyForm);
           //target, then append created element to the chosen element:
-          dynamicReplyBox.appendChild(createReplyBox(dynamicReplyBox)); //DOM is now updated to have results of createReplyBox method call
+          appendTarget.appendChild(createReplyBox(parentEl)); //DOM is now updated to have results of createReplyBox method call
         }
+
+
+        // if (appendTarget.contains(replyForm) === false) {
+        //   console.log ('contains?', appendTarget.contains(replyForm), 'replyForm:', replyForm);
+        //   //target, then append created element to the chosen element:
+        //   appendTarget.appendChild(createReplyBox(appendTarget)); //DOM is now updated to have results of createReplyBox method call
+        // }
+
+
+
       }
 
       if (elClicked.className === 'collapse-expand') {
