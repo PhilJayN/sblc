@@ -52,8 +52,8 @@
             <%= reply.text %>
 
             <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
+            <!-- <span class="reply-btn">Reply</span> -->
             <span class="reply-btn">Reply</span>
-            <!-- <span class="test">Reply</span> -->
 
             <div class="dynamic-reply-box">
               asdfjkl
@@ -64,7 +64,6 @@
               <!-- the submit btn during creation will require id data from both thread AND reply -->
             </div>
 
-
             <% reply.replies.forEach(function(obj) { %>
               <div class="well reply-parent reply-box-inner"
                 data-parent-thread="<%= thread._id %>"
@@ -74,22 +73,12 @@
                   <span><%= moment(reply.submittedDate).fromNow() %></span>
                 </p>
                 <p> <%= obj.text%> </p>
-                <!-- <span class="reply-btn">Reply</span> -->
               </div>
               <% }); %>
           </p>
         </div>
 
-
         <div class="reply-box-parent" id="<%= reply._id %>">
-
-          <!-- <form action="/threads/<%= thread._id %>/replies/<%= reply._id %>/replies" method="POST" class="reply-form">
-            <div class="form-group">
-              <input type="hidden" name="replyId" value="<%= reply._id %>">
-              <textarea required class="comment-text-input thread-text-input form-control" name="reply">u r replying to a reply</textarea>
-              <button class="btn btn-primary add-comment-btn">Add Comment (REPLY TEST)</button>
-            </div>
-          </form> -->
 
         </div>
 
