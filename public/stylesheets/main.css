@@ -279,11 +279,6 @@ a {
  padding: 0;
 }
 
-.room-sblc {
-  border: 3px solid blue;
-  margin: 4px;
-}
-
 .grandparent {
  border: 1px solid pink;
 }
@@ -565,6 +560,7 @@ p {
   text-align:center;
   vertical-align:middle;
   display:inline-block;
+  border: 3px solid black; 
 
 }
 
@@ -604,4 +600,13 @@ p {
 
 
 .replies-wrapper {
+}
+.thread {
+  border: 1px solid red;
+}
+
+
+.room-sblc {
+  border: 3px solid pink;
+  margin: 4px;
 }

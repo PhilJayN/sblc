@@ -1,8 +1,5 @@
 // $(document).ready(function(){
 //
-//   document.querySelector(".room-sblc").addEventListener('click', function() {
-//     console.log ('room sblc container!!');
-//   });
 // });
 // $(document).ready(function(){
 
