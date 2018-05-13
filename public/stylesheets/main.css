@@ -316,8 +316,8 @@ border: none;
 }
 
 .row {
+  /* border: 1px solid blue; */
   margin: 0 auto;
-  border: 1px solid red;
 }
 
 .column {
@@ -354,13 +354,7 @@ border: none;
 }
 
 /* TAGLINE, AUTHOR, ETC... */
-.message-box__date {
-  margin-bottom: .25em;
-}
 
-.message-box__author {
-  margin-right: 0.5em;
-}
 
 /*
 @media only screen and (min-width: 1025px) {
@@ -400,17 +394,12 @@ p {
 }
 
 .temp-content {
-  /*border: 1px solid red;*/
   margin-top: 800px;
   width: 100%;
 }
 
 .temp-content h2 {
   color: #4DB6AC;
-}
-
-.container {
-  /* border: 1px solid red; */
 }
 
 .container-fluid {
@@ -516,33 +505,12 @@ p {
 
 .thread {
   overflow: auto;
-  /* border: 1px solid blue; */
+  /* border: 2px solid black; */
 }
-
-.thread__avatar {
-  /* display: inline-block; */
-  /* width: 10%; */
-  float: left;
-  margin-right: 7px;
-
-  border: 1px solid green;
-}
-
-.thread__avatar--img {
-  /* display: inline-block; */
-  float: left;
-  width: 10%;
-  margin-right: 10px;
-
-}
-
-.message-box__body {
-  float: left;
-}
-
 
 .avatar-box {
   float: left;
+  /* border: 1px solid green; */
   margin-right: 10px;
   width: 40px;
   height: 40px;
@@ -551,33 +519,25 @@ p {
   line-height:40px;
   text-align:center;
   vertical-align:middle;
-  display:inline-block;
-  border: 3px solid black;
-
 }
 
-/* .fa-chess-king {
-  color: rgb(182, 102, 173);
-  line-height: inherit;
+.message-box__body {
+  float: left;
+  /* border: 1px solid blue; */
 }
 
-
-.fa-chess-pawn {
-  color: rgb(182, 102, 173);
-  line-height: inherit;
+.message-box__date {
+  margin-bottom: .25em;
 }
 
-
-.fa-quidditch {
-  color: rgb(182, 102, 173);
-  line-height: inherit;
-  color: rgb(221, 221, 221);
-} */
-
+.message-box__author {
+  margin-right: 0.5em;
+}
 
 .demo__img {
   width: 20%;
 }
+
 .circle-icon {
   /* color: rgb(182, 102, 173);
   background: rgb(200, 210, 230); */
@@ -590,13 +550,8 @@ p {
   /* padding: 30px; */
 }
 
-
 .replies-wrapper {
 }
-.thread {
-  border: 1px solid red;
-}
-
 
 .room-sblc {
   border: 3px solid pink;
