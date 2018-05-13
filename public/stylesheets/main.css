@@ -219,11 +219,11 @@ a {
   margin-bottom: .5em;
 }
 
-.thread__subject:valid {
+.message-box__subject:valid {
   border: 1px solid blue;
 }
 
-.thread__subject:invalid {
+.message-box__subject:invalid {
   border: 1px solid red;
 }
 
@@ -354,13 +354,11 @@ border: none;
 }
 
 /* TAGLINE, AUTHOR, ETC... */
-.thread-tagline {
-  /* border: 1px solid red; */
+.message-box__date {
   margin-bottom: .25em;
 }
 
-
-.author {
+.message-box__author {
   margin-right: 0.5em;
 }
 
@@ -531,7 +529,6 @@ p {
 }
 
 .thread__avatar--img {
-  /* border: 1px solid red; */
   /* display: inline-block; */
   float: left;
   width: 10%;
@@ -539,18 +536,13 @@ p {
 
 }
 
-.thread__body {
-  /* border: 1px solid red; */
+.message-box__body {
   float: left;
 }
 
 
-
-
-.demo {
-  /* border: 1px solid red; */
+.avatar-box {
   float: left;
-  /* background-color: pink; */
   margin-right: 10px;
   width: 40px;
   height: 40px;
@@ -560,7 +552,7 @@ p {
   text-align:center;
   vertical-align:middle;
   display:inline-block;
-  border: 3px solid black; 
+  border: 3px solid black;
 
 }
 
