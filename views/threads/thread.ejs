@@ -1,7 +1,7 @@
 <% include ../partials/header %>
-<!--start of parent thread well-->
 <div class="container well collapse show" id="grandparentContent" aria-expanded="true">
-  <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
+  <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial
+  because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
   <div class="border-clean"  id="<%= thread._id %>">
     <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
     will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
@@ -34,18 +34,16 @@
     </form>
   </div>
 
-
   <!-- Note: elements inside the collapse class and data-toggle="collapse" will be allowed to collapse/expand on click by Bootstrap JavaScript-->
   <!-- <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>"> -->
     <!-- start of child well-->
-    <div class="border-clean collapse show <%= thread._id %>">
+    <div class="border-clean collapse show <%= thread._id %> wrapper">
     <% thread.replies.forEach(function(reply) { %>
 
       <% var newColor = color(); %>
-      <div class="demo">
+      <div class="avatar-box">
         <i class="fas circle-icon <%= decideAvatar(thread.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
       </div>
-
 
       <div
         class="well replies-wrapper reply-parent reply-box-outer"
@@ -55,14 +53,12 @@
         <p class="thread-tagline"><a href="#" class="author"><%= reply.author.username %></a>
           <span><%= moment(reply.submittedDate).fromNow() %></span>
         </p>
-
         <p>
           <%= reply.text %>
           <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
           <p class="reply-btn">Reply</p>
           <div class="dynamic-reply-box"></div>
           <% reply.replies.forEach(function(obj) { %>
-
             <div class="well reply-parent reply-box-inner"
               data-parent-thread="<%= thread._id %>"
               data-parent-reply="<%= reply._id %>"
@@ -72,11 +68,10 @@
               </p>
               <p> <%= obj.text%> </p>
             </div>
-
             <% }); %>
         </p>
-
       </div>
+
       <div class="reply-box-parent" id="<%= reply._id %>"></div>
     <% } )%>
     </div>
@@ -109,7 +104,6 @@
             <form id="modal-form-action" class="delete-form" action="" method="POST">
               <button class="btn btn-danger">Delete</button>
             </form>
-
           </div>
         </div>
       </div>

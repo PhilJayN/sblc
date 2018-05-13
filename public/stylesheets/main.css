@@ -503,7 +503,7 @@ p {
   color: red !important;
 }
 
-.thread {
+.wrapper {
   overflow: auto;
   /* border: 2px solid black; */
 }
@@ -520,6 +520,7 @@ p {
   text-align:center;
   vertical-align:middle;
 }
+
 
 .message-box__body {
   float: left;
