@@ -109,19 +109,22 @@
                   </div>
                 <% } %>
                 <!-- End of verify user for edit, and delete thread-->
+
+                <!-- start of child well for each reply-->
+                <div class="well well-inner collapse <%= thread._id %>">
+                  <p class="thread-text"><%= thread.text %> </p>
+                  <% thread.replies.forEach(function(reply) { %>
+                    <div class="well-inner">
+                      <a href="#" class="author"><%= reply.author.username %></a>
+                      <p><%= reply.text %></p>
+                    </div>
+                  <% } )%>
+                </div>
+
               </div>
             </div>
 
-            <!-- start of child well for each reply-->
-            <div class="well well-inner collapse <%= thread._id %>">
-              <p class="thread-text"><%= thread.text %> </p>
-              <% thread.replies.forEach(function(reply) { %>
-                <div class="well-inner">
-                  <a href="#" class="author"><%= reply.author.username %></a>
-                  <p><%= reply.text %></p>
-                </div>
-              <% } )%>
-            </div>
+
           </div>
           <% } %>
             <!-- end of check for author name not being '[deleted]' -->
@@ -150,37 +153,34 @@
 <!-- END of check for currentUser-->
 
 
-            <!-- <p> <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Btn with data-target ex</button> <button class="btn btn-primary" type="button"
-            data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"> Another btn col/exp</button> </p> <div class="collapse" id="collapseExample"> <div class="card card-body"> more hidden stufff!! </div>
-            </div> <div class="collapse" id="collapseExample2"> <div class="card card-body"> more hidden stufff!! </div> </div> -->
+<!-- <p> <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Btn with data-target ex</button> <button class="btn btn-primary" type="button"
+data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"> Another btn col/exp</button> </p> <div class="collapse" id="collapseExample"> <div class="card card-body"> more hidden stufff!! </div>
+</div> <div class="collapse" id="collapseExample2"> <div class="card card-body"> more hidden stufff!! </div> </div> -->
 
-            <!-- <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal">Delete</a> -->
-            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Please confirm</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>Are you sure you want to delete? This cannot be undone.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
-                    <!-- <button type="button" class="btn btn-danger">Yes. Delete!</button> -->
-                    <form id="modal-form-action" class="delete-form" action="" method="POST">
-                      <button class="btn btn-danger">Delete</button>
-                    </form>
+<!-- <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal">Delete</a> -->
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Please confirm</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete? This cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
+        <!-- <button type="button" class="btn btn-danger">Yes. Delete!</button> -->
+        <form id="modal-form-action" class="delete-form" action="" method="POST">
+          <button class="btn btn-danger">Delete</button>
+        </form>
 
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
