@@ -54,7 +54,12 @@
         <span class="message-box__date"><%= moment(reply.submittedDate).fromNow() %></span>
         <p class="message-box__text"><%= reply.text %></p>
         <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
-        <p class="reply-btn">Reply</p>
+        <p
+          class="reply-btn"
+          data-parent="<%= thread._id %>"
+          data-self="<%= reply._id %>"
+        >
+          Reply</p>
         <div class="dynamic-reply-box"></div>
       </div>
 

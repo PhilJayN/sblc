@@ -27,15 +27,15 @@ var UIController = (function() {
     container: '.container'
   };
 
-  var createReplyBox = function(parent) {
+  var createReplyBox = function(elClicked) {
     console.log ('createReplyBox running, the parent param:', parent);
-    var divParent = parent;
+    // var divParent = parent;
 
     // data-parent-thread="<%= thread._id %>"
     // data-parent-reply="<%= reply._id %>"
 
-    var thread = divParent.getAttribute('data-parent');
-    var reply = divParent.getAttribute('data-self');
+    var thread = elClicked.getAttribute('data-parent');
+    var reply = elClicked.getAttribute('data-self');
     // console.log('threadasdjk;fl', thread);
 
     var form = document.createElement('form');
@@ -43,7 +43,7 @@ var UIController = (function() {
     // form.action = '/threads/:id/replies/:reply_id/replies';
     form.method = 'POST';
     form.className = 'reply-form';
-    divParent.appendChild(form);
+    elClicked.appendChild(form);
 
     var div = document.createElement('div');
     div.className = 'form-group';
@@ -87,11 +87,11 @@ var UIController = (function() {
     },
     //e: event, el: element
     checkElementClicked: function(e) {
-      var elClicked, parentEl, appendTarget;
+      var elClicked, appendTarget;
       elClicked = e.target;
       appendTarget = elClicked.nextElementSibling;
-      parentEl = elClicked.parentNode;
-      console.log ('elClicked:', elClicked, 'elClicked parent:', parentEl, 'appendTarget', appendTarget);
+      // parentEl = elClicked.parentNode;
+      // console.log ('elClicked:', elClicked, 'elClicked parent:', parentEl, 'appendTarget', appendTarget);
 
       if (elClicked.className === 'reply-btn') {
         console.log ('element clicked is a reply btn!');
@@ -105,7 +105,7 @@ var UIController = (function() {
           console.log ('')
           // console.log ('contains?', appendTarget.contains(replyForm), 'replyForm:', replyForm);
           //target, then append created element to the chosen element:
-          appendTarget.appendChild(createReplyBox(parentEl)); //DOM is now updated to have results of createReplyBox method call
+          appendTarget.appendChild(createReplyBox(elClicked)); //DOM is now updated to have results of createReplyBox method call
         }
 
 
