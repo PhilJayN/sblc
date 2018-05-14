@@ -37,24 +37,29 @@
   <!-- Note: elements inside the collapse class and data-toggle="collapse" will be allowed to collapse/expand on click by Bootstrap JavaScript-->
   <!-- <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>"> -->
     <!-- start of child well-->
-    <div class="collapse show <%= thread._id %> wrapper">
+    <div class="collapse show <%= thread._id %>">
     <% thread.replies.forEach(function(reply) { %>
       <% var newColor = color(); %>
-
-      <div class="avatar-box">
-        <i class="fas circle-icon <%= decideAvatar(thread.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
-      </div>
-
       <div
         class="well reply-list reply-box-outer"
         data-parent="<%= thread._id %>"
         data-self="<%= reply._id %>"
       >
-        <p class="thread-tagline"><a href="#" class="author"><%= reply.author.username %></a>
-          <span><%= moment(reply.submittedDate).fromNow() %></span>
+      <div class="avatar-box">
+        <i class="fas circle-icon <%= decideAvatar(reply.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
+      </div>
+
+      <div class="message-box__body">
+        <p class="message-box__author">
+          <a href="#" class="author"><%= reply.author.username %></a>
+          <span class="message-box__date"><%= moment(reply.submittedDate).fromNow() %></span>
         </p>
+      </div>
+
+      <p class="message-box__text"><%= reply.text %></p>
+
+
         <p>
-          <%= reply.text %>
           <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
           <p class="reply-btn">Reply</p>
           <div class="dynamic-reply-box"></div>

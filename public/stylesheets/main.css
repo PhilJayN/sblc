@@ -514,12 +514,13 @@ p {
 
 
 .reply-list {
-  border: 1px solid red; 
+  border: 1px solid red;
+  overflow: auto;
 }
 
 .avatar-box {
   float: left;
-  /* border: 1px solid green; */
+  border: 1px solid green;
   margin-right: 10px;
   width: 40px;
   height: 40px;
@@ -533,7 +534,7 @@ p {
 
 .message-box__body {
   float: left;
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
 }
 
 .message-box__date {
