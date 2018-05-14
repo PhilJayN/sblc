@@ -1,8 +1,8 @@
 <% include ../partials/header %>
-<div class="container well collapse show" id="grandparentContent" aria-expanded="true">
+<div class="container well">
   <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial
   because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
-  <div class="border-clean"  id="<%= thread._id %>">
+  <div class="" id="<%= thread._id %>">
     <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
     will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
     element having a 'collapse' class. You are free to move this controller to other elements.-->
@@ -24,23 +24,23 @@
     <% } %>
       <!-- End of verify user for edit, and delete thread-->
 
-  <div class="reply-box-parent" id="<%= thread._id %>">
-    <form action="/threads/reply" method="POST" class="reply-form">
-      <div class="form-group">
-        <input type="hidden" name="threadId" value="<%= thread._id %>">
-        <textarea required class="comment-text-input thread-text-input form-control" name="reply"></textarea>
-        <button class="btn btn-primary add-comment-btn">Add Comment</button>
-      </div>
-    </form>
-  </div>
+    <div class="reply-box-parent" id="<%= thread._id %>">
+      <form action="/threads/reply" method="POST" class="reply-form">
+        <div class="form-group">
+          <input type="hidden" name="threadId" value="<%= thread._id %>">
+          <textarea required class="comment-text-input thread-text-input form-control" name="reply"></textarea>
+          <button class="btn btn-primary add-comment-btn">Add Comment</button>
+        </div>
+      </form>
+    </div>
 
   <!-- Note: elements inside the collapse class and data-toggle="collapse" will be allowed to collapse/expand on click by Bootstrap JavaScript-->
   <!-- <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>"> -->
     <!-- start of child well-->
-    <div class="border-clean collapse show <%= thread._id %> wrapper">
+    <div class="collapse show <%= thread._id %> wrapper">
     <% thread.replies.forEach(function(reply) { %>
-
       <% var newColor = color(); %>
+
       <div class="avatar-box">
         <i class="fas circle-icon <%= decideAvatar(thread.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
       </div>
@@ -59,7 +59,8 @@
           <p class="reply-btn">Reply</p>
           <div class="dynamic-reply-box"></div>
           <% reply.replies.forEach(function(obj) { %>
-            <div class="well reply-parent reply-box-inner"
+            <div
+              class="well reply-parent reply-box-inner"
               data-parent-thread="<%= thread._id %>"
               data-parent-reply="<%= reply._id %>"
             >
@@ -75,15 +76,8 @@
       <div class="reply-box-parent" id="<%= reply._id %>"></div>
     <% } )%>
     </div>
-  <!-- </div> -->
-    <!-- reply text box will be generated here on click-->
   </div>
-
-  <!--end of thread-box-->
 </div>
-        <!--end of forEach-->
-    <!-- END of room-* (grandparent)-->
-    <!--End of threads section-->
 
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
       <div class="modal-dialog">
@@ -108,4 +102,5 @@
         </div>
       </div>
     </div>
+
 <% include ../partials/footer %>
