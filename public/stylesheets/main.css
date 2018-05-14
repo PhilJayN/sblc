@@ -210,8 +210,13 @@ a {
   color: #63a2d4;
 }
 
+.reply-box {
+  /* border: 1px solid blue; */
+}
+
 .reply-btn {
   display: block;
+  /* border: 1px solid pink; */
 }
 
 /* CONTENT */
@@ -511,7 +516,6 @@ p {
   overflow: auto;
   /* border: 2px solid black; */
 }
-
 
 .reply-list {
   border: 1px solid red;

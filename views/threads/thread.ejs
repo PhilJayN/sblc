@@ -49,21 +49,16 @@
         <i class="fas circle-icon <%= decideAvatar(reply.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
       </div>
 
-      <div class="message-box__body">
-        <p class="message-box__author">
-          <a href="#" class="author"><%= reply.author.username %></a>
-          <span class="message-box__date"><%= moment(reply.submittedDate).fromNow() %></span>
-        </p>
+      <div class="reply-box">
+        <a href="#" class="reply-box__author"><%= reply.author.username %></a>
+        <span class="message-box__date"><%= moment(reply.submittedDate).fromNow() %></span>
+        <p class="message-box__text"><%= reply.text %></p>
+        <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
+        <p class="reply-btn">Reply</p>
+        <div class="dynamic-reply-box"></div>
       </div>
 
-      <p class="message-box__text"><%= reply.text %></p>
-
-
         <p>
-          <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
-          <p class="reply-btn">Reply</p>
-          <div class="dynamic-reply-box"></div>
-
           <% reply.replies.forEach(function(obj) { %>
             <div class="avatar-box">
               <i class="fas circle-icon <%= decideAvatar(obj.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
