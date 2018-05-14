@@ -40,26 +40,24 @@
     <div class="collapse show <%= thread._id %>">
     <% thread.replies.forEach(function(reply) { %>
       <% var newColor = color(); %>
-      <div
-        class="well reply-list reply-box-outer"
-        data-parent="<%= thread._id %>"
-        data-self="<%= reply._id %>"
-      >
+      <div class="well reply-list reply-box-outer">
+
       <div class="avatar-box">
         <i class="fas circle-icon <%= decideAvatar(reply.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
       </div>
 
       <div class="reply-box">
         <a href="#" class="reply-box__author"><%= reply.author.username %></a>
-        <span class="message-box__date"><%= moment(reply.submittedDate).fromNow() %></span>
-        <p class="message-box__text"><%= reply.text %></p>
-        <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
-        <p
+        <span class="reply-box__date"><%= moment(reply.submittedDate).fromNow() %></span>
+        <p class="reply-box__text"><%= reply.text %></p>
+
+        <span
           class="reply-btn"
           data-parent="<%= thread._id %>"
           data-self="<%= reply._id %>"
-        >
-          Reply</p>
+        >Reply
+        </span>
+
         <div class="dynamic-reply-box"></div>
       </div>
 

@@ -211,12 +211,9 @@ a {
 }
 
 .reply-box {
-  /* border: 1px solid blue; */
 }
 
 .reply-btn {
-  display: block;
-  /* border: 1px solid pink; */
 }
 
 /* CONTENT */
@@ -286,10 +283,6 @@ a {
 
 .grandparent {
  border: 1px solid pink;
-}
-
-.parent1Content {
- /* border: 1px solid red; */
 }
 
 #grandparentContent {
@@ -518,7 +511,6 @@ p {
 }
 
 .reply-list {
-  border: 1px solid red;
   overflow: auto;
 }
 
