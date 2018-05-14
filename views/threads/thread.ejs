@@ -59,6 +59,11 @@
           <p class="reply-btn">Reply</p>
           <div class="dynamic-reply-box"></div>
           <% reply.replies.forEach(function(obj) { %>
+
+            <div class="avatar-box">
+              <i class="fas circle-icon <%= decideAvatar(obj.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
+            </div>
+
             <div
               class="well reply-parent reply-box-inner"
               data-parent-thread="<%= thread._id %>"
