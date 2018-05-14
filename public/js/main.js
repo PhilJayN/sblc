@@ -24,7 +24,6 @@ var UIController = (function() {
     replyBoxParent: '.reply-box-parent',
     replyForm: '.reply-form',
     replyBtn: '.reply-btn',
-    repliesWrapper: '.replies-wrapper',
     container: '.container'
   };
 

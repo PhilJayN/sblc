@@ -46,7 +46,7 @@
       </div>
 
       <div
-        class="well replies-wrapper reply-parent reply-box-outer"
+        class="well reply-list reply-box-outer"
         data-parent="<%= thread._id %>"
         data-self="<%= reply._id %>"
       >
@@ -58,14 +58,14 @@
           <!-- CAREFUL of changing parent element of span reply-btn. need to change in main.js too -->
           <p class="reply-btn">Reply</p>
           <div class="dynamic-reply-box"></div>
-          <% reply.replies.forEach(function(obj) { %>
 
+          <% reply.replies.forEach(function(obj) { %>
             <div class="avatar-box">
               <i class="fas circle-icon <%= decideAvatar(obj.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
             </div>
 
             <div
-              class="well reply-parent reply-box-inner"
+              class="well reply-box-inner"
               data-parent-thread="<%= thread._id %>"
               data-parent-reply="<%= reply._id %>"
             >
@@ -75,6 +75,7 @@
               <p> <%= obj.text%> </p>
             </div>
             <% }); %>
+            <!-- End of for each reply  -->
         </p>
       </div>
 

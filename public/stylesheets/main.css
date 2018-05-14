@@ -316,7 +316,7 @@ border: none;
 }
 
 .container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .container-fluid {
@@ -325,7 +325,7 @@ border: none;
 }
 
 .row {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   margin: 0 auto;
 }
 
@@ -509,7 +509,12 @@ p {
 
 .wrapper {
   overflow: auto;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+}
+
+
+.reply-list {
+  border: 1px solid red; 
 }
 
 .avatar-box {
@@ -553,9 +558,6 @@ p {
   text-align: center;
   vertical-align: middle;
   /* padding: 30px; */
-}
-
-.replies-wrapper {
 }
 
 .room-sblc {
