@@ -315,8 +315,17 @@ border: none;
   border-radius: 3px;
 }
 
+.container {
+  border: 1px solid red;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .row {
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   margin: 0 auto;
 }
 
@@ -386,7 +395,7 @@ p {
   font-size: 1.4em;
 }
 
-.room-container p {
+.room-wrapper p {
   font-size: 1.10em;
   line-height: 1.4285714285714286em;
   margin: 0;
@@ -400,11 +409,6 @@ p {
 
 .temp-content h2 {
   color: #4DB6AC;
-}
-
-.container-fluid {
-  padding-left: 0;
-  padding-right: 0;
 }
 
 .resources-container {

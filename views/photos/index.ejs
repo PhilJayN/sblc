@@ -1,4 +1,5 @@
 <% include ../partials/header %>
+
 <div class="jumbotron">
   <div class="well">
     <h3 class="demo-class" id="demo-id"></h3>
@@ -20,132 +21,127 @@
   </div>
 </div>
 
-  <div class="room-container container-fluid">
-      <div class="row">
-        <div class="col-md-6 col-lg-4">
-          <div class="room-sblc-header border-line-break well">
-            <h3><i class="fas fa-dove"></i>Quick Message</h3>
+<div class="room-wrapper container">
+  <div class="row">
+    <div class="col-md-6 col-lg-6">
+      <div class="room-sblc-header border-line-break well">
+        <h3><i class="fas fa-dove"></i>Quick Message</h3>
+      </div>
+      <div class="">
+        <% dbResults[0].forEach(function(comment){ %>
+          <div class="well">
+            <p><a href="#" class="author"><%= comment.author.username %></a>
+              <span><%=  moment(comment.submittedDate).fromNow() %></span></p>
+            <p><%= comment.text %></p>
+            <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+              <a href="#" class="del-style del-btn comment-del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= comment._id %>">Delete</a>
+              <span class="middle-dot">&#183;</span>
+              <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
+            <% } %>
           </div>
-          <div class="room-sblc-content ">
-            <% dbResults[0].forEach(function(comment){ %>
-              <div class="well">
-                <p><a href="#" class="author"><%= comment.author.username %></a>
-                  <span><%=  moment(comment.submittedDate).fromNow() %></span></p>
-                <p><%= comment.text %></p>
-
-                <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-                  <a href="#" class="del-style del-btn comment-del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= comment._id %>">Delete</a>
-                  <span class="middle-dot">&#183;</span>
-                  <a class="del-style edit-style" href="/comments/<%= comment._id %>/edit">Edit</a>
-                <% } %>
-              </div>
-            <% }) %>
-            <!-- end of dbResults forEach -->
-
-              <div class="well">
-                <% if(!currentUser) { %>
-                  <p>Join the conversation! Sign up for an account in seconds.</p>
-                  <a class="btn btn-info" href="/register">Sign up</a>
-                <% } else {%>
-                  <!-- press a btn here to start GET req. to /comments/new -->
-                  <!-- <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a> -->
-                  <form action="/comments" method="POST">
-                    <div class="form-group">
-                      <textarea name="comment[text]"  class="form-control comment-text-input text-body" placeholder="What's on your mind?" required></textarea>
-                    </div>
-                    <p>
-                      <button class="btn btn-primary submit-btn">Submit</button>
-                    </p>
-                  </form>
-                <% } %>
-              </div>
+        <% }) %>
+        <!-- end of dbResults forEach -->
+          <div class="well">
+            <% if(!currentUser) { %>
+              <p>Join the conversation! Sign up for an account in seconds.</p>
+              <a class="btn btn-info" href="/register">Sign up</a>
+            <% } else {%>
+              <!-- press a btn here to start GET req. to /comments/new -->
+              <!-- <a class="btn btn-primary add-comment-btn" href="/comments/new">Add Comment</a> -->
+              <form action="/comments" method="POST">
+                <div class="form-group">
+                  <textarea name="comment[text]"  class="form-control comment-text-input text-body" placeholder="What's on your mind?" required></textarea>
+                </div>
+                <p>
+                  <button class="btn btn-primary submit-btn">Submit</button>
+                </p>
+              </form>
+            <% } %>
+          </div>
+      </div>
+    </div>
+        <!--Start of threads section-->
+        <div id="grandparent" class="list-group-item col-md-6 col-lg-6 threads-box">
+          <!-- each room consist of divs: room-header, and room-content -->
+          <div class="room-sblc-header border-line-break well">
+            <h3><i class="fas fa-globe"></i>SBLC</h3>
+          </div>
+            <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
+            <!--Start of controller btn for expanding/collapsing all threads-->
+            <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
             </div>
-            <!-- END of room-content-->
-        </div>
-        <!-- END of room-sblc-->
 
-            <!--Start of threads section-->
-            <div id="grandparent" class="list-group-item col-md-6 col-lg-4 threads-box">
-              <!-- each room consist of divs: room-header, and room-content -->
-              <div class="room-sblc-header border-line-break well">
-                <h3><i class="fas fa-globe"></i>SBLC</h3>
-              </div>
-                <!-- <button class="btn btn-primary btn-main-controller" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls=""></button> -->
-                <!--Start of controller btn for expanding/collapsing all threads-->
-                <div class="collapsed" data-toggle="collapse" data-target="#grandparentContent" data-role="expander" data-group-id="grandparent">
-                </div>
-
-                <!--start of parent thread well-->
-                <div class="well collapse show" id="grandparentContent" aria-expanded="true">
-                  <% dbResults[1].forEach(function(thread){ %>
-                    <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
-                    <% if(thread.author.username !== '[deleted]') { %>
-                    <div class="well"  id="<%= thread._id %>">
-                      <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
-                      will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
-                      element having a 'collapse' class. You are free to move this controller to other elements.-->
-                      <p class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
+            <!--start of parent thread well-->
+            <div class="well collapse show" id="grandparentContent" aria-expanded="true">
+              <% dbResults[1].forEach(function(thread){ %>
+                <!-- In data-target=".<%= thread._id %>, the period(.) before ejs syntax is ABSOLUTELY crucial because it will be part of the resulting string, which looks like: .5a863035e5d9ba127c156742-->
+                <% if(thread.author.username !== '[deleted]') { %>
+                <div class="well"  id="<%= thread._id %>">
+                  <!--Element having data-toggle="collapse" data-target=".<%= thread._id %> is your PRIMARY controller. Clicking on this element
+                  will cause its data-target to collapse/expand. This magic is done by bootstrap, because of the
+                  element having a 'collapse' class. You are free to move this controller to other elements.-->
+                  <p class="collapsed" data-toggle="collapse" data-target=".<%= thread._id %>"></p>
 
 
-  <div class="thread wrapper">
-    <!-- important to invoke color fxn here, and store return values in variable.
-    if you invoke color() twice in ejs later, you'll get two mismatch colors  -->
-    <% var newColor = color(); %>
-    <div class="avatar-box">
-      <i class="fas circle-icon <%= decideAvatar(thread.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
-    </div>
+<div class="thread wrapper">
+<!-- important to invoke color fxn here, and store return values in variable.
+if you invoke color() twice in ejs later, you'll get two mismatch colors  -->
+<% var newColor = color(); %>
+<div class="avatar-box">
+  <i class="fas circle-icon <%= decideAvatar(thread.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
+</div>
 
-    <div class="message-box__body">
-      <a class="message-box__subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
-      <p class="message-box__date">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
-        <a href="#" class="message-box__author"><%= thread.author.username %></a>
-      </p>
+<div class="message-box__body">
+  <a class="message-box__subject" href="/threads/<%=thread._id%>"><%= thread.subject %></a>
+  <p class="message-box__date">Submitted <span><%=  moment(thread.submittedDate).fromNow() %> by</span>
+    <a href="#" class="message-box__author"><%= thread.author.username %></a>
+  </p>
 
-    <div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
-      <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
-      <span class="expand"> <%= thread.replies.length %> <%= word %></span>
-    </div>
+<div class="reply-box-parent collapsed" data-toggle="collapse" data-target=".<%= thread._id %>" id="<%= thread._id %>">
+  <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
+  <span class="expand"> <%= thread.replies.length %> <%= word %></span>
+</div>
 
-    <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-      <div class="box">
-        <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= thread._id %>">Delete</a>
-        <span class="middle-dot">&#183;</span>
-        <a class="edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
-    </div>
-    <% } %>
-    <!-- End of verify user for edit, and delete thread-->
-    </div>
-  </div>
+<% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+  <div class="box">
+    <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= thread._id %>">Delete</a>
+    <span class="middle-dot">&#183;</span>
+    <a class="edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
+</div>
+<% } %>
+<!-- End of verify user for edit, and delete thread-->
+</div>
+</div>
 
 
-                      <!-- start of child well-->
-                      <div class="well well-inner collapse <%= thread._id %>">
-                        <p class="thread-text"><%= thread.text %> </p>
-                        <% thread.replies.forEach(function(reply) { %>
-                          <div class="well-inner">
-                            <a href="#" class="author"><%= reply.author.username %></a>
-                            <p>
-                              <%= reply.text %>
-                            </p>
-                          </div>
-                        <% } )%>
+                  <!-- start of child well-->
+                  <div class="well well-inner collapse <%= thread._id %>">
+                    <p class="thread-text"><%= thread.text %> </p>
+                    <% thread.replies.forEach(function(reply) { %>
+                      <div class="well-inner">
+                        <a href="#" class="author"><%= reply.author.username %></a>
+                        <p>
+                          <%= reply.text %>
+                        </p>
                       </div>
-                      <!-- reply text box will be generated here on click-->
-                    </div>
-
-                    <!--end of thread-box-->
-                      <% } %>
-                      <!-- end of check for author name not being '[deleted]' -->
-                    <% }) %>
-                </div>
-                        <!--end of forEach-->
-                        <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
-                    </div>
-                    <!-- END of room-* (grandparent)-->
-                    <!--End of threads section-->
-
+                    <% } )%>
                   </div>
-  </div>
+                  <!-- reply text box will be generated here on click-->
+                </div>
+
+                <!--end of thread-box-->
+                  <% } %>
+                  <!-- end of check for author name not being '[deleted]' -->
+                <% }) %>
+            </div>
+                    <!--end of forEach-->
+                    <a class="btn btn-primary add-comment-btn" href="/threads/new">Add Thread</a>
+                </div>
+                <!-- END of room-* (grandparent)-->
+                <!--End of threads section-->
+
+              </div>
+</div>
   <!-- END of row -->
               </div>
               <!-- END of room container -->
