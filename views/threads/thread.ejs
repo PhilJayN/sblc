@@ -17,12 +17,16 @@
         <% var word = (thread.replies.length > 1) ?  "comments" : "comment"; %>
         <span class=""> <%= thread.replies.length %> <%= word %></span>
         <span class="middle-dot">&#183;</span>
-        <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-thread-id="<%= thread._id %>">Delete</a>
+        <a href="#" class="del-style del-btn thread-del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= thread._id %>">Delete</a>
         <span class="middle-dot">&#183;</span>
         <a class="edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
       </p>
     <% } %>
       <!-- End of verify user for edit, and delete thread-->
+
+
+
+
 
     <div class="reply-box-parent" id="<%= thread._id %>">
       <form action="/threads/reply" method="POST" class="reply-form">
@@ -107,7 +111,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
-            <!-- <button type="button" class="btn btn-danger">Yes. Delete!</button> -->
+            <!-- form action is empty, but will get populated with data from main.js file. -->
             <form id="modal-form-action" class="delete-form" action="" method="POST">
               <button class="btn btn-danger">Delete</button>
             </form>

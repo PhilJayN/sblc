@@ -193,7 +193,7 @@ controller.init();
 
     //triggered right before the modal is shown
     $('#basicModal').on('show.bs.modal', function(e) {
-      console.log('occuring just before modal about to be shown!! here!');
+      console.log('teddy occuring just before modal about to be shown!! here!');
       //the clicked element already has the threadid when the page is rendered.
       console.log('clicked el:', $(e.relatedTarget));
 
@@ -201,10 +201,18 @@ controller.init();
         var id = $(e.relatedTarget).data('id');
 
         if ( $(e.relatedTarget).hasClass("comment-del-btn") ) {
+          console.log('comment-del-btn!!!');
           var formAction = "/comments/" + id + "?_method=DELETE";
-        } else {
+        }
+        else if ( $(e.relatedTarget).hasClass("thread-del-btn") ) {
+          console.log ('thread-del-btn!!');
           var formAction = "/threads/del/" + id + "?_method=PUT";
         }
+        else if ( $(e.relatedTarget).hasClass("reply-del-btn") ) {
+          console.log ('reply-del-btn!!');
+          var formAction = "/threads/del/" + id + "?_method=PUT";
+        }
+
         //after pulling out id from clicked element, target the form element, and stick
         //id into it's action attribute:
         $("#modal-form-action").attr("action", formAction);
@@ -212,7 +220,7 @@ controller.init();
 
     //triggered right before the modal is shown
     $('#deleteModal').on('show.bs.modal', function(e) {
-      console.log('occuring just before modal about to be shown!! here!');
+      console.log('deleteModel !! occuring just before modal about to be shown!! here!');
       //the clicked element already has the threadid when the page is rendered.
       console.log('clicked el:', $(e.relatedTarget));
         //get data-id attribute of the clicked element

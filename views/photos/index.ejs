@@ -103,7 +103,7 @@
 
                 <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
                   <div class="box">
-                  <a href="#" class="del-style del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= thread._id %>">Delete</a>
+                  <a href="#" class="del-style del-btn thread-del-btn" data-toggle="modal" data-target="#basicModal" data-id="<%= thread._id %>">Delete</a>
                   <span class="middle-dot">&#183;</span>
                   <a class="edit-style" href="/threads/<%= thread._id %>/edit">Edit</a>
                   </div>
