@@ -199,6 +199,7 @@ controller.init();
 
         //get data-id attribute of the clicked element
         var id = $(e.relatedTarget).data('id');
+        var selfId = $(e.relatedTarget).data('self');
 
         if ( $(e.relatedTarget).hasClass("comment-del-btn") ) {
           console.log('comment-del-btn!!!');
@@ -208,10 +209,17 @@ controller.init();
           console.log ('thread-del-btn!!');
           var formAction = "/threads/del/" + id + "?_method=PUT";
         }
+        // pseudo delete reply
         else if ( $(e.relatedTarget).hasClass("reply-del-btn") ) {
           console.log ('reply-del-btn!!');
-          var formAction = "/threads/del/" + id + "?_method=PUT";
+          var formAction = "/threads/" + id + "/replies/" + selfId + "?_method=DELETE";
         }
+
+        // else if ( $(e.relatedTarget).hasClass("reply-del-btn") ) {
+        //   console.log ('reply-del-btn!!');
+        //   var formAction = "/threads/" + id + "/replies/" + selfId + "?_method=DELETE";
+        //   // /threads/:id/replies/:reply_id
+        // }
 
         //after pulling out id from clicked element, target the form element, and stick
         //id into it's action attribute:

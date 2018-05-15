@@ -24,10 +24,6 @@
     <% } %>
       <!-- End of verify user for edit, and delete thread-->
 
-
-
-
-
     <div class="reply-box-parent" id="<%= thread._id %>">
       <form action="/threads/reply" method="POST" class="reply-form">
         <div class="form-group">
@@ -61,6 +57,22 @@
               data-self="<%= reply._id %>"
             >Reply
             </span>
+
+            <a href="#" class="del-style del-btn reply-del-btn" data-toggle="modal"
+              data-target="#basicModal" data-id="<%= thread._id %>" data-self="<%= reply._id %>"
+            >Delete</a>
+
+            <!-- <span
+              class="reply-del-btn"
+              data-parent="<%= thread._id %>"
+              data-self="<%= reply._id %>"
+              data-id="<%= reply._id %>"
+            >
+              Delete
+            </span> -->
+
+/threads/:id/replies/:reply_id
+
             <div class="dynamic-reply-box"></div>
           </div>
         </div>

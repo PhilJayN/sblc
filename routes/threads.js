@@ -201,6 +201,12 @@ console.log(req.params.id, req.params.reply_id);
 // end of .post
 
 
+//DELETE route for thread reply
+router.delete('/threads/:id/replies/:reply_id', function (req, res) {
+  res.send('reply del!');
+});
+
+
 //CREATE Route: add thread to DB
 router.post('/threads', function (req, res) {
   console.log ('post req occured, here is the req.body:', req.body);
