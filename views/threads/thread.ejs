@@ -64,9 +64,10 @@
 
         <p>
           <% reply.replies.forEach(function(obj) { %>
-            <div class="flex-parent">
+            <% var replyColor = color(); %>
+            <div class="flex-parent spacing">
               <div class="avatar-box">
-                <i class="fas circle-icon <%= decideAvatar(obj.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
+                <i class="fas circle-icon <%= decideAvatar(obj.author.avatar) %>" style="color:<%= replyColor.icon %>;background:<%= replyColor.background %>"></i>
               </div>
 
               <div
