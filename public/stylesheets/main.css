@@ -295,10 +295,6 @@ border: none;
   border-radius: 3px;
 }
 
-.container {
-  /* border: 1px solid red; */
-}
-
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
@@ -373,6 +369,12 @@ border: none;
 
 p {
   font-size: 1.4em;
+}
+
+/* don't target elements with container and give them padding: 0. use room-wrapper instead.
+allows container to keep default padding of 15px */
+.room-wrapper {
+  padding: 0;
 }
 
 .room-wrapper p {
@@ -482,7 +484,7 @@ p {
 } */
 
 .navbar-brand {
-  border: 1px solid #e7e7e7;
+  /* border: 1px solid #e7e7e7; */
   vertical-align: text-bottom !important;
   color: red !important;
 }

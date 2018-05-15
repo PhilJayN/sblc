@@ -12,6 +12,10 @@
      margin-bottom: .5rem;
    }
 
+   .container {
+     padding: 15px;
+   }
+
    .hero-text {
      display: inherit;
      font-family: 'Oswald', sans-serif;

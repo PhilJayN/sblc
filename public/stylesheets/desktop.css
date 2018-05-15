@@ -1,15 +1,11 @@
 /* Large devices (desktops, 992px and up) */
- @media (min-width: 992px) {  }
+ @media (min-width: 992px) {
+
+}
 
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
-
-  /* .jumbotron  {
-    background-color: #FFFFFF;
-    margin-bottom: 2rem;
-  } */
 
   .hero-text {
     display: inherit;
@@ -33,32 +29,13 @@
   }
 
   .comment-text-input {
-    /* height: 20px; */
   }
-
-  /* form {
-    width: 40%;
-  } */
-
-
-/* TEMPORARY CSS*/
-  /* body {
-    background-color: pink;
-  } */
-  /* .container {
-    border: 1px solid red;
-  }
-
-  .row {
-    border: 1px solid green;
-  } */
 
   .room-sblc, .room-urgent, .room-general {
     padding-right: 15px;
     padding-left: 15px;
 
   }
-
 
 }
 
