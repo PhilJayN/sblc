@@ -41,41 +41,44 @@
     <% thread.replies.forEach(function(reply) { %>
       <% var newColor = color(); %>
       <div class="well reply-list reply-box-outer">
+        <div class="flex-parent">
+          <div class="">
+            <i class="fas circle-icon <%= decideAvatar(reply.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
+          </div>
 
-      <div class="avatar-box">
-        <i class="fas circle-icon <%= decideAvatar(reply.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
-      </div>
+          <div class="">
+            <a href="#" class="reply-box__author"><%= reply.author.username %></a>
+            <span class="reply-box__date"><%= moment(reply.submittedDate).fromNow() %></span>
+            <p class="reply-box__text"><%= reply.text %></p>
 
-      <div class="reply-box">
-        <a href="#" class="reply-box__author"><%= reply.author.username %></a>
-        <span class="reply-box__date"><%= moment(reply.submittedDate).fromNow() %></span>
-        <p class="reply-box__text"><%= reply.text %></p>
-
-        <span
-          class="reply-btn"
-          data-parent="<%= thread._id %>"
-          data-self="<%= reply._id %>"
-        >Reply
-        </span>
-
-        <div class="dynamic-reply-box"></div>
-      </div>
+            <span
+              class="reply-btn"
+              data-parent="<%= thread._id %>"
+              data-self="<%= reply._id %>"
+            >Reply
+            </span>
+            <div class="dynamic-reply-box"></div>
+          </div>
+        </div>
+        <!-- end of flex-parent -->
 
         <p>
           <% reply.replies.forEach(function(obj) { %>
-            <div class="avatar-box">
-              <i class="fas circle-icon <%= decideAvatar(obj.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
-            </div>
+            <div class="flex-parent">
+              <div class="avatar-box">
+                <i class="fas circle-icon <%= decideAvatar(obj.author.avatar) %>" style="color:<%= newColor.icon %>;background:<%= newColor.background %>"></i>
+              </div>
 
-            <div
-              class="well reply-box-inner"
-              data-parent-thread="<%= thread._id %>"
-              data-parent-reply="<%= reply._id %>"
-            >
-              <p class="thread-tagline"><a href="#" class="author"><%= obj.author.username %></a>
-                <span><%= moment(reply.submittedDate).fromNow() %></span>
-              </p>
-              <p> <%= obj.text%> </p>
+              <div
+                class="well reply-box-inner"
+                data-parent-thread="<%= thread._id %>"
+                data-parent-reply="<%= reply._id %>"
+              >
+                <p class="thread-tagline"><a href="#" class="author"><%= obj.author.username %></a>
+                  <span><%= moment(reply.submittedDate).fromNow() %></span>
+                </p>
+                <p> <%= obj.text%> </p>
+              </div>
             </div>
             <% }); %>
             <!-- End of for each reply  -->
