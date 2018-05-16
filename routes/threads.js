@@ -5,7 +5,7 @@ var middleware = require("../middleware");
 var replySchema = require("../models/reply");
 var moment = require('moment');
 
-//Show form to CREATE new thread
+//show form to create new thread
 router.get('/threads/new', function (req, res) {
   Thread.find({}, function(err, allThreads){
     if (err) {
@@ -16,7 +16,38 @@ router.get('/threads/new', function (req, res) {
   });
 });
 
-//SHOW more info about one thread, with all replies
+//CREATE Route: add thread to DB (runs on clicking submit btn)
+router.post('/threads', function (req, res) {
+  console.log ('post req occured, here is the req.body:', req.body);
+  console.log ('subject:', req.body.thread.subject);
+  console.log ('text:', req.body.thread.text);
+  var subject = req.body.thread.subject; //thread looks like: { thread: 'hey' }
+  var text = req.body.thread.text;
+  var date = new Date();
+  var humanDate = date.toDateString();
+  var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
+  var author = {
+    id: req.user._id,
+    username: req.user.username,
+    avatar: req.user.avatar
+  };
+  //takes data from variables name and image, and stores into an obj
+  var newThread = { subject: subject, text: text, submittedDate: date, submittedTime: humanTime, author: author};
+  //save obj into the DB:
+  console.log ('newThread var:', newThread);
+  Thread.create(newThread, function(err, newlyCreated) {
+    if(err) {
+      console.log (err);
+    } else {
+        console.log('newlyCreated thread:', newlyCreated);
+        console.log('newlyCreated thread subject:', newlyCreated.submittedDate);
+        req.flash("success", "New thread added!");
+        res.redirect('/');
+    }
+  });
+}); //// end post route for /comments
+
+//READ: info about one thread, with all replies
 router.get('/threads/:id', function (req, res) {
   Thread.findById(req.params.id, function(err, foundThread){
     if (err) {
@@ -57,14 +88,7 @@ router.put('/threads/:id', function(req, res) {
 //to show [deleted] instead
 // <form class="delete-form" action="/threads/<%= thread._id %>?_method=PUT" method="POST">
 router.put('/threads/del/:id', function(req, res) {
-  console.log('pseu del running!');
   console.log('asdfasdf', req.params.id);
-  // var deletedText = {
-  //   text: '[deleted]',
-  // };
-  // var deletedAuthor = {
-  //   'author.username': '[deleted]'
-  // };
   var deleted = {
     text: '[deleted]',
     author: {
@@ -83,7 +107,6 @@ router.put('/threads/del/:id', function(req, res) {
   });
 });
 
-// sort({"createdAt": 'ascending'}).
 //show form to REPLY to a particular thread that has unique ID
 router.get('/threads/:id/reply', function (req, res) {
   Thread.findById(req.params.id, function(err, foundThread) {
@@ -183,53 +206,7 @@ router.delete('/threads/:id/replies/:reply_id', function (req, res) {
   res.send('reply del!');
 });
 
-//CREATE Route: add thread to DB
-router.post('/threads', function (req, res) {
-  console.log ('post req occured, here is the req.body:', req.body);
-  console.log ('subject:', req.body.thread.subject);
-  console.log ('text:', req.body.thread.text);
-  var subject = req.body.thread.subject; //thread looks like: { thread: 'hey' }
-  var text = req.body.thread.text;
-  var date = new Date();
-  var humanDate = date.toDateString();
-  var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
-  var author = {
-    id: req.user._id,
-    username: req.user.username,
-    avatar: req.user.avatar
-  };
-  //takes data from variables name and image, and stores into an obj
-  var newThread = { subject: subject, text: text, submittedDate: date, submittedTime: humanTime, author: author};
-  //save obj into the DB:
-  console.log ('newThread var:', newThread);
-  Thread.create(newThread, function(err, newlyCreated) {
-    if(err) {
-      console.log (err);
-    } else {
-        console.log('newlyCreated thread:', newlyCreated);
-        console.log('newlyCreated thread subject:', newlyCreated.submittedDate);
-        req.flash("success", "New thread added!");
-        res.redirect('/');
-    }
-  });
-}); //// end post route for /comments
-
 module.exports = router;
-
-
-
-//DELETE route for thread
-// router.delete('/threads/:id', function (req, res) {
-//   // console.log ('delete route start!!');
-//   Thread.findByIdAndRemove(req.params.id, function (err) {
-//     if (err) {
-//       res.redirect('back');
-//     } else {
-//       req.flash("success", "Thread deleted!");
-//       res.redirect('/');
-//     }
-//   });
-// });
 
 //works to create seeds in DB:
 // Thread.create(
