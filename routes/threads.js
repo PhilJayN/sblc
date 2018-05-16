@@ -170,11 +170,13 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
           }
           // now invoke the findReply fxn with arguments
           // reply.replies is just dot notation, trying to access a property of the reply obj.
-          const foundReply = findReply(id, reply.replies);
-          if (foundReply) {
-            console.log ('foundReply:', foundReply);
-            return foundReply;
-          }
+
+          // const foundReply = findReply(id, reply.replies);
+          // if (foundReply) {
+          //   console.log ('foundReply:', foundReply);
+          //   return foundReply;
+          // }
+
         }
       }
     };
@@ -201,10 +203,59 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
 });
 // end of .post
 
-//DELETE route for thread reply
+
+
+
+
+//pseudo DELETE route for thread MAIN reply
 router.put('/threads/:id/replies/:reply_id', function (req, res) {
-  res.send('reply pseudo del!');
+  Thread.findById(req.params.id).then( (thread) => {
+  //fxn to help find a reply
+    const findReply = (id, replies) => {
+      //iterate through array
+      if (replies.length > 0) {
+        for (var i = 0; i < replies.length; i++) {
+          // for every reply, assign it into a variable
+          const reply = replies[i];
+            //each reply is now an object
+          if (reply._id == id) {
+            console.log ('reply FOUND!!!!!!!:', reply);
+            return reply;
+          }
+        }
+      }
+    };
+    // console.log('B4 putting args', req.params.reply_id, thread.replies);
+    const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
+    // console.log('req.body.replyId', req.body.reply);
+    const replyNew = {
+      text: '[deleted]',
+      author: {
+        id: req.user._id,
+        username: '[deleted]',
+        avatar: ''
+      },
+    };
+    reply.replies.unshift(replyNew);
+    thread.markModified('replies');
+    return thread.save();
+  }).then((thread) => {
+    console.log(thread);
+    res.redirect('/threads/' + thread._id);
+  }).catch((err)=> {
+    console.log(err);
+  });
 });
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
 
