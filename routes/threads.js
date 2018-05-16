@@ -128,36 +128,21 @@ router.post('/threads/reply', function (req, res) {
   });
 });
 
-
-
-
 //replying to a reply route...
 router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
-  // console.log ('threads id:', req.params.id, 'reply id:', req.params.reply_id);
   // get value of input element by giving input el a 'name' and 'value' attribute. on a post req (clicking a btn),
-  //use req.body.[attributeName]
-  //to get the value.
-
-  // const threadId = req.params.id;
-  // const replyId = req.params.reply_id;
-  // console.log ('threadId', threadId, 'replyId', replyId);
-
-console.log(req.params.id, req.params.reply_id);
-
+  //use req.body.[attributeName] to get the value.
+  // console.log(req.params.id, req.params.reply_id);
   Thread.findById(req.params.id).then( (thread) => {
-  // just a fxn to help find a reply
+  //fxn to help find a reply
     const findReply = (id, replies) => {
       //iterate through array
       if (replies.length > 0) {
         for (var i = 0; i < replies.length; i++) {
           // for every reply, assign it into a variable
           const reply = replies[i];
-          // now each reply is one object {
-            // text: 'mouse!',
-            // _id: 5af28dd4c102549122d2b6a9,
-          //}
+            //each reply is now an object
           if (reply._id == id) {
-            console.log(">>> FOUND <<<<");
             return reply;
           }
           // now invoke the findReply fxn with arguments
@@ -170,13 +155,9 @@ console.log(req.params.id, req.params.reply_id);
         }
       }
     };
-
     // console.log('B4 putting args', req.params.reply_id, thread.replies);
     const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
-    // console.log('got reply-----------', reply);
     // console.log('req.body.replyId', req.body.reply);
-
-    // create new obj, then use .unshift on it.
     const replyNew = {
       text: req.body.reply,
       author: {
@@ -185,13 +166,10 @@ console.log(req.params.id, req.params.reply_id);
         avatar: req.user.avatar
       },
     };
-
     reply.replies.unshift(replyNew);
     thread.markModified('replies');
     return thread.save();
-    // console.log ('test', replyNew);
   }).then((thread) => {
-    console.log("Step 3 Save thread ---------------------------");
     console.log(thread);
     res.redirect('/threads/' + thread._id);
   }).catch((err)=> {
@@ -200,12 +178,10 @@ console.log(req.params.id, req.params.reply_id);
 });
 // end of .post
 
-
 //DELETE route for thread reply
 router.delete('/threads/:id/replies/:reply_id', function (req, res) {
   res.send('reply del!');
 });
-
 
 //CREATE Route: add thread to DB
 router.post('/threads', function (req, res) {
@@ -238,6 +214,9 @@ router.post('/threads', function (req, res) {
   });
 }); //// end post route for /comments
 
+module.exports = router;
+
+
 
 //DELETE route for thread
 // router.delete('/threads/:id', function (req, res) {
@@ -250,19 +229,6 @@ router.post('/threads', function (req, res) {
 //       res.redirect('/');
 //     }
 //   });
-// });
-
-module.exports = router;
-
-
-
-
-
-
-
-
-// Thread.replies.push({
-//   text: 'this is a pushed!!'
 // });
 
 //works to create seeds in DB:
