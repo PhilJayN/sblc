@@ -69,7 +69,7 @@ router.get('/threads/:id/edit', function (req, res) {
   });
 });
 
-//UPDATE route  for comments
+//UPDATE route  for threads
 router.put('/threads/:id', function(req, res) {
   console.log(req.params.id, req.body.thread);
   Thread.findByIdAndUpdate(req.params.id, req.body.thread, function(err, updatedThread) {
@@ -77,7 +77,7 @@ router.put('/threads/:id', function(req, res) {
     if (err) {
       res.redirect('/back');
     } else {
-      req.flash("success", "Thread edited!");
+      req.flash("success", "Thread edited");
       res.redirect('/');
     }
   });
@@ -209,39 +209,57 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
 
 //pseudo DELETE route for thread MAIN reply
 router.put('/threads/:id/replies/:reply_id', function (req, res) {
-res.send('pseudo reply del route');
-
-
-  const reply = {
-    text: '[deletedasdfasdf]',
-    // author: {
-    //   id: req.user._id,
-    //   username: '[deleted]',
-    //   avatar: ''
-    // },
-  };
-
-
-  Thread.findByIdAndUpdate(
-    // req.params.reply_id,
-    req.params.id,
-    { $push: { replies: reply } },
-    { upsert: true },
-    function(err, updatedThread) {
-      if (err) {
-        res.redirect('/back');
-      } else {
-        console.log('req pararms id:', req.params.reply_id, 'updated thread', updatedThread);
-        req.flash("success", "reply deleted");
-        res.redirect('/');
+  // res.send('you hit reply del route!')
+  // get value of input element by giving input el a 'name' and 'value' attribute. on a post req (clicking a btn),
+  //use req.body.[attributeName] to get the value.
+  // console.log(req.params.id, req.params.reply_id);
+  Thread.findById(req.params.id).then( (thread) => {
+  //fxn to help find a reply
+    const findReply = (id, replies) => {
+      //iterate through array
+      if (replies.length > 0) {
+        for (var i = 0; i < replies.length; i++) {
+          // for every reply, assign it into a variable
+          const reply = replies[i];
+            //each reply is now an object
+          if (reply._id == id) {
+            return reply;
+          }
+        }
       }
+    };
+    // console.log('B4 putting args', req.params.reply_id, thread.replies);
+    const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
+    // reply variable contains ONE reply from the replies arr.
+    // console.log('req.body.replyId', req.body.reply);
+    const replyNew = {
+      // text: req.body.reply,
+      author: {
+        username: '[del!]',
+      },
+    };
+
+
+console.log ('reply after running findReply', reply)
+
+// author:
+//    { avatar: 'fa-chess-king',
+//      username: 'Lizard',
+//      id: 5af6237a4c76fd65c0ad42cd },
+
+    reply.author.username = 'deleted!'
+    thread.markModified('replies');
+    return thread.save();
+
+  }).then((thread) => {
+    console.log(thread);
+    res.redirect('/threads/' + thread._id);
+  }).catch((err)=> {
+    console.log(err);
   });
 
+
 });
-
-
-
-
 
 
 
