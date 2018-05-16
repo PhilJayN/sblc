@@ -232,22 +232,24 @@ router.put('/threads/:id/replies/:reply_id', function (req, res) {
     const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
     // reply variable contains ONE reply from the replies arr.
     // console.log('req.body.replyId', req.body.reply);
-    const replyNew = {
-      // text: req.body.reply,
-      author: {
-        username: '[del!]',
-      },
-    };
-
+    // const replyNew = {
+    //   text: '[deleted]',
+    //   author: {
+    //     username: '[deleted]',
+    //     avatar: '[deleted]'
+    //   },
+    // };
 
 console.log ('reply after running findReply', reply)
-
 // author:
 //    { avatar: 'fa-chess-king',
 //      username: 'Lizard',
 //      id: 5af6237a4c76fd65c0ad42cd },
 
-    reply.author.username = 'deleted!'
+    reply.text = '[deleted]';
+    reply.author.username = '[deleted]';
+    reply.author.avatar = '[deleted]';
+
     thread.markModified('replies');
     return thread.save();
 
