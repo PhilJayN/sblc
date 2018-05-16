@@ -209,10 +209,10 @@ controller.init();
           console.log ('thread-del-btn!!');
           var formAction = "/threads/del/" + id + "?_method=PUT";
         }
-        // pseudo delete reply
+        // pseudo delete reply, hence the ?_method=PUT
         else if ( $(e.relatedTarget).hasClass("reply-del-btn") ) {
           console.log ('reply-del-btn!!');
-          var formAction = "/threads/" + id + "/replies/" + selfId + "?_method=DELETE";
+          var formAction = "/threads/" + id + "/replies/" + selfId + "?_method=PUT";
         }
 
         // else if ( $(e.relatedTarget).hasClass("reply-del-btn") ) {

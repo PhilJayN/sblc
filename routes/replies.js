@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router({mergeParams: true});
+var Thread = require("../models/thread");
 var Reply = require("../models/reply");
 var middleware = require("../middleware");
-var Thread = require("../models/thread");
 
 
 //works to seed in DB:

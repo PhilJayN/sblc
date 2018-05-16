@@ -202,8 +202,8 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
 // end of .post
 
 //DELETE route for thread reply
-router.delete('/threads/:id/replies/:reply_id', function (req, res) {
-  res.send('reply del!');
+router.put('/threads/:id/replies/:reply_id', function (req, res) {
+  res.send('reply pseudo del!');
 });
 
 module.exports = router;
