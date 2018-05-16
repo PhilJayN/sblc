@@ -59,9 +59,12 @@
             </span>
             <div class="dynamic-reply-box"></div>
 
-            <a href="#" class="del-style del-btn reply-del-btn" data-toggle="modal"
+            <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
+              <a href="#" class="del-style del-btn reply-del-btn" data-toggle="modal"
               data-target="#basicModal" data-id="<%= thread._id %>" data-self="<%= reply._id %>"
-            >Delete</a>
+              >Delete</a>
+            <% } %>
+
 
             <!-- <span
               class="reply-del-btn"

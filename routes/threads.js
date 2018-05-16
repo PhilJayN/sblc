@@ -209,42 +209,34 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
 
 //pseudo DELETE route for thread MAIN reply
 router.put('/threads/:id/replies/:reply_id', function (req, res) {
-  Thread.findById(req.params.id).then( (thread) => {
-  //fxn to help find a reply
-    const findReply = (id, replies) => {
-      //iterate through array
-      if (replies.length > 0) {
-        for (var i = 0; i < replies.length; i++) {
-          // for every reply, assign it into a variable
-          const reply = replies[i];
-            //each reply is now an object
-          if (reply._id == id) {
-            console.log ('reply FOUND!!!!!!!:', reply);
-            return reply;
-          }
-        }
+res.send('pseudo reply del route');
+
+
+  const reply = {
+    text: '[deletedasdfasdf]',
+    // author: {
+    //   id: req.user._id,
+    //   username: '[deleted]',
+    //   avatar: ''
+    // },
+  };
+
+
+  Thread.findByIdAndUpdate(
+    // req.params.reply_id,
+    req.params.id,
+    { $push: { replies: reply } },
+    { upsert: true },
+    function(err, updatedThread) {
+      if (err) {
+        res.redirect('/back');
+      } else {
+        console.log('req pararms id:', req.params.reply_id, 'updated thread', updatedThread);
+        req.flash("success", "reply deleted");
+        res.redirect('/');
       }
-    };
-    // console.log('B4 putting args', req.params.reply_id, thread.replies);
-    const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
-    // console.log('req.body.replyId', req.body.reply);
-    const replyNew = {
-      text: '[deleted]',
-      author: {
-        id: req.user._id,
-        username: '[deleted]',
-        avatar: ''
-      },
-    };
-    reply.replies.unshift(replyNew);
-    thread.markModified('replies');
-    return thread.save();
-  }).then((thread) => {
-    console.log(thread);
-    res.redirect('/threads/' + thread._id);
-  }).catch((err)=> {
-    console.log(err);
   });
+
 });
 
 
