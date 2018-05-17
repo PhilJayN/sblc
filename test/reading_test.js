@@ -21,23 +21,23 @@
 // });
 
 
-const assert = require('assert');
-const Reply = require('../models/reply.js');
-
-describe('Reading replies out of the DB', () => {
-  let cat;
-
-  beforeEach((done) => {
-    cat = new Reply({ text: 'cat' });
-    cat.save()
-      .then(() => done());
-  });
-
-  it('finds all replies with text of cat ', (done) => {
-    Reply.find({ text: 'cat'})
-      .then((replies) => {
-        console.log('found replies:', replies);
-        done();
-      });
-  });
-});
+// const assert = require('assert');
+// const Reply = require('../models/reply.js');
+//
+// describe('Reading replies out of the DB', () => {
+//   let cat;
+//
+//   beforeEach((done) => {
+//     cat = new Reply({ text: 'cat' });
+//     cat.save()
+//       .then(() => done());
+//   });
+//
+//   it('finds all replies with text of cat ', (done) => {
+//     Reply.find({ text: 'cat'})
+//       .then((replies) => {
+//         console.log('found replies:', replies);
+//         done();
+//       });
+//   });
+// });
