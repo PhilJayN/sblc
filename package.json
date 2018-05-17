@@ -4,7 +4,7 @@
   "description": "An app for users to upload photos",
   "main": "app.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --exit",
     "start": "node app.js"
   },
   "author": "Philip Nguyen",
