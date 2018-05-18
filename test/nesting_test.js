@@ -40,19 +40,34 @@ describe('Nesting records w/ sub docs', function() {
     });
 
     puppies.save().then(function() {
-      Thread.findOne({subject: 'monkeys are cute'}).then(function(record) {
+      Thread.findOne({subject: 'monkeys are cute'}).then(function(thread) {
         //now add to the replies array
-        record.replies.push({text: 'another reply'});
-        record.save().then(function() {
-          var id = record._id;
-          Thread.findById(id).then(function(result) {
-            var replyId = result.replies[0]._id;
+        thread.replies.push({
+          text: 'another reply',
+          submittedTime: '3PM',
+          // replies: 'keirioeuroi'
+        });
+        thread.save().then(function() {
+          var id = thread._id;
+          Thread.findById(id).then(function(thread) {
+            // simulate that id already exists from using ex: req.params:
+            var replyId = thread.replies[0]._id;
             console.log (replyId);
-            result.replies.id(replyId);
-            var modReply = result.replies.id(replyId);
-            console.log ('found reply!!', modReply);
-            modReply.text = '[deleted!!]';
-            result.save();
+
+            var reply = thread.replies.id(replyId);
+            console.log ('found reply:', reply);
+            reply.replies.push({text: 'jsafkl;duj36534l6jk'});
+            thread.save(function(err, savedReply) {
+              if (err) {
+                console.log (err);
+              } else {
+                return savedReply;
+              }
+            });
+            // var modReply = thread.replies.id(replyId);
+            // console.log ('found reply!!', modReply);
+            // modReply.text = '[deleted!!]';
+
             done();
           });
 
@@ -78,7 +93,7 @@ describe('Nesting records w/ sub docs', function() {
 
 
 
-// WORKS to edit a main reply 
+// WORKS to edit a main reply
 // it('Adds replies to a thread', function(done) {
 //
 //   var puppies = new Thread({

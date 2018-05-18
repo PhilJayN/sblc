@@ -12,9 +12,9 @@ var replySchema = new mongoose.Schema({
       avatar: String
   },
 
-  replies: {
-    type: [replySchema]
-  },
+  // replies: {
+  //   type: [replySchema]
+  // },
 
   // submittedDate: String,
   submittedDate: {type: Date, default: Date.now},
@@ -24,6 +24,8 @@ var replySchema = new mongoose.Schema({
 { timestamps: true }
 
 );
+
+replySchema.add({replies: [replySchema]});
 
 //no need to write mongoose.model, because the replySchema will be embedded, NOT referenced
 // in threads model.
