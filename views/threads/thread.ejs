@@ -51,24 +51,26 @@
             <span class="reply-box__date"><%= moment(reply.submittedDate).fromNow() %></span>
             <p class="reply-box__text"><%= reply.text %></p>
 
-            <span
-              class="reply-btn"
-              data-parent="<%= thread._id %>"
-              data-self="<%= reply._id %>"
-            >Reply
-            </span>
+            <!-- make sure reply-btn and dynamic-reply-box stay together. reply box depends on it. -->
+            <% if (reply.author.username !== '[deleted]') { %>
+              <span
+                class="reply-btn"
+                data-parent="<%= thread._id %>"
+                data-self="<%= reply._id %>"
+              >Reply
+              </span>
+            <% } %>
             <div class="dynamic-reply-box"></div>
 
-            <% if (currentUser && thread.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
-              <h2>thread author: <%= thread.author.username %></h2>
-              <h2>reply author <%= reply.author.username %></h2>
-              <% if (reply.author.username !== '[deleted]') { %>
-                <h2>reply author <%= reply.author.username %></h2>
+            <!-- only show edit/del btn if correct user, AND only if username is NOT [deleted]-->
+            <% if (currentUser && reply.author.id.equals(currentUser._id) || currentUser.isAdmin === true) { %>
 
+              <% if (reply.author.username !== '[deleted]') { %>
                 <a href="#" class="del-style del-btn reply-del-btn" data-toggle="modal"
                 data-target="#basicModal" data-id="<%= thread._id %>" data-self="<%= reply._id %>"
                 >Delete</a>
-                <% } %>
+                <button type="button" name="button">Temp edit</button>
+              <% } %>
 
             <% } %>
 

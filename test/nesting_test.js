@@ -64,11 +64,16 @@ describe('Nesting records w/ sub docs', function() {
                 return savedReply;
               }
             });
-            // var modReply = thread.replies.id(replyId);
-            // console.log ('found reply!!', modReply);
-            // modReply.text = '[deleted!!]';
-
             done();
+
+
+            // var thirdReplyId = thread.replies[0].replies[0].replies[0]._id;
+            // thread.replies.id(replyId).replies.id(nestedReplyId).replies.id(thirdReplyId).push({text: 'DEEP'});
+            // // replies.id(thirdReplyId).text = 'so deep';
+            //
+            // thread.save();
+
+
           });
 
         });
