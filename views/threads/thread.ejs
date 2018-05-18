@@ -69,7 +69,11 @@
                 <a href="#" class="del-style del-btn reply-del-btn" data-toggle="modal"
                 data-target="#basicModal" data-id="<%= thread._id %>" data-self="<%= reply._id %>"
                 >Delete</a>
-                <button type="button" name="button">Temp edit</button>
+
+                <a class="edit-btn" data-parent="<%= thread._id %>" data-self="<%= reply._id %>"
+                >Edit</a>
+                <div class="dynamic-reply-box"></div>
+
               <% } %>
 
             <% } %>

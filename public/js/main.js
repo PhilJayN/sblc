@@ -29,14 +29,9 @@ var UIController = (function() {
 
   var createReplyBox = function(elClicked) {
     console.log ('createReplyBox running, the parent param:', parent);
-    // var divParent = parent;
-
-    // data-parent-thread="<%= thread._id %>"
-    // data-parent-reply="<%= reply._id %>"
 
     var thread = elClicked.getAttribute('data-parent');
     var reply = elClicked.getAttribute('data-self');
-    // console.log('threadasdjk;fl', thread);
 
     var form = document.createElement('form');
     form.action = '/threads/' + thread + '/replies/' + reply +'/replies';
@@ -81,6 +76,48 @@ var UIController = (function() {
       //   <button class="btn btn-primary">Submit</button>
       // </form>
 
+  var createEditBox = function(elClicked) {
+
+    var thread = elClicked.getAttribute('data-parent');
+    var self = elClicked.getAttribute('data-self');
+
+    var form = document.createElement('form');
+    //form.action = '/threads/:id/replies/:reply_id'
+    form.action = '/threads/' + thread + '/replies/' + self + '?_method=PUT';
+
+    form.method = 'POST';
+    form.className = 'edit-form';
+    elClicked.appendChild(form);
+
+    var div = document.createElement('div');
+    div.className = 'form-group';
+    form.appendChild(div);
+
+    var textArea = document.createElement('textarea');
+    textArea.autofocus = true;
+    textArea.required = true;
+    textArea.className = 'form-control';
+    // textArea.className = 'comment-text-input';
+    textArea.name = 'reply';
+
+    var input = document.createElement('input');
+    div.appendChild(input);
+    // console.log('input el created:', input.parentNode.parentNode.parentNode);
+    var parentId = input.parentNode.parentNode.parentNode.getAttribute('id');
+    input.type = 'hidden';
+    input.name = 'replyId';
+    input.value = parentId;
+
+    div.appendChild(textArea);
+
+    var button = document.createElement('button');
+    button.className = 'btn';
+    button.className = 'btn-secondary';
+    button.innerText = 'Submit';
+    div.appendChild(button);
+    return form;
+  };
+
   return {
     getDOMstrings: function() {
       return DOMstrings;
@@ -107,17 +144,16 @@ var UIController = (function() {
           //target, then append created element to the chosen element:
           appendTarget.appendChild(createReplyBox(elClicked)); //DOM is now updated to have results of createReplyBox method call
         }
-
-
-        // if (appendTarget.contains(replyForm) === false) {
-        //   console.log ('contains?', appendTarget.contains(replyForm), 'replyForm:', replyForm);
-        //   //target, then append created element to the chosen element:
-        //   appendTarget.appendChild(createReplyBox(appendTarget)); //DOM is now updated to have results of createReplyBox method call
-        // }
-
-
-
       }
+
+
+      if (elClicked.className === 'edit-btn') {
+        console.log ('el clicked is edit btn!');
+        if (appendTarget.firstChild === null) {
+          appendTarget.appendChild(createEditBox(elClicked));
+        }
+      }
+
 
       if (elClicked.className === 'collapse-expand') {
         console.log('collapse-expand!!');

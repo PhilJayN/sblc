@@ -45,7 +45,7 @@ router.post('/threads', function (req, res) {
         res.redirect('/');
     }
   });
-}); //// end post route for /comments
+});
 
 //READ: info about one thread, with all replies
 router.get('/threads/:id', function (req, res) {
@@ -203,6 +203,11 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
 });
 // end of .post
 
+
+
+router.put('/threads/:id/replies/:reply_id', function (req, res) {
+  res.send('reply edit POST !!');
+});
 
 
 
