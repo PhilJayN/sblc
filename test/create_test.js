@@ -4,10 +4,9 @@ const Reply = require('../models/reply.js');
 
 describe('Creating records', function() {
   it('saves a user', function(done) {
-    const joe = new User({username: 'TedBed'}); //joe is NOT yet saved to db.
+    const joe = new User({username: 'Joe Blow'}); //joe is NOT yet saved to db.
     //joe is an object, which has many methods, one of which is .save()
     //now to save to db: (remember .save() also takes a certain amt. of time to run)
-    console.log('isNew b4 save', joe.isNew); //expect true
 
     joe.save()
       //has joe been saved Successfully?
@@ -27,7 +26,3 @@ describe('Creating records', function() {
 //     dinner.save();
 //   });
 // });
-
-
-// console.log('joe type', typeof joe);
-// assert(joe === 'JoeBlow' );

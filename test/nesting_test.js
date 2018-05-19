@@ -24,11 +24,11 @@ describe('Nesting records w/ sub docs', function() {
   //
   // });
 
-  beforeEach(function(done) {
-    mongoose.connection.collections.threads.drop(function(){
-      done();
-    });
-  });
+  // beforeEach(function(done) {
+  //   mongoose.connection.collections.threads.drop(function(){
+  //     done();
+  //   });
+  // });
 
 
   it('Adds replies to a thread', function(done) {
@@ -55,7 +55,7 @@ describe('Nesting records w/ sub docs', function() {
             console.log (replyId);
 
             var reply = thread.replies.id(replyId);
-            console.log ('found reply:', reply);
+            // console.log ('found reply:', reply);
             reply.replies.push({text: 'jsafkl;duj36534l6jk'});
             thread.save(function(err, savedReply) {
               if (err) {

@@ -205,8 +205,17 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
 
 
 
-router.put('/threads/:id/replies/:reply_id', function (req, res) {
-  res.send('reply edit POST !!');
+router.put('/threads/:id/replies/:reply_id/edit', function (req, res) {
+  // res.send('reply edit POST !!');
+  var threadId = req.params.id;
+  var replyId = req.params.reply_id;
+  Thread.findById(threadId).then(function(thread) {
+    var reply = thread.replies.id(replyId);
+    console.log ('found reply:', reply);
+    reply.text = 'edit jjjsadj fjlkasjd';
+    thread.save();
+  });
+
 });
 
 

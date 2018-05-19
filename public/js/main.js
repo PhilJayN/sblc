@@ -83,7 +83,7 @@ var UIController = (function() {
 
     var form = document.createElement('form');
     //form.action = '/threads/:id/replies/:reply_id'
-    form.action = '/threads/' + thread + '/replies/' + self + '?_method=PUT';
+    form.action = '/threads/' + thread + '/replies/' + self + '/edit' + '?_method=PUT';
 
     form.method = 'POST';
     form.className = 'edit-form';

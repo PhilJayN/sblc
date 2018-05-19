@@ -14,15 +14,18 @@ before((done) => {
       });
 });
 
-
 //hook (ex: beforeEach): a function that will be exec before any tests get executed inside our test suite
-// beforeEach((done) => { //"done" is provided by mocha
-//   //ES6 syntax:
-//   const { users, comments } = mongoose.connection.collections;
-//   users.drop(() => {
-//     done();
-//   });
-// });
+beforeEach((done) => { //"done" is provided by mocha
+  // const { users, comments } = mongoose.connection.collections;
+  // users.drop(() => {
+  //   done();
+  // });
+
+  mongoose.connection.collections.users.drop(() => {
+    //ready to run test
+    done();
+  });
+});
 
 
 // users.drop(() => {
