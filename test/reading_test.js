@@ -14,10 +14,11 @@ describe('Reading users out of the DB', () => {
 
   it('finds all users with name of joe', (done) => {
 
-    User.find({ username: 'Joe'})
-      .then((users) => {
-        console.log('found users:', users);
+    User.findOne({ _id: joe._id })
+      .then((user) => {
+        console.log('found user:', user, 'here is id:', user._id);
         // console.log ('compare ids:', users[0]._id.toString() === joe._id.toString());
+        assert(user.username === 'Joe')
         done();
       });
 
