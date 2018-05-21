@@ -14,7 +14,9 @@ before((done) => {
       });
 });
 
+//hook (ex: beforeEach): a function that will be exec before any tests get executed inside our test suite
 beforeEach((done) => {
+  // console.log ('beforeEach running...');
   const { threads, users } = mongoose.connection.collections;
   threads.drop(() => {
     users.drop(() => {
