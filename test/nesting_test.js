@@ -2,34 +2,8 @@ const assert = require('assert');
 const mongoose = require('mongoose');
 const Thread = require('../models/thread.js');
 
-
 // Describe our setupEventListeners
 describe('Nesting records w/ sub docs', function() {
-  //Create tests
-
-  // it('Creates a thread', function(done){
-  //
-  //   var puppies = new Thread({
-  //     subject: 'cats are cute',
-  //     text: 'yes!',
-  //     replies: [{text: 'another person reply'}]
-  //   });
-  //
-  //   puppies.save().then(function() {
-  //     Thread.findOne({subject: 'cats are cute'}).then(function(record) {
-  //       assert(record.subject.length > 1);
-  //       done();
-  //     });
-  //   });
-  //
-  // });
-
-  // beforeEach(function(done) {
-  //   mongoose.connection.collections.threads.drop(function(){
-  //     done();
-  //   });
-  // });
-
 
   it('Adds replies to a thread', function(done) {
 
@@ -82,16 +56,6 @@ describe('Nesting records w/ sub docs', function() {
 
   });
 
-  // it('find a thread', function (done) {
-  //
-  //   Thread.findOneAndUpdate({subject: 'parrots are cute'}).then(function(record) {
-  //     console.log('record', record);
-  //     done();
-  //
-  //
-  //   });
-  //
-  // });
 
 });
 
