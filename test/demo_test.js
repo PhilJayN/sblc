@@ -48,7 +48,6 @@ describe('Creating records', () => {
     const puppies = new Thread({
       subject: 'cats are cute',
       text: 'yes!',
-      // replies: [{text: 'new reply'}]
     });
     puppies.save()
       .then(() => {
@@ -83,10 +82,57 @@ describe('Creating records', () => {
       })
       .then(() => Thread.findOne({subject: 'fav food?'}))
       .then((thread) => {
-        console.log ('threaj;kld', thread);
         assert(thread.replies[0].text === 'soup man myself');
+        console.log ('thread final', thread);
         done();
       });
+  });
+
+
+  it('can edit subdoc of an existing record', (done) => {
+    const food = new Thread({
+      subject: 'fav food?',
+      text: 'pizza',
+      replies: [{text: 'old reply'}]
+    });
+    var id = food._id;
+
+    // food.save()
+    //   .then(() => Thread.findByIdAndUpdate(id, { text: 'yak' }))
+    //
+    //   .then(() => {
+    //     Thread.findById(id)
+    //     .then((foundThread) => {
+    //       console.log ('thread11', foundThread);
+    //       done();
+    //     });
+    //   });
+
+    food.save()
+
+      .then(() => {
+
+        Thread.findById(id)
+        .then((foundThread) => {
+          console.log ('foundThread', foundThread);
+          console.log ('replyId', foundThread.replies[0]._id);
+          var replyId = foundThread.replies[0]._id;
+          var reply = foundThread.replies.id(replyId);
+
+          console.log ('one reply:', reply);
+          reply.text = 'reply has been edited';
+          reply.save()
+            .then(() => {
+                    assert(foundThread.replies[0].text === 'reply has been edited');
+                    done();
+            })
+
+          console.log ('edited reply:', reply.text);
+        })
+
+
+      });
+
   });
 
 });
