@@ -96,20 +96,7 @@ describe('Creating records', () => {
       replies: [{text: 'old reply'}]
     });
     var id = food._id;
-
-    // food.save()
-    //   .then(() => Thread.findByIdAndUpdate(id, { text: 'yak' }))
-    //
-    //   .then(() => {
-    //     Thread.findById(id)
-    //     .then((foundThread) => {
-    //       console.log ('thread11', foundThread);
-    //       done();
-    //     });
-    //   });
-
     food.save()
-
       .then(() => {
 
         Thread.findById(id)
@@ -134,6 +121,7 @@ describe('Creating records', () => {
       });
 
   });
+
 
 });
 

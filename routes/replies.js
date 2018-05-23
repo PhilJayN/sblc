@@ -9,19 +9,14 @@ var middleware = require("../middleware");
 router.post('/threads/reply', function (req, res) {
   //use body-parser to get data from 'name' attribute in form
   //id has its roots in main.js, where .getAttribute helps us get the id of thread from HTML attribute.
-  // var id = req.body.threadId;
   //find a thread in DB by its ID. get ID from hidden input field in HTML
   Thread.findById(req.body.threadId, function(err, foundThread) {
     if(err) {
       console.log (err);
     } else {
-      console.log ('foundThread from db', foundThread);
-      // console.log ('req.body', req.body, 'threadId:', req.body.threadId, 'reply', req.body.reply);
-      console.log('-------------------------');
       var date = new Date();
       var humanDate = date.toDateString();
       var humanTime = date.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}, { timeZone: 'America/Los_Angeles', hour12: true });
-      //Add user reply to DB
       var reply = {
         text: req.body.reply,
         author: {
@@ -34,7 +29,6 @@ router.post('/threads/reply', function (req, res) {
       };
       foundThread.replies.push(reply);
       foundThread.save();
-      // });
       res.redirect('/threads/' + foundThread._id);
     }
   });
@@ -57,21 +51,10 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
           if (reply._id == id) {
             return reply;
           }
-          // now invoke the findReply fxn with arguments
-          // reply.replies is just dot notation, trying to access a property of the reply obj.
-
-          // const foundReply = findReply(id, reply.replies);
-          // if (foundReply) {
-          //   console.log ('foundReply:', foundReply);
-          //   return foundReply;
-          // }
-
         }
       }
     };
-    // console.log('B4 putting args', req.params.reply_id, thread.replies);
     const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
-    // console.log('req.body.replyId', req.body.reply);
     const replyNew = {
       text: req.body.reply,
       author: {
@@ -133,16 +116,8 @@ router.put('/threads/:id/replies/:reply_id', function (req, res) {
     // console.log('B4 putting args', req.params.reply_id, thread.replies);
     const reply = findReply(req.params.reply_id, thread.replies); // thread.replies is arr of obj
     // reply variable contains ONE reply from the replies arr.
-    // console.log('req.body.replyId', req.body.reply);
-    // const replyNew = {
-    //   text: '[deleted]',
-    //   author: {
-    //     username: '[deleted]',
-    //     avatar: '[deleted]'
-    //   },
-    // };
 
-console.log ('reply after running findReply', reply);
+    console.log ('reply after running findReply', reply);
     reply.text = '[deleted]';
     reply.author.username = '[deleted]';
     reply.author.avatar = '[deleted]';
