@@ -203,22 +203,21 @@ router.post('/threads/:id/replies/:reply_id/replies', function (req, res) {
 });
 // end of .post
 
-
-
 router.put('/threads/:id/replies/:reply_id/edit', function (req, res) {
-  res.send('reply edit POST !!');
-  // var threadId = req.params.id;
-  // var replyId = req.params.reply_id;
-  // Thread.findById(threadId).then(function(thread) {
-  //   var reply = thread.replies.id(replyId);
-  //   console.log ('found reply:', reply);
-  //   reply.text = 'edit jjjsadj fjlkasjd';
-  //   thread.save();
-  // });
-
+  var threadId = req.params.id;
+  var replyId = req.body.replyId;
+  Thread.findById(threadId)
+    .then((thread) => {
+      //req.body.replyId is coming from hidden input element's name and value attr, in HTML
+      console.log ('threadId:', req.body.threadId, 'replyId:', req.body.replyId);
+      var reply = thread.replies.id(replyId);
+      console.log ('reply!!', reply, 'reply.text:', reply.text);
+      reply.text = req.body.text;
+      thread.save();
+      req.flash("success", "Edited!");
+      res.redirect('/threads/' + threadId);
+    });
 });
-
-
 
 
 //pseudo DELETE route for thread MAIN reply

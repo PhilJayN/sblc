@@ -98,7 +98,7 @@ var UIController = (function() {
     textArea.required = true;
     textArea.className = 'form-control';
     // textArea.className = 'comment-text-input';
-    textArea.name = 'reply';
+    textArea.name = 'text';
 
     var input = document.createElement('input');
     div.appendChild(input);
@@ -106,7 +106,7 @@ var UIController = (function() {
     var parentId = input.parentNode.parentNode.parentNode.getAttribute('id');
     input.type = 'hidden';
     input.name = 'replyId';
-    input.value = parentId;
+    input.value = self;
 
     div.appendChild(textArea);
 
