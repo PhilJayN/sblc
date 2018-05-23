@@ -16,7 +16,7 @@ describe('Reading users out of the DB', () => {
 
     User.findOne({ _id: joe._id })
       .then((user) => {
-        console.log('found user:', user, 'here is id:', user._id);
+        // console.log('found user:', user, 'here is id:', user._id);
         // console.log ('compare ids:', users[0]._id.toString() === joe._id.toString());
         assert(user.username === 'Joe')
         done();
@@ -24,25 +24,3 @@ describe('Reading users out of the DB', () => {
 
   });
 });
-
-
-// const assert = require('assert');
-// const Reply = require('../models/reply.js');
-//
-// describe('Reading replies out of the DB', () => {
-//   let cat;
-//
-//   beforeEach((done) => {
-//     cat = new Reply({ text: 'cat' });
-//     cat.save()
-//       .then(() => done());
-//   });
-//
-//   it('finds all replies with text of cat ', (done) => {
-//     Reply.find({ text: 'cat'})
-//       .then((replies) => {
-//         console.log('found replies:', replies);
-//         done();
-//       });
-//   });
-// });

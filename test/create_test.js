@@ -1,6 +1,5 @@
 const assert = require('assert');
 const User = require('../models/user.js');
-const Reply = require('../models/reply.js');
 
 describe('Creating records', function() {
   it('saves a user', function(done) {

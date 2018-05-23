@@ -26,7 +26,7 @@ describe('Nesting records w/ sub docs', function() {
           Thread.findById(id).then(function(thread) {
             // simulate that id already exists from using ex: req.params:
             var replyId = thread.replies[0]._id;
-            console.log (replyId);
+            // console.log (replyId);
 
             var reply = thread.replies.id(replyId);
             // console.log ('found reply:', reply);
